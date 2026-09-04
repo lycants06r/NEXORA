@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="">
+
+<head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>NEXORA - Live Intelligence Stream</title>
+        <meta name="view-transition" content="same-origin">
+        <link rel="stylesheet" href="assets/nexora-nav.css">
+        <link rel="stylesheet" href="assets/analytics-dashboard.css">
+        <link rel="prefetch" href="index.html">
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap"
+                rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet">
+        <script id="tailwind-config">
+                tailwind.config = {
+                        darkMode: "class",
+                        theme: {
+                                extend: {
+                                        "colors": {
+                                                "data-purple": "#8B5CF6",
+                                                "surface-tint": "#4cd7f6",
+                                                "surface-container-high": "#222a3d",
+                                                "secondary": "#ddb7ff",
+                                                "surface-container": "#171f33",
+                                                "glass-fill": "rgba(0, 0, 0, 0.7)",
+                                                "on-secondary-container": "#d6a9ff",
+                                                "inverse-primary": "#00687a",
+                                                "on-primary": "#003640",
+                                                "on-primary-container": "#00424f",
+                                                "error-container": "#93000a",
+                                                "tertiary": "#4edea3",
+                                                "outline-variant": "#3d494c",
+                                                "on-primary-fixed-variant": "#004e5c",
+                                                "on-secondary": "#490080",
+                                                "surface-dim": "#0b1326",
+                                                "tertiary-container": "#1bbd85",
+                                                "secondary-fixed": "#f0dbff",
+                                                "on-tertiary-fixed": "#002113",
+                                                "on-surface": "#dae2fd",
+                                                "inverse-surface": "#dae2fd",
+                                                "on-tertiary-container": "#00452e",
+                                                "on-error-container": "#ffdad6",
+                                                "on-tertiary-fixed-variant": "#005236",
+                                                "surface-bright": "#31394d",
+                                                "on-primary-fixed": "#001f26",
+                                                "error-red": "#EF4444",
+                                                "surface-container-lowest": "#060e20",
+                                                "on-tertiary": "#003824",
+                                                "outline": "#869397",
+                                                "on-background": "#dae2fd",
+                                                "primary-fixed": "#acedff",
+                                                "surface-variant": "#2d3449",
+                                                "alert-amber": "#F59E0B",
+                                                "sentiment-emerald": "#10B981",
+                                                "inverse-on-surface": "#283044",
+                                                "primary-container": "#06b6d4",
+                                                "data-rose": "#FB7185",
+                                                "error": "#ffb4ab",
+                                                "surface": "#000000",
+                                                "tertiary-fixed-dim": "#4edea3",
+                                                "glass-outline": "rgba(255, 255, 255, 0.1)",
+                                                "on-surface-variant": "#bcc9cd",
+                                                "on-secondary-fixed": "#2c0051",
+                                                "primary": "#4cd7f6",
+                                                "surface-container-highest": "#2d3449",
+                                                "on-error": "#690005",
+                                                "tertiary-fixed": "#6ffbbe",
+                                                "background": "#000000",
+                                                "secondary-container": "#6f00be",
+                                                "secondary-fixed-dim": "#ddb7ff",
+                                                "surface-container-low": "#131b2e",
+                                                "on-secondary-fixed-variant": "#6900b3",
+                                                "primary-fixed-dim": "#4cd7f6",
+                                                "data-slate": "#94A3B8"
+                                        },
+                                        "borderRadius": {
+                                                "DEFAULT": "0.125rem",
+                                                "lg": "0.25rem",
+                                                "xl": "0.5rem",
+                                                "full": "0.75rem"
+                                        },
+                                        "spacing": {
+                                                "module-padding": "1rem",
+                                                "sidebar-width": "256px",
+                                                "gutter": "1rem",
+                                                "grid-margin": "1.5rem",
+                                                "compact-gap": "0.25rem",
+                                                "element-gap": "0.5rem"
+                                        },
+                                        "fontFamily": {
+                                                "data-label": [
+                                                        "JetBrains Mono"
+                                                ],
+                                                "headline-lg": [
+                                                        "Geist"
+                                                ],
+                                                "headline-sm": [
+                                                        "Geist"
+                                                ],
+                                                "body-lg": [
+                                                        "Geist"
+                                                ],
+                                                "body-sm": [
+                                                        "Geist"
+                                                ],
+                                                "ticker": [
+                                                        "JetBrains Mono"
+                                                ],
+                                                "body-md": [
+                                                        "Geist"
+                                                ],
+                                                "headline-md": [
+                                                        "Geist"
+                                                ],
+                                                "data-display": [
+                                                        "JetBrains Mono"
+                                                ]
+                                        },
+                                        "fontSize": {
+                                                "data-label": [
+                                                        "10px",
+                                                        {
+                                                                "lineHeight": "1",
+                                                                "letterSpacing": "0.2em",
+                                                                "fontWeight": "700"
+                                                        }
+                                                ],
+                                                "headline-lg": [
+                                                        "32px",
+                                                        {
+                                                                "lineHeight": "1.2",
+                                                                "letterSpacing": "0.05em",
+                                                                "fontWeight": "900"
+                                                        }
+                                                ],
+                                                "headline-sm": [
+                                                        "18px",
+                                                        {
+                                                                "lineHeight": "1.2",
+                                                                "fontWeight": "700"
+                                                        }
+                                                ],
+                                                "body-lg": [
+                                                        "16px",
+                                                        {
+                                                                "lineHeight": "1.5",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "body-sm": [
+                                                        "12px",
+                                                        {
+                                                                "lineHeight": "1.4",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "ticker": [
+                                                        "11px",
+                                                        {
+                                                                "lineHeight": "1",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "body-md": [
+                                                        "14px",
+                                                        {
+                                                                "lineHeight": "1.5",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "headline-md": [
+                                                        "24px",
+                                                        {
+                                                                "lineHeight": "1.2",
+                                                                "letterSpacing": "0.02em",
+                                                                "fontWeight": "800"
+                                                        }
+                                                ],
+                                                "data-display": [
+                                                        "24px",
+                                                        {
+                                                                "lineHeight": "1",
+                                                                "fontWeight": "600"
+                                                        }
+                                                ]
+                                        }
+                                },
+                        },
+                }
+        </script>
+        <style>
+                body {
+                        background-color: theme('colors.surface');
+                        color: theme('colors.on-surface');
+                        background-image:
+                                radial-gradient(circle at 15% 50%, rgba(76, 215, 246, 0.05) 0%, transparent 50%),
+                                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+                        background-attachment: fixed;
+                }
+
+                .pulse-border {
+                        animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+
+                @keyframes pulse-border {
+
+                        0%,
+                        100% {
+                                border-color: rgba(76, 215, 246, 0.2);
+                                box-shadow: 0 0 0 rgba(76, 215, 246, 0);
+                        }
+
+                        50% {
+                                border-color: rgba(76, 215, 246, 0.8);
+                                box-shadow: 0 0 10px rgba(76, 215, 246, 0.3);
+                        }
+                }
+
+                .cyber-panel {
+                        background: rgba(0, 0, 0, 0.7);
+                        backdrop-filter: blur(16px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                .cyber-card {
+                        background: rgba(0, 0, 0, 0.7);
+                        backdrop-filter: blur(16px);
+                        border: 1px solid rgba(76, 215, 246, 0.3);
+                        box-shadow: inset 0 0 20px rgba(76, 215, 246, 0.05);
+                        transition: all 0.3s ease;
+                }
+
+                .cyber-card:hover {
+                        box-shadow: inset 0 0 30px rgba(76, 215, 246, 0.1), 0 0 15px rgba(76, 215, 246, 0.2);
+                        transform: translateY(-2px);
+                }
+
+                .feed-item {
+                        border-left: 2px solid transparent;
+                        transition: all 0.2s ease;
+                }
+
+                .feed-item:hover {
+                        border-left-color: theme('colors.primary');
+                        background-color: rgba(76, 215, 246, 0.05);
+                }
+
+                /* Custom Scrollbar */
+                ::-webkit-scrollbar {
+                        width: 6px;
+                        height: 6px;
+                }
+
+                ::-webkit-scrollbar-track {
+                        background: transparent;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                        background: theme('colors.surface-variant');
+                        border-radius: 3px;
+                }
+
+                ::-webkit-scrollbar-thumb:hover {
+                        background: theme('colors.primary');
+                }
+
+                .animate-pulse-slow {
+                        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+        </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden text-on-surface bg-surface font-body-md">
+        <!-- SideNavBar -->
+        <nav
+                class="fixed left-0 top-0 h-full w-sidebar-width bg-glass-fill backdrop-blur-md border-r border-glass-outline shadow-md flex flex-col py-grid-margin transition-all duration-300 ease-in-out z-40 hidden md:flex">
+                <!-- Header -->
+                <div class="px-module-padding mb-8"><a href="index.html"
+                                class="block hover:opacity-90 transition-opacity">
+                                <h1
+                                        class="font-headline-md text-headline-md font-black text-primary-container tracking-widest uppercase">
+                                        NEXORA</h1>
+                        </a>
+                        <p class="font-data-label text-[10px] text-on-surface-variant uppercase mt-1 tracking-widest">
+                                SOCIAL MEDIA INTELLIGENCE</p>
+                </div>
+                <!-- Navigation Tabs -->
+                <ul class="flex flex-col flex-grow gap-2 px-2">
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="index.html">
+                                        <span class="material-symbols-outlined text-xl">dashboard</span>
+                                        <span class="font-body-md">Overview</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-primary font-bold border-r-2 border-primary bg-primary/10 transition-colors pulse-border py-1.5"
+                                        href="stream.html">
+                                        <span class="material-symbols-outlined text-xl"
+                                                style="font-variation-settings: &quot;FILL&quot; 1;">sensors</span>
+                                        <span class="font-body-md">Live Intelligence</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="analytics.html">
+                                        <span class="material-symbols-outlined text-xl">analytics</span>
+                                        <span class="font-body-md">Social Analytics</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="sentiment.html">
+                                        <span class="material-symbols-outlined text-xl">analytics</span>
+                                        <span class="font-body-md">Sentiment</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="trends.html">
+                                        <span class="material-symbols-outlined text-xl">trending_up</span>
+                                        <span class="font-body-md">Trends</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="audience.html">
+                                        <span class="material-symbols-outlined text-xl">groups</span>
+                                        <span class="font-body-md">Audience</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="network.html">
+                                        <span class="material-symbols-outlined text-xl">hub</span>
+                                        <span class="font-body-md">Network</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a class="flex items-center gap-3 px-4 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors py-1.5"
+                                        href="ai-insights.html">
+                                        <span class="material-symbols-outlined text-xl">psychology</span>
+                                        <span class="font-body-md">AI Insights</span>
+                                </a>
+                        </li>
+                </ul>
+                <!-- Footer Tab -->
+                <div class="mt-auto px-2">
+                        <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors border-t border-glass-outline pt-4 mt-4"
+                                href="#">
+                                <span class="material-symbols-outlined text-xl">account_circle</span>
+                                <span class="font-body-md">Analyst Alpha</span>
+                        </a>
+                </div>
+        </nav>
+        <!-- TopNavBar -->
+        <header
+                class="fixed top-0 right-0 w-full md:w-[calc(100%-256px)] h-16 bg-glass-fill backdrop-blur-md border-b border-glass-outline shadow-sm flex items-center justify-between px-grid-margin gap-element-gap focus-within:ring-1 focus-within:ring-primary z-30">
+                <!-- Mobile Brand (Visible only on mobile) -->
+                <div class="md:hidden flex items-center gap-2">
+                        <a href="index.html"
+                                class="font-headline-sm text-headline-sm font-black text-primary tracking-widest uppercase hover:opacity-90 transition-opacity">NEXORA</a>
+                </div>
+                <!-- Left Actions / Context -->
+                <div class="hidden md:flex items-center gap-4">
+                        <div class="flex items-center gap-2 text-primary border-b-2 border-primary pb-1">
+                                <span class="w-2 h-2 rounded-full bg-error-red animate-pulse"></span>
+                                <span class="font-body-sm text-body-sm font-bold tracking-wider">LIVE STREAM</span>
+                        </div>
+                </div>
+                <div class="relative flex items-center">
+                        <div class="flex items-center bg-white rounded-lg px-3 py-1.5 gap-2 w-64 shadow-sm">
+                                <span class="material-symbols-outlined text-surface-dim text-sm">search</span>
+                                <span class="font-body-sm text-surface-dim flex-grow">Search anything</span>
+                                <div
+                                        class="flex items-center justify-center w-5 h-5 rounded border border-surface-variant/20 bg-surface-container-low/10">
+                                        <span class="font-data-label text-[10px] text-surface-dim">K</span>
+                                </div>
+                        </div>
+                </div>
+                <!-- Search / Navigation Links -->
+                <div class="flex items-center gap-6">
+                        <nav class="hidden md:flex items-center gap-4">
+                                <a class="font-body-sm text-body-sm text-primary border-b-2 border-primary pb-1 font-bold"
+                                        href="stream.html">LIVE</a>
+                                <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-surface-tint transition-opacity"
+                                        href="index.html">DEMO</a>
+                        </nav>
+                        <div class="flex items-center gap-3 text-on-surface-variant">
+                                <button class="p-1.5 rounded-full hover:text-surface-tint hover:bg-surface-variant/30 transition-colors"
+                                        onclick="location.href='index.html'" title="Back to overview" type="button">
+                                        <span class="material-symbols-outlined text-xl">close</span>
+                                </button>
+                                <button
+                                        class="p-1.5 rounded-full hover:text-surface-tint hover:bg-surface-variant/30 transition-colors">
+                                        <span class="material-symbols-outlined text-xl">public</span>
+                                </button>
+                                <button
+                                        class="p-1.5 rounded-full hover:text-surface-tint hover:bg-surface-variant/30 transition-colors">
+                                        <span class="material-symbols-outlined text-xl">groups</span>
+                                </button>
+                                <button
+                                        class="p-1.5 rounded-full hover:text-surface-tint hover:bg-surface-variant/30 transition-colors">
+                                        <span class="material-symbols-outlined text-xl">send</span>
+                                </button>
+                        </div>
+                </div>
+        </header>
+        <!-- Main Content Canvas -->
+        <main class="pb-16 px-4 md:px-grid-margin md:ml-sidebar-width min-h-screen pt-20">
+                <!-- Page Header -->
+                <div class="mb-4">
+                        <a href="index.html"
+                                class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant hover:text-primary transition-colors w-fit mb-2">
+                                <span class="material-symbols-outlined text-[14px]">arrow_back</span>
+                                Back to overview
+                        </a>
+                        <h2
+                                class="font-headline-lg text-headline-lg text-on-surface font-black uppercase tracking-tight">
+                                LIVE INTELLIGENCE</h2>
+                        <p class="font-body-md text-body-md text-primary mt-1 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">wifi_tethering</span>
+                                Real-time social conversations
+                        </p>
+                </div>
+                <!-- KPI Grid (Bento Style) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="cyber-card rounded-lg relative overflow-hidden group p-3">
+                                <div
+                                        class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                                        <span class="material-symbols-outlined text-primary text-3xl">chat_bubble</span>
+                                </div>
+                                <div class="relative z-10">
+                                        <p
+                                                class="font-data-label text-data-label text-on-surface-variant uppercase mb-2">
+                                                Live Posts / Min</p>
+                                        <div class="flex items-baseline gap-2">
+                                                <span
+                                                        class="font-data-display text-data-display text-on-surface font-black">12,458</span>
+                                                <span
+                                                        class="font-body-sm text-body-sm text-sentiment-emerald flex items-center">
+                                                        <span
+                                                                class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                                                        14%
+                                                </span>
+                                        </div>
+                                        <!-- Sparkline placeholder -->
+                                        <div
+                                                class="h-8 mt-4 w-full bg-gradient-to-t from-primary/20 to-transparent border-b border-primary/50 relative overflow-hidden">
+                                                <svg class="absolute bottom-0 w-full h-full" preserveAspectRatio="none"
+                                                        viewBox="0 0 100 100">
+                                                        <path d="M0 100 L 20 80 L 40 90 L 60 40 L 80 60 L 100 20 L 100 100 Z"
+                                                                fill="rgba(76,215,246,0.1)"></path>
+                                                        <path d="M0 100 L 20 80 L 40 90 L 60 40 L 80 60 L 100 20"
+                                                                fill="none" stroke="theme('colors.primary')"
+                                                                stroke-width="2"></path>
+                                                </svg>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- KPI 2 -->
+                        <div class="cyber-card rounded-lg relative overflow-hidden group p-3">
+                                <div
+                                        class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                                        <span class="material-symbols-outlined text-data-purple text-3xl">forum</span>
+                                </div>
+                                <div class="relative z-10">
+                                        <p
+                                                class="font-data-label text-data-label text-on-surface-variant uppercase mb-2">
+                                                Active Conversations</p>
+                                        <div class="flex items-baseline gap-2">
+                                                <span
+                                                        class="font-data-display text-data-display text-on-surface font-black">3,892</span>
+                                                <span
+                                                        class="font-body-sm text-body-sm text-error-red flex items-center">
+                                                        <span
+                                                                class="material-symbols-outlined text-[14px]">arrow_downward</span>
+                                                        2%
+                                                </span>
+                                        </div>
+                                        <!-- Sparkline placeholder -->
+                                        <div
+                                                class="h-8 mt-4 w-full bg-gradient-to-t from-data-purple/20 to-transparent border-b border-data-purple/50 relative overflow-hidden">
+                                                <svg class="absolute bottom-0 w-full h-full" preserveAspectRatio="none"
+                                                        viewBox="0 0 100 100">
+                                                        <path d="M0 100 L 20 60 L 40 50 L 60 70 L 80 30 L 100 40 L 100 100 Z"
+                                                                fill="rgba(139, 92, 246, 0.1)"></path>
+                                                        <path d="M0 100 L 20 60 L 40 50 L 60 70 L 80 30 L 100 40"
+                                                                fill="none" stroke="theme('colors.data-purple')"
+                                                                stroke-width="2"></path>
+                                                </svg>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- KPI 3 -->
+                        <div class="cyber-card rounded-lg relative overflow-hidden group border-alert-amber/30 p-3">
+                                <div
+                                        class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                                class="material-symbols-outlined text-alert-amber text-3xl">local_fire_department</span>
+                                </div>
+                                <div class="relative z-10">
+                                        <p
+                                                class="font-data-label text-data-label text-alert-amber uppercase mb-2 animate-pulse">
+                                                Emerging Topics</p>
+                                        <div class="flex items-baseline gap-2">
+                                                <span
+                                                        class="font-data-display text-data-display text-on-surface font-black">14</span>
+                                                <span class="font-body-sm text-body-sm text-alert-amber">High
+                                                        Velocity</span>
+                                        </div>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                                <span
+                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-alert-amber/10 border border-alert-amber/30 text-alert-amber">#CyberSec</span>
+                                                <span
+                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-variant/50 border border-glass-outline text-on-surface-variant">#AI</span>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- KPI 4 -->
+                        <div class="cyber-card rounded-lg relative overflow-hidden group p-3">
+                                <div
+                                        class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                                        <span class="material-symbols-outlined text-tertiary text-3xl">psychology</span>
+                                </div>
+                                <div class="relative z-10">
+                                        <p
+                                                class="font-data-label text-data-label text-on-surface-variant uppercase mb-2">
+                                                Global Sentiment</p>
+                                        <div class="flex items-baseline gap-2">
+                                                <span
+                                                        class="font-data-display text-data-display text-tertiary font-black">68%</span>
+                                                <span class="font-body-sm text-body-sm text-on-surface-variant">Positive
+                                                        Index</span>
+                                        </div>
+                                        <div
+                                                class="w-full bg-surface-container-high h-2 rounded-full mt-5 overflow-hidden flex">
+                                                <div class="bg-sentiment-emerald h-full" style="width: 68%"></div>
+                                                <div class="bg-surface-variant h-full" style="width: 20%"></div>
+                                                <div class="bg-error-red h-full" style="width: 12%"></div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <!-- Main Layout Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 h-[600px] gap-3">
+                        <!-- Left/Main Panel: INCOMING INTELLIGENCE (Live Feed) -->
+                        <div class="lg:col-span-2 cyber-panel rounded-lg flex flex-col overflow-hidden relative">
+                                <!-- Header with Filter Bar -->
+                                <div class="p-4 border-b border-glass-outline bg-surface-container/50">
+                                        <div class="flex justify-between items-center mb-4">
+                                                <h3
+                                                        class="font-headline-sm text-headline-sm font-bold flex items-center gap-2">
+                                                        <span
+                                                                class="w-2 h-2 rounded-full bg-primary pulse-border"></span>
+                                                        INCOMING INTELLIGENCE
+                                                </h3>
+                                                <div class="flex gap-2">
+                                                        <button
+                                                                class="p-1 rounded bg-surface-variant/50 hover:bg-primary/20 text-on-surface-variant hover:text-primary transition-colors border border-glass-outline">
+                                                                <span
+                                                                        class="material-symbols-outlined text-sm">pause</span>
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <!-- Horizontal Filter Bar -->
+                                        <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                                                <button
+                                                        class="px-3 py-1 rounded-full bg-primary text-on-primary font-bold text-[10px] uppercase tracking-wider">All</button>
+                                                <button
+                                                        class="px-3 py-1 rounded-full bg-surface-variant/50 text-on-surface-variant hover:text-primary border border-glass-outline text-[10px] uppercase tracking-wider transition-colors">Fashion</button>
+                                                <button
+                                                        class="px-3 py-1 rounded-full bg-surface-variant/50 text-on-surface-variant hover:text-primary border border-glass-outline text-[10px] uppercase tracking-wider transition-colors">Games</button>
+                                                <button
+                                                        class="px-3 py-1 rounded-full bg-surface-variant/50 text-on-surface-variant hover:text-primary border border-glass-outline text-[10px] uppercase tracking-wider transition-colors">Cricket</button>
+                                                <button
+                                                        class="px-3 py-1 rounded-full bg-surface-variant/50 text-on-surface-variant hover:text-primary border border-glass-outline text-[10px] uppercase tracking-wider transition-colors">Finance</button>
+                                                <button
+                                                        class="px-3 py-1 rounded-full bg-surface-variant/50 text-on-surface-variant hover:text-primary border border-glass-outline text-[10px] uppercase tracking-wider transition-colors">Tech</button>
+                                        </div>
+                                </div>
+                                <!-- Scrollable Feed -->
+                                <div class="flex-grow overflow-y-auto p-4 flex flex-col gap-3">
+                                        <!-- Card 1: X / Critical -->
+                                        <div
+                                                class="feed-item bg-surface-container-low/50 rounded border border-glass-outline p-3">
+                                                <div class="flex justify-between items-start mb-2">
+                                                        <div class="flex items-center gap-2">
+                                                                <span
+                                                                        class="material-symbols-outlined text-primary text-sm">alternate_email</span>
+                                                                <span
+                                                                        class="font-data-label text-data-label text-on-surface-variant">@TECH_ANALYST_99</span>
+                                                                <span class="font-ticker text-ticker text-outline">Â·
+                                                                        Just now</span>
+                                                        </div>
+                                                        <div class="flex gap-2">
+                                                                <span
+                                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-variant/50 border border-glass-outline text-primary">IMPACT:
+                                                                        HIGH</span>
+                                                                <span
+                                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-error-red/10 border border-error-red/30 text-error-red">CRITICAL</span>
+                                                        </div>
+                                                </div>
+                                                <p class="font-body-md text-body-md text-on-surface mb-3">
+                                                        Major spike detected in chatter regarding the upcoming silicon
+                                                        shortage. Supply chains in APAC showing early stress indicators.
+                                                        <span
+                                                                class="text-primary cursor-pointer hover:underline">#SupplyChain</span>
+                                                        <span
+                                                                class="text-primary cursor-pointer hover:underline">#Tech</span>
+                                                </p>
+                                                <div
+                                                        class="flex items-center gap-4 text-outline font-data-label text-data-label">
+                                                        <div
+                                                                class="flex items-center gap-1 hover:text-primary cursor-pointer">
+                                                                <span
+                                                                        class="material-symbols-outlined text-sm">visibility</span>
+                                                                45.2K</div>
+                                                        <div
+                                                                class="flex items-center gap-1 hover:text-primary cursor-pointer">
+                                                                <span
+                                                                        class="material-symbols-outlined text-sm">repeat</span>
+                                                                1.2K</div>
+                                                </div>
+                                        </div>
+                                        <!-- Card 2: Reddit / Positive -->
+                                        <div
+                                                class="feed-item bg-surface-container-low/50 rounded border border-glass-outline p-3">
+                                                <div class="flex justify-between items-start mb-2">
+                                                        <div class="flex items-center gap-2">
+                                                                <span
+                                                                        class="material-symbols-outlined text-data-purple text-sm">forum</span>
+                                                                <span
+                                                                        class="font-data-label text-data-label text-on-surface-variant">REDDIT_MARKETS</span>
+                                                                <span class="font-ticker text-ticker text-outline">Â·
+                                                                        12s ago</span>
+                                                        </div>
+                                                        <div class="flex gap-2">
+                                                                <span
+                                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-variant/50 border border-glass-outline text-primary">IMPACT:
+                                                                        MED</span>
+                                                                <span
+                                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-sentiment-emerald/10 border border-sentiment-emerald/30 text-sentiment-emerald">POSITIVE</span>
+                                                        </div>
+                                                </div>
+                                                <p class="font-body-md text-body-md text-on-surface mb-3">
+                                                        Sentiment shifting heavily towards renewable energy sector after
+                                                        the latest policy announcements in EU. <span
+                                                                class="text-primary cursor-pointer hover:underline">#GreenEnergy</span>
+                                                        <span
+                                                                class="text-primary cursor-pointer hover:underline">#ESG</span>
+                                                </p>
+                                                <div
+                                                        class="flex items-center gap-4 text-outline font-data-label text-data-label">
+                                                        <div
+                                                                class="flex items-center gap-1 hover:text-primary cursor-pointer">
+                                                                <span
+                                                                        class="material-symbols-outlined text-sm">visibility</span>
+                                                                12.8K</div>
+                                                        <div
+                                                                class="flex items-center gap-1 hover:text-primary cursor-pointer">
+                                                                <span
+                                                                        class="material-symbols-outlined text-sm">forum</span>
+                                                                842</div>
+                                                </div>
+                                        </div>
+                                        <!-- Card 3: Instagram / Neutral -->
+                                        <div
+                                                class="feed-item bg-surface-container-low/50 rounded border border-glass-outline p-3">
+                                                <div class="flex justify-between items-start mb-2">
+                                                        <div class="flex items-center gap-2">
+                                                                <span
+                                                                        class="material-symbols-outlined text-tertiary text-sm">photo_camera</span>
+                                                                <span
+                                                                        class="font-data-label text-data-label text-on-surface-variant">FASHION_WEEK_LIVE</span>
+                                                                <span class="font-ticker text-ticker text-outline">Â· 2m
+                                                                        ago</span>
+                                                        </div>
+                                                        <div class="flex gap-2">
+                                                                <span
+                                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-variant/50 border border-glass-outline text-primary">IMPACT:
+                                                                        LOW</span>
+                                                                <span
+                                                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-variant/50 border border-glass-outline text-on-surface-variant">NEUTRAL</span>
+                                                        </div>
+                                                </div>
+                                                <p class="font-body-md text-body-md text-on-surface mb-3">
+                                                        Backstage coverage of the Milan opening. High engagement on
+                                                        sustainable fabrics. <span
+                                                                class="text-primary cursor-pointer hover:underline">#MilanFashionWeek</span>
+                                                </p>
+                                                <div
+                                                        class="flex items-center gap-4 text-outline font-data-label text-data-label">
+                                                        <div
+                                                                class="flex items-center gap-1 hover:text-primary cursor-pointer">
+                                                                <span
+                                                                        class="material-symbols-outlined text-sm">favorite</span>
+                                                                8.4K</div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div
+                                        class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-surface-container to-transparent pointer-events-none">
+                                </div>
+                        </div>
+                        <!-- Right Panel: LIVE ACTIVITY -->
+                        <div class="cyber-panel rounded-lg flex flex-col overflow-hidden">
+                                <div class="p-module-padding border-b border-glass-outline bg-surface-container/50">
+                                        <h3
+                                                class="font-headline-sm text-headline-sm font-bold uppercase tracking-tight">
+                                                Platform Distribution</h3>
+                                        <p class="font-data-label text-data-label text-on-surface-variant mt-1">Active
+                                                User Share</p>
+                                </div>
+                                <div class="p-module-padding flex flex-col gap-8 overflow-y-auto flex-grow">
+                                        <div
+                                                class="relative aspect-square w-48 mx-auto flex items-center justify-center">
+                                                <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                                        <circle cx="18" cy="18" r="15.9" fill="transparent"
+                                                                stroke="rgba(255,255,255,0.05)" stroke-width="3.8">
+                                                        </circle>
+                                                        <circle cx="18" cy="18" r="15.9" fill="transparent"
+                                                                stroke="#4cd7f6" stroke-width="3.8"
+                                                                stroke-dasharray="42 100" stroke-dashoffset="0"
+                                                                class="drop-shadow-[0_0_8px_rgba(76,215,246,0.5)]">
+                                                        </circle>
+                                                        <circle cx="18" cy="18" r="15.9" fill="transparent"
+                                                                stroke="#8B5CF6" stroke-width="3.8"
+                                                                stroke-dasharray="28 100" stroke-dashoffset="-42"
+                                                                class="drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]">
+                                                        </circle>
+                                                        <circle cx="18" cy="18" r="15.9" fill="transparent"
+                                                                stroke="#10B981" stroke-width="3.8"
+                                                                stroke-dasharray="18 100" stroke-dashoffset="-70"
+                                                                class="drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">
+                                                        </circle>
+                                                        <circle cx="18" cy="18" r="15.9" fill="transparent"
+                                                                stroke="#06b6d4" stroke-width="3.8"
+                                                                stroke-dasharray="12 100" stroke-dashoffset="-88"
+                                                                class="drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]">
+                                                        </circle>
+                                                </svg>
+                                                <div class="absolute flex flex-col items-center"><span
+                                                                class="font-data-display text-2xl text-on-surface">100%</span><span
+                                                                class="font-data-label text-[8px] text-on-surface-variant">TOTAL
+                                                                REACH</span></div>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                                <div class="flex items-center gap-2"><span
+                                                                class="w-2 h-2 rounded-full bg-primary"></span><span
+                                                                class="font-data-label text-[10px] text-on-surface-variant">X:
+                                                                42%</span></div>
+                                                <div class="flex items-center gap-2"><span
+                                                                class="w-2 h-2 rounded-full bg-data-purple"></span><span
+                                                                class="font-data-label text-[10px] text-on-surface-variant">TG:
+                                                                28%</span></div>
+                                                <div class="flex items-center gap-2"><span
+                                                                class="w-2 h-2 rounded-full bg-sentiment-emerald"></span><span
+                                                                class="font-data-label text-[10px] text-on-surface-variant">IG:
+                                                                18%</span></div>
+                                                <div class="flex items-center gap-2"><span
+                                                                class="w-2 h-2 rounded-full bg-primary-container"></span><span
+                                                                class="font-data-label text-[10px] text-on-surface-variant">FB:
+                                                                12%</span></div>
+                                        </div>
+                                        <div class="pt-6 border-t border-glass-outline">
+                                                <p
+                                                        class="font-data-label text-data-label text-on-surface-variant mb-4 uppercase">
+                                                        Real-Time Activity</p>
+                                                <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                                                        <div
+                                                                class="flex-shrink-0 w-32 p-3 rounded bg-surface-container-low/50 border border-primary/30 flex flex-col gap-2">
+                                                                <div class="flex justify-between items-center"><span
+                                                                                class="material-symbols-outlined text-primary text-lg">alternate_email</span><span
+                                                                                class="w-1.5 h-1.5 rounded-full bg-error-red animate-pulse"></span>
+                                                                </div><span
+                                                                        class="font-data-label text-[10px] text-on-surface">X</span><span
+                                                                        class="text-[8px] font-bold text-error-red uppercase tracking-tighter">High
+                                                                        Active</span>
+                                                        </div>
+                                                        <div
+                                                                class="flex-shrink-0 w-32 p-3 rounded bg-surface-container-low/50 border border-data-purple/30 flex flex-col gap-2">
+                                                                <div class="flex justify-between items-center"><span
+                                                                                class="material-symbols-outlined text-data-purple text-lg">send</span><span
+                                                                                class="w-1.5 h-1.5 rounded-full bg-error-red animate-pulse"></span>
+                                                                </div><span
+                                                                        class="font-data-label text-[10px] text-on-surface">Telegram</span><span
+                                                                        class="text-[8px] font-bold text-error-red uppercase tracking-tighter">High
+                                                                        Active</span>
+                                                        </div>
+                                                        <div
+                                                                class="flex-shrink-0 w-32 p-3 rounded bg-surface-container-low/50 border border-sentiment-emerald/30 flex flex-col gap-2">
+                                                                <div class="flex justify-between items-center"><span
+                                                                                class="material-symbols-outlined text-sentiment-emerald text-lg">photo_camera</span><span
+                                                                                class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald"></span>
+                                                                </div><span
+                                                                        class="font-data-label text-[10px] text-on-surface">Instagram</span><span
+                                                                        class="text-[8px] font-bold text-sentiment-emerald uppercase tracking-tighter">Stable</span>
+                                                        </div>
+                                                        <div
+                                                                class="flex-shrink-0 w-32 p-3 rounded bg-surface-container-low/50 border border-glass-outline flex flex-col gap-2">
+                                                                <div class="flex justify-between items-center"><span
+                                                                                class="material-symbols-outlined text-on-surface-variant text-lg">facebook</span><span
+                                                                                class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald"></span>
+                                                                </div><span
+                                                                        class="font-data-label text-[10px] text-on-surface">Facebook</span><span
+                                                                        class="text-[8px] font-bold text-sentiment-emerald uppercase tracking-tighter">Stable</span>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </main>
+        <!-- Footer -->
+        <footer
+                class="fixed bottom-0 right-0 w-full md:w-[calc(100%-256px)] h-8 bg-surface-container-lowest/90 backdrop-blur-lg border-t border-primary/20 drop-shadow-[0_0_10px_rgba(76,215,246,0.2)] flex items-center px-4 overflow-hidden whitespace-nowrap z-30">
+                <div class="flex items-center gap-8 w-full">
+                        <span class="text-data-label font-data-label text-surface-tint">INTEL_STREAM_V4.02</span>
+                        <!-- Ticker container -->
+                        <div class="flex-grow overflow-hidden relative h-full flex items-center">
+                                <div
+                                        class="flex gap-8 animate-[marquee_20s_linear_infinite] whitespace-nowrap absolute">
+                                        <span
+                                                class="font-ticker text-ticker text-outline hover:text-primary transition-colors cursor-pointer">#BREAKING:
+                                                Tech Stocks Rally</span>
+                                        <span
+                                                class="font-ticker text-ticker text-outline hover:text-primary transition-colors cursor-pointer">#TRENDING:
+                                                Global Climate Summit</span>
+                                        <span
+                                                class="font-ticker text-ticker text-outline hover:text-primary transition-colors cursor-pointer">#CYBER:
+                                                Zero-Day Exploit Patched</span>
+                                        <span
+                                                class="font-ticker text-ticker text-outline hover:text-primary transition-colors cursor-pointer">#GEOINT:
+                                                Satellite Imagery Updated</span>
+                                        <!-- Duplicate for infinite scroll illusion -->
+                                        <span
+                                                class="font-ticker text-ticker text-outline hover:text-primary transition-colors cursor-pointer">#BREAKING:
+                                                Tech Stocks Rally</span>
+                                        <span
+                                                class="font-ticker text-ticker text-outline hover:text-primary transition-colors cursor-pointer">#TRENDING:
+                                                Global Climate Summit</span>
+                                </div>
+                        </div>
+                </div>
+        </footer>
+        <style>
+                @keyframes marquee {
+                        0% {
+                                transform: translateX(0);
+                        }
+
+                        100% {
+                                transform: translateX(-50%);
+                        }
+
+                        /* Assuming content is doubled */
+                }
+
+                @keyframes pulse-width {
+                        0% {
+                                width: calc(var(--tw-w, 100%) - 10%);
+                        }
+
+                        100% {
+                                width: calc(var(--tw-w, 100%) + 5%);
+                        }
+                }
+        </style>
+        <script src="assets/nexora-nav.js" defer></script>
+        <script src="assets/analytics-dashboard.js" defer></script>
+
+
+</body>
+
+</html>

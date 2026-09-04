@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NEXORA - Social Analytics & Autonomous Intelligence</title>
+  <meta name="description"
+    content="Dedicated real-time social analytics, NLP fake news classifier, predictive viral forecasting, and PR crisis early warning system.">
+  <meta name="view-transition" content="same-origin">
+  <link rel="stylesheet" href="assets/nexora-nav.css">
+  <link rel="stylesheet" href="assets/analytics-dashboard.css">
+  <link rel="prefetch" href="index.html">
+  <link rel="prefetch" href="sentiment.html">
+  <link rel="prefetch" href="stream.html">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap"
+    rel="stylesheet">
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4cd7f6",
+            "primary-container": "#06b6d4",
+            "secondary": "#ddb7ff",
+            "tertiary": "#4edea3",
+            "surface": "#000000",
+            "surface-container": "#171f33",
+            "surface-container-high": "#222a3d",
+            "surface-variant": "#2d3449",
+            "on-surface": "#dae2fd",
+            "on-surface-variant": "#bcc9cd",
+            "sentiment-emerald": "#10B981",
+            "alert-amber": "#F59E0B",
+            "error-red": "#EF4444",
+            "glass-fill": "rgba(0, 0, 0, 0.75)",
+            "glass-outline": "rgba(255, 255, 255, 0.1)"
+          },
+          fontFamily: {
+            "headline-md": ["Geist", "sans-serif"],
+            "body-md": ["Geist", "sans-serif"],
+            "data-display": ["JetBrains Mono", "monospace"],
+            "data-label": ["JetBrains Mono", "monospace"]
+          },
+          spacing: {
+            "sidebar-width": "256px",
+            "grid-margin": "1.5rem"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #dae2fd;
+      font-family: 'Geist', sans-serif;
+    }
+
+    .glass-panel {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    }
+
+    .pulse-border {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+      border-color: rgba(6, 182, 212, 0.6) !important;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: rgba(6, 182, 212, 0.3);
+      border-radius: 4px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+      background: rgba(6, 182, 212, 0.6);
+    }
+
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    .ticker-wrap {
+      background: rgba(0, 0, 0, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker {
+      display: inline-flex;
+      animation: ticker 35s linear infinite;
+    }
+    .ticker:hover {
+      animation-play-state: paused;
+    }
+    .ticker__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 1.5rem;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen text-on-surface bg-surface font-body-md overflow-hidden flex flex-col md:flex-row bg-[#000000]">
+
+  <!-- Side Navigation (Visible on md+) -->
+  <nav class="hidden md:flex glass-panel h-screen w-64 flex-col overflow-y-auto transition-colors duration-200 ease-in-out border-r border-white/10 z-40 relative shrink-0">
+    <div class="p-6 border-b border-white/10">
+      <a href="index.html" class="block hover:opacity-90 transition-opacity">
+        <h1 class="font-headline-md text-2xl font-black text-primary tracking-widest uppercase">NEXORA</h1>
+      </a>
+      <p class="text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mt-1">SOCIAL MEDIA INTELLIGENCE</p>
+    </div>
+
+    <ul class="flex-1 flex flex-col gap-2 px-4 py-6 font-body-md text-sm">
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="index.html">
+          <span class="material-symbols-outlined text-[20px]">dashboard</span>
+          Overview
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="stream.html">
+          <span class="material-symbols-outlined text-[20px]">stream</span>
+          Live Intelligence
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2.5 text-white bg-primary/20 rounded-lg border border-primary/50 shadow-[0_0_15px_rgba(6,182,212,0.2)] transition-all duration-200 pulse-border" href="analytics.html">
+          <span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+          Social Analytics
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="sentiment.html">
+          <span class="material-symbols-outlined text-[20px]">mood</span>
+          Sentiment
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="trends.html">
+          <span class="material-symbols-outlined text-[20px]">trending_up</span>
+          Trends
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="audience.html">
+          <span class="material-symbols-outlined text-[20px]">groups</span>
+          Audience
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="network.html">
+          <span class="material-symbols-outlined text-[20px]">hub</span>
+          Network
+        </a>
+      </li>
+      <li>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200" href="ai-insights.html">
+          <span class="material-symbols-outlined text-[20px]">psychology</span>
+          AI Insights
+        </a>
+      </li>
+    </ul>
+
+    <div class="mt-auto border-t border-white/10 p-4">
+      <div class="flex items-center gap-3 px-2">
+        <img alt="User Profile" class="w-8 h-8 rounded-full object-cover border border-primary/50 opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBP0HYcxxFNa2fq_KpmekFCqSBc4TYS3_k5WbWUq8RCQw5d2bWFzrT4vS8SOojyp-wYLoHFCUUAHPzGp_SdHWU-t54cCXGDlnxhEOmSCFwfkbswb1CmX-anKFch0uIFmkMsWBcZkcQrWj-2Z3hvUgArxkYDc_bW54LXs3535dqRZqTrSyKd_E0OIJntjNxfumo7UUHuX0HsVhcAYjLSbsjhaymXsaxEQwU4RNZ_gwD6TA0qwmCAcieuw">
+        <div class="flex flex-col">
+          <span class="text-xs font-medium text-white">Analyst Alpha</span>
+          <span class="text-[10px] text-primary">System Admin</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 h-full overflow-hidden relative z-10">
+    <!-- Desktop Top Nav -->
+    <header class="hidden md:flex items-center justify-between px-6 py-4 w-full z-50 border-b border-white/10 bg-black/40 backdrop-blur-md">
+      <!-- Title & Live Status -->
+      <div class="flex items-center gap-4">
+        <div>
+          <h1 class="text-lg font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">analytics</span>
+            Social Analytics & Autonomous Intelligence
+          </h1>
+          <p class="text-xs text-on-surface-variant">Real-time sentiment telemetry, NLP misinformation classifier, viral prediction & PR crisis detection</p>
+        </div>
+      </div>
+
+      <!-- Right Actions -->
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sentiment-emerald/10 border border-sentiment-emerald/30 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+          <span class="w-2 h-2 rounded-full bg-sentiment-emerald animate-ping"></span>
+          <span class="text-xs font-bold text-sentiment-emerald uppercase tracking-wider">4 Engines Active</span>
+        </div>
+        <a href="index.html" class="text-xs px-3 py-1.5 rounded-lg border border-white/10 hover:border-primary/40 text-on-surface-variant hover:text-white transition-all flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span>Back to Overview</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Content View -->
+    <div class="flex-1 overflow-y-auto px-6 pb-20 pt-4 space-y-6 scrollbar-thin">
+
+      <!-- High-Level Intelligence Telemetry Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-panel p-4 rounded-xl border-primary/20 flex flex-col justify-between">
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-[10px] text-primary uppercase font-bold tracking-wider">Claims Analyzed</span>
+            <span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+          </div>
+          <div class="text-2xl font-bold font-data-display text-white">142,850</div>
+          <div class="text-[11px] text-sentiment-emerald mt-1 font-medium flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">trending_up</span> +24.8% Today
+          </div>
+        </div>
+
+        <div class="glass-panel p-4 rounded-xl border-primary/20 flex flex-col justify-between">
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-[10px] text-primary uppercase font-bold tracking-wider">Model Accuracy</span>
+            <span class="material-symbols-outlined text-primary text-[18px]">psychology</span>
+          </div>
+          <div class="text-2xl font-bold font-data-display text-sentiment-emerald">96.4%</div>
+          <div class="text-[11px] text-white/60 mt-1 font-medium">Neural confidence</div>
+        </div>
+
+        <div class="glass-panel p-4 rounded-xl border-primary/20 flex flex-col justify-between">
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-[10px] text-primary uppercase font-bold tracking-wider">Stream Velocity</span>
+            <span class="material-symbols-outlined text-primary text-[18px]">speed</span>
+          </div>
+          <div class="text-2xl font-bold font-data-display text-primary">3,420<span class="text-xs text-white/50">/min</span></div>
+          <div class="text-[11px] text-sentiment-emerald mt-1 font-medium">Zero dropped packets</div>
+        </div>
+
+        <div class="glass-panel p-4 rounded-xl border-primary/20 flex flex-col justify-between">
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-[10px] text-primary uppercase font-bold tracking-wider">Threat Index</span>
+            <span class="material-symbols-outlined text-alert-amber text-[18px]">warning</span>
+          </div>
+          <div class="text-2xl font-bold font-data-display text-alert-amber">28% <span class="text-xs text-white/60 font-normal">(Low)</span></div>
+          <div class="text-[11px] text-sentiment-emerald mt-1 font-medium">Normal operating state</div>
+        </div>
+      </div>
+
+      <!-- DIRECT SOCIAL INTELLIGENCE SUITE: 4 CORE LIVE ENGINES -->
+      <section class="space-y-4 my-2" id="direct-intelligence-suite">
+        <!-- Section Title Bar -->
+        <div class="flex items-center justify-between border-b border-primary/20 pb-3 flex-wrap gap-2">
+          <div class="flex items-center gap-3">
+            <div class="w-2.5 h-2.5 rounded-full bg-primary animate-ping shadow-[0_0_12px_#06b6d4]"></div>
+            <div>
+              <h2 class="text-base font-bold tracking-wider text-white uppercase flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+                Autonomous Social Intelligence Engines
+              </h2>
+              <p class="text-xs text-on-surface-variant">Real-time sentiment streaming, NLP fake news classifier, viral forecasting & crisis early warning</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-sentiment-emerald font-data-display bg-sentiment-emerald/10 border border-sentiment-emerald/30 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+              <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span>
+              All 4 Live Engines Running
+            </span>
+          </div>
+        </div>
+
+        <!-- 4 Core Panels Grid (2x2 on desktop, 1 col on mobile) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          <!-- PANEL 1: Real-Time Sentiment Analysis -->
+          <div class="glass-panel rounded-xl p-5 flex flex-col border-primary/30 shadow-[0_0_25px_rgba(6,182,212,0.12)] relative overflow-hidden group hover:border-primary/60 transition-all duration-300">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-sentiment-emerald to-primary"></div>
+
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sentiment-emerald text-[20px]">dynamic_feed</span>
+                  <h3 class="text-sm font-bold tracking-wide text-white uppercase">Real-Time Sentiment Analysis</h3>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5">Live post stream processing & dynamic polarity shift tracking</p>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sentiment-emerald/20 text-sentiment-emerald border border-sentiment-emerald/40 uppercase tracking-wider flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-ping"></span> Live Stream
+              </span>
+            </div>
+
+            <!-- Live Shift & Velocity Meter -->
+            <div class="grid grid-cols-3 gap-3 p-3 rounded-lg bg-black/40 border border-white/5 mb-4 text-center">
+              <div>
+                <div class="text-[10px] text-on-surface-variant uppercase font-medium">Momentum Shift</div>
+                <div class="text-lg font-bold font-data-display text-sentiment-emerald" id="direct-sent-shift">+14.6%</div>
+                <div class="text-[9px] text-sentiment-emerald/80">vs baseline (15m)</div>
+              </div>
+              <div>
+                <div class="text-[10px] text-on-surface-variant uppercase font-medium">Stream Velocity</div>
+                <div class="text-lg font-bold font-data-display text-primary" id="direct-sent-velocity">2,840/min</div>
+                <div class="text-[9px] text-primary/80">Active throughput</div>
+              </div>
+              <div>
+                <div class="text-[10px] text-on-surface-variant uppercase font-medium">Dominant Tone</div>
+                <div class="text-lg font-bold font-data-display text-secondary" id="direct-sent-emotion">Supportive</div>
+                <div class="text-[9px] text-white/50">38% confidence</div>
+              </div>
+            </div>
+
+            <!-- Sentiment Polarity Balance Bar -->
+            <div class="mb-4">
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-sentiment-emerald font-semibold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald"></span> Pos: 68%
+                </span>
+                <span class="text-slate-300 font-semibold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Neu: 20%
+                </span>
+                <span class="text-red-400 font-semibold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> Neg: 12%
+                </span>
+              </div>
+              <div class="w-full h-2 rounded-full overflow-hidden bg-white/10 flex">
+                <div class="h-full bg-sentiment-emerald transition-all duration-500" style="width: 68%;" id="direct-bar-pos"></div>
+                <div class="h-full bg-slate-400 transition-all duration-500" style="width: 20%;" id="direct-bar-neu"></div>
+                <div class="h-full bg-red-400 transition-all duration-500" style="width: 12%;" id="direct-bar-neg"></div>
+              </div>
+            </div>
+
+            <!-- Live Streaming Incoming Feed Items -->
+            <div class="flex-1 flex flex-col justify-between">
+              <div class="text-[11px] font-bold text-white/80 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <span>Incoming Stream Buffer (Auto-Classified)</span>
+                <span class="text-primary font-normal" id="direct-sent-last-updated">Auto-refreshing</span>
+              </div>
+              <div class="space-y-2 overflow-y-auto max-h-[170px] pr-1 scrollbar-thin" id="direct-sent-feed-list">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 2: Fake News & Misinformation Detection -->
+          <div class="glass-panel rounded-xl p-5 flex flex-col border-primary/30 shadow-[0_0_25px_rgba(6,182,212,0.12)] relative overflow-hidden group hover:border-primary/60 transition-all duration-300">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-amber-400 to-primary"></div>
+
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-red-400 text-[20px]">security_update_warning</span>
+                  <h3 class="text-sm font-bold tracking-wide text-white uppercase">Fake News & Misinformation Classifier</h3>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5">NLP linguistic pattern analysis, source credibility & bot swarm verification</p>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/40 uppercase tracking-wider">
+                NLP Live
+              </span>
+            </div>
+
+            <!-- Interactive Claim Analyzer Input -->
+            <div class="space-y-2 mb-3">
+              <label class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider block">
+                Test Claim / Social Post Snippet:
+              </label>
+              <textarea id="direct-nlp-input" class="w-full h-16 bg-black/60 border border-white/10 rounded-lg p-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-primary transition-all resize-none" placeholder="Paste headline or rumor to evaluate (e.g., 'BREAKING: Server room completely destroyed by hack!!')">BREAKING: Central banking AI node claims self-awareness and halts cross-border wire transfers!!</textarea>
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <div class="flex gap-1.5 text-[10px]">
+                  <span class="text-on-surface-variant/70 self-center">Presets:</span>
+                  <button type="button" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-primary cursor-pointer transition-all" id="direct-nlp-preset-1">Sensational Hoax</button>
+                  <button type="button" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-sentiment-emerald cursor-pointer transition-all" id="direct-nlp-preset-2">Verified Audit</button>
+                  <button type="button" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-amber-400 cursor-pointer transition-all" id="direct-nlp-preset-3">Bot Swarm Rumor</button>
+                </div>
+                <button type="button" id="direct-nlp-submit" class="px-3 py-1 bg-primary text-black font-bold text-xs rounded-lg hover:bg-primary-container transition-all flex items-center gap-1 shadow-[0_0_10px_rgba(6,182,212,0.4)] cursor-pointer">
+                  <span class="material-symbols-outlined text-[14px]">psychology</span>
+                  <span>Evaluate Claim</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- NLP Result Evaluation Box -->
+            <div class="p-3 rounded-lg bg-black/50 border border-red-500/30 flex-1 flex flex-col justify-between" id="direct-nlp-result-card">
+              <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-red-400 text-[18px]">gpp_bad</span>
+                  <span class="text-xs font-bold text-red-400" id="direct-nlp-verdict">FLAGGED: HIGH MISINFORMATION RISK</span>
+                </div>
+                <span class="text-[10px] font-data-display text-white/70" id="direct-nlp-conf">Confidence: <span class="text-white font-bold">94.2%</span></span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mb-2">
+                <div class="p-2 rounded bg-white/5 border border-white/5 text-center">
+                  <div class="text-[10px] text-on-surface-variant uppercase">Source Credibility</div>
+                  <div class="text-xl font-bold font-data-display text-red-400" id="direct-nlp-cred">18/100</div>
+                  <div class="text-[9px] text-red-400/80">Unverified account network</div>
+                </div>
+                <div class="p-2 rounded bg-white/5 border border-white/5 text-center">
+                  <div class="text-[10px] text-on-surface-variant uppercase">Bot Swarm Risk</div>
+                  <div class="text-xl font-bold font-data-display text-red-400" id="direct-nlp-bot">88%</div>
+                  <div class="text-[9px] text-red-400/80">Coordinated astroturfing</div>
+                </div>
+              </div>
+
+              <div class="text-[10px] text-white/70 space-y-1 mt-1" id="direct-nlp-markers">
+                <div class="flex items-center gap-1.5 text-red-400">
+                  <span class="material-symbols-outlined text-[13px]">warning</span>
+                  <span>Sensationalist linguistic markers identified ("BREAKING", "!!", "self-awareness")</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-red-400">
+                  <span class="material-symbols-outlined text-[13px]">smart_toy</span>
+                  <span>High replication velocity matching coordinated bot swarms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 3: Predictive Engagement & Viral Forecasting -->
+          <div class="glass-panel rounded-xl p-5 flex flex-col border-primary/30 shadow-[0_0_25px_rgba(6,182,212,0.12)] relative overflow-hidden group hover:border-primary/60 transition-all duration-300">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary via-primary to-sentiment-emerald"></div>
+
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-secondary text-[20px]">trending_up</span>
+                  <h3 class="text-sm font-bold tracking-wide text-white uppercase">Predictive Viral Forecasting Engine</h3>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5">Time-series cascade modeling, propagation R-score & trajectory forecast</p>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-secondary/20 text-secondary border border-secondary/40 uppercase tracking-wider">
+                Cascade ML
+              </span>
+            </div>
+
+            <!-- Topic Selector Bar -->
+            <div class="flex items-center gap-2 mb-3">
+              <input type="text" id="direct-viral-input" value="#AI2024" class="flex-1 bg-black/60 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-primary transition-all font-data-display" placeholder="Enter topic or hashtag...">
+              <button type="button" id="direct-viral-calc-btn" class="px-3 py-1.5 bg-secondary/20 hover:bg-secondary/30 border border-secondary/50 text-secondary font-bold text-xs rounded-lg transition-all flex items-center gap-1 cursor-pointer">
+                <span class="material-symbols-outlined text-[14px]">insights</span>
+                <span>Forecast</span>
+              </button>
+            </div>
+
+            <!-- Quick Tag Filters -->
+            <div class="flex gap-1.5 mb-3 text-[10px]">
+              <span class="text-on-surface-variant/70 self-center">Quick Forecast:</span>
+              <button type="button" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-primary cursor-pointer transition-all" id="direct-viral-tag-1">#AI2024</button>
+              <button type="button" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-primary cursor-pointer transition-all" id="direct-viral-tag-2">#CyberDefense</button>
+              <button type="button" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-primary cursor-pointer transition-all" id="direct-viral-tag-3">#TechLaunch</button>
+            </div>
+
+            <!-- Viral Metrics Row -->
+            <div class="grid grid-cols-3 gap-3 p-3 rounded-lg bg-black/40 border border-white/5 mb-3 text-center">
+              <div>
+                <div class="text-[10px] text-on-surface-variant uppercase font-medium">Viral Probability</div>
+                <div class="text-lg font-bold font-data-display text-sentiment-emerald" id="direct-viral-prob">93.4%</div>
+                <div class="text-[9px] text-sentiment-emerald/80">High breakout likelihood</div>
+              </div>
+              <div>
+                <div class="text-[10px] text-on-surface-variant uppercase font-medium">Propagation R-Score</div>
+                <div class="text-lg font-bold font-data-display text-primary" id="direct-viral-r">R = 2.86</div>
+                <div class="text-[9px] text-primary/80">Super-spreading rate</div>
+              </div>
+              <div>
+                <div class="text-[10px] text-on-surface-variant uppercase font-medium">Peak Timeline</div>
+                <div class="text-xs font-bold font-data-display text-white mt-1" id="direct-viral-peak">In 3.6 Hours</div>
+                <div class="text-[9px] text-white/50">Decay after 18h</div>
+              </div>
+            </div>
+
+            <!-- Simulated SVG Trajectory Curve -->
+            <div class="p-3 rounded-lg bg-black/50 border border-white/5 flex-1 flex flex-col justify-between">
+              <div class="flex justify-between items-center text-[10px] mb-1">
+                <span class="text-white/80 font-bold">24-Hour Projected Cascading Trajectory</span>
+                <span class="text-sentiment-emerald" id="direct-viral-peak-metric">Est. 18.4K mentions/hr</span>
+              </div>
+              <div class="h-20 w-full relative">
+                <svg viewBox="0 0 300 70" class="w-full h-full overflow-visible">
+                  <defs>
+                    <linearGradient id="viralGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#ddb7ff" stop-opacity="0.3"></stop>
+                      <stop offset="100%" stop-color="#ddb7ff" stop-opacity="0.0"></stop>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0,65 Q 60,60 120,45 T 190,15 T 240,25 T 300,55 L 300,70 L 0,70 Z" fill="url(#viralGrad)" id="direct-viral-path-area"></path>
+                  <path d="M 0,65 Q 60,60 120,45 T 190,15 T 240,25 T 300,55" fill="none" stroke="#ddb7ff" stroke-width="2.5" id="direct-viral-path-line"></path>
+                  <circle cx="190" cy="15" r="4" fill="#4cd7f6" class="animate-ping"></circle>
+                  <circle cx="190" cy="15" r="3" fill="#4cd7f6"></circle>
+                </svg>
+              </div>
+              <div class="flex justify-between text-[9px] text-white/40 font-data-display mt-1">
+                <span>Current (T+0)</span>
+                <span>Peak (T+4h)</span>
+                <span>Plateau (T+12h)</span>
+                <span>Decay (T+24h)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 4: Crisis Management & Early Warning Alerts -->
+          <div class="glass-panel rounded-xl p-5 flex flex-col border-primary/30 shadow-[0_0_25px_rgba(6,182,212,0.12)] relative overflow-hidden group hover:border-primary/60 transition-all duration-300">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-alert-amber via-red-500 to-alert-amber"></div>
+
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-alert-amber text-[20px]">notifications_active</span>
+                  <h3 class="text-sm font-bold tracking-wide text-white uppercase">Crisis Management & Early Warning System</h3>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5">Surging negative keywords, autonomous threat score & mitigation workflow</p>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-alert-amber/20 text-alert-amber border border-alert-amber/40 uppercase tracking-wider flex items-center gap-1" id="direct-crisis-badge">
+                <span class="w-1.5 h-1.5 rounded-full bg-alert-amber animate-pulse"></span> Threat: Moderate
+              </span>
+            </div>
+
+            <!-- Threat Level Meter -->
+            <div class="p-3 rounded-lg bg-black/40 border border-white/5 mb-3">
+              <div class="flex justify-between items-center text-xs mb-1.5">
+                <span class="text-xs font-bold text-white" id="direct-crisis-threat-label">PR Threat Index: Moderate</span>
+                <span class="font-data-display text-alert-amber font-bold" id="direct-crisis-threat-val">28% Threat</span>
+              </div>
+              <div class="w-full bg-white/10 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-sentiment-emerald via-alert-amber to-red-500 h-full rounded-full transition-all duration-700 shadow-[0_0_10px_#F59E0B]" style="width: 28%;" id="direct-crisis-threat-bar"></div>
+              </div>
+              <div class="flex justify-between text-[9px] text-white/40 mt-1">
+                <span>0% Nominal</span>
+                <span>50% Threshold Limit</span>
+                <span>100% Critical Emergency</span>
+              </div>
+            </div>
+
+            <!-- Surging Negative Keywords Grid -->
+            <div class="space-y-2 mb-3">
+              <div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Surging Trigger Keywords (Velocity/hr)</div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="p-2 rounded bg-black/40 border border-white/5 flex items-center justify-between">
+                  <span class="text-white/80">#boycott</span>
+                  <span class="font-bold text-red-400 font-data-display" id="direct-kw-boycott">+480/hr</span>
+                </div>
+                <div class="p-2 rounded bg-black/40 border border-white/5 flex items-center justify-between">
+                  <span class="text-white/80">databreach</span>
+                  <span class="font-bold text-amber-400 font-data-display" id="direct-kw-breach">+210/hr</span>
+                </div>
+                <div class="p-2 rounded bg-black/40 border border-white/5 flex items-center justify-between">
+                  <span class="text-white/80">lawsuit</span>
+                  <span class="font-bold text-amber-400 font-data-display" id="direct-kw-lawsuit">+140/hr</span>
+                </div>
+                <div class="p-2 rounded bg-black/40 border border-white/5 flex items-center justify-between">
+                  <span class="text-white/80">system crash</span>
+                  <span class="font-bold text-sentiment-emerald font-data-display" id="direct-kw-crash">+42/hr</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulated Crisis Controls -->
+            <div class="p-3 rounded-lg bg-black/50 border border-white/10 flex items-center justify-between gap-2 flex-wrap">
+              <div class="text-[11px] text-white/80">
+                <div class="font-semibold text-white">Simulation Engine Controls</div>
+                <div class="text-[10px] text-on-surface-variant">Trigger live spike or activate PR mitigations</div>
+              </div>
+              <div class="flex gap-2">
+                <button type="button" id="direct-crisis-spike-btn" class="px-3 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-400 font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-[0_0_12px_rgba(239,68,68,0.2)] cursor-pointer">
+                  <span class="material-symbols-outlined text-[16px]">bolt</span>
+                  Simulate Spike (+320%)
+                </button>
+                <button type="button" id="direct-crisis-mitigate-btn" class="px-3 py-2 rounded-lg bg-primary/20 hover:bg-primary/30 border border-primary/50 text-primary font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-[0_0_12px_rgba(6,182,212,0.2)] cursor-pointer">
+                  <span class="material-symbols-outlined text-[16px]">shield</span>
+                  Activate Mitigation
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- EXTENDED ANALYTICS MODULES (DEMOGRAPHICS, TRENDS & TOPOLOGY) -->
+      <section class="space-y-4 pt-4 border-t border-white/10">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">insights</span>
+            <h2 class="text-sm font-bold tracking-wider text-white uppercase">Deep Demographic & Cross-Platform Modules</h2>
+          </div>
+          <span class="text-xs text-on-surface-variant">Continuous Anonymized Data Stream</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Demographic Breakdown -->
+          <div class="glass-panel p-5 rounded-xl border-primary/20 flex flex-col justify-between">
+            <h3 class="text-xs font-bold text-primary uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">pie_chart</span> Audience Demographics
+            </h3>
+            <div class="space-y-3 text-xs">
+              <div>
+                <div class="flex justify-between text-[11px] mb-1"><span class="text-white">Age: 25-34</span><span class="text-primary font-bold">42%</span></div>
+                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 42%;"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-[11px] mb-1"><span class="text-white">Age: 18-24</span><span class="text-primary font-bold">35%</span></div>
+                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 35%;"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-[11px] mb-1"><span class="text-white">Location: North America</span><span class="text-sentiment-emerald font-bold">45%</span></div>
+                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-sentiment-emerald h-full rounded-full" style="width: 45%;"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-[11px] mb-1"><span class="text-white">Language: English</span><span class="text-secondary font-bold">65%</span></div>
+                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-secondary h-full rounded-full" style="width: 65%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cross-Platform Correlation Table -->
+          <div class="glass-panel p-5 rounded-xl border-primary/20 flex flex-col justify-between lg:col-span-2">
+            <h3 class="text-xs font-bold text-primary uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">compare_arrows</span> Cross-Platform Sentiment Correlation
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="text-[10px] uppercase text-on-surface-variant/70 border-b border-white/10">
+                  <tr>
+                    <th class="py-2">Platform</th>
+                    <th class="py-2">X</th>
+                    <th class="py-2">Reddit</th>
+                    <th class="py-2">Telegram</th>
+                    <th class="py-2">Instagram</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 font-data-display">
+                  <tr>
+                    <td class="py-2 text-white font-medium">X (Twitter)</td>
+                    <td class="py-2 text-white/50">1.00</td>
+                    <td class="py-2 text-sentiment-emerald font-bold">0.88</td>
+                    <td class="py-2 text-sentiment-emerald font-bold">0.81</td>
+                    <td class="py-2 text-primary">0.68</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 text-white font-medium">Reddit</td>
+                    <td class="py-2 text-sentiment-emerald font-bold">0.88</td>
+                    <td class="py-2 text-white/50">1.00</td>
+                    <td class="py-2 text-sentiment-emerald font-bold">0.79</td>
+                    <td class="py-2 text-primary">0.74</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 text-white font-medium">Telegram</td>
+                    <td class="py-2 text-sentiment-emerald font-bold">0.81</td>
+                    <td class="py-2 text-sentiment-emerald font-bold">0.79</td>
+                    <td class="py-2 text-white/50">1.00</td>
+                    <td class="py-2 text-primary">0.62</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-[10px] text-white/50 mt-3 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[12px] text-sentiment-emerald">check_circle</span>
+              High narrative alignment observed between X and Reddit on product release feedback.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Scrolling Ticker Footer -->
+    <div class="ticker-wrap h-8 flex items-center shrink-0 z-20 absolute bottom-0 w-full">
+      <div class="ticker font-data-ticker text-[11px]">
+        <div class="ticker__item">
+          <span class="text-primary/70 font-bold">[X]</span> <span class="text-white">"Unprecedented turnout at the summit..."</span> <span class="text-sentiment-emerald font-medium">#CyberSecSummit</span>
+        </div>
+        <div class="ticker__item">
+          <span class="text-primary/70 font-bold">[TG]</span> <span class="text-white">Leaked specs confirm new architecture</span> <span class="text-primary font-medium">@hardware_leaks</span>
+        </div>
+        <div class="ticker__item">
+          <span class="text-primary/70 font-bold">[IG]</span> <span class="text-white">Protests blocking main port entrance</span> <span class="text-alert-amber font-medium">#SupplyChain</span>
+        </div>
+        <div class="ticker__item">
+          <span class="text-primary/70 font-bold">[X]</span> <span class="text-white">"Autonomous NLP detection rate increased to 96.4%"</span> <span class="text-secondary font-medium">#NexoraAI</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/analytics-dashboard.js"></script>
+</body>
+
+</html>
