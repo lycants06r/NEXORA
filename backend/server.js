@@ -20,6 +20,150 @@ const supabase = createClient(
   process.env.SUPABASE_KEY
 );
 
+
+// ==========================================
+// BASIC NEXORA AI INTELLIGENCE
+// ==========================================
+
+function analyzePost(text) {
+  const lower = text.toLowerCase();
+
+  // Sentiment
+  let sentiment = "Neutral";
+
+  const positiveWords = [
+    "good", "great", "love", "amazing", "excellent",
+    "happy", "success", "win", "beautiful", "best"
+  ];
+
+  const negativeWords = [
+    "bad", "hate", "terrible", "worst", "angry",
+    "sad", "fail", "danger", "problem", "scam"
+  ];
+
+  const positiveCount = positiveWords.filter(word =>
+    lower.includes(word)
+  ).length;
+
+  const negativeCount = negativeWords.filter(word =>
+    lower.includes(word)
+  ).length;
+
+  if (positiveCount > negativeCount) {
+    sentiment = "Positive";
+  } else if (negativeCount > positiveCount) {
+    sentiment = "Negative";
+  }
+
+  // Emotion
+  let emotion = "Neutral";
+
+  if (
+    lower.includes("love") ||
+    lower.includes("happy") ||
+    lower.includes("excited") ||
+    lower.includes("amazing")
+  ) {
+    emotion = "Joy";
+  } else if (
+    lower.includes("angry") ||
+    lower.includes("hate") ||
+    lower.includes("furious")
+  ) {
+    emotion = "Anger";
+  } else if (
+    lower.includes("fear") ||
+    lower.includes("danger") ||
+    lower.includes("scared")
+  ) {
+    emotion = "Fear";
+  } else if (
+    lower.includes("sad") ||
+    lower.includes("loss")
+  ) {
+    emotion = "Sadness";
+  }
+
+  // Topic
+  let topic = "General";
+
+  if (
+    lower.includes("ai") ||
+    lower.includes("artificial intelligence") ||
+    lower.includes("machine learning")
+  ) {
+    topic = "AI & Technology";
+  } else if (
+    lower.includes("crypto") ||
+    lower.includes("bitcoin") ||
+    lower.includes("ethereum")
+  ) {
+    topic = "Crypto & Finance";
+  } else if (
+    lower.includes("sports") ||
+    lower.includes("football") ||
+    lower.includes("cricket")
+  ) {
+    topic = "Sports";
+  } else if (
+    lower.includes("politics") ||
+    lower.includes("government") ||
+    lower.includes("election")
+  ) {
+    topic = "Politics";
+  } else if (
+    lower.includes("climate") ||
+    lower.includes("environment") ||
+    lower.includes("weather")
+  ) {
+    topic = "Environment";
+  }
+
+  // Basic misinformation risk
+  let misinformation_score = 10;
+
+  if (
+    lower.includes("breaking") ||
+    lower.includes("shocking") ||
+    lower.includes("secret") ||
+    lower.includes("100%") ||
+    lower.includes("you won't believe")
+  ) {
+    misinformation_score = 70;
+  }
+
+  // Basic bot-risk indicator
+  let bot_score = 10;
+
+  if (
+    text.length < 20 ||
+    lower.includes("buy now") ||
+    lower.includes("click here") ||
+    lower.includes("follow me")
+  ) {
+    bot_score = 45;
+  }
+
+  // Simple language detection
+  let language = "English";
+
+  if (/[\u3040-\u30ff]/.test(text)) {
+    language = "Japanese";
+  } else if (/[\u4e00-\u9fff]/.test(text)) {
+    language = "Chinese";
+  } else if (/[\uac00-\ud7af]/.test(text)) {
+    language = "Korean";
+  }
+
+  return {
+    sentiment,
+    emotion,
+    topic,
+    language,
+    misinformation_score,
+    bot_score
+  };
+}
 // ==========================================
 // DASHBOARD API
 // ==========================================
@@ -64,6 +208,33 @@ app.get("/api/dashboard", async (req, res) => {
   }
 });
 
+
+// ==========================================
+// LIVE INTELLIGENCE API
+// ==========================================
+
+app.get("/api/live", async (req, res) => {
+  try {
+    const { data: posts, error } = await supabase
+      .from("social_posts")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(20);
+
+    if (error) {
+      throw error;
+    }
+
+    res.json(posts);
+
+  } catch (error) {
+    console.error("Live intelligence error:", error);
+
+    res.status(500).json({
+      error: error.message
+    });
+  }
+});
 // ==========================================
 // BLUESKY REAL-TIME STREAM
 // ==========================================
@@ -103,16 +274,27 @@ function startBlueskyStream() {
         return;
       }
 
-      const row = {
-        platform: "Bluesky",
-        author: event.did || "unknown",
-        text: record.text || "",
-        likes: 0,
-        reposts: 0,
-        replies: 0,
-        created_at:
-          record.createdAt || new Date().toISOString()
-      };
+      const text = record.text || "";
+
+const intelligence = analyzePost(text);
+
+const row = {
+  platform: "Bluesky",
+  author: event.did || "unknown",
+  text: text,
+  likes: 0,
+  reposts: 0,
+  replies: 0,
+  created_at:
+    record.createdAt || new Date().toISOString(),
+
+  sentiment: intelligence.sentiment,
+  emotion: intelligence.emotion,
+  topic: intelligence.topic,
+  language: intelligence.language,
+  misinformation_score: intelligence.misinformation_score,
+  bot_score: intelligence.bot_score
+};
 
       const { error } = await supabase
         .from("social_posts")
