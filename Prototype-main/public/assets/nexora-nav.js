@@ -36,7 +36,7 @@
       '<div class="nexora-drawer__panel">' +
       '<a href="' + overviewHref + '"' + (!onStream && !onAnalytics && !onSentiment && !onTrends && !onNetwork && !onAudience && !onAIInsights ? ' class="is-active"' : '') + '>Overview</a>' +
       '<a href="' + streamHref + '"' + (onStream ? ' class="is-active"' : '') + '>Live Intelligence</a>' +
-      '<a href="analytics.html"' + (onAnalytics ? ' class="is-active"' : '') + '>Social Analytics</a>' +
+      '<a href="analytics.html"' + (onAnalytics ? ' class="is-active"' : '') + '>Social Media Analytics</a>' +
       '<a href="sentiment.html"' + (onSentiment ? ' class="is-active"' : '') + '>Sentiment</a>' +
       '<a href="trends.html"' + (onTrends ? ' class="is-active"' : '') + '>Trends</a>' +
       '<a href="audience.html"' + (onAudience ? ' class="is-active"' : '') + '>Audience</a>' +

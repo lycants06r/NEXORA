@@ -369,8 +369,7 @@
         }, d.time);
       })));
     }
-    var sentimentRoot = ReactDOM.createRoot(document.getElementById('react-sentiment-chart-root'));
-    sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null));
+    var _sentimentEl = document.getElementById("react-sentiment-chart-root"); if (_sentimentEl) { var sentimentRoot = ReactDOM.createRoot(_sentimentEl); sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null)); }
     var CardData = [{
       id: 'x',
       name: 'X (Twitter)',
@@ -574,8 +573,11 @@
         })))))));
       }));
     }
-    var root = ReactDOM.createRoot(document.getElementById('react-platform-cards-root'));
-    root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    var _platformCardsEl1 = document.getElementById('react-platform-cards-root');
+    if (_platformCardsEl1) {
+      var root = ReactDOM.createRoot(_platformCardsEl1);
+      root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    }
 
     // Mock Live Feed Data
     var generateFeedItem = function generateFeedItem(id) {
@@ -1163,8 +1165,7 @@
         }, d.time);
       })));
     }
-    var sentimentRoot = ReactDOM.createRoot(document.getElementById('react-sentiment-chart-root'));
-    sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null));
+    var _sentimentEl = document.getElementById("react-sentiment-chart-root"); if (_sentimentEl) { var sentimentRoot = ReactDOM.createRoot(_sentimentEl); sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null)); }
     var CardData = [{
       id: 'x',
       name: 'X (Twitter)',
@@ -1368,8 +1369,11 @@
         })))))));
       }));
     }
-    var root = ReactDOM.createRoot(document.getElementById('react-platform-cards-root'));
-    root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    var _platformCardsEl2 = document.getElementById('react-platform-cards-root');
+    if (_platformCardsEl2) {
+      var root = ReactDOM.createRoot(_platformCardsEl2);
+      root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    }
 
     // Mock Live Feed Data
     var generateFeedItem = function generateFeedItem(id) {
@@ -1957,8 +1961,7 @@
         }, d.time);
       })));
     }
-    var sentimentRoot = ReactDOM.createRoot(document.getElementById('react-sentiment-chart-root'));
-    sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null));
+    var _sentimentEl = document.getElementById("react-sentiment-chart-root"); if (_sentimentEl) { var sentimentRoot = ReactDOM.createRoot(_sentimentEl); sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null)); }
     var CardData = [{
       id: 'x',
       name: 'X (Twitter)',
@@ -2162,8 +2165,11 @@
         })))))));
       }));
     }
-    var root = ReactDOM.createRoot(document.getElementById('react-platform-cards-root'));
-    root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    var _platformCardsEl3 = document.getElementById('react-platform-cards-root');
+    if (_platformCardsEl3) {
+      var root = ReactDOM.createRoot(_platformCardsEl3);
+      root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    }
 
     // Mock Live Feed Data
     var generateFeedItem = function generateFeedItem(id) {
@@ -3097,8 +3103,7 @@
         }, d.time);
       })));
     }
-    var sentimentRoot = ReactDOM.createRoot(document.getElementById('react-sentiment-chart-root'));
-    sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null));
+    var _sentimentEl = document.getElementById("react-sentiment-chart-root"); if (_sentimentEl) { var sentimentRoot = ReactDOM.createRoot(_sentimentEl); sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null)); }
     var CardData = [{
       id: 'x',
       name: 'X (Twitter)',
@@ -3302,8 +3307,11 @@
         })))))));
       }));
     }
-    var root = ReactDOM.createRoot(document.getElementById('react-platform-cards-root'));
-    root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    var _platformCardsEl4 = document.getElementById('react-platform-cards-root');
+    if (_platformCardsEl4) {
+      var root = ReactDOM.createRoot(_platformCardsEl4);
+      root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    }
 
     // Mock Live Feed Data
     var generateFeedItem = function generateFeedItem(id) {
@@ -3891,8 +3899,7 @@
         }, d.time);
       })));
     }
-    var sentimentRoot = ReactDOM.createRoot(document.getElementById('react-sentiment-chart-root'));
-    sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null));
+    var _sentimentEl = document.getElementById("react-sentiment-chart-root"); if (_sentimentEl) { var sentimentRoot = ReactDOM.createRoot(_sentimentEl); sentimentRoot.render(/*#__PURE__*/React.createElement(SentimentChart, null)); }
     var CardData = [{
       id: 'x',
       name: 'X (Twitter)',
@@ -4096,8 +4103,11 @@
         })))))));
       }));
     }
-    var root = ReactDOM.createRoot(document.getElementById('react-platform-cards-root'));
-    root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    var _platformCardsEl5 = document.getElementById('react-platform-cards-root');
+    if (_platformCardsEl5) {
+      var root = ReactDOM.createRoot(_platformCardsEl5);
+      root.render(/*#__PURE__*/React.createElement(PlatformCards, null));
+    }
 
     // Mock Live Feed Data
     var generateFeedItem = function generateFeedItem(id) {
@@ -4364,7 +4374,7 @@
         <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
           href="analytics.html">
           <span class="material-symbols-outlined text-[20px]">analytics</span>
-          Social Analytics
+          Social Media Analytics
         </a>
       </li>
       <li class="">
@@ -4444,185 +4454,12 @@
           <span class="w-px h-3 bg-white/20 mx-1"></span>
           <span class="text-[10px] tracking-widest text-primary uppercase">DEMO / SIMULATION</span>
         </a>
-        <!-- Platform Control Area (Hover to expand) -->
-        <div class="flex items-center gap-2 h-10">
-          <!-- X Card -->
-          <div class="platform-card glass-panel h-full rounded-lg flex items-center cursor-pointer relative z-50">
-            <div class="flex items-center gap-2 px-3 min-w-[120px] h-full">
-              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                </path>
-              </svg>
-              <span class="text-xs font-medium">X (Twitter)</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-primary ml-auto animate-pulse"></span>
-            </div>
-            <div
-              class="expanded-content absolute left-0 top-full mt-2 w-[320px] glass-panel rounded-lg p-4 shadow-[0_0_25px_rgba(6,182,212,0.2)] border-primary/30">
-              <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
-                <span class="text-sm font-semibold text-primary">X Metrics</span>
-                <span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded border border-primary/30">Live
-                  demo data</span>
-              </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div><span class="text-on-surface-variant block mb-0.5">Total Users</span><span
-                    class="font-data-display font-medium">145.2M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Active Users</span><span
-                    class="font-data-display font-medium">32.8M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Posts/24h</span><span
-                    class="font-data-display font-medium">8.4M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Engagement</span><span
-                    class="font-data-display font-medium">24.1M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Trend %</span><span
-                    class="text-sentiment-emerald">+12.4%</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Sentiment %</span><span
-                    class="text-sentiment-emerald">64% POS</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- Instagram Card -->
-          <div class="platform-card glass-panel h-full rounded-lg flex items-center cursor-pointer relative z-40">
-            <div class="flex items-center gap-2 px-3 min-w-[120px] h-full">
-              <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-                </path>
-              </svg>
-              <span class="text-xs font-medium">Instagram</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-primary ml-auto animate-pulse"></span>
-            </div>
-            <div
-              class="expanded-content absolute left-0 top-full mt-2 w-[320px] glass-panel rounded-lg p-4 shadow-[0_0_25px_rgba(6,182,212,0.2)] border-primary/30">
-              <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
-                <span class="text-sm font-semibold text-primary">Instagram Metrics</span>
-                <span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded border border-primary/30">Live
-                  demo data</span>
-              </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div><span class="text-on-surface-variant block mb-0.5">Total Users</span><span
-                    class="font-data-display font-medium">210.5M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Active Users</span><span
-                    class="font-data-display font-medium">65.2M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Posts/24h</span><span
-                    class="font-data-display font-medium">4.2M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Engagement</span><span
-                    class="font-data-display font-medium">48.6M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Trend %</span><span
-                    class="text-sentiment-emerald">+18.2%</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Sentiment %</span><span
-                    class="text-sentiment-emerald">72% POS</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- Facebook Card -->
-          <div class="platform-card glass-panel h-full rounded-lg flex items-center cursor-pointer relative z-30">
-            <div class="flex items-center gap-2 px-3 min-w-[120px] h-full">
-              <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-                </path>
-              </svg>
-              <span class="text-xs font-medium">Facebook</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-primary ml-auto animate-pulse"></span>
-            </div>
-            <div
-              class="expanded-content absolute left-0 top-full mt-2 w-[320px] glass-panel rounded-lg p-4 shadow-[0_0_25px_rgba(6,182,212,0.2)] border-primary/30">
-              <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
-                <span class="text-sm font-semibold text-primary">Facebook Metrics</span>
-                <span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded border border-primary/30">Live
-                  demo data</span>
-              </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div><span class="text-on-surface-variant block mb-0.5">Total Users</span><span
-                    class="font-data-display font-medium">320.1M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Active Users</span><span
-                    class="font-data-display font-medium">85.4M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Posts/24h</span><span
-                    class="font-data-display font-medium">6.1M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Engagement</span><span
-                    class="font-data-display font-medium">35.2M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Trend %</span><span
-                    class="text-alert-amber">-2.1%</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Sentiment %</span><span
-                    class="text-on-surface-variant">45% NEU</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- Telegram Card -->
-          <div class="platform-card glass-panel h-full rounded-lg flex items-center cursor-pointer relative z-20">
-            <div class="flex items-center gap-2 px-3 min-w-[120px] h-full">
-              <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
-                </path>
-              </svg>
-              <span class="text-xs font-medium">Telegram</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-primary ml-auto animate-pulse"></span>
-            </div>
-            <div
-              class="expanded-content absolute left-auto right-0 top-full mt-2 w-[320px] glass-panel rounded-lg p-4 shadow-[0_0_25px_rgba(6,182,212,0.2)] border-primary/30">
-              <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
-                <span class="text-sm font-semibold text-primary">Telegram Metrics</span>
-                <span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded border border-primary/30">Live
-                  demo data</span>
-              </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div><span class="text-on-surface-variant block mb-0.5">Total Users</span><span
-                    class="font-data-display font-medium">85.6M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Active Users</span><span
-                    class="font-data-display font-medium">18.2M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Posts/24h</span><span
-                    class="font-data-display font-medium">12.5M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Engagement</span><span
-                    class="font-data-display font-medium">9.1M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Trend %</span><span
-                    class="text-sentiment-emerald">+32.5%</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Sentiment %</span><span
-                    class="text-alert-amber">52% NEG</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- YouTube Card -->
-          <div id="header-platform-youtube-btn" class="platform-card glass-panel h-full rounded-lg flex items-center cursor-pointer relative z-20 group hover:border-[#EF4444]/60 transition-all" title="View YouTube Intelligence">
-            <div class="flex items-center gap-2 px-3 min-w-[120px] h-full">
-              <svg class="w-4 h-4 text-[#EF4444] fill-current shrink-0" viewBox="0 0 24 24">
-                <path
-                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
-                </path>
-              </svg>
-              <span class="text-xs font-medium">YouTube</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald ml-auto animate-pulse"></span>
-            </div>
-            <div
-              class="expanded-content absolute left-auto right-0 top-full mt-2 w-[320px] glass-panel rounded-lg p-4 shadow-[0_0_25px_rgba(239,68,68,0.25)] border-[#EF4444]/40 z-50">
-              <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
-                <span class="text-sm font-semibold text-[#EF4444] flex items-center gap-1.5">
-                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                  YouTube Metrics
-                </span>
-                <span class="text-[10px] bg-sentiment-emerald/20 text-sentiment-emerald px-2 py-0.5 rounded border border-sentiment-emerald/30 font-medium">Live Telemetry</span>
-              </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div><span class="text-on-surface-variant block mb-0.5">Total Reach</span><span
-                    class="font-data-display font-medium text-white">2.1M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Live Channels</span><span
-                    class="font-data-display font-medium text-primary">142 Live</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Videos/24h</span><span
-                    class="font-data-display font-medium text-white">780K</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Engagement</span><span
-                    class="font-data-display font-medium text-white">14.6M</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Growth Trend</span><span
-                    class="text-sentiment-emerald font-semibold">+14.2%</span></div>
-                <div><span class="text-on-surface-variant block mb-0.5">Sentiment Polarity</span><span
-                    class="text-sentiment-emerald font-semibold">76% POS</span></div>
-              </div>
-              <div class="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-primary hover:text-white transition-colors">
-                <span>Click to view live stream section</span>
-                <span class="material-symbols-outlined text-[13px]">arrow_downward</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Platform Analytics Direct Navigation (Relocated to Social Media Analytics) -->
+        <a href="analytics.html#platform-analytics-section" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary hover:text-white text-xs font-semibold transition-all shadow-[0_0_12px_rgba(6,182,212,0.15)] group" title="View Detailed Platform Analytics in Social Media Analytics">
+          <span class="material-symbols-outlined text-[16px] text-primary group-hover:scale-110 transition-transform">hub</span>
+          <span>Platform Analytics</span>
+          <span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        </a>
       </div>
     </header>
     <!-- Scrollable Dashboard Content -->
@@ -4900,367 +4737,10 @@
             </a>
           </section>
 
-          <!-- YouTube Intelligence Section -->
-          <section class="glass-panel rounded-xl p-5 flex flex-col border-primary/30 shadow-[0_0_20px_rgba(6,182,212,0.12)] relative overflow-hidden" id="youtube-intelligence-section">
-            <!-- Accent Glow Line -->
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#EF4444] via-primary to-sentiment-emerald opacity-80"></div>
-            <div class="absolute inset-0 bg-primary/[0.02] pointer-events-none"></div>
 
-            <!-- Header -->
-            <header class="flex justify-between items-center mb-3 relative z-10">
-              <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded-md bg-[#EF4444]/10 border border-[#EF4444]/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(239,68,68,0.25)]">
-                  <svg class="w-3.5 h-3.5 text-[#EF4444] fill-current" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-sm font-bold text-primary tracking-wide drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]">YOUTUBE INTELLIGENCE</h2>
-                </div>
-              </div>
-              <div class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-0.5 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span>
-                <span id="yt-live-indicator-label" class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">142 Live Streams</span>
-              </div>
-            </header>
-
-            <!-- Key Metrics Row -->
-            <div class="grid grid-cols-3 gap-2 mb-3 relative z-10">
-              <div class="p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/30 transition-colors">
-                <span class="text-[9px] text-on-surface-variant block mb-0.5 uppercase tracking-wider">Video Reach</span>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-base font-bold font-data-display text-white" id="yt-reach-stat">2.1M</span>
-                  <span class="text-[9px] text-sentiment-emerald font-semibold">+14.2%</span>
-                </div>
-              </div>
-              <div class="p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/30 transition-colors">
-                <span class="text-[9px] text-on-surface-variant block mb-0.5 uppercase tracking-wider">Sentiment</span>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-base font-bold font-data-display text-sentiment-emerald">76%</span>
-                  <span class="text-[9px] text-on-surface-variant font-medium">Pos</span>
-                </div>
-              </div>
-              <div class="p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/30 transition-colors">
-                <span class="text-[9px] text-on-surface-variant block mb-0.5 uppercase tracking-wider">Channels</span>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-base font-bold font-data-display text-primary" id="yt-channels-stat">142</span>
-                  <span class="text-[9px] text-primary/70 font-medium">Live</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Watch Time & Sentiment Polarity Bar -->
-            <div class="mb-3 relative z-10 bg-black/30 p-2.5 rounded-lg border border-white/5">
-              <div class="flex justify-between items-center text-[10px] mb-1.5 font-medium">
-                <span class="text-on-surface-variant flex items-center gap-1">
-                  <span class="material-symbols-outlined text-[13px] text-primary">speed</span>
-                  Watch Time Polarity
-                </span>
-                <span class="text-sentiment-emerald font-data-display flex items-center gap-0.5 font-semibold">
-                  <span class="material-symbols-outlined text-[12px]">trending_up</span> High Velocity
-                </span>
-              </div>
-              <div class="w-full h-2 rounded-full bg-white/5 overflow-hidden flex gap-0.5 mb-1.5">
-                <div class="h-full bg-sentiment-emerald shadow-[0_0_6px_#10B981]" style="width: 76%;" title="76% Positive"></div>
-                <div class="h-full bg-slate-400" style="width: 16%;" title="16% Neutral"></div>
-                <div class="h-full bg-error-red shadow-[0_0_6px_#EF4444]" style="width: 8%;" title="8% Negative"></div>
-              </div>
-              <div class="flex justify-between text-[9px] font-data-display text-on-surface-variant/80">
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald shadow-[0_0_4px_#10B981]"></span> 76% Pos</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> 16% Neu</span>
-                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-error-red shadow-[0_0_4px_#EF4444]"></span> 8% Neg</span>
-              </div>
-            </div>
-
-            <!-- Filter Pills -->
-            <div class="flex items-center gap-1.5 mb-2.5 overflow-x-auto pb-1 scrollbar-thin relative z-10" id="youtube-intel-filter-bar">
-              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border transition-all whitespace-nowrap bg-primary/20 border-primary text-primary font-bold shadow-[0_0_8px_rgba(6,182,212,0.4)]" data-filter="all">All Signals</button>
-              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="stream">Live Streams</button>
-              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="reach">Top Reach</button>
-              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="viral">Viral</button>
-              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="risk">Risk Alerts</button>
-            </div>
-
-            <!-- Channel & Video Ingestion List -->
-            <div class="space-y-2 flex-1 overflow-y-auto max-h-[220px] pr-1 scrollbar-thin relative z-10" id="youtube-intel-feed-list">
-              <!-- Item 1: WorldPolicy -->
-              <div class="yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group" data-category="stream reach viral">
-                <div class="flex justify-between items-start mb-1.5 gap-2">
-                  <div class="flex items-center gap-1.5 flex-wrap">
-                    <span class="px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 border border-red-500/30 text-[9px] font-bold flex items-center gap-1">
-                      <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> LIVE STREAM
-                    </span>
-                    <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">YT/@WorldPolicy</span>
-                    <span class="text-[9px] px-1 py-0.2 rounded bg-primary/10 text-primary border border-primary/30">2.3M Reach</span>
-                  </div>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded border bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald flex items-center gap-0.5 shrink-0">
-                    <span class="material-symbols-outlined text-[10px]">person</span> HUMAN
-                  </span>
-                </div>
-                <h4 class="text-xs font-medium text-white mb-1 group-hover:text-primary transition-colors">
-                  Comparative Analysis: Polling vs Live Stream Sentiment in AI Governance
-                </h4>
-                <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
-                  Live session comparing static opinion polling against real-time YouTube chat sentiment across 45 countries.
-                </p>
-                <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
-                  <div class="flex items-center gap-2.5">
-                    <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> 2.3M</span>
-                    <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> 14.8K</span>
-                    <span class="flex items-center gap-1 text-sentiment-emerald font-medium" title="Engagement Rate"><span class="material-symbols-outlined text-[12px]">trending_up</span> 19.4% Eng</span>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <span class="px-1.5 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30 text-[9px]">Support</span>
-                    <span class="text-[9px] text-primary/80">#AI2024</span>
-                    <span class="text-[9px] text-on-surface-variant/60">5m ago</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Item 2: TechReviewer -->
-              <div class="yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group" data-category="viral reach">
-                <div class="flex justify-between items-start mb-1.5 gap-2">
-                  <div class="flex items-center gap-1.5 flex-wrap">
-                    <span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30 text-[9px] font-medium flex items-center gap-1">
-                      <span class="material-symbols-outlined text-[10px]">movie</span> 4K VIDEO
-                    </span>
-                    <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">YT/@TechReviewer</span>
-                    <span class="text-[9px] px-1 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30">850K Reach</span>
-                  </div>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded border bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald flex items-center gap-0.5 shrink-0">
-                    <span class="material-symbols-outlined text-[10px]">person</span> HUMAN
-                  </span>
-                </div>
-                <h4 class="text-xs font-medium text-white mb-1 group-hover:text-primary transition-colors">
-                  Autonomous Cluster Stress Benchmark: 10M Token Throughput
-                </h4>
-                <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
-                  Full tutorial and stress test review analyzing latency overhead and cross-region consensus behavior.
-                </p>
-                <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
-                  <div class="flex items-center gap-2.5">
-                    <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> 850K</span>
-                    <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> 8.9K</span>
-                    <span class="flex items-center gap-1 text-primary font-medium" title="Engagement Rate"><span class="material-symbols-outlined text-[12px]">trending_up</span> 14.1% Eng</span>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30 text-[9px]">Excitement</span>
-                    <span class="text-[9px] text-primary/80">#NeuralCluster</span>
-                    <span class="text-[9px] text-on-surface-variant/60">18m ago</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Item 3: InfraEng Risk Monitor -->
-              <div class="yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group" data-category="risk">
-                <div class="flex justify-between items-start mb-1.5 gap-2">
-                  <div class="flex items-center gap-1.5 flex-wrap">
-                    <span class="px-1.5 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30 text-[9px] font-bold flex items-center gap-1">
-                      <span class="material-symbols-outlined text-[11px]">warning</span> RISK ALERT
-                    </span>
-                    <span class="text-xs font-semibold text-white group-hover:text-alert-amber transition-colors">YT/@InfraEng</span>
-                    <span class="text-[9px] px-1 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30">Alert Monitor</span>
-                  </div>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded border bg-[#06B6D4]/10 border-[#06B6D4]/30 text-[#06B6D4] flex items-center gap-0.5 shrink-0" title="88% AI Confidence">
-                    <span class="material-symbols-outlined text-[10px]">insights</span> AI NLP
-                  </span>
-                </div>
-                <h4 class="text-xs font-medium text-white mb-1 group-hover:text-alert-amber transition-colors">
-                  Live Edge Failover Resilience Under High Throughput Loads
-                </h4>
-                <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
-                  Telemetry flagged 2 minor latency spikes during distributed edge failover in US-East streaming nodes.
-                </p>
-                <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
-                  <div class="flex items-center gap-2.5">
-                    <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> 420K</span>
-                    <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> 4.1K</span>
-                    <span class="flex items-center gap-1 text-alert-amber font-medium" title="Risk Score"><span class="material-symbols-outlined text-[12px]">speed</span> Risk: Moderate</span>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <span class="px-1.5 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30 text-[9px]">Caution</span>
-                    <span class="text-[9px] text-alert-amber/80">#Latency</span>
-                    <span class="text-[9px] text-on-surface-variant/60">35m ago</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Section Footer Link -->
-            <a href="sentiment.html" class="mt-2.5 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs text-primary hover:text-white transition-colors font-semibold relative z-10">
-              <span class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[16px]">analytics</span>
-                YouTube Sentiment Stream & Analytics
-              </span>
-              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-            </a>
-          </section>
         </div>
       </div>
 
-        <!-- Premium Feature Cards Grid React Mount Point -->
-        <div id="react-platform-cards-root">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 animate-[fadeInUp_0.6s_ease-out_forwards]"
-            style="opacity: 0; transform: translateY(30px); animation: 0.6s ease-out 0s 1 normal forwards running fadeInUp;">
-            <div class="feature-card-wrapper x-card" style="transform: none; z-index: 1;">
-              <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
-              <div class="feature-card-inner border border-primary/30"
-                style="border-color: rgba(6, 182, 212, 0.3); transition: border-color 0.3s;">
-                <div class="flex justify-between items-start mb-4">
-                  <div class="flex items-center gap-2"><svg
-                      class="w-5 h-5 fill-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" viewBox="0 0 24 24">
-                      <path
-                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                      </path>
-                    </svg><span class="text-sm font-bold tracking-wide text-primary">X (Twitter)</span></div>
-                  <div
-                    class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
-                  </div>
-                </div>
-                <div class="space-y-1 mb-2">
-                  <div
-                    class="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
-                    334.85M</div>
-                  <div class="text-xs text-primary/80">Total Users</div>
-                </div>
-                <div
-                  class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +12.8%
-                </div>
-              </div>
-            </div>
-            <div class="feature-card-wrapper ig-card" style="transform: none; z-index: 1;">
-              <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
-              <div class="feature-card-inner border border-primary/30"
-                style="border-color: rgba(6, 182, 212, 0.3); transition: border-color 0.3s;">
-                <div class="flex justify-between items-start mb-4">
-                  <div class="flex items-center gap-2"><svg
-                      class="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-                      </path>
-                    </svg><span class="text-sm font-bold tracking-wide text-primary">Instagram</span></div>
-                  <div
-                    class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
-                  </div>
-                </div>
-                <div class="space-y-1 mb-2">
-                  <div
-                    class="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
-                    263.65M</div>
-                  <div class="text-xs text-primary/80">Total Users</div>
-                </div>
-                <div
-                  class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +18.4%
-                </div>
-              </div>
-            </div>
-            <div class="feature-card-wrapper fb-card" style="transform: none; z-index: 1;">
-              <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
-              <div class="feature-card-inner border border-primary/30"
-                style="border-color: rgba(6, 182, 212, 0.3); transition: border-color 0.3s;">
-                <div class="flex justify-between items-start mb-4">
-                  <div class="flex items-center gap-2"><svg
-                      class="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-                      </path>
-                    </svg><span class="text-sm font-bold tracking-wide text-primary">Facebook</span></div>
-                  <div
-                    class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
-                  </div>
-                </div>
-                <div class="space-y-1 mb-2">
-                  <div
-                    class="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
-                    412.6M</div>
-                  <div class="text-xs text-primary/80">Total Users</div>
-                </div>
-                <div
-                  class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +9.7%
-                </div>
-              </div>
-            </div>
-            <div class="feature-card-wrapper tg-card" style="transform: none; z-index: 1;">
-              <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
-              <div class="feature-card-inner border border-primary/30"
-                style="border-color: rgba(6, 182, 212, 0.3); transition: border-color 0.3s;">
-                <div class="flex justify-between items-start mb-4">
-                  <div class="flex items-center gap-2"><svg
-                      class="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
-                      </path>
-                    </svg><span class="text-sm font-bold tracking-wide text-primary">Telegram</span></div>
-                  <div
-                    class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
-                  </div>
-                </div>
-                <div class="space-y-1 mb-2">
-                  <div
-                    class="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
-                    950M</div>
-                  <div class="text-xs text-primary/80">Total Users</div>
-                </div>
-                <div
-                  class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +21.6%
-                </div>
-              </div>
-            </div>
-            <!-- YouTube Card -->
-            <div class="feature-card-wrapper yt-card cursor-pointer" id="prerender-yt-card" style="transform: none; z-index: 1;">
-              <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
-              <div class="feature-card-inner border border-primary/30"
-                style="border-color: rgba(6, 182, 212, 0.3); transition: border-color 0.3s;">
-                <div class="flex justify-between items-start mb-4">
-                  <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
-                    </svg>
-                    <span class="text-sm font-bold tracking-wide text-primary">YouTube</span>
-                  </div>
-                  <div
-                    class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span>
-                    <span class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
-                  </div>
-                </div>
-                <div class="space-y-1 mb-2">
-                  <div
-                    class="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
-                    2.1M</div>
-                  <div class="text-xs text-primary/80">Active Reach</div>
-                </div>
-                <div
-                  class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +14.2%
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <style>
-          @keyframes fadeInUp {
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        </style>
         <!-- Bottom Row: Intelligence Feeds -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <!-- Live Intelligence Feed React Mount Point (Span 2) -->
@@ -7315,160 +6795,6 @@
     const sentimentRoot = ReactDOM.createRoot(document.getElementById('react-sentiment-chart-root'));
     sentimentRoot.render(<SentimentChart />);
 
-    const CardData = [
-      {
-        id: 'x',
-        name: 'X (Twitter)',
-        icon: <svg className="w-5 h-5 fill-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>,
-        totalUsers: '334.85M',
-        activeUsers: '18.4M',
-        posts: '2.8M',
-        engagement: '7.4M',
-        trend: '+12.8%',
-        sentiment: '68% Pos',
-        className: 'x-card'
-      },
-      {
-        id: 'ig',
-        name: 'Instagram',
-        icon: <svg className="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>,
-        totalUsers: '263.65M',
-        activeUsers: '21.7M',
-        posts: '4.2M',
-        engagement: '9.8M',
-        trend: '+18.4%',
-        sentiment: '72% Pos',
-        className: 'ig-card'
-      },
-      {
-        id: 'fb',
-        name: 'Facebook',
-        icon: <svg className="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>,
-        totalUsers: '412.6M',
-        activeUsers: '16.9M',
-        posts: '3.6M',
-        engagement: '6.8M',
-        trend: '+9.7%',
-        sentiment: '64% Pos',
-        className: 'fb-card'
-      },
-      {
-        id: 'tg',
-        name: 'Telegram',
-        icon: <svg className="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg>,
-        totalUsers: '950M',
-        activeUsers: '11.3M',
-        posts: '1.9M',
-        engagement: '5.2M',
-        trend: '+21.6%',
-        sentiment: '70% Pos',
-        className: 'tg-card'
-      },
-      {
-        id: 'yt',
-        name: 'YouTube',
-        icon: <svg className="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>,
-        totalUsers: '2.1M',
-        activeUsers: '142 Live',
-        posts: '780K Vids',
-        engagement: '14.6M',
-        trend: '+14.2%',
-        sentiment: '76% Pos',
-        className: 'yt-card'
-      }
-    ];
-
-    function PlatformCards() {
-      const [hoveredPlatform, setHoveredPlatform] = useState(null);
-
-      return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 animate-[fadeInUp_0.6s_ease-out_forwards]" style={{ opacity: 0, transform: 'translateY(30px)', animation: 'fadeInUp 0.6s ease-out forwards' }}>
-          {CardData.map((data, index) => {
-            const isHovered = hoveredPlatform === data.id;
-
-            return (
-              <motion.div
-                key={data.id}
-                className={`feature-card-wrapper ${data.className} cursor-pointer`}
-                onClick={() => {
-                  if (data.id === 'yt') {
-                    const el = document.getElementById('youtube-intelligence-section');
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      el.classList.add('ring-2', 'ring-primary', 'shadow-[0_0_30px_rgba(6,182,212,0.4)]');
-                      setTimeout(() => el.classList.remove('ring-2', 'ring-primary', 'shadow-[0_0_30px_rgba(6,182,212,0.4)]'), 2500);
-                    }
-                  }
-                }}
-                onMouseEnter={() => setHoveredPlatform(data.id)}
-                onMouseLeave={() => setHoveredPlatform(null)}
-                initial={{ y: 0, scale: 1 }}
-                animate={{
-                  y: isHovered ? -10 : 0,
-                  scale: isHovered ? 1.04 : 1,
-                  zIndex: isHovered ? 10 : 1
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <motion.div
-                  className="feature-card-glow"
-                  animate={{
-                    opacity: isHovered ? 1 : 0.8,
-                    filter: isHovered ? 'blur(25px)' : 'blur(20px)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                ></motion.div>
-                <div className="feature-card-inner border border-primary/30" style={{ borderColor: isHovered ? 'rgba(6, 182, 212, 0.8)' : 'rgba(6, 182, 212, 0.3)', transition: 'border-color 0.3s' }}>
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center gap-2">
-                      {data.icon}
-                      <span className="text-sm font-bold tracking-wide text-primary">{data.name}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span>
-                      <span className="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
-                    </div>
-                  </div>
-                  <div className="space-y-1 mb-2">
-                    <div className="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">{data.totalUsers}</div>
-                    <div className="text-xs text-primary/80">Total Users</div>
-                  </div>
-                  <div className="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                    <span className="material-symbols-outlined text-[16px]">trending_up</span> {data.trend}
-                  </div>
-                  <AnimatePresence>
-                    {isHovered && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0, marginTop: 0, paddingTop: 0 }}
-                        animate={{ opacity: 1, height: 'auto', marginTop: '1rem', paddingTop: '1rem' }}
-                        exit={{ opacity: 0, height: 0, marginTop: 0, paddingTop: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                        className="border-t border-primary/30 space-y-3 overflow-hidden"
-                      >
-                        <div className="grid grid-cols-2 gap-3 text-xs">
-                          <div><span className="text-primary/70 block mb-1">Active Users</span><span className="font-data-display font-medium text-white">{data.activeUsers}</span></div>
-                          <div><span className="text-primary/70 block mb-1">Posts Today</span><span className="font-data-display font-medium text-white">{data.posts}</span></div>
-                          <div><span className="text-primary/70 block mb-1">Engagement</span><span className="font-data-display font-medium text-white">{data.engagement}</span></div>
-                          <div><span className="text-primary/70 block mb-1">Sentiment</span><span className="text-sentiment-emerald drop-shadow-[0_0_2px_rgba(16,185,129,0.5)]">{data.sentiment}</span></div>
-                        </div>
-                        <div className="h-8 mt-2 opacity-80 relative">
-                          <svg height="100%" preserveAspectRatio="none" viewBox="0 0 100 20" width="100%">
-                            <path d="M0,20 L10,15 L20,18 L30,12 L40,16 L50,8 L60,14 L70,5 L80,10 L90,2 L100,5" fill="none" stroke="#06B6D4" strokeWidth="1.5" style={{ filter: 'drop-shadow(0 0 4px rgba(6,182,212,0.8))' }} vectorEffect="non-scaling-stroke"></path>
-                          </svg>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById('react-platform-cards-root'));
-    root.render(<PlatformCards />);
 
     // Mock Live Feed Data
     const generateFeedItem = (id) => {
@@ -7663,214 +6989,6 @@
     }
 
     loadDashboardData();
-</script>
-<script>
-    (function initYouTubeIntelligence() {
-      const filterBar = document.getElementById('youtube-intel-filter-bar');
-      const feedList = document.getElementById('youtube-intel-feed-list');
-      const headerYtBtn = document.getElementById('header-platform-youtube-btn');
-      const prerenderYtCard = document.getElementById('prerender-yt-card');
-      const liveBadge = document.getElementById('yt-live-indicator-label');
-      const reachStat = document.getElementById('yt-reach-stat');
-      const section = document.getElementById('youtube-intelligence-section');
-
-      // Scroll & highlight helper
-      function scrollToYouTubeSection() {
-        if (!section) return;
-        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        section.classList.add('ring-2', 'ring-primary', 'shadow-[0_0_35px_rgba(6,182,212,0.45)]');
-        setTimeout(() => {
-          section.classList.remove('ring-2', 'ring-primary', 'shadow-[0_0_35px_rgba(6,182,212,0.45)]');
-        }, 2500);
-      }
-
-      if (headerYtBtn) {
-        headerYtBtn.addEventListener('click', scrollToYouTubeSection);
-      }
-      if (prerenderYtCard) {
-        prerenderYtCard.addEventListener('click', scrollToYouTubeSection);
-      }
-
-      if (!filterBar || !feedList) return;
-
-      const filterBtns = filterBar.querySelectorAll('.yt-filter-btn');
-      const activeClasses = ['bg-primary/20', 'border-primary', 'text-primary', 'font-bold', 'shadow-[0_0_8px_rgba(6,182,212,0.4)]'];
-      const inactiveClasses = ['border-white/10', 'text-on-surface-variant'];
-      let currentFilter = 'all';
-
-      function applyFilter(filter) {
-        currentFilter = filter;
-        const feedItems = feedList.querySelectorAll('.yt-feed-item');
-        feedItems.forEach(item => {
-          const category = item.getAttribute('data-category') || '';
-          if (filter === 'all' || category.includes(filter)) {
-            item.style.display = 'block';
-            item.classList.remove('hidden');
-          } else {
-            item.style.display = 'none';
-            item.classList.add('hidden');
-          }
-        });
-      }
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter') || 'all';
-
-          filterBtns.forEach(b => {
-            b.classList.remove(...activeClasses);
-            b.classList.add(...inactiveClasses);
-          });
-          btn.classList.remove(...inactiveClasses);
-          btn.classList.add(...activeClasses);
-
-          applyFilter(filter);
-        });
-      });
-
-      // Real-time telemetry streaming pool
-      const incomingSignals = [
-        {
-          author: "YT/@DataStream",
-          title: "Real-Time NLP Model Routing & Latency Benchmark",
-          text: "Comparing token generation latency across distributed clusters under live user query surges.",
-          category: "stream viral",
-          isStream: true,
-          reach: "1.1M Reach",
-          views: "1.1M",
-          comments: "12.4K",
-          eng: "18.2% Eng",
-          badge: "HUMAN",
-          badgeClass: "bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald",
-          badgeIcon: "person",
-          emotion: "Support",
-          emotionClass: "bg-sentiment-emerald/10 text-sentiment-emerald border-sentiment-emerald/30",
-          topic: "#RealTimeNLP"
-        },
-        {
-          author: "YT/@AIInsider",
-          title: "Frontier Autonomous Agents: Global Regulation Stream",
-          text: "Live coverage of multilateral agreements on autonomous multi-agent cluster alignment and oversight.",
-          category: "stream reach",
-          isStream: true,
-          reach: "1.8M Reach",
-          views: "1.8M",
-          comments: "19.3K",
-          eng: "22.1% Eng",
-          badge: "HUMAN",
-          badgeClass: "bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald",
-          badgeIcon: "person",
-          emotion: "Excitement",
-          emotionClass: "bg-primary/10 text-primary border-primary/30",
-          topic: "#AIGovernance"
-        },
-        {
-          author: "YT/@PolicyWatch",
-          title: "Regulatory Compliance Audit for High-Velocity Feeds",
-          text: "Automated compliance scanner flagged potential data boundary crossover in multi-cloud pipeline.",
-          category: "risk",
-          isStream: false,
-          isRisk: true,
-          reach: "310K Reach",
-          views: "310K",
-          comments: "3.2K",
-          eng: "Risk: Moderate",
-          badge: "AI NLP",
-          badgeClass: "bg-[#06B6D4]/10 border-[#06B6D4]/30 text-[#06B6D4]",
-          badgeIcon: "insights",
-          emotion: "Caution",
-          emotionClass: "bg-alert-amber/10 text-alert-amber border-alert-amber/30",
-          topic: "#Compliance"
-        },
-        {
-          author: "YT/@NeuralCraft",
-          title: "Scaling 100K Concurrent Agent Threads in Production",
-          text: "Stress benchmark showing thread scheduling efficiency and low-memory state synchronization.",
-          category: "viral reach",
-          isStream: false,
-          reach: "2.7M Reach",
-          views: "2.7M",
-          comments: "24.5K",
-          eng: "26.4% Eng",
-          badge: "HUMAN",
-          badgeClass: "bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald",
-          badgeIcon: "person",
-          emotion: "Joy",
-          emotionClass: "bg-sentiment-emerald/10 text-sentiment-emerald border-sentiment-emerald/30",
-          topic: "#AutonomousAI"
-        }
-      ];
-
-      let streamIndex = 0;
-      let liveStreamCount = 142;
-
-      // Real-time dynamic ingestion loop
-      setInterval(() => {
-        if (!feedList) return;
-
-        const signal = incomingSignals[streamIndex % incomingSignals.length];
-        streamIndex++;
-
-        // Fluctuate live stream counter
-        liveStreamCount += Math.random() > 0.5 ? 1 : -1;
-        if (liveStreamCount < 138) liveStreamCount = 140;
-        if (liveBadge) liveBadge.textContent = `${liveStreamCount} Live Streams`;
-
-        const newEl = document.createElement('div');
-        newEl.className = 'yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group feed-enter';
-        newEl.setAttribute('data-category', signal.category);
-
-        const typeBadge = signal.isStream
-          ? '<span class="px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 border border-red-500/30 text-[9px] font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> LIVE STREAM</span>'
-          : signal.isRisk
-          ? '<span class="px-1.5 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30 text-[9px] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[11px]">warning</span> RISK ALERT</span>'
-          : '<span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30 text-[9px] font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[10px]">movie</span> 4K VIDEO</span>';
-
-        newEl.innerHTML = `
-          <div class="flex justify-between items-start mb-1.5 gap-2">
-            <div class="flex items-center gap-1.5 flex-wrap">
-              ${typeBadge}
-              <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">${signal.author}</span>
-              <span class="text-[9px] px-1 py-0.2 rounded bg-primary/10 text-primary border border-primary/30">${signal.reach}</span>
-            </div>
-            <span class="text-[9px] px-1.5 py-0.2 rounded border ${signal.badgeClass} flex items-center gap-0.5 shrink-0">
-              <span class="material-symbols-outlined text-[10px]">${signal.badgeIcon}</span> ${signal.badge}
-            </span>
-          </div>
-          <h4 class="text-xs font-medium text-white mb-1 group-hover:text-primary transition-colors">
-            ${signal.title}
-          </h4>
-          <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
-            ${signal.text}
-          </p>
-          <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
-            <div class="flex items-center gap-2.5">
-              <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> ${signal.views}</span>
-              <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> ${signal.comments}</span>
-              <span class="flex items-center gap-1 text-sentiment-emerald font-medium" title="Engagement"><span class="material-symbols-outlined text-[12px]">trending_up</span> ${signal.eng}</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="px-1.5 py-0.2 rounded border text-[9px] ${signal.emotionClass}">${signal.emotion}</span>
-              <span class="text-[9px] text-primary/80">${signal.topic}</span>
-              <span class="text-[9px] text-sentiment-emerald font-semibold animate-pulse">Just now</span>
-            </div>
-          </div>
-        `;
-
-        if (currentFilter !== 'all' && !signal.category.includes(currentFilter)) {
-          newEl.style.display = 'none';
-          newEl.classList.add('hidden');
-        }
-
-        feedList.insertBefore(newEl, feedList.firstChild);
-
-        // Keep maximum 8 items to prevent runaway DOM growth
-        const allItems = feedList.querySelectorAll('.yt-feed-item');
-        if (allItems.length > 8) {
-          allItems[allItems.length - 1].remove();
-        }
-      }, 10000);
-    })();
 </script>
 </body>
 
