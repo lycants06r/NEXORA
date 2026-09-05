@@ -2692,6 +2692,11 @@
       background: linear-gradient(137deg, #06B6D4 0%, #10B981 100%);
     }
 
+    .feature-card-wrapper.yt-card::before,
+    .feature-card-wrapper.yt-card .feature-card-glow {
+      background: linear-gradient(137deg, #EF4444 0%, #06B6D4 100%);
+    }
+
     .pulse-border {
       animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
@@ -4577,6 +4582,46 @@
               </div>
             </div>
           </div>
+          <!-- YouTube Card -->
+          <div id="header-platform-youtube-btn" class="platform-card glass-panel h-full rounded-lg flex items-center cursor-pointer relative z-20 group hover:border-[#EF4444]/60 transition-all" title="View YouTube Intelligence">
+            <div class="flex items-center gap-2 px-3 min-w-[120px] h-full">
+              <svg class="w-4 h-4 text-[#EF4444] fill-current shrink-0" viewBox="0 0 24 24">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                </path>
+              </svg>
+              <span class="text-xs font-medium">YouTube</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald ml-auto animate-pulse"></span>
+            </div>
+            <div
+              class="expanded-content absolute left-auto right-0 top-full mt-2 w-[320px] glass-panel rounded-lg p-4 shadow-[0_0_25px_rgba(239,68,68,0.25)] border-[#EF4444]/40 z-50">
+              <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
+                <span class="text-sm font-semibold text-[#EF4444] flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  YouTube Metrics
+                </span>
+                <span class="text-[10px] bg-sentiment-emerald/20 text-sentiment-emerald px-2 py-0.5 rounded border border-sentiment-emerald/30 font-medium">Live Telemetry</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div><span class="text-on-surface-variant block mb-0.5">Total Reach</span><span
+                    class="font-data-display font-medium text-white">2.1M</span></div>
+                <div><span class="text-on-surface-variant block mb-0.5">Live Channels</span><span
+                    class="font-data-display font-medium text-primary">142 Live</span></div>
+                <div><span class="text-on-surface-variant block mb-0.5">Videos/24h</span><span
+                    class="font-data-display font-medium text-white">780K</span></div>
+                <div><span class="text-on-surface-variant block mb-0.5">Engagement</span><span
+                    class="font-data-display font-medium text-white">14.6M</span></div>
+                <div><span class="text-on-surface-variant block mb-0.5">Growth Trend</span><span
+                    class="text-sentiment-emerald font-semibold">+14.2%</span></div>
+                <div><span class="text-on-surface-variant block mb-0.5">Sentiment Polarity</span><span
+                    class="text-sentiment-emerald font-semibold">76% POS</span></div>
+              </div>
+              <div class="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-primary hover:text-white transition-colors">
+                <span>Click to view live stream section</span>
+                <span class="material-symbols-outlined text-[13px]">arrow_downward</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -4595,7 +4640,7 @@
           <div class="glass-panel p-4 rounded-xl border-primary/20">
             <span class="text-[10px] text-primary uppercase tracking-wider block mb-1">Active Users</span>
             <div class="flex items-end gap-2">
-             <span id="active-users-value" class="text-2xl font-semibold font-data-display">684K</span>
+              <span id="active-users-value" class="text-2xl font-semibold font-data-display">684K</span>
               <span class="text-xs text-sentiment-emerald mb-1">↑ 5%</span>
             </div>
           </div>
@@ -4609,13 +4654,14 @@
           <div class="glass-panel p-4 rounded-xl border-primary/20">
             <span class="text-[10px] text-primary uppercase tracking-wider block mb-1">Positive Sentiment</span>
             <div class="flex items-end gap-2">
-              <span id="positive-sentiment-value" class="text-2xl font-semibold font-data-display text-sentiment-emerald">68%</span>
+              <span id="positive-sentiment-value"
+                class="text-2xl font-semibold font-data-display text-sentiment-emerald">68%</span>
             </div>
           </div>
           <div class="glass-panel p-4 rounded-xl border-primary/20 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             <span class="text-[10px] text-primary uppercase tracking-wider block mb-1">Rising Trends</span>
             <div class="flex items-end gap-2">
-             <span id="rising-trends-value" class="text-2xl font-semibold font-data-display text-primary">24</span>
+              <span id="rising-trends-value" class="text-2xl font-semibold font-data-display text-primary">24</span>
             </div>
           </div>
           <div
@@ -4732,92 +4778,120 @@
                     class="transform -translate-x-1/2 whitespace-nowrap uppercase tracking-wider"
                     style="left: 83.3333%; position: absolute; transform: translateX(-50%);">8 PM</span><span
                     class="transform -translate-x-1/2 whitespace-nowrap uppercase tracking-wider"
-                    style="left: 100%; position: absolute; transform: translateX(-100%);">12 AM</span></div>
+                    style="left: 100%; position: absolute; transform: translateX(-100%);">12 AM</span>
+                </div>
               </div>
             </div>
           </section>
-          <!-- Trending Now (Right) -->
-          <!-- Trending Now (Right) -->
-          <section class="glass-panel rounded-xl p-5 flex flex-col border-primary/20">
+          <!-- Right Column: Trending Now & YouTube Intelligence (Right Side of Overview, Before Platform Sections) -->
+          <div class="flex flex-col gap-6">
+            <!-- Trending Now -->
+            <section class="glass-panel rounded-xl p-5 flex flex-col border-primary/20">
             <header class="flex justify-between items-center mb-4">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-sentiment-emerald animate-ping"></span>
                 <h2 class="text-sm font-semibold text-primary tracking-wide">TRENDING NOW</h2>
               </div>
-              <a href="trends.html" class="text-[11px] text-primary hover:text-white flex items-center gap-1 font-semibold transition-colors">
+              <a href="trends.html"
+                class="text-[11px] text-primary hover:text-white flex items-center gap-1 font-semibold transition-colors">
                 <span>View All</span>
                 <span class="material-symbols-outlined text-[14px]">open_in_new</span>
               </a>
             </header>
             <div class="flex-1 flex flex-col gap-2">
-              <a href="trends.html?topic=AI2024" class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
+              <a href="trends.html?topic=AI2024"
+                class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
                 <div class="flex items-center gap-2.5">
                   <span class="text-xs text-primary font-data-display w-4">01</span>
-                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">#AI2024</span>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30">Viral</span>
+                  <span
+                    class="text-xs font-semibold text-white group-hover:text-primary transition-colors">#AI2024</span>
+                  <span
+                    class="text-[9px] px-1.5 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30">Viral</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-xs font-data-display text-sentiment-emerald font-bold">+184%</span>
-                  <span class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
                 </div>
               </a>
-              <a href="trends.html?topic=QuantumLeap" class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
+              <a href="trends.html?topic=QuantumLeap"
+                class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
                 <div class="flex items-center gap-2.5">
                   <span class="text-xs text-primary font-data-display w-4">02</span>
-                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">#QuantumLeap</span>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30">Breakout</span>
+                  <span
+                    class="text-xs font-semibold text-white group-hover:text-primary transition-colors">#QuantumLeap</span>
+                  <span
+                    class="text-[9px] px-1.5 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30">Breakout</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-xs font-data-display text-sentiment-emerald font-bold">+348%</span>
-                  <span class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
                 </div>
               </a>
-              <a href="trends.html?topic=Cyber" class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
+              <a href="trends.html?topic=Cyber"
+                class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
                 <div class="flex items-center gap-2.5">
                   <span class="text-xs text-primary font-data-display w-4">03</span>
-                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">Cyber Defense Bill</span>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30">Ascending</span>
+                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">Cyber
+                    Defense Bill</span>
+                  <span
+                    class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30">Ascending</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-xs font-data-display text-sentiment-emerald font-bold">+142%</span>
-                  <span class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
                 </div>
               </a>
-              <a href="trends.html?topic=DataBreach" class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-red-500/40 hover:bg-red-500/5 transition-all">
+              <a href="trends.html?topic=DataBreach"
+                class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-red-500/40 hover:bg-red-500/5 transition-all">
                 <div class="flex items-center gap-2.5">
                   <span class="text-xs text-primary font-data-display w-4">04</span>
-                  <span class="text-xs font-semibold text-white group-hover:text-red-400 transition-colors">#DataBreachRumor</span>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 border border-red-500/30">PR Risk</span>
+                  <span
+                    class="text-xs font-semibold text-white group-hover:text-red-400 transition-colors">#DataBreachRumor</span>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 border border-red-500/30">PR
+                    Risk</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-xs font-data-display text-red-400 font-bold">+210%</span>
-                  <span class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-red-400 group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-red-400 group-hover:translate-x-0.5 transition-all">chevron_right</span>
                 </div>
               </a>
-              <a href="trends.html?topic=Neural" class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
+              <a href="trends.html?topic=Neural"
+                class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
                 <div class="flex items-center gap-2.5">
                   <span class="text-xs text-primary font-data-display w-4">05</span>
-                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">Neural Interface Demo</span>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-secondary/10 text-secondary border border-secondary/30">Surging</span>
+                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">Neural
+                    Interface Demo</span>
+                  <span
+                    class="text-[9px] px-1.5 py-0.2 rounded bg-secondary/10 text-secondary border border-secondary/30">Surging</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-xs font-data-display text-sentiment-emerald font-bold">+156%</span>
-                  <span class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
                 </div>
               </a>
-              <a href="trends.html?topic=DeFi" class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
+              <a href="trends.html?topic=DeFi"
+                class="flex justify-between items-center group cursor-pointer p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
                 <div class="flex items-center gap-2.5">
                   <span class="text-xs text-primary font-data-display w-4">06</span>
-                  <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">#DeFiRegulation</span>
-                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-white/10 text-white/70 border border-white/20">Steady</span>
+                  <span
+                    class="text-xs font-semibold text-white group-hover:text-primary transition-colors">#DeFiRegulation</span>
+                  <span
+                    class="text-[9px] px-1.5 py-0.2 rounded bg-white/10 text-white/70 border border-white/20">Steady</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-xs font-data-display text-sentiment-emerald font-bold">+125%</span>
-                  <span class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-white/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span>
                 </div>
               </a>
             </div>
-            <a href="trends.html" class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-primary hover:text-white transition-colors font-semibold">
+            <a href="trends.html"
+              class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-primary hover:text-white transition-colors font-semibold">
               <span class="flex items-center gap-1.5">
                 <span class="material-symbols-outlined text-[16px]">insights</span>
                 Explore Full Predictive Trends Lab
@@ -4825,11 +4899,208 @@
               <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
             </a>
           </section>
+
+          <!-- YouTube Intelligence Section -->
+          <section class="glass-panel rounded-xl p-5 flex flex-col border-primary/30 shadow-[0_0_20px_rgba(6,182,212,0.12)] relative overflow-hidden" id="youtube-intelligence-section">
+            <!-- Accent Glow Line -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#EF4444] via-primary to-sentiment-emerald opacity-80"></div>
+            <div class="absolute inset-0 bg-primary/[0.02] pointer-events-none"></div>
+
+            <!-- Header -->
+            <header class="flex justify-between items-center mb-3 relative z-10">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-md bg-[#EF4444]/10 border border-[#EF4444]/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(239,68,68,0.25)]">
+                  <svg class="w-3.5 h-3.5 text-[#EF4444] fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="text-sm font-bold text-primary tracking-wide drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]">YOUTUBE INTELLIGENCE</h2>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-0.5 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span>
+                <span id="yt-live-indicator-label" class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">142 Live Streams</span>
+              </div>
+            </header>
+
+            <!-- Key Metrics Row -->
+            <div class="grid grid-cols-3 gap-2 mb-3 relative z-10">
+              <div class="p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/30 transition-colors">
+                <span class="text-[9px] text-on-surface-variant block mb-0.5 uppercase tracking-wider">Video Reach</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-base font-bold font-data-display text-white" id="yt-reach-stat">2.1M</span>
+                  <span class="text-[9px] text-sentiment-emerald font-semibold">+14.2%</span>
+                </div>
+              </div>
+              <div class="p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/30 transition-colors">
+                <span class="text-[9px] text-on-surface-variant block mb-0.5 uppercase tracking-wider">Sentiment</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-base font-bold font-data-display text-sentiment-emerald">76%</span>
+                  <span class="text-[9px] text-on-surface-variant font-medium">Pos</span>
+                </div>
+              </div>
+              <div class="p-2 rounded-lg bg-black/40 border border-white/5 hover:border-primary/30 transition-colors">
+                <span class="text-[9px] text-on-surface-variant block mb-0.5 uppercase tracking-wider">Channels</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-base font-bold font-data-display text-primary" id="yt-channels-stat">142</span>
+                  <span class="text-[9px] text-primary/70 font-medium">Live</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Watch Time & Sentiment Polarity Bar -->
+            <div class="mb-3 relative z-10 bg-black/30 p-2.5 rounded-lg border border-white/5">
+              <div class="flex justify-between items-center text-[10px] mb-1.5 font-medium">
+                <span class="text-on-surface-variant flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[13px] text-primary">speed</span>
+                  Watch Time Polarity
+                </span>
+                <span class="text-sentiment-emerald font-data-display flex items-center gap-0.5 font-semibold">
+                  <span class="material-symbols-outlined text-[12px]">trending_up</span> High Velocity
+                </span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-white/5 overflow-hidden flex gap-0.5 mb-1.5">
+                <div class="h-full bg-sentiment-emerald shadow-[0_0_6px_#10B981]" style="width: 76%;" title="76% Positive"></div>
+                <div class="h-full bg-slate-400" style="width: 16%;" title="16% Neutral"></div>
+                <div class="h-full bg-error-red shadow-[0_0_6px_#EF4444]" style="width: 8%;" title="8% Negative"></div>
+              </div>
+              <div class="flex justify-between text-[9px] font-data-display text-on-surface-variant/80">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald shadow-[0_0_4px_#10B981]"></span> 76% Pos</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> 16% Neu</span>
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-error-red shadow-[0_0_4px_#EF4444]"></span> 8% Neg</span>
+              </div>
+            </div>
+
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-1.5 mb-2.5 overflow-x-auto pb-1 scrollbar-thin relative z-10" id="youtube-intel-filter-bar">
+              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border transition-all whitespace-nowrap bg-primary/20 border-primary text-primary font-bold shadow-[0_0_8px_rgba(6,182,212,0.4)]" data-filter="all">All Signals</button>
+              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="stream">Live Streams</button>
+              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="reach">Top Reach</button>
+              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="viral">Viral</button>
+              <button class="yt-filter-btn text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-on-surface-variant hover:border-primary/50 hover:text-white transition-all whitespace-nowrap" data-filter="risk">Risk Alerts</button>
+            </div>
+
+            <!-- Channel & Video Ingestion List -->
+            <div class="space-y-2 flex-1 overflow-y-auto max-h-[220px] pr-1 scrollbar-thin relative z-10" id="youtube-intel-feed-list">
+              <!-- Item 1: WorldPolicy -->
+              <div class="yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group" data-category="stream reach viral">
+                <div class="flex justify-between items-start mb-1.5 gap-2">
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 border border-red-500/30 text-[9px] font-bold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> LIVE STREAM
+                    </span>
+                    <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">YT/@WorldPolicy</span>
+                    <span class="text-[9px] px-1 py-0.2 rounded bg-primary/10 text-primary border border-primary/30">2.3M Reach</span>
+                  </div>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded border bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald flex items-center gap-0.5 shrink-0">
+                    <span class="material-symbols-outlined text-[10px]">person</span> HUMAN
+                  </span>
+                </div>
+                <h4 class="text-xs font-medium text-white mb-1 group-hover:text-primary transition-colors">
+                  Comparative Analysis: Polling vs Live Stream Sentiment in AI Governance
+                </h4>
+                <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
+                  Live session comparing static opinion polling against real-time YouTube chat sentiment across 45 countries.
+                </p>
+                <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> 2.3M</span>
+                    <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> 14.8K</span>
+                    <span class="flex items-center gap-1 text-sentiment-emerald font-medium" title="Engagement Rate"><span class="material-symbols-outlined text-[12px]">trending_up</span> 19.4% Eng</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="px-1.5 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30 text-[9px]">Support</span>
+                    <span class="text-[9px] text-primary/80">#AI2024</span>
+                    <span class="text-[9px] text-on-surface-variant/60">5m ago</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2: TechReviewer -->
+              <div class="yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group" data-category="viral reach">
+                <div class="flex justify-between items-start mb-1.5 gap-2">
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30 text-[9px] font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[10px]">movie</span> 4K VIDEO
+                    </span>
+                    <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">YT/@TechReviewer</span>
+                    <span class="text-[9px] px-1 py-0.2 rounded bg-sentiment-emerald/10 text-sentiment-emerald border border-sentiment-emerald/30">850K Reach</span>
+                  </div>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded border bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald flex items-center gap-0.5 shrink-0">
+                    <span class="material-symbols-outlined text-[10px]">person</span> HUMAN
+                  </span>
+                </div>
+                <h4 class="text-xs font-medium text-white mb-1 group-hover:text-primary transition-colors">
+                  Autonomous Cluster Stress Benchmark: 10M Token Throughput
+                </h4>
+                <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
+                  Full tutorial and stress test review analyzing latency overhead and cross-region consensus behavior.
+                </p>
+                <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> 850K</span>
+                    <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> 8.9K</span>
+                    <span class="flex items-center gap-1 text-primary font-medium" title="Engagement Rate"><span class="material-symbols-outlined text-[12px]">trending_up</span> 14.1% Eng</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30 text-[9px]">Excitement</span>
+                    <span class="text-[9px] text-primary/80">#NeuralCluster</span>
+                    <span class="text-[9px] text-on-surface-variant/60">18m ago</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3: InfraEng Risk Monitor -->
+              <div class="yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group" data-category="risk">
+                <div class="flex justify-between items-start mb-1.5 gap-2">
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="px-1.5 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30 text-[9px] font-bold flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[11px]">warning</span> RISK ALERT
+                    </span>
+                    <span class="text-xs font-semibold text-white group-hover:text-alert-amber transition-colors">YT/@InfraEng</span>
+                    <span class="text-[9px] px-1 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30">Alert Monitor</span>
+                  </div>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded border bg-[#06B6D4]/10 border-[#06B6D4]/30 text-[#06B6D4] flex items-center gap-0.5 shrink-0" title="88% AI Confidence">
+                    <span class="material-symbols-outlined text-[10px]">insights</span> AI NLP
+                  </span>
+                </div>
+                <h4 class="text-xs font-medium text-white mb-1 group-hover:text-alert-amber transition-colors">
+                  Live Edge Failover Resilience Under High Throughput Loads
+                </h4>
+                <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
+                  Telemetry flagged 2 minor latency spikes during distributed edge failover in US-East streaming nodes.
+                </p>
+                <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> 420K</span>
+                    <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> 4.1K</span>
+                    <span class="flex items-center gap-1 text-alert-amber font-medium" title="Risk Score"><span class="material-symbols-outlined text-[12px]">speed</span> Risk: Moderate</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="px-1.5 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30 text-[9px]">Caution</span>
+                    <span class="text-[9px] text-alert-amber/80">#Latency</span>
+                    <span class="text-[9px] text-on-surface-variant/60">35m ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section Footer Link -->
+            <a href="sentiment.html" class="mt-2.5 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs text-primary hover:text-white transition-colors font-semibold relative z-10">
+              <span class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">analytics</span>
+                YouTube Sentiment Stream & Analytics
+              </span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </section>
         </div>
+      </div>
 
         <!-- Premium Feature Cards Grid React Mount Point -->
         <div id="react-platform-cards-root">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-[fadeInUp_0.6s_ease-out_forwards]"
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 animate-[fadeInUp_0.6s_ease-out_forwards]"
             style="opacity: 0; transform: translateY(30px); animation: 0.6s ease-out 0s 1 normal forwards running fadeInUp;">
             <div class="feature-card-wrapper x-card" style="transform: none; z-index: 1;">
               <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
@@ -4845,7 +5116,8 @@
                   <div
                     class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                     <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span></div>
+                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
+                  </div>
                 </div>
                 <div class="space-y-1 mb-2">
                   <div
@@ -4855,7 +5127,8 @@
                 </div>
                 <div
                   class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +12.8%</div>
+                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +12.8%
+                </div>
               </div>
             </div>
             <div class="feature-card-wrapper ig-card" style="transform: none; z-index: 1;">
@@ -4873,7 +5146,8 @@
                   <div
                     class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                     <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span></div>
+                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
+                  </div>
                 </div>
                 <div class="space-y-1 mb-2">
                   <div
@@ -4883,7 +5157,8 @@
                 </div>
                 <div
                   class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +18.4%</div>
+                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +18.4%
+                </div>
               </div>
             </div>
             <div class="feature-card-wrapper fb-card" style="transform: none; z-index: 1;">
@@ -4901,7 +5176,8 @@
                   <div
                     class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                     <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span></div>
+                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
+                  </div>
                 </div>
                 <div class="space-y-1 mb-2">
                   <div
@@ -4911,7 +5187,8 @@
                 </div>
                 <div
                   class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +9.7%</div>
+                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +9.7%
+                </div>
               </div>
             </div>
             <div class="feature-card-wrapper tg-card" style="transform: none; z-index: 1;">
@@ -4929,7 +5206,8 @@
                   <div
                     class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                     <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span><span
-                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span></div>
+                      class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
+                  </div>
                 </div>
                 <div class="space-y-1 mb-2">
                   <div
@@ -4939,7 +5217,38 @@
                 </div>
                 <div
                   class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
-                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +21.6%</div>
+                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +21.6%
+                </div>
+              </div>
+            </div>
+            <!-- YouTube Card -->
+            <div class="feature-card-wrapper yt-card cursor-pointer" id="prerender-yt-card" style="transform: none; z-index: 1;">
+              <div class="feature-card-glow" style="opacity: 0.8; filter: blur(20px);"></div>
+              <div class="feature-card-inner border border-primary/30"
+                style="border-color: rgba(6, 182, 212, 0.3); transition: border-color 0.3s;">
+                <div class="flex justify-between items-start mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+                    </svg>
+                    <span class="text-sm font-bold tracking-wide text-primary">YouTube</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-1.5 bg-sentiment-emerald/20 px-2 py-1 rounded border border-sentiment-emerald/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sentiment-emerald animate-pulse"></span>
+                    <span class="text-[10px] text-sentiment-emerald font-medium uppercase tracking-wider">Live</span>
+                  </div>
+                </div>
+                <div class="space-y-1 mb-2">
+                  <div
+                    class="text-2xl font-bold font-data-display text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+                    2.1M</div>
+                  <div class="text-xs text-primary/80">Active Reach</div>
+                </div>
+                <div
+                  class="text-sm font-medium text-sentiment-emerald flex items-center gap-1 drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">
+                  <span class="material-symbols-outlined text-[16px]">trending_up</span> +14.2%
+                </div>
               </div>
             </div>
           </div>
@@ -4971,7 +5280,8 @@
                   <div class="flex justify-between items-center mb-3">
                     <h2
                       class="text-sm font-bold text-primary tracking-wide drop-shadow-[0_0_5px_rgba(6,182,212,0.8)] flex items-center gap-2">
-                      <span class="material-symbols-outlined text-[18px]">stream</span> LIVE INTELLIGENCE</h2>
+                      <span class="material-symbols-outlined text-[18px]">stream</span> LIVE INTELLIGENCE
+                    </h2>
                     <div class="flex items-center gap-2"><span
                         class="w-2 h-2 rounded-full bg-sentiment-emerald animate-ping shadow-[0_0_10px_#10B981]"></span><span
                         class="text-[10px] text-sentiment-emerald tracking-widest uppercase font-bold">Streaming</span>
@@ -5001,7 +5311,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5034,7 +5345,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5068,7 +5380,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5101,7 +5414,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5134,7 +5448,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5168,7 +5483,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5201,7 +5517,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5235,7 +5552,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5268,7 +5586,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5301,7 +5620,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5334,7 +5654,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5367,7 +5688,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5401,7 +5723,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5434,7 +5757,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5467,7 +5791,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5500,7 +5825,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5533,7 +5859,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5566,7 +5893,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5600,7 +5928,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5633,7 +5962,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5666,7 +5996,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5700,7 +6031,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5733,7 +6065,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5767,7 +6100,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5800,7 +6134,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5833,7 +6168,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5866,7 +6202,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5900,7 +6237,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5934,7 +6272,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -5968,7 +6307,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6002,7 +6342,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6035,7 +6376,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6068,7 +6410,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6102,7 +6445,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6135,7 +6479,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6169,7 +6514,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6202,7 +6548,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6235,7 +6582,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6268,7 +6616,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6301,7 +6650,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6335,7 +6685,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6368,7 +6719,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6401,7 +6753,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6435,7 +6788,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6468,7 +6822,8 @@
                               <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6501,7 +6856,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6534,7 +6890,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6568,7 +6925,8 @@
                               <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6602,7 +6960,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -6635,7 +6994,8 @@
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z">
                               </path>
-                            </svg></div>
+                            </svg>
+                          </div>
                         </div>
                         <div class="flex-1 min-w-0">
                           <div class="flex justify-between items-start mb-1">
@@ -7003,6 +7363,18 @@
         trend: '+21.6%',
         sentiment: '70% Pos',
         className: 'tg-card'
+      },
+      {
+        id: 'yt',
+        name: 'YouTube',
+        icon: <svg className="w-5 h-5 text-primary drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>,
+        totalUsers: '2.1M',
+        activeUsers: '142 Live',
+        posts: '780K Vids',
+        engagement: '14.6M',
+        trend: '+14.2%',
+        sentiment: '76% Pos',
+        className: 'yt-card'
       }
     ];
 
@@ -7010,14 +7382,24 @@
       const [hoveredPlatform, setHoveredPlatform] = useState(null);
 
       return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-[fadeInUp_0.6s_ease-out_forwards]" style={{ opacity: 0, transform: 'translateY(30px)', animation: 'fadeInUp 0.6s ease-out forwards' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 animate-[fadeInUp_0.6s_ease-out_forwards]" style={{ opacity: 0, transform: 'translateY(30px)', animation: 'fadeInUp 0.6s ease-out forwards' }}>
           {CardData.map((data, index) => {
             const isHovered = hoveredPlatform === data.id;
 
             return (
               <motion.div
                 key={data.id}
-                className={`feature-card-wrapper ${data.className}`}
+                className={`feature-card-wrapper ${data.className} cursor-pointer`}
+                onClick={() => {
+                  if (data.id === 'yt') {
+                    const el = document.getElementById('youtube-intelligence-section');
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      el.classList.add('ring-2', 'ring-primary', 'shadow-[0_0_30px_rgba(6,182,212,0.4)]');
+                      setTimeout(() => el.classList.remove('ring-2', 'ring-primary', 'shadow-[0_0_30px_rgba(6,182,212,0.4)]'), 2500);
+                    }
+                  }
+                }}
                 onMouseEnter={() => setHoveredPlatform(data.id)}
                 onMouseLeave={() => setHoveredPlatform(null)}
                 initial={{ y: 0, scale: 1 }}
@@ -7093,7 +7475,8 @@
       const platforms = [
         { id: 'X', icon: <svg className="w-3.5 h-3.5 fill-primary" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg> },
         { id: 'IG', icon: <svg className="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg> },
-        { id: 'TG', icon: <svg className="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg> }
+        { id: 'TG', icon: <svg className="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg> },
+        { id: 'YT', icon: <svg className="w-3.5 h-3.5 text-[#EF4444]" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg> }
       ];
       const emotions = [
         { type: 'Joy', color: 'text-[#10B981]', bg: 'bg-[#10B981]/10', border: 'border-[#10B981]/30' },
@@ -7168,8 +7551,8 @@
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
                   className={`text-[10px] px-2.5 py-1 rounded-full border transition-all whitespace-nowrap ${activeFilter === filter
-                      ? 'bg-primary/20 border-primary text-primary shadow-[0_0_8px_rgba(6,182,212,0.4)]'
-                      : 'border-white/10 text-on-surface-variant hover:border-primary/50'
+                    ? 'bg-primary/20 border-primary text-primary shadow-[0_0_8px_rgba(6,182,212,0.4)]'
+                    : 'border-white/10 text-on-surface-variant hover:border-primary/50'
                     }`}
                 >
                   {filter}
@@ -7245,39 +7628,249 @@
   <script src="assets/analytics-dashboard.js" defer></script>
 
   <script>
-  fetch("http://localhost:5000/api/dashboard")
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("total-posts-value").textContent =
-        data.totalPosts.toLocaleString();
-          document.getElementById("active-users-value").textContent =
-    data.activeUsers.toLocaleString();
-      document.getElementById("engagement-value").textContent =
-    data.engagement.toLocaleString();
-      document.getElementById("positive-sentiment-value").textContent =
-    data.positiveSentiment + "%";
-    document.getElementById("rising-trends-value").textContent =
-  data.risingTrends.toLocaleString();
-    })
-    .catch(error => {
-      console.error("Backend connection failed:", error);
-    });
+    fetch("http://localhost:5000/api/dashboard")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("total-posts-value").textContent =
+          data.totalPosts.toLocaleString();
+        document.getElementById("active-users-value").textContent =
+          data.activeUsers.toLocaleString();
+        document.getElementById("engagement-value").textContent =
+          data.engagement.toLocaleString();
+        document.getElementById("positive-sentiment-value").textContent =
+          data.positiveSentiment + "%";
+        document.getElementById("rising-trends-value").textContent =
+          data.risingTrends.toLocaleString();
+      })
+      .catch(error => {
+        console.error("Backend connection failed:", error);
+      });
 </script>
 <script>
-async function loadDashboardData() {
-    try {
-        const response = await fetch("/api/dashboard");
+    async function loadDashboardData() {
+      try {
+        const apiUrl = window.location.port === '5000' ? '/api/dashboard' : 'http://localhost:5000/api/dashboard';
+        const response = await fetch(apiUrl);
         const data = await response.json();
 
-        document.getElementById("total-posts-value").textContent =
+        if (document.getElementById("total-posts-value") && data && data.totalPosts) {
+          document.getElementById("total-posts-value").textContent =
             data.totalPosts.toLocaleString();
-
-    } catch (error) {
+        }
+      } catch (error) {
         console.error("Dashboard data error:", error);
+      }
     }
-}
 
-loadDashboardData();
+    loadDashboardData();
+</script>
+<script>
+    (function initYouTubeIntelligence() {
+      const filterBar = document.getElementById('youtube-intel-filter-bar');
+      const feedList = document.getElementById('youtube-intel-feed-list');
+      const headerYtBtn = document.getElementById('header-platform-youtube-btn');
+      const prerenderYtCard = document.getElementById('prerender-yt-card');
+      const liveBadge = document.getElementById('yt-live-indicator-label');
+      const reachStat = document.getElementById('yt-reach-stat');
+      const section = document.getElementById('youtube-intelligence-section');
+
+      // Scroll & highlight helper
+      function scrollToYouTubeSection() {
+        if (!section) return;
+        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        section.classList.add('ring-2', 'ring-primary', 'shadow-[0_0_35px_rgba(6,182,212,0.45)]');
+        setTimeout(() => {
+          section.classList.remove('ring-2', 'ring-primary', 'shadow-[0_0_35px_rgba(6,182,212,0.45)]');
+        }, 2500);
+      }
+
+      if (headerYtBtn) {
+        headerYtBtn.addEventListener('click', scrollToYouTubeSection);
+      }
+      if (prerenderYtCard) {
+        prerenderYtCard.addEventListener('click', scrollToYouTubeSection);
+      }
+
+      if (!filterBar || !feedList) return;
+
+      const filterBtns = filterBar.querySelectorAll('.yt-filter-btn');
+      const activeClasses = ['bg-primary/20', 'border-primary', 'text-primary', 'font-bold', 'shadow-[0_0_8px_rgba(6,182,212,0.4)]'];
+      const inactiveClasses = ['border-white/10', 'text-on-surface-variant'];
+      let currentFilter = 'all';
+
+      function applyFilter(filter) {
+        currentFilter = filter;
+        const feedItems = feedList.querySelectorAll('.yt-feed-item');
+        feedItems.forEach(item => {
+          const category = item.getAttribute('data-category') || '';
+          if (filter === 'all' || category.includes(filter)) {
+            item.style.display = 'block';
+            item.classList.remove('hidden');
+          } else {
+            item.style.display = 'none';
+            item.classList.add('hidden');
+          }
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter') || 'all';
+
+          filterBtns.forEach(b => {
+            b.classList.remove(...activeClasses);
+            b.classList.add(...inactiveClasses);
+          });
+          btn.classList.remove(...inactiveClasses);
+          btn.classList.add(...activeClasses);
+
+          applyFilter(filter);
+        });
+      });
+
+      // Real-time telemetry streaming pool
+      const incomingSignals = [
+        {
+          author: "YT/@DataStream",
+          title: "Real-Time NLP Model Routing & Latency Benchmark",
+          text: "Comparing token generation latency across distributed clusters under live user query surges.",
+          category: "stream viral",
+          isStream: true,
+          reach: "1.1M Reach",
+          views: "1.1M",
+          comments: "12.4K",
+          eng: "18.2% Eng",
+          badge: "HUMAN",
+          badgeClass: "bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald",
+          badgeIcon: "person",
+          emotion: "Support",
+          emotionClass: "bg-sentiment-emerald/10 text-sentiment-emerald border-sentiment-emerald/30",
+          topic: "#RealTimeNLP"
+        },
+        {
+          author: "YT/@AIInsider",
+          title: "Frontier Autonomous Agents: Global Regulation Stream",
+          text: "Live coverage of multilateral agreements on autonomous multi-agent cluster alignment and oversight.",
+          category: "stream reach",
+          isStream: true,
+          reach: "1.8M Reach",
+          views: "1.8M",
+          comments: "19.3K",
+          eng: "22.1% Eng",
+          badge: "HUMAN",
+          badgeClass: "bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald",
+          badgeIcon: "person",
+          emotion: "Excitement",
+          emotionClass: "bg-primary/10 text-primary border-primary/30",
+          topic: "#AIGovernance"
+        },
+        {
+          author: "YT/@PolicyWatch",
+          title: "Regulatory Compliance Audit for High-Velocity Feeds",
+          text: "Automated compliance scanner flagged potential data boundary crossover in multi-cloud pipeline.",
+          category: "risk",
+          isStream: false,
+          isRisk: true,
+          reach: "310K Reach",
+          views: "310K",
+          comments: "3.2K",
+          eng: "Risk: Moderate",
+          badge: "AI NLP",
+          badgeClass: "bg-[#06B6D4]/10 border-[#06B6D4]/30 text-[#06B6D4]",
+          badgeIcon: "insights",
+          emotion: "Caution",
+          emotionClass: "bg-alert-amber/10 text-alert-amber border-alert-amber/30",
+          topic: "#Compliance"
+        },
+        {
+          author: "YT/@NeuralCraft",
+          title: "Scaling 100K Concurrent Agent Threads in Production",
+          text: "Stress benchmark showing thread scheduling efficiency and low-memory state synchronization.",
+          category: "viral reach",
+          isStream: false,
+          reach: "2.7M Reach",
+          views: "2.7M",
+          comments: "24.5K",
+          eng: "26.4% Eng",
+          badge: "HUMAN",
+          badgeClass: "bg-sentiment-emerald/10 border-sentiment-emerald/30 text-sentiment-emerald",
+          badgeIcon: "person",
+          emotion: "Joy",
+          emotionClass: "bg-sentiment-emerald/10 text-sentiment-emerald border-sentiment-emerald/30",
+          topic: "#AutonomousAI"
+        }
+      ];
+
+      let streamIndex = 0;
+      let liveStreamCount = 142;
+
+      // Real-time dynamic ingestion loop
+      setInterval(() => {
+        if (!feedList) return;
+
+        const signal = incomingSignals[streamIndex % incomingSignals.length];
+        streamIndex++;
+
+        // Fluctuate live stream counter
+        liveStreamCount += Math.random() > 0.5 ? 1 : -1;
+        if (liveStreamCount < 138) liveStreamCount = 140;
+        if (liveBadge) liveBadge.textContent = `${liveStreamCount} Live Streams`;
+
+        const newEl = document.createElement('div');
+        newEl.className = 'yt-feed-item p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-primary/40 hover:bg-black/60 transition-all duration-300 group feed-enter';
+        newEl.setAttribute('data-category', signal.category);
+
+        const typeBadge = signal.isStream
+          ? '<span class="px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 border border-red-500/30 text-[9px] font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> LIVE STREAM</span>'
+          : signal.isRisk
+          ? '<span class="px-1.5 py-0.2 rounded bg-alert-amber/10 text-alert-amber border border-alert-amber/30 text-[9px] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[11px]">warning</span> RISK ALERT</span>'
+          : '<span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/30 text-[9px] font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[10px]">movie</span> 4K VIDEO</span>';
+
+        newEl.innerHTML = `
+          <div class="flex justify-between items-start mb-1.5 gap-2">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              ${typeBadge}
+              <span class="text-xs font-semibold text-white group-hover:text-primary transition-colors">${signal.author}</span>
+              <span class="text-[9px] px-1 py-0.2 rounded bg-primary/10 text-primary border border-primary/30">${signal.reach}</span>
+            </div>
+            <span class="text-[9px] px-1.5 py-0.2 rounded border ${signal.badgeClass} flex items-center gap-0.5 shrink-0">
+              <span class="material-symbols-outlined text-[10px]">${signal.badgeIcon}</span> ${signal.badge}
+            </span>
+          </div>
+          <h4 class="text-xs font-medium text-white mb-1 group-hover:text-primary transition-colors">
+            ${signal.title}
+          </h4>
+          <p class="text-[11px] text-white/70 leading-relaxed line-clamp-2 group-hover:text-white/90 transition-colors mb-2">
+            ${signal.text}
+          </p>
+          <div class="flex justify-between items-center text-[10px] text-on-surface-variant/80 font-data-display border-t border-white/5 pt-1.5">
+            <div class="flex items-center gap-2.5">
+              <span class="flex items-center gap-1 text-white/90" title="Views"><span class="material-symbols-outlined text-[12px] text-primary">visibility</span> ${signal.views}</span>
+              <span class="flex items-center gap-1 text-white/90" title="Comments"><span class="material-symbols-outlined text-[12px] text-primary">chat_bubble</span> ${signal.comments}</span>
+              <span class="flex items-center gap-1 text-sentiment-emerald font-medium" title="Engagement"><span class="material-symbols-outlined text-[12px]">trending_up</span> ${signal.eng}</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="px-1.5 py-0.2 rounded border text-[9px] ${signal.emotionClass}">${signal.emotion}</span>
+              <span class="text-[9px] text-primary/80">${signal.topic}</span>
+              <span class="text-[9px] text-sentiment-emerald font-semibold animate-pulse">Just now</span>
+            </div>
+          </div>
+        `;
+
+        if (currentFilter !== 'all' && !signal.category.includes(currentFilter)) {
+          newEl.style.display = 'none';
+          newEl.classList.add('hidden');
+        }
+
+        feedList.insertBefore(newEl, feedList.firstChild);
+
+        // Keep maximum 8 items to prevent runaway DOM growth
+        const allItems = feedList.querySelectorAll('.yt-feed-item');
+        if (allItems.length > 8) {
+          allItems[allItems.length - 1].remove();
+        }
+      }, 10000);
+    })();
 </script>
 </body>
 
