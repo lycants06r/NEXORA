@@ -175,7 +175,7 @@ function SentimentPage() {
           <div>
             <span className="text-white font-bold block">NLP Classification Architecture:</span>
             <span className="text-[#8ea0b5]">
-              Hybrid Engine · FastAPI Transformer Endpoint (Port 8000) with local token-weight statistical fallback.
+              Hybrid Engine · Cloud NLP Neural Endpoint with local token-weight statistical fallback.
             </span>
           </div>
         </div>

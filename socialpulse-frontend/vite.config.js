@@ -10,13 +10,14 @@ export default defineConfig({
     // This avoids CORS issues during development
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8000',
+        target: 'https://nexora-e196.onrender.com',
         changeOrigin: true,
         secure: false,
       },
       '/health': {
-        target: 'http://127.0.0.1:8000',
+        target: 'https://nexora-e196.onrender.com',
         changeOrigin: true,
+        secure: false,
       }
     }
   }

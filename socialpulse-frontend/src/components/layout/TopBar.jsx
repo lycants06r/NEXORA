@@ -43,7 +43,8 @@ function TopBar() {
 
   // Check backend health on load
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/health')
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://nexora-e196.onrender.com'
+    fetch(`${apiBase}/health`)
       .then(r => r.json())
       .then(data => setHealth(data))
       .catch(() => setHealth(null))

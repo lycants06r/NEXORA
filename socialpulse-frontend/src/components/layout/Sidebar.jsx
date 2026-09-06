@@ -81,7 +81,7 @@ function Sidebar() {
               Telemetry Active
             </p>
             <p className="text-[11px] text-[#8ea0b5] font-mono truncate">
-              FastAPI:8000 · Online
+              Cloud Engine · Online
             </p>
           </div>
         </div>
