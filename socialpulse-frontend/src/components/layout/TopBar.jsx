@@ -38,7 +38,7 @@ function TopBar() {
   }, [])
 
   const pageInfo = PAGE_TITLES[location.pathname] ||
-                   { title: 'SocialPulse', subtitle: 'Intelligence Operations' }
+                   { title: 'NEXORA', subtitle: 'Intelligence Operations' }
 
   return (
     <header className="

@@ -71,7 +71,7 @@ function Dashboard() {
           </span>
         </div>
         <h2 className="text-2xl font-extrabold text-white mb-2 tracking-tight">
-          SocialPulse Autonomous Intelligence Command Center
+          NEXORA Autonomous Intelligence Command Center
         </h2>
         <p className="text-sm text-[#8ea0b5] max-w-3xl leading-relaxed">
           Aggregating, parsing, and correlating real-time social signals across X, Reddit, YouTube & Telegram.

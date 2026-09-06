@@ -39,7 +39,7 @@ function Sidebar() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-white font-extrabold text-base tracking-wider uppercase">
-                SocialPulse
+                NEXORA
               </h1>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-[#4cd7f6] border border-cyan-500/30 font-mono font-bold">
                 HUD
