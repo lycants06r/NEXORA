@@ -1,7 +1,7 @@
 /*
   TaskStatusCard.jsx
   ------------------
-  Shows the real-time status of a background collection task with NEXORA HUD styling.
+  Shows the real-time status of a background collection task with NEXORA dark styling.
   Polls the backend every 3 seconds until task completes.
 */
 

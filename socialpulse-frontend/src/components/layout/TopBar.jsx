@@ -2,7 +2,7 @@
   TopBar.jsx
   ----------
   The top header bar shown on all pages.
-  Features NEXORA-style glassmorphic telemetry HUD with live status,
+  Features NEXORA-style glassmorphic telemetry console with live status,
   role-based access control (RBAC) switcher, threat alert badge, and report export.
 */
 
