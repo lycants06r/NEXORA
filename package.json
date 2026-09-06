@@ -2,6 +2,7 @@
   "name": "nexora-root",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://social-media-analytics-nexora.vercel.app",
   "scripts": {
     "build": "cd socialpulse-frontend && npm install && npm run build"
   }

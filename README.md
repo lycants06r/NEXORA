@@ -1,12 +1,14 @@
 # 🌐 NEXORA
-### Autonomous Social Media Intelligence, Cognitive Threat Detection & Sentiment Telemetry Command Center
+### Autonomous Social Media Intelligence, Threat Detection & Sentiment Telemetry Command Center
 
-[![SIH Hackathon](https://img.shields.io/badge/Smart%20India%20Hackathon-Prototype%202026-00F0FF?style=for-the-badge&logo=target&logoColor=black)](https://github.com/Keshar-shaw/Prototype)
-[![Status](https://img.shields.io/badge/System%20Status-Operational%20%7C%206%20Engines%20Live-10B981?style=for-the-badge&logo=statuspage&logoColor=white)](http://localhost:5000)
-[![Node.js](https://img.shields.io/badge/Node.js-v18%2B%20%7C%20Express%205-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-[![WebSockets](https://img.shields.io/badge/WebSockets-Real--Time%20Firehose-010101?style=for-the-badge&logo=socketdotio&logoColor=white)](https://github.com/websockets/ws)
-[![Supabase](https://img.shields.io/badge/Supabase-Database%20%26%20Replication-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![Live Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://social-media-analytics-nexora.vercel.app)
+[![Cloud Backend API](https://img.shields.io/badge/Render-API%20Online-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://nexora-e196.onrender.com/docs)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-NEXORA-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lycants06r/Social-Media-Analytics-NEXORA-)
+[![System Status](https://img.shields.io/badge/System%20Status-Operational-10B981?style=for-the-badge&logo=statuspage&logoColor=white)](https://social-media-analytics-nexora.vercel.app)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=for-the-badge)](LICENSE)
+
+> 🚀 **Live Production Application**: **[https://social-media-analytics-nexora.vercel.app](https://social-media-analytics-nexora.vercel.app)**  
+> ⚡ **Cloud FastAPI Backend API & Swagger Docs**: **[https://nexora-e196.onrender.com/docs](https://nexora-e196.onrender.com/docs)**
 
 ```text
  ███╗   ██╗███████╗██╗  ██╗ ██████╗ ██████╗  █████╗ 
@@ -40,7 +42,7 @@
 
 In high-velocity information ecosystems, coordinated disinformation campaigns, synthetic bot swarms, and rapid polarity shifts pose immediate cognitive threats to public institutions, democratic discourse, and enterprise resilience.
 
-**NEXORA** is a military-grade, glassmorphic intelligence operations workstation designed for the **Smart India Hackathon (SIH)**. It aggregates, parses, and correlates cross-platform social signals in real time—delivering autonomous NLP-driven threat scoring, viral trajectory forecasting, and multi-network sentiment telemetry through an intuitive, futuristic command center.
+**NEXORA** is an enterprise-grade, glassmorphic intelligence operations workstation designed for real-time social intelligence and cognitive threat detection. It aggregates, parses, and correlates cross-platform social signals in real time—delivering autonomous NLP-driven threat scoring, viral trajectory forecasting, and multi-network sentiment telemetry through an intuitive, futuristic command center.
 
 ### Core Objectives:
 * ⚡ **Zero-Latency Ingestion**: Real-time streaming from Bluesky Firehose, YouTube Live, and social APIs.
