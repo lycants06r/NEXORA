@@ -88,9 +88,9 @@ function TopBar() {
               "
               title={role.description}
             >
-              <option value="ADMIN">🛡️ Role: ADMIN</option>
-              <option value="ANALYST">🔬 Role: ANALYST</option>
-              <option value="VIEWER">👁️ Role: VIEWER</option>
+              <option value="ADMIN">Role: ADMIN</option>
+              <option value="ANALYST">Role: ANALYST</option>
+              <option value="VIEWER">Role: VIEWER</option>
             </select>
           </div>
 
