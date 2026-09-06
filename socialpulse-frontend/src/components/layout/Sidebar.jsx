@@ -11,12 +11,15 @@ import { NavLink } from 'react-router-dom'
 // Navigation items config
 // emoji = icon | path = URL | label = menu text
 const NAV_ITEMS = [
-  { emoji: '⚡', label: 'Command Center',  path: '/'            },
-  { emoji: '📥', label: 'Data Ingestion',  path: '/ingestion'   },
-  { emoji: '💬', label: 'Sentiment Radar', path: '/sentiment'   },
-  { emoji: '👥', label: 'Demographics',    path: '/demographics'},
-  { emoji: '📈', label: 'Viral Trends',    path: '/trends'      },
-  { emoji: '🕸️', label: 'Network Topology',path: '/network'     },
+  { emoji: '⚡', label: 'Command Center',      path: '/'            },
+  { emoji: '📱', label: 'Platform Analytics',  path: '/analytics'   },
+  { emoji: '📥', label: 'Data Ingestion',      path: '/ingestion'   },
+  { emoji: '💬', label: 'Sentiment Radar',     path: '/sentiment'   },
+  { emoji: '👥', label: 'Demographics',        path: '/demographics'},
+  { emoji: '📈', label: 'Viral Trends',        path: '/trends'      },
+  { emoji: '🕸️', label: 'Network Topology',    path: '/network'     },
+  { emoji: '🧠', label: 'AI 5-Vector Insights',path: '/ai-insights' },
+  { emoji: '🚨', label: 'Threat Alerts',       path: '/alerts'      },
 ]
 
 function Sidebar() {
