@@ -1,7 +1,7 @@
 /*
   SentimentHeatmap.jsx
   --------------------
-  SIH26152 Sentiment & Emotion Temporal Heat Map.
+  NEXORA Sentiment & Emotion Temporal Heat Map.
   Visualizes correlation: TIME (24h or 7d) × EMOTION / SENTIMENT TAXONOMY.
   Responds interactively to:
   - Platform

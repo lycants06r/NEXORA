@@ -1,7 +1,7 @@
 /*
   ReportExportModal.jsx
   ---------------------
-  SIH26152 Comprehensive Analytics & Intelligence Briefing Exporter.
+  Comprehensive Analytics & Intelligence Briefing Exporter.
   Supports:
   1. CSV Export: Download normalized social telemetry dataset.
   2. Formatted PDF / Intelligence Dossier: Print and digital PDF report containing:
@@ -161,7 +161,7 @@ function ReportExportModal({ isOpen, onClose }) {
           <div class="header">
             <div>
               <h1>NEXORA Intelligence Operations Briefing</h1>
-              <div class="subtitle">SIH26152 SOCIAL MEDIA ANALYTICS · CLASSIFIED THREAT RADAR</div>
+              <div class="subtitle">CROSS-PLATFORM SOCIAL MEDIA INTELLIGENCE · THREAT RADAR</div>
             </div>
             <div style="text-align: right; font-size: 11px; font-family: monospace;">
               <div>TIMESTAMP: ${new Date().toUTCString()}</div>
@@ -303,7 +303,7 @@ function ReportExportModal({ isOpen, onClose }) {
           </table>
 
           <div class="footer">
-            NEXORA Cognitive Threat Engine · Smart India Hackathon (SIH26152) · Zero PII Compliance Verified
+            NEXORA Cognitive Threat Engine · Zero PII Compliance Verified
           </div>
         </body>
         </html>
@@ -334,7 +334,7 @@ function ReportExportModal({ isOpen, onClose }) {
                 Export Intelligence Briefing
               </h3>
               <p className="text-xs text-[#8ea0b5] font-mono">
-                SIH26152 Multi-Vector Intelligence Dossier
+                Multi-Vector Intelligence Briefing Dossier
               </p>
             </div>
           </div>

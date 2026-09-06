@@ -1,7 +1,7 @@
 /*
   SchedulerCard.jsx
   -----------------
-  SIH26152 Automated Ingestion Scheduler.
+  NEXORA Automated Ingestion Scheduler.
   Supports configurable cron-like polling intervals (5m, 15m, 1h, 6h, 24h),
   active stream daemon pause/resume, and secure env credentials indicator.
 */

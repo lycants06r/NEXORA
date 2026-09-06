@@ -1,7 +1,7 @@
 /*
   DemographicsPage.jsx
   --------------------
-  SIH26152 Audience Intelligence & Demographic Profiling Station.
+  Audience Intelligence & Demographic Profiling Station.
   Features:
   - Age bracket distribution (18–24, 25–34, 35–44, 45+)
   - Interactive multi-tier Geographic Distribution (Country, State/Region, City Hubs)
@@ -39,7 +39,7 @@ function DemographicsPage() {
         throw new Error('Fallback needed')
       }
     } catch {
-      // High-fidelity fallback complying with SIH26152 requirements
+      // High-fidelity fallback intelligence dataset
       setData({
         total_analyzed: 452452,
         age_distribution: {
@@ -112,7 +112,7 @@ function DemographicsPage() {
       <PageHeader
         emoji="👥"
         title="Audience Intelligence & Demographic Profiling"
-        subtitle="SIH26152 Aggregated age brackets, regional geographic distribution, language trends & professional interest clustering"
+        subtitle="Aggregated age brackets, regional geographic distribution, language trends & professional interest clustering"
       >
         <div className="flex gap-1.5 flex-wrap">
           {[null, 'twitter', 'telegram', 'instagram', 'facebook', 'reddit', 'youtube'].map((p) => (

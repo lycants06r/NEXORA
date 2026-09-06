@@ -1,7 +1,7 @@
 /*
   ChronologicalTimeline.jsx
   --------------------------
-  SIH26152 Interactive Chronological Event Timeline.
+  NEXORA Interactive Chronological Event Timeline.
   Enables intelligence analysts to trace incoming signals in chronological sequence.
   Supports:
   - Date range filtering

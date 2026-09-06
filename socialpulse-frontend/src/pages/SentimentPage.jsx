@@ -1,7 +1,7 @@
 /*
   SentimentPage.jsx
   -----------------
-  SIH26152 Sentiment Analysis & Emotion Taxonomy Station.
+  Sentiment Analysis & Emotion Taxonomy Station.
   Features:
   - 8-Class Multi-Emotion NLP Evaluator (Positive, Negative, Neutral, Sarcasm, Anxiety, Excitement, Supportive, Opposition)
   - Time x Emotion Temporal Heat Map
@@ -147,7 +147,7 @@ function SentimentPage() {
           supportive: polarity === 'positive' ? 0.78 : 0.12,
           opposition: polarity === 'negative' ? 0.82 : 0.10,
         },
-        model_type: 'SIH26152 Local Rule-Engine + Transformer Heuristic Fallback'
+        model_type: 'NEXORA Cognitive Rule-Engine + Transformer Heuristic Fallback'
       })
     } finally {
       setAnalyzing(false)
@@ -165,7 +165,7 @@ function SentimentPage() {
       <PageHeader
         emoji="💬"
         title="Sentiment & Multi-Emotion Radar"
-        subtitle="SIH26152 8-class emotion taxonomy, thread-level sentiment drill-down & temporal heatmap"
+        subtitle="8-class emotion taxonomy, thread-level sentiment drill-down & temporal heatmap"
       />
 
       {/* Model Authenticity Notice */}

@@ -1,7 +1,7 @@
 /*
   CascadeTimeline.jsx
   -------------------
-  SIH26152 Information Cascade & Propagation Spread Visualization.
+  NEXORA Information Cascade & Propagation Spread Visualization.
   Shows how a viral topic propagates between nodes and platforms over time.
   Features:
   - Origin node, detection time, and reach

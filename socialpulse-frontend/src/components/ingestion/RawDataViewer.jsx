@@ -1,7 +1,7 @@
 /*
   RawDataViewer.jsx
   -----------------
-  SIH26152 Raw Data Stream Viewer.
+  NEXORA Raw Data Stream Viewer.
   Features:
   - Text search
   - Multi-platform filter

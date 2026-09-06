@@ -1,7 +1,7 @@
 /*
   ThreadDrilldownModal.jsx
   ------------------------
-  SIH26152 Thread-Level Sentiment & Emotion Drill-Down Inspector.
+  Thread-Level Sentiment & Emotion Drill-Down Inspector.
   Allows analysts to select any post or conversation thread and see:
   - Original root message
   - All branch replies and responses

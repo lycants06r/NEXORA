@@ -1,7 +1,7 @@
 /*
   NetworkPage.jsx
   ---------------
-  SIH26152 Link & Network Analysis Station.
+  Link & Network Analysis Station.
   Features:
   - Interactive Force-Directed Topology Graph
   - Influencer Centrality Leaderboard (PageRank, Betweenness Centrality, Degree Centrality, Reach & Topics)
@@ -117,7 +117,7 @@ function NetworkPage() {
       <PageHeader
         emoji="🕸️"
         title="Network Topology & Astroturfing Radar"
-        subtitle="SIH26152 Force-directed graph, centrality metrics (PageRank/Betweenness/Degree), community detection & information cascades"
+        subtitle="Force-directed graph, centrality metrics (PageRank/Betweenness/Degree), community detection & information cascades"
       >
         <button
           onClick={loadData}

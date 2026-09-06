@@ -66,7 +66,7 @@ function TopBar() {
               {pageInfo.title}
             </h2>
             <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-[#4cd7f6] border border-cyan-500/30">
-              SIH26152 LIVE
+              TELEMETRY LIVE
             </span>
           </div>
           <p className="text-xs text-[#8ea0b5] mt-0.5 hidden sm:block">

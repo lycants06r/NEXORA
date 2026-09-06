@@ -1,7 +1,7 @@
 /*
   App.jsx
   -------
-  SIH26152 Complete Intelligence Operations Routing.
+  NEXORA Complete Intelligence Operations Routing.
   Wraps the application in AuthRoleProvider (RBAC).
   Maps all pages cleanly with standard layout.
 */

@@ -1,7 +1,7 @@
 /*
   IngestionPage.jsx
   -----------------
-  SIH26152 Comprehensive Ingestion Architecture & Stream Pipeline.
+  Comprehensive Ingestion Architecture & Stream Pipeline.
   Features:
   1. Data Health Monitor (X, Telegram, Reddit, YouTube, IG, FB)
   2. Automated Ingestion Scheduler (periodic polling & cron)
@@ -135,7 +135,7 @@ function IngestionPage() {
       <PageHeader
         emoji="📥"
         title="Real-Time Data Ingestion Pipeline & Telemetry"
-        subtitle="SIH26152 Live connector architecture, automated scheduler, raw firehose & chronological timeline"
+        subtitle="Live connector architecture, automated scheduler, raw firehose & chronological timeline"
       >
         <button
           onClick={handleCollectAll}

@@ -1,7 +1,7 @@
 /*
   normalizedData.js
   ------------------
-  SIH26152 Normalized Data Architecture & In-Memory Intelligence Store.
+  NEXORA Normalized Data Architecture & In-Memory Intelligence Store.
   
   Conforms to the required common schema:
   - platform: 'twitter' | 'telegram' | 'instagram' | 'facebook' | 'reddit' | 'youtube'
@@ -436,7 +436,7 @@ export const INFORMATION_CASCADES = [
   }
 ]
 
-// System Alerts for SIH26152 Alerts System
+// System Alerts for NEXORA Intelligence Alerts System
 export const SYSTEM_ALERTS = [
   {
     alert_id: 'alt-9901',

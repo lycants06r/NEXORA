@@ -1,7 +1,7 @@
 /*
   AlertsPage.jsx
   --------------
-  SIH26152 Threat & Anomaly Alerts Matrix.
+  Threat & Anomaly Alerts Matrix.
   Alerts generated for:
   - Sudden sentiment changes
   - Rapid trend growth & viral spikes
@@ -56,7 +56,7 @@ function AlertsPage() {
       <PageHeader
         emoji="🚨"
         title="Cognitive Threat & Anomaly Alerts Matrix"
-        subtitle="SIH26152 Autonomous threshold triggers: sentiment shocks, astroturfing swarms, viral spikes & connector telemetry"
+        subtitle="Autonomous threshold triggers: sentiment shocks, astroturfing swarms, viral spikes & connector telemetry"
       >
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-[#f43f5e] px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 font-bold">

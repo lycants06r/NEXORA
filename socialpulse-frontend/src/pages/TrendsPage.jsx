@@ -1,7 +1,7 @@
 /*
   TrendsPage.jsx
   --------------
-  SIH26152 Viral Trend Forecasting, Lexical Spikes & Epidemic Modeling.
+  Viral Trend Forecasting, Lexical Spikes & Epidemic Modeling.
   Features:
   - Ranked Topic Leaderboard: Rank, Topic, Volume, Growth, Engagement, Platforms, Lifecycle & Trend Score
   - Trend Lifecycle States: Emerging, Rising, Peaking, Declining
@@ -38,7 +38,7 @@ function TrendsPage() {
       if (trendsRes.status === 'fulfilled' && trendsRes.value?.data?.length > 0) {
         setTrends(trendsRes.value.data)
       } else {
-        // High-fidelity fallback complying with SIH26152 requirements
+        // High-fidelity fallback intelligence dataset
         setTrends([
           {
             rank: 1,
@@ -163,7 +163,7 @@ function TrendsPage() {
       <PageHeader
         emoji="📈"
         title="Viral Trend Forecasting & Cascades"
-        subtitle="SIH26152 Topic velocity, epidemic reproduction rates (R-score), lifecycle tracking & predictive alerts"
+        subtitle="Real-time topic velocity, epidemic reproduction rates (R-score), lifecycle tracking & predictive alerts"
       >
         <div className="flex items-center gap-3">
           <select

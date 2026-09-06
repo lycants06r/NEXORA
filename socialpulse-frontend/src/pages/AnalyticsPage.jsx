@@ -1,7 +1,7 @@
 /*
   AnalyticsPage.jsx
   -----------------
-  SIH26152 Social Media Analytics Workstation.
+  Social Media Analytics Workstation.
   Full 6-Platform Intelligence Suite:
   - X / Twitter (PRIORITY)
   - Telegram (PRIORITY)
@@ -236,7 +236,7 @@ function AnalyticsPage() {
       <PageHeader
         emoji="📱"
         title="Social Media Analytics Workstation"
-        subtitle="SIH26152 Full 6-platform live telemetry: X (Twitter), Telegram, Instagram, Facebook, Reddit & YouTube"
+        subtitle="Full 6-platform live telemetry: X (Twitter), Telegram, Instagram, Facebook, Reddit & YouTube"
       >
         <span className="text-xs font-mono text-[#4cd7f6] px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 font-bold">
           ⚡ 6 CHANNELS MONITORED
@@ -284,7 +284,7 @@ function AnalyticsPage() {
           <span className="text-2xl">🎯</span>
           <div>
             <h4 className="text-white text-xs font-mono font-bold uppercase tracking-wider">
-              SIH26152 Priority Channels: X / Twitter & Telegram
+              High-Priority Core Channels: X / Twitter & Telegram
             </h4>
             <p className="text-xs text-[#8ea0b5] font-mono mt-0.5">
               High-velocity firehose connectors actively routing real-time unstructured signals into normalized cognitive schema.

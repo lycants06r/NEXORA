@@ -1,7 +1,7 @@
 /*
   DataHealthCard.jsx
   ------------------
-  SIH26152 Data Health & Live Connector Status Monitor.
+  Data Health & Live Connector Status Monitor.
   Displays live connector status for:
   - X / Twitter v2 Streaming Connector (PRIORITY)
   - Telegram MTProto Channel Broadcast Ingester (PRIORITY)
@@ -74,7 +74,7 @@ function DataHealthCard() {
                   </span>
                   {(conn.platform === 'twitter' || conn.platform === 'telegram') && (
                     <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/20 text-[#4cd7f6] border border-cyan-500/30 font-bold">
-                      SIH PRIORITY
+                      CORE PRIORITY
                     </span>
                   )}
                 </div>

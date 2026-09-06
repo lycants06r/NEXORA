@@ -1,7 +1,7 @@
 /*
   AIInsightsPage.jsx
   ------------------
-  SIH26152 5-Vector AI Intelligence Synthesis Station.
+  5-Vector AI Intelligence Synthesis Station.
   Combines the five core intelligence vectors:
   DATA + SENTIMENT + DEMOGRAPHICS + TRENDS + NETWORK
   
@@ -87,7 +87,7 @@ function AIInsightsPage() {
       <PageHeader
         emoji="🧠"
         title="AI 5-Vector Intelligence Synthesis"
-        subtitle="SIH26152 Holistic cross-cutting synthesis: Data Ingestion + Sentiment + Demographics + Trends + Network Topology"
+        subtitle="Holistic cross-cutting synthesis: Data Ingestion + Sentiment + Demographics + Trends + Network Topology"
       >
         <span className="text-xs font-mono text-[#ddb7ff] px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 font-bold">
           5-VECTOR SYNTHESIS ENGINE

@@ -1,7 +1,7 @@
 /*
   CrossVectorFilterBar.jsx
   ------------------------
-  SIH26152 Cross-Vector Correlation Controller.
+  NEXORA Cross-Vector Correlation Controller.
   Allows analysts to correlate:
   Platform + Date Range + Sentiment + Emotion + Topic + Demographic Segment + Community Cluster.
   Uses NEXORA cyberpunk glassmorphic styling with quick preset pills.

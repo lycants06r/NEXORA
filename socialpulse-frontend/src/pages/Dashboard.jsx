@@ -1,7 +1,7 @@
 /*
   Dashboard.jsx
   -------------
-  SIH26152 Overview & Command Center HUD.
+  Overview & Command Center HUD.
   Enhancements:
   - Real-time overview panel
   - High-level KPI summary cards
@@ -119,7 +119,7 @@ function Dashboard() {
         <div className="flex items-center gap-2 mb-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] animate-pulse shadow-[0_0_10px_#4cd7f6]" />
           <span className="text-[11px] font-mono tracking-widest uppercase text-[#4cd7f6] font-bold">
-            SIH26152 MILITARY-GRADE COGNITIVE THREAT HUD
+            MILITARY-GRADE COGNITIVE THREAT HUD
           </span>
         </div>
         <h2 className="text-2xl font-extrabold text-white mb-2 tracking-tight">

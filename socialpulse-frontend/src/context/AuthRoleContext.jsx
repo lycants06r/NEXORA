@@ -1,7 +1,7 @@
 /*
   AuthRoleContext.jsx
   -------------------
-  SIH26152 Role-Based Access Control (RBAC) System for NEXORA.
+  Role-Based Access Control (RBAC) System for NEXORA.
   Supports three primary operational roles:
   - ADMIN: Full operational clearance, connectors reconfiguration, ingestion triggers, data export.
   - ANALYST: Deep analytics, trends calibration, sentiment drill-down, network graph queries, export.
