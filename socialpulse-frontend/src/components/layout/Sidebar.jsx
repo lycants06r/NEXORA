@@ -48,9 +48,6 @@ function Sidebar() {
                 HUD
               </span>
             </div>
-            <p className="text-[#8ea0b5] text-xs font-mono tracking-tight mt-0.5">
-              Cognitive Threat Engine
-            </p>
           </div>
         </div>
       </div>

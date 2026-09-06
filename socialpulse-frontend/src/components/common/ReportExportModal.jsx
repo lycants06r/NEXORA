@@ -303,7 +303,7 @@ function ReportExportModal({ isOpen, onClose }) {
           </table>
 
           <div class="footer">
-            NEXORA Cognitive Threat Engine · Zero PII Compliance Verified
+            NEXORA Intelligence Platform · Zero PII Compliance Verified
           </div>
         </body>
         </html>
