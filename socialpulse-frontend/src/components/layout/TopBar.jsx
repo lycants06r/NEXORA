@@ -14,7 +14,7 @@ import { SYSTEM_ALERTS } from '../../api/normalizedData'
 
 // Map URL paths to page titles
 const PAGE_TITLES = {
-  '/':            { title: 'Command Center',        subtitle: 'Autonomous social media intelligence & threat telemetry' },
+  '/':            { title: 'Dashboard',             subtitle: 'Real-time executive intelligence & cross-platform telemetry' },
   '/analytics':   { title: 'Platform Analytics',    subtitle: 'Cross-platform deep inspection across 6 core channels' },
   '/ingestion':   { title: 'Data Ingestion',        subtitle: 'Live connector pipeline, scheduler & stream timeline' },
   '/sentiment':   { title: 'Sentiment Radar',       subtitle: 'Multi-emotion taxonomy, drill-down & temporal heatmap' },

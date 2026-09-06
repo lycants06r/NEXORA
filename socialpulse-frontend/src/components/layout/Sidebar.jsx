@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
 // Navigation items config
 // emoji = icon | path = URL | label = menu text
 const NAV_ITEMS = [
-  { emoji: '⚡', label: 'Command Center',      path: '/'            },
+  { emoji: '⚡', label: 'Dashboard',           path: '/'            },
   { emoji: '📱', label: 'Platform Analytics',  path: '/analytics'   },
   { emoji: '📥', label: 'Data Ingestion',      path: '/ingestion'   },
   { emoji: '💬', label: 'Sentiment Radar',     path: '/sentiment'   },
