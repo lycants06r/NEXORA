@@ -1,0 +1,76 @@
+/*
+  EmotionRadarChart.jsx
+  ---------------------
+  Spider/radar chart showing the balance of different emotions with NEXORA cyberpunk lavender accents.
+*/
+
+import React from 'react'
+import {
+  RadarChart, Radar, PolarGrid,
+  PolarAngleAxis, PolarRadiusAxis,
+  ResponsiveContainer, Tooltip
+} from 'recharts'
+
+function EmotionRadarChart({ emotions = {} }) {
+  const data = Object.entries(emotions).map(([key, val]) => ({
+    emotion: key.charAt(0).toUpperCase() + key.slice(1),
+    score:   Math.round(val * 100),
+  }))
+
+  return (
+    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#ddb7ff] shadow-[0_0_8px_#ddb7ff] animate-pulse" />
+          🎭 Emotion Taxonomy Breakdown
+        </h3>
+        <span className="text-[11px] font-mono text-[#ddb7ff] px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20">
+          NLP VECTOR
+        </span>
+      </div>
+
+      {data.length === 0 ? (
+        <div className="text-center py-12 text-[#8ea0b5] font-mono text-sm">
+          No emotion telemetry data available
+        </div>
+      ) : (
+        <ResponsiveContainer width="100%" height={280}>
+          <RadarChart data={data}>
+            <PolarGrid stroke="rgba(76, 215, 246, 0.15)" />
+            <PolarAngleAxis
+              dataKey="emotion"
+              tick={{ fill: '#8ea0b5', fontSize: 11, fontFamily: 'JetBrains Mono' }}
+            />
+            <PolarRadiusAxis
+              angle={90}
+              domain={[0, 100]}
+              tick={{ fill: '#8ea0b5', fontSize: 9, fontFamily: 'JetBrains Mono' }}
+            />
+            <Radar
+              name="Emotion Score"
+              dataKey="score"
+              stroke="#ddb7ff"
+              fill="#ddb7ff"
+              fillOpacity={0.25}
+              strokeWidth={2}
+            />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: '#060e20',
+                border:          '1px solid rgba(221, 183, 255, 0.4)',
+                borderRadius:    '12px',
+                color:           '#ffffff',
+                fontFamily:      'JetBrains Mono',
+                fontSize:        '12px',
+                boxShadow:       '0 8px 25px rgba(0,0,0,0.8)',
+              }}
+              formatter={(val) => [`${val}%`, 'Confidence']}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      )}
+    </div>
+  )
+}
+
+export default EmotionRadarChart
