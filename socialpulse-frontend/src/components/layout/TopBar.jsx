@@ -58,15 +58,15 @@ function TopBar() {
       <header className="
         h-16 bg-[#060e20]/80 backdrop-blur-2xl border-b border-cyan-500/20
         flex items-center justify-between px-6
-        flex-shrink-0 z-30 shadow-[0_10px_30px_rgba(0,0,0,0.5)] glass-specular-edge
+        flex-shrink-0 z-30 shadow-sm
       ">
         {/* LEFT: Page Title & Mission Tag */}
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-white font-extrabold text-lg leading-tight tracking-wide">
+            <h2 className="text-white font-bold text-lg leading-tight tracking-wide">
               {pageInfo.title}
             </h2>
-            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-[#4cd7f6] border border-cyan-500/30 font-bold shadow-[0_0_8px_rgba(76,215,246,0.15)]">
+            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-[#4cd7f6] border border-cyan-500/30">
               TELEMETRY LIVE
             </span>
           </div>
@@ -85,7 +85,7 @@ function TopBar() {
               className="
                 h-9 bg-black/60 border border-cyan-500/30 text-xs font-mono font-bold
                 rounded-xl px-3 text-white focus:outline-none focus:border-[#4cd7f6]
-                hover:border-cyan-400/60 active:scale-98 cursor-pointer shadow-inner transition-all
+                cursor-pointer shadow-inner
               "
               title={role.description}
             >
@@ -101,7 +101,7 @@ function TopBar() {
             onClick={() => navigate('/alerts')}
             className="
               relative h-9 w-9 rounded-xl bg-black/40 border border-white/10 hover:border-cyan-500/40
-              text-[#8ea0b5] hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center justify-center flex-shrink-0
+              text-[#8ea0b5] hover:text-white transition-all cursor-pointer flex items-center justify-center flex-shrink-0
             "
             title={`${activeAlertsCount} active threat alerts`}
           >
@@ -125,7 +125,7 @@ function TopBar() {
               hidden md:inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl
               bg-[#4cd7f6]/10 border border-cyan-500/30 hover:border-cyan-400 text-[#4cd7f6]
               text-xs font-mono font-bold uppercase tracking-wider transition-all
-              hover:scale-102 active:scale-98 shadow-sm hover:shadow-[0_0_15px_rgba(76,215,246,0.3)] cursor-pointer flex-shrink-0
+              shadow-sm hover:shadow-[0_0_12px_rgba(76,215,246,0.25)] cursor-pointer flex-shrink-0
             "
           >
             <span className="text-xs">📥</span>

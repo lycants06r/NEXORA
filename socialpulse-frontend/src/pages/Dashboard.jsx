@@ -30,8 +30,6 @@ import {
 
 import LoadingSpinner from '../components/common/LoadingSpinner.jsx'
 import PlatformLogo from '../components/common/PlatformLogo.jsx'
-import CyberGlobe3D from '../components/3d/CyberGlobe3D.jsx'
-import useTilt3D from '../hooks/useTilt3D'
 import { getCollectionStats } from '../api/ingestionApi'
 import { getSentimentSummary } from '../api/sentimentApi'
 import { getCurrentTrends } from '../api/trendsApi'
@@ -76,29 +74,6 @@ function generateTimelineData(dateRange, platform) {
       { time: 'Week 4', volume: Math.round(214000 * multiplier), positive: 70, negative: 17 },
     ]
   }
-}
-
-// 3D Perspective Liquid-Glass KPI Card with Cursor Glare & Multi-layer Elevation
-function Kpi3DCard({ label, icon, value, changeText, changeSub, borderColor, glowColor, textColor }) {
-  const tiltRef = useTilt3D({ maxTilt: 7.5, scale: 1.03, glare: true })
-  return (
-    <div
-      ref={tiltRef}
-      className={`liquid-glass liquid-glass-interactive glass-specular-edge rounded-2xl p-4.5 ${borderColor} group preserve-3d`}
-    >
-      <div className="flex items-center justify-between mb-1.5" style={{ transform: 'translateZ(22px)' }}>
-        <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">{label}</span>
-        <span className="text-base group-hover:scale-110 transition-transform">{icon}</span>
-      </div>
-      <div className={`text-xl sm:text-2xl font-black font-mono tracking-tight ${glowColor || 'text-white'}`} style={{ transform: 'translateZ(16px)' }}>
-        {value}
-      </div>
-      <div className={`text-[11px] font-mono ${textColor || 'text-[#4edea3]'} mt-1 flex items-center gap-1 font-semibold`} style={{ transform: 'translateZ(10px)' }}>
-        <span>{changeText}</span>
-        <span className="text-[#8ea0b5] font-normal">{changeSub}</span>
-      </div>
-    </div>
-  )
 }
 
 function Dashboard() {
@@ -293,209 +268,194 @@ function Dashboard() {
     <div className="space-y-6 animate-fade-in pb-12">
 
       {/* ═══════════════════════════════════════════════════════════════
-          PRIORITY 1: FOUNDATION & EXECUTIVE 3D COMMAND CENTER
+          PRIORITY 1: FOUNDATION & EXECUTIVE HEADER
       ═══════════════════════════════════════════════════════════════ */}
       <div className="
-        liquid-glass-strong glass-specular-edge rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.7)]
-        relative overflow-hidden
+        bg-gradient-to-r from-[#4cd7f6]/15 via-[#ddb7ff]/10 to-[#06b6d4]/15
+        border border-cyan-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.6)]
+        backdrop-blur-2xl relative overflow-hidden
       ">
-        <div className="absolute top-0 right-0 p-3 opacity-10 pointer-events-none text-8xl font-mono select-none tracking-tighter">
+        <div className="absolute top-0 right-0 p-3 opacity-15 pointer-events-none text-7xl font-mono select-none">
           NEXORA
         </div>
-        <div className="absolute -top-16 -right-16 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 right-1/4 w-52 h-52 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] animate-pulse shadow-[0_0_10px_#4cd7f6]" />
+            <span className="text-[11px] font-mono tracking-widest uppercase text-[#4cd7f6] font-bold">
+              MILITARY-GRADE COMMAND CENTER
+            </span>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono text-[#8ea0b5]">
+            <span className="w-2 h-2 rounded-full bg-[#4edea3] shadow-[0_0_6px_#4edea3]" />
+            <span>Telemetry Pulse: <span className="text-white font-bold">{latencyMs}ms</span></span>
+            <span className="text-[#3a4d65]">|</span>
+            <span>Synced: <span className="text-white font-bold">{lastSync.toLocaleTimeString()}</span></span>
+          </div>
+        </div>
+
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+          NEXORA Intelligence Dashboard
+        </h1>
+        <p className="text-sm text-[#8ea0b5] max-w-3xl leading-relaxed mb-4">
+          Autonomous real-time social signal aggregation, multi-platform sentiment telemetry, viral cascade forecasting, and security anomaly detection across 6 global channels.
+        </p>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            PRIORITY 2: GLOBAL CONTROLS (Platform Filter + Date Range)
+        ═══════════════════════════════════════════════════════════════ */}
+        <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-cyan-500/20">
           
-          {/* Left Column: Command Center Telemetry, Headings & Controls (8 cols) */}
-          <div className="lg:col-span-8 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between flex-wrap gap-3 mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] animate-pulse shadow-[0_0_12px_#4cd7f6]" />
-                  <span className="text-[11px] font-mono tracking-widest uppercase text-[#4cd7f6] font-bold">
-                    MILITARY-GRADE COMMAND CENTER
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-[#8ea0b5]">
-                  <span className="w-2 h-2 rounded-full bg-[#4edea3] shadow-[0_0_8px_#4edea3]" />
-                  <span>Telemetry Pulse: <span className="text-white font-bold">{latencyMs}ms</span></span>
-                  <span className="text-[#3a4d65]">|</span>
-                  <span>Synced: <span className="text-white font-bold">{lastSync.toLocaleTimeString()}</span></span>
-                </div>
-              </div>
-
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight drop-shadow-md">
-                NEXORA Intelligence Dashboard
-              </h1>
-              <p className="text-sm text-[#8ea0b5] max-w-3xl leading-relaxed mb-4">
-                Autonomous real-time social signal aggregation, multi-platform sentiment telemetry, viral cascade forecasting, and security anomaly detection across 6 global channels.
-              </p>
-            </div>
-
-            {/* ═══════════════════════════════════════════════════════════════
-                PRIORITY 2: GLOBAL CONTROLS (Platform Filter + Date Range)
-            ═══════════════════════════════════════════════════════════════ */}
-            <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-cyan-500/20">
-              
-              {/* Multi-Platform Filter Toggle */}
-              <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
-                <span className="text-xs font-mono font-bold text-[#8ea0b5] mr-1 hidden sm:inline">Platform:</span>
-                {PLATFORMS_CONFIG.map((p) => (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => setPlatform(p.id)}
-                    className={`
-                      h-9 px-3.5 inline-flex items-center rounded-xl text-xs font-mono font-semibold transition-all whitespace-nowrap border cursor-pointer active:scale-95
-                      ${platform === p.id
-                        ? 'bg-[#4cd7f6]/25 text-[#4cd7f6] border-cyan-500/60 shadow-[0_0_15px_rgba(76,215,246,0.35)] font-bold'
-                        : 'bg-black/40 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
-                      }
-                    `}
-                  >
-                    <span className="flex items-center gap-1.5">
-                      <PlatformLogo platform={p.id} className="w-3.5 h-3.5" colored={platform === p.id} />
-                      <span>{p.label}</span>
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Date-Range Picker Toggle */}
-              <div className="flex items-center gap-1.5 font-mono text-xs">
-                <span className="text-xs font-bold text-[#8ea0b5] mr-1 hidden sm:inline">Window:</span>
-                {['24h', '7d', '30d'].map((range) => (
-                  <button
-                    key={range}
-                    type="button"
-                    onClick={() => setDateRange(range)}
-                    className={`
-                      h-9 px-3.5 inline-flex items-center rounded-xl uppercase transition-all border cursor-pointer font-semibold active:scale-95
-                      ${dateRange === range
-                        ? 'bg-purple-500/30 text-[#ddb7ff] border-purple-500/60 font-bold shadow-[0_0_15px_rgba(221,183,255,0.35)]'
-                        : 'bg-black/40 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
-                      }
-                    `}
-                  >
-                    {range}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Multi-Platform Filter Toggle */}
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+            <span className="text-xs font-mono font-bold text-[#8ea0b5] mr-1 hidden sm:inline">Platform:</span>
+            {PLATFORMS_CONFIG.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setPlatform(p.id)}
+                className={`
+                  h-9 px-3.5 inline-flex items-center rounded-xl text-xs font-mono font-semibold transition-all whitespace-nowrap border cursor-pointer
+                  ${platform === p.id
+                    ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_10px_rgba(76,215,246,0.3)] font-bold'
+                    : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                  }
+                `}
+              >
+                <span className="flex items-center gap-1.5">
+                  <PlatformLogo platform={p.id} className="w-3.5 h-3.5" colored={platform === p.id} />
+                  <span>{p.label}</span>
+                </span>
+              </button>
+            ))}
           </div>
 
-          {/* Right Column: 3D Interactive Cyber Globe Telemetry Centerpiece (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center p-3 rounded-2xl bg-[#040a18]/60 border border-cyan-500/25 relative overflow-hidden backdrop-blur-xl group shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
-            <div className="w-full flex items-center justify-between text-[10px] font-mono tracking-wider uppercase mb-1 px-1">
-              <span className="flex items-center gap-1.5 text-cyan-400 font-bold">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#4cd7f6]" />
-                GLOBAL 3D RADAR
-              </span>
-              <span className="text-[#8ea0b5]">6 SENSORS SYNCED</span>
-            </div>
-
-            <CyberGlobe3D size={230} showLabels={true} />
-
-            <div className="w-full mt-2 pt-2 border-t border-cyan-500/15 flex items-center justify-between text-[10px] font-mono text-[#8ea0b5] px-1">
-              <span className="text-[#4edea3] flex items-center gap-1">
-                <span>●</span> TELEMETRY LIVE
-              </span>
-              <span className="text-cyan-400/80">360° SPH PERSPECTIVE</span>
-            </div>
+          {/* Date-Range Picker Toggle */}
+          <div className="flex items-center gap-1.5 font-mono text-xs">
+            <span className="text-xs font-bold text-[#8ea0b5] mr-1 hidden sm:inline">Window:</span>
+            {['24h', '7d', '30d'].map((range) => (
+              <button
+                key={range}
+                type="button"
+                onClick={() => setDateRange(range)}
+                className={`
+                  h-9 px-3.5 inline-flex items-center rounded-xl uppercase transition-all border cursor-pointer font-semibold
+                  ${dateRange === range
+                    ? 'bg-purple-500/25 text-[#ddb7ff] border-purple-500/50 font-bold shadow-[0_0_10px_rgba(221,183,255,0.25)]'
+                    : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                  }
+                `}
+              >
+                {range}
+              </button>
+            ))}
           </div>
-
         </div>
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════
-          PRIORITY 3: 3D PERSPECTIVE LIQUID GLASS KPI SUMMARY CARDS
+          PRIORITY 3: KPI SUMMARY CARDS
       ═══════════════════════════════════════════════════════════════ */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
         
         {/* KPI 1: Total Posts */}
-        <Kpi3DCard
-          label="Total Posts"
-          icon="📝"
-          value={kpiData.posts}
-          changeText="↑ +12.4%"
-          changeSub="vs prev"
-          borderColor="border-cyan-500/25"
-          glowColor="text-white"
-          textColor="text-[#4edea3]"
-        />
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Total Posts</span>
+            <span className="text-base">📝</span>
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-mono text-white tracking-tight">
+            {kpiData.posts}
+          </div>
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+            <span>↑ +12.4%</span>
+            <span className="text-[#8ea0b5] font-normal">vs prev</span>
+          </div>
+        </div>
 
         {/* KPI 2: Total Reach */}
-        <Kpi3DCard
-          label="Total Reach"
-          icon="🌐"
-          value={kpiData.reach}
-          changeText="↑ +18.2%"
-          changeSub="propagation"
-          borderColor="border-cyan-500/25"
-          glowColor="text-[#4cd7f6]"
-          textColor="text-[#4edea3]"
-        />
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Total Reach</span>
+            <span className="text-base">🌐</span>
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#4cd7f6] tracking-tight">
+            {kpiData.reach}
+          </div>
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+            <span>↑ +18.2%</span>
+            <span className="text-[#8ea0b5] font-normal">propagation</span>
+          </div>
+        </div>
 
         {/* KPI 3: Engagement */}
-        <Kpi3DCard
-          label="Engagement"
-          icon="⚡"
-          value={kpiData.engagement}
-          changeText="↑ +4.1%"
-          changeSub="interaction"
-          borderColor="border-purple-500/25"
-          glowColor="text-[#ddb7ff]"
-          textColor="text-[#4edea3]"
-        />
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Engagement</span>
+            <span className="text-base">⚡</span>
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#ddb7ff] tracking-tight truncate">
+            {kpiData.engagement}
+          </div>
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+            <span>↑ +4.1%</span>
+            <span className="text-[#8ea0b5] font-normal">interaction</span>
+          </div>
+        </div>
 
         {/* KPI 4: Overall Sentiment */}
-        <Kpi3DCard
-          label="Positive Lean"
-          icon="😊"
-          value={kpiData.sentiment}
-          changeText="↑ +6.2%"
-          changeSub="net polarity"
-          borderColor="border-emerald-500/25"
-          glowColor="text-[#4edea3]"
-          textColor="text-[#4edea3]"
-        />
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Positive Lean</span>
+            <span className="text-base">😊</span>
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#4edea3] tracking-tight">
+            {kpiData.sentiment}
+          </div>
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+            <span>↑ +6.2%</span>
+            <span className="text-[#8ea0b5] font-normal">net polarity</span>
+          </div>
+        </div>
 
         {/* KPI 5: Trend Velocity */}
-        <Kpi3DCard
-          label="Trend Velocity"
-          icon="🔥"
-          value="+42.8%"
-          changeText={`⚡ ${trends.length} Topics`}
-          changeSub="rising"
-          borderColor="border-pink-500/25"
-          glowColor="text-[#ec4899]"
-          textColor="text-[#ec4899]"
-        />
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Trend Velocity</span>
+            <span className="text-base">🔥</span>
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#ec4899] tracking-tight">
+            +42.8%
+          </div>
+          <div className="text-[11px] font-mono text-[#ec4899] mt-1 flex items-center gap-1 font-semibold">
+            <span>⚡ {trends.length} Rising Topics</span>
+          </div>
+        </div>
 
         {/* KPI 6: Active Platforms */}
-        <Kpi3DCard
-          label="Active Feeds"
-          icon="📡"
-          value={kpiData.activePlatforms}
-          changeText="● 100% Ingestion"
-          changeSub="online"
-          borderColor="border-cyan-500/25"
-          glowColor="text-[#4cd7f6]"
-          textColor="text-[#4edea3]"
-        />
-
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Active Feeds</span>
+            <span className="text-base">📡</span>
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#4cd7f6] tracking-tight">
+            {kpiData.activePlatforms}
+          </div>
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+            <span>● 100% Ingestion Up</span>
+          </div>
+        </div>
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 4: REAL-TIME OVERVIEW & TIME-SERIES CHART
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="liquid-glass-strong glass-specular-edge rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
         <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6]" />
-              <h2 className="text-white font-extrabold text-sm tracking-wider uppercase">
+              <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
+              <h2 className="text-white font-bold text-sm tracking-wider uppercase">
                 Real-Time Signal Ingestion & Temporal Polarity Dynamics ({dateRange.toUpperCase()})
               </h2>
             </div>
@@ -506,11 +466,11 @@ function Dashboard() {
 
           <div className="flex items-center gap-4 text-xs font-mono">
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded bg-[#4cd7f6]/40 border border-[#4cd7f6] shadow-[0_0_6px_#4cd7f6]" />
+              <span className="w-3 h-3 rounded bg-[#4cd7f6]/40 border border-[#4cd7f6]" />
               <span className="text-[#8ea0b5]">Signal Volume</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded bg-[#4edea3]/40 border border-[#4edea3] shadow-[0_0_6px_#4edea3]" />
+              <span className="w-3 h-3 rounded bg-[#4edea3]/40 border border-[#4edea3]" />
               <span className="text-[#8ea0b5]">Positive %</span>
             </div>
           </div>
@@ -522,27 +482,25 @@ function Dashboard() {
             <AreaChart data={timelineSeries} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="volGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#4cd7f6" stopOpacity={0.45} />
+                  <stop offset="5%"  stopColor="#4cd7f6" stopOpacity={0.4} />
                   <stop offset="95%" stopColor="#4cd7f6" stopOpacity={0.0} />
                 </linearGradient>
                 <linearGradient id="posGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#4edea3" stopOpacity={0.35} />
+                  <stop offset="5%"  stopColor="#4edea3" stopOpacity={0.3} />
                   <stop offset="95%" stopColor="#4edea3" stopOpacity={0.0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#14243b" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#1c2e42" vertical={false} />
               <XAxis dataKey="time" stroke="#8ea0b5" tick={{ fill: '#8ea0b5', fontSize: 11 }} />
               <YAxis stroke="#8ea0b5" tick={{ fill: '#8ea0b5', fontSize: 11 }} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'rgba(6, 14, 32, 0.92)',
-                  backdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(76,215,246,0.35)',
+                  backgroundColor: '#060e20',
+                  border: '1px solid rgba(76,215,246,0.3)',
                   borderRadius: '12px',
                   color: '#fff',
                   fontFamily: 'monospace',
-                  fontSize: '12px',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.8)'
+                  fontSize: '12px'
                 }}
               />
               <Area
@@ -550,7 +508,7 @@ function Dashboard() {
                 dataKey="volume"
                 name="Signals"
                 stroke="#4cd7f6"
-                strokeWidth={2.5}
+                strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#volGradient)"
               />
@@ -560,22 +518,22 @@ function Dashboard() {
 
         {/* Real-time Summary Bar */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 mt-2 border-t border-cyan-500/15 text-xs font-mono">
-          <div className="liquid-glass-subtle p-3 rounded-xl border border-white/5">
-            <span className="text-[#8ea0b5] block text-[10px] uppercase font-semibold">Current Velocity:</span>
-            <span className="text-white font-bold text-sm mt-0.5 block">42 posts/min</span>
+          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+            <span className="text-[#8ea0b5] block">Current Velocity:</span>
+            <span className="text-white font-bold text-sm">42 posts/min</span>
           </div>
-          <div className="liquid-glass-subtle p-3 rounded-xl border border-white/5">
-            <span className="text-[#8ea0b5] block text-[10px] uppercase font-semibold">Peak Hour:</span>
-            <span className="text-[#4cd7f6] font-bold text-sm mt-0.5 block">18:00 UTC</span>
+          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+            <span className="text-[#8ea0b5] block">Peak Hour:</span>
+            <span className="text-[#4cd7f6] font-bold text-sm">18:00 UTC</span>
           </div>
-          <div className="liquid-glass-subtle p-3 rounded-xl border border-white/5">
-            <span className="text-[#8ea0b5] block text-[10px] uppercase font-semibold">Primary Channel:</span>
-            <span className="text-[#ddb7ff] font-bold text-sm mt-0.5 block">X / Twitter</span>
+          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+            <span className="text-[#8ea0b5] block">Primary Channel:</span>
+            <span className="text-[#ddb7ff] font-bold text-sm">X / Twitter</span>
           </div>
-          <div className="liquid-glass-subtle p-3 rounded-xl border border-white/5 flex items-center justify-between">
+          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
             <div>
-              <span className="text-[#8ea0b5] block text-[10px] uppercase font-semibold">Live Socket:</span>
-              <span className="text-[#4edea3] font-bold text-sm mt-0.5 block">Connected (32ms)</span>
+              <span className="text-[#8ea0b5] block">Live Socket:</span>
+              <span className="text-[#4edea3] font-bold text-sm">Connected (32ms)</span>
             </div>
             <button
               onClick={() => navigate('/ingestion')}
@@ -588,12 +546,12 @@ function Dashboard() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════
-          PRIORITY 5: CROSS-PLATFORM SNAPSHOT (Floating 3D Glass Cards)
+          PRIORITY 5: CROSS-PLATFORM SNAPSHOT (High-level Summaries)
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="liquid-glass glass-specular-edge rounded-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.65)]">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-white font-extrabold text-sm tracking-wider uppercase flex items-center gap-2">
+            <h2 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#0088cc] shadow-[0_0_8px_#0088cc]" />
               Cross-Platform Snapshot — 6 Core Ingested Channels
             </h2>
@@ -615,16 +573,15 @@ function Dashboard() {
               key={item.id}
               onClick={() => navigate('/analytics')}
               className="
-                liquid-glass-subtle hover:border-cyan-500/40 rounded-xl p-3.5
-                transition-all duration-300 cursor-pointer group hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6)]
-                border border-white/5 relative overflow-hidden
+                bg-black/40 border border-white/5 hover:border-cyan-500/40 rounded-xl p-3.5
+                transition-all duration-200 cursor-pointer group hover:scale-[1.02]
               "
             >
               <div className="flex items-center justify-between mb-2">
                 <div className="w-7 h-7 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1">
                   <PlatformLogo platform={item.id} className="w-4 h-4" colored={true} />
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-[#4edea3] border border-emerald-500/25 font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-[#4edea3] border border-emerald-500/20">
                   {item.status}
                 </span>
               </div>
@@ -646,12 +603,12 @@ function Dashboard() {
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 6: AI EXECUTIVE SUMMARY
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="liquid-glass glass-specular-edge rounded-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.65)]">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <span className="text-xl">🧠</span>
             <div>
-              <h2 className="text-white font-extrabold text-sm tracking-wider uppercase">
+              <h2 className="text-white font-bold text-sm tracking-wider uppercase">
                 AI Executive Summary & Synthesized Observations
               </h2>
               <p className="text-xs text-[#8ea0b5] mt-0.5">
@@ -661,7 +618,7 @@ function Dashboard() {
           </div>
           <button
             onClick={() => navigate('/ai-insights')}
-            className="text-xs font-mono text-[#ddb7ff] hover:underline flex items-center gap-1 cursor-pointer font-bold px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 shadow-[0_0_10px_rgba(221,183,255,0.15)]"
+            className="text-xs font-mono text-[#ddb7ff] hover:underline flex items-center gap-1 cursor-pointer font-bold px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30"
           >
             View Full AI Insights →
           </button>
@@ -671,7 +628,7 @@ function Dashboard() {
           {aiExecutiveInsights.map((insight) => (
             <div
               key={insight.id}
-              className="liquid-glass-subtle border border-white/5 hover:border-purple-500/40 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5"
+              className="bg-black/40 border border-white/5 hover:border-purple-500/30 rounded-xl p-4 transition-all"
             >
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-white font-bold text-xs tracking-wide">
@@ -695,12 +652,12 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* ── PRIORITY 7: Trend Snapshot ──────────────────────────── */}
-        <div className="liquid-glass glass-specular-edge rounded-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.65)] flex flex-col justify-between">
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-lg">📈</span>
-                <h3 className="text-white font-extrabold text-sm tracking-wider uppercase">
+                <h3 className="text-white font-bold text-sm tracking-wider uppercase">
                   Top Trending Topics & Propagation Velocity
                 </h3>
               </div>
@@ -717,13 +674,13 @@ function Dashboard() {
                 <div
                   key={trend.topic}
                   onClick={() => navigate('/trends')}
-                  className="flex items-center justify-between p-3 liquid-glass-subtle border border-white/5 hover:border-pink-500/40 rounded-xl transition-all duration-200 cursor-pointer hover:translate-x-1"
+                  className="flex items-center justify-between p-3 bg-black/40 border border-white/5 hover:border-pink-500/30 rounded-xl transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <span className="
                       text-xs font-mono font-bold w-6 h-6 rounded-full
                       bg-pink-500/20 text-[#ec4899] border border-pink-500/30 flex items-center
-                      justify-center flex-shrink-0 shadow-[0_0_8px_rgba(236,72,153,0.25)]
+                      justify-center flex-shrink-0
                     ">
                       {i + 1}
                     </span>
@@ -754,12 +711,12 @@ function Dashboard() {
         </div>
 
         {/* ── PRIORITY 8: Sentiment Snapshot ──────────────────────── */}
-        <div className="liquid-glass glass-specular-edge rounded-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.65)] flex flex-col justify-between">
+        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-lg">💬</span>
-                <h3 className="text-white font-extrabold text-sm tracking-wider uppercase">
+                <h3 className="text-white font-bold text-sm tracking-wider uppercase">
                   Sentiment Distribution & Emotion Taxonomy
                 </h3>
               </div>
@@ -772,16 +729,16 @@ function Dashboard() {
             </div>
 
             {/* Tri-color Polarity Bar */}
-            <div className="liquid-glass-subtle border border-white/5 rounded-xl p-4 mb-4">
+            <div className="bg-black/40 border border-white/5 rounded-xl p-4 mb-4">
               <div className="flex items-center justify-between text-xs font-mono mb-2">
                 <span className="text-[#4edea3] font-bold">Positive: 68.4%</span>
                 <span className="text-[#8ea0b5]">Neutral: 13.4%</span>
                 <span className="text-[#f43f5e] font-bold">Negative: 18.2%</span>
               </div>
-              <div className="w-full h-3 rounded-full bg-black/60 overflow-hidden flex shadow-inner">
-                <div className="bg-[#4edea3] h-full shadow-[0_0_8px_#4edea3]" style={{ width: '68.4%' }} />
+              <div className="w-full h-3 rounded-full bg-black/60 overflow-hidden flex">
+                <div className="bg-[#4edea3] h-full" style={{ width: '68.4%' }} />
                 <div className="bg-[#8ea0b5] h-full" style={{ width: '13.4%' }} />
-                <div className="bg-[#f43f5e] h-full shadow-[0_0_8px_#f43f5e]" style={{ width: '18.2%' }} />
+                <div className="bg-[#f43f5e] h-full" style={{ width: '18.2%' }} />
               </div>
             </div>
 
@@ -791,27 +748,27 @@ function Dashboard() {
                 Dominant Affective Dimensions:
               </span>
               <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-                <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[#4edea3] shadow-[0_4px_12px_rgba(78,222,163,0.1)]">
+                <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[#4edea3]">
                   <div className="font-bold text-sm">28%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Excitement</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-[#4cd7f6] shadow-[0_4px_12px_rgba(76,215,246,0.1)]">
+                <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-[#4cd7f6]">
                   <div className="font-bold text-sm">24%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Supportive</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-[#f43f5e] shadow-[0_4px_12px_rgba(244,63,94,0.1)]">
+                <div className="p-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-[#f43f5e]">
                   <div className="font-bold text-sm">18%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Anxiety</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[#f59e0b] shadow-[0_4px_12px_rgba(245,158,11,0.1)]">
+                <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[#f59e0b]">
                   <div className="font-bold text-sm">14%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Neutral</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-[#ddb7ff] shadow-[0_4px_12px_rgba(221,183,255,0.1)]">
+                <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-[#ddb7ff]">
                   <div className="font-bold text-sm">9%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Sarcasm</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-[#ec4899] shadow-[0_4px_12px_rgba(236,72,153,0.1)]">
+                <div className="p-2 rounded-xl bg-pink-500/10 border border-pink-500/30 text-[#ec4899]">
                   <div className="font-bold text-sm">7%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Opposition</div>
                 </div>
@@ -824,12 +781,12 @@ function Dashboard() {
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 9: INTELLIGENCE ALERTS FEED
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="liquid-glass glass-specular-edge rounded-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.65)]">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <span className="text-xl">🚨</span>
             <div>
-              <h3 className="text-white font-extrabold text-sm tracking-wider uppercase">
+              <h3 className="text-white font-bold text-sm tracking-wider uppercase">
                 Active Intelligence & Security Alerts
               </h3>
               <p className="text-xs text-[#8ea0b5] mt-0.5">
@@ -839,7 +796,7 @@ function Dashboard() {
           </div>
           <button
             onClick={() => navigate('/alerts')}
-            className="text-xs font-mono text-[#f43f5e] hover:underline font-bold cursor-pointer px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 shadow-[0_0_10px_rgba(244,63,94,0.15)]"
+            className="text-xs font-mono text-[#f43f5e] hover:underline font-bold cursor-pointer px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30"
           >
             View Threat Alerts Matrix →
           </button>
@@ -851,16 +808,16 @@ function Dashboard() {
               key={alert.alert_id}
               onClick={() => navigate('/alerts')}
               className="
-                p-3.5 liquid-glass-subtle border border-white/5 hover:border-cyan-500/40 rounded-xl
-                flex items-center justify-between flex-wrap gap-2 transition-all duration-200 cursor-pointer hover:-translate-y-0.5
+                p-3.5 bg-black/40 border border-white/5 hover:border-cyan-500/30 rounded-xl
+                flex items-center justify-between flex-wrap gap-2 transition-all cursor-pointer
               "
             >
               <div className="flex items-center gap-3">
                 <span className={`
                   text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase
-                  ${alert.severity === 'CRITICAL' ? 'bg-rose-500/20 text-[#f43f5e] border border-rose-500/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]' :
-                    alert.severity === 'WARNING'  ? 'bg-amber-500/20 text-[#f59e0b] border border-amber-500/40 shadow-[0_0_8px_rgba(245,158,11,0.25)]' :
-                    'bg-cyan-500/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_8px_rgba(76,215,246,0.2)]'
+                  ${alert.severity === 'CRITICAL' ? 'bg-rose-500/20 text-[#f43f5e] border border-rose-500/40' :
+                    alert.severity === 'WARNING'  ? 'bg-amber-500/20 text-[#f59e0b] border border-amber-500/40' :
+                    'bg-cyan-500/20 text-[#4cd7f6] border border-cyan-500/40'
                   }
                 `}>
                   {alert.severity}

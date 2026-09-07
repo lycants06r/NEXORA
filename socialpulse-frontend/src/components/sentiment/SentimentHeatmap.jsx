@@ -53,14 +53,12 @@ function SentimentHeatmap({ platform = 'all', topic = 'all', dateRange = '24h' }
   }
 
   return (
-    <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl p-6 shadow-[0_15px_45px_rgba(0,0,0,0.5)] relative overflow-hidden">
-      <div className="absolute -top-16 -right-16 w-52 h-52 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-
+    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 flex-wrap gap-2 relative z-10">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <div>
-          <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ddb7ff] shadow-[0_0_10px_#ddb7ff]" />
+          <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#ddb7ff] shadow-[0_0_8px_#ddb7ff]" />
             🗺️ Temporal Emotion Heat Map (Time × Emotion Taxonomy)
           </h3>
           <p className="text-xs text-[#8ea0b5] font-mono mt-0.5">
@@ -68,10 +66,10 @@ function SentimentHeatmap({ platform = 'all', topic = 'all', dateRange = '24h' }
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-[10px] font-mono liquid-glass px-3 py-1.5 rounded-xl border border-white/10 shadow-inner">
+        <div className="flex items-center gap-2 text-[10px] font-mono">
           <span className="text-[#8ea0b5]">INTENSITY:</span>
           <span className="px-1.5 py-0.5 rounded bg-white/5 text-[#8ea0b5]">Low</span>
-          <div className="w-16 h-2 rounded-full bg-gradient-to-r from-white/10 via-cyan-500/50 to-cyan-400 shadow-[0_0_8px_rgba(76,215,246,0.3)]" />
+          <div className="w-16 h-2 rounded bg-gradient-to-r from-white/10 via-cyan-500/50 to-cyan-400" />
           <span className="px-1.5 py-0.5 rounded bg-cyan-500/20 text-[#4cd7f6] font-bold">Peak</span>
         </div>
       </div>
