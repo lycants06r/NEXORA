@@ -8,7 +8,6 @@
 
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuthRole } from '../../context/AuthRoleContext'
 import ReportExportModal from '../common/ReportExportModal'
 import { SYSTEM_ALERTS } from '../../api/normalizedData'
 
@@ -28,7 +27,6 @@ const PAGE_TITLES = {
 function TopBar() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { role, setRole } = useAuthRole()
   const [time, setTime] = useState(new Date())
   const [health, setHealth] = useState(null)
   const [showExportModal, setShowExportModal] = useState(false)
@@ -77,23 +75,6 @@ function TopBar() {
 
         {/* RIGHT: Controls & Telemetry */}
         <div className="flex items-center gap-2">
-          {/* RBAC Role Selector Dropdown */}
-          <div className="relative flex items-center">
-            <select
-              value={role.id}
-              onChange={(e) => setRole(e.target.value)}
-              className="
-                h-9 glass-control text-xs font-mono font-bold
-                px-3 text-white cursor-pointer
-              "
-              title={role.description}
-            >
-              <option value="ADMIN" className="bg-[#060e20] text-white">Role: ADMIN</option>
-              <option value="ANALYST" className="bg-[#060e20] text-white">Role: ANALYST</option>
-              <option value="VIEWER" className="bg-[#060e20] text-white">Role: VIEWER</option>
-            </select>
-          </div>
-
           {/* Threat Alerts Notification Bell */}
           <button
             type="button"
