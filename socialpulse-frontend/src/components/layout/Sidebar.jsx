@@ -32,20 +32,17 @@ function Sidebar() {
       <div className="p-5 border-b border-cyan-500/15">
         <div className="flex items-center gap-3">
           <div className="
-            w-9 h-9 bg-gradient-to-br from-[#4cd7f6] via-[#06b6d4] to-[#ddb7ff]
+            w-10 h-10 bg-gradient-to-br from-[#4cd7f6] via-[#06b6d4] to-[#ddb7ff]
             rounded-xl flex items-center justify-center
-            text-lg shadow-[0_0_15px_rgba(76,215,246,0.35)]
+            text-xl shadow-[0_0_15px_rgba(76,215,246,0.35)]
             text-black font-black flex-shrink-0
           ">
             ⚡
           </div>
           <div className="min-w-0">
-            <h1 className="text-white font-extrabold text-sm tracking-wider uppercase leading-none">
+            <h1 className="text-white font-black text-xl tracking-wider uppercase leading-none">
               NEXORA
             </h1>
-            <p className="text-[10px] text-[#8ea0b5] font-mono tracking-widest uppercase mt-1">
-              INTEL PLATFORM
-            </p>
           </div>
         </div>
       </div>
