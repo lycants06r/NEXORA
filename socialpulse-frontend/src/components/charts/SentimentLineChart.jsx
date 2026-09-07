@@ -60,16 +60,16 @@ function SentimentLineChart({ data = [] }) {
       </div>
 
       {data.length === 0 ? (
-        <div className="text-center py-12 text-[#8ea0b5] font-mono text-sm">
+        <div className="text-center py-14 text-[#8ea0b5] font-mono text-xs bg-black/20 rounded-xl border border-white/5 my-2">
           No timeline telemetry data available yet
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={formatted} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.06)" />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.04)" />
             <XAxis
               dataKey="time"
-              tick={{ fill: '#8ea0b5', fontSize: 11, fontFamily: 'JetBrains Mono' }}
+              tick={{ fill: '#8ea0b5', fontSize: 10, fontFamily: 'JetBrains Mono' }}
               axisLine={{ stroke: 'rgba(76, 215, 246, 0.2)' }}
             />
             <YAxis

@@ -141,9 +141,9 @@ function IngestionPage() {
         <button
           onClick={handleCollectAll}
           className="
-            px-4 py-2 bg-gradient-to-r from-purple-500 to-[#ddb7ff] hover:from-purple-400 hover:to-[#ecd4ff]
+            h-9 px-4 bg-gradient-to-r from-purple-500 to-[#ddb7ff] hover:from-purple-400 hover:to-[#ecd4ff]
             text-black rounded-xl text-xs font-mono font-extrabold tracking-wider uppercase
-            shadow-[0_0_15px_rgba(221,183,255,0.3)] transition-all cursor-pointer flex items-center gap-2
+            shadow-[0_0_15px_rgba(221,183,255,0.3)] transition-all cursor-pointer inline-flex items-center gap-2
           "
         >
           <PlatformLogo platform="all" className="w-4 h-4" colored={false} />
@@ -162,23 +162,24 @@ function IngestionPage() {
       {/* ── Navigation View Tabs ────────────────────────────── */}
       <div className="flex items-center gap-2 border-b border-cyan-500/20 pb-2 overflow-x-auto">
         {[
-          { id: 'pipeline',    label: '🚀 Ingestion Dispatcher', icon: '⚡' },
-          { id: 'connectors',  label: '🩺 Connector Health Monitor', icon: '📡' },
-          { id: 'raw_data',    label: '📑 Raw Data Stream Viewer', icon: '📊' },
-          { id: 'timeline',    label: '⏱️ Chronological Timeline', icon: '🕒' },
+          { id: 'pipeline',    label: 'Ingestion Dispatcher', icon: '⚡' },
+          { id: 'connectors',  label: 'Connector Health Monitor', icon: '📡' },
+          { id: 'raw_data',    label: 'Raw Data Stream Viewer', icon: '📊' },
+          { id: 'timeline',    label: 'Chronological Timeline', icon: '🕒' },
         ].map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`
-              px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap border
+              h-9 px-4 inline-flex items-center gap-1.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap border cursor-pointer
               ${activeTab === tab.id
                 ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
                 : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
               }
             `}
           >
-            {tab.icon} {tab.label}
+            <span>{tab.icon}</span>
+            <span>{tab.label}</span>
           </button>
         ))}
       </div>

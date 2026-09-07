@@ -30,16 +30,16 @@ function EmotionRadarChart({ emotions = {} }) {
       </div>
 
       {data.length === 0 ? (
-        <div className="text-center py-12 text-[#8ea0b5] font-mono text-sm">
+        <div className="text-center py-14 text-[#8ea0b5] font-mono text-xs bg-black/20 rounded-xl border border-white/5 my-2">
           No emotion telemetry data available
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={280}>
           <RadarChart data={data}>
-            <PolarGrid stroke="rgba(76, 215, 246, 0.15)" />
+            <PolarGrid stroke="rgba(76, 215, 246, 0.12)" />
             <PolarAngleAxis
               dataKey="emotion"
-              tick={{ fill: '#8ea0b5', fontSize: 11, fontFamily: 'JetBrains Mono' }}
+              tick={{ fill: '#dae2fd', fontSize: 11, fontFamily: 'JetBrains Mono' }}
             />
             <PolarRadiusAxis
               angle={90}
@@ -51,7 +51,7 @@ function EmotionRadarChart({ emotions = {} }) {
               dataKey="score"
               stroke="#ddb7ff"
               fill="#ddb7ff"
-              fillOpacity={0.25}
+              fillOpacity={0.2}
               strokeWidth={2}
             />
             <Tooltip
@@ -61,9 +61,10 @@ function EmotionRadarChart({ emotions = {} }) {
                 borderRadius:    '12px',
                 color:           '#ffffff',
                 fontFamily:      'JetBrains Mono',
-                fontSize:        '12px',
+                fontSize:        '11px',
                 boxShadow:       '0 8px 25px rgba(0,0,0,0.8)',
               }}
+              itemStyle={{ color: '#ddb7ff' }}
               formatter={(val) => [`${val}%`, 'Confidence']}
             />
           </RadarChart>

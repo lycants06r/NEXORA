@@ -12,6 +12,7 @@
 
 import React, { useState } from 'react'
 import { INFORMATION_CASCADES } from '../../api/normalizedData'
+import PlatformLogo from '../common/PlatformLogo.jsx'
 
 function CascadeTimeline() {
   const [activeCascadeId, setActiveCascadeId] = useState(INFORMATION_CASCADES[0]?.cascade_id)
@@ -87,12 +88,9 @@ function CascadeTimeline() {
 
             <div className="p-3.5 bg-black/40 border border-white/5 hover:border-cyan-500/30 rounded-xl transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <div className="flex items-center gap-3">
-                <span className="text-xl">
-                  {hop.platform === 'twitter' ? '🐦' :
-                   hop.platform === 'telegram' ? '✈️' :
-                   hop.platform === 'reddit' ? '🤖' :
-                   hop.platform === 'youtube' ? '📺' : '👥'}
-                </span>
+                <div className="w-8 h-8 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1.5 flex-shrink-0">
+                  <PlatformLogo platform={hop.platform} className="w-5 h-5" colored={true} />
+                </div>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-white text-xs font-bold font-mono">

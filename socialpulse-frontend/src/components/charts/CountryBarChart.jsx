@@ -18,16 +18,16 @@ function CountryBarChart({ countries = [] }) {
       </div>
 
       {countries.length === 0 ? (
-        <div className="text-center py-10 text-[#8ea0b5] font-mono text-sm">
+        <div className="text-center py-14 text-[#8ea0b5] font-mono text-xs bg-black/20 rounded-xl border border-white/5 my-2">
           No location telemetry data available
         </div>
       ) : (
-        <ResponsiveContainer width="100%" height={240}>
+        <ResponsiveContainer width="100%" height={260}>
           <BarChart
             data={countries.slice(0, 8)}
-            margin={{ top: 0, right: 10, left: 0, bottom: 30 }}
+            margin={{ top: 5, right: 10, left: 0, bottom: 35 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.06)" />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" />
             <XAxis
               dataKey="country"
               tick={{ fill: '#8ea0b5', fontSize: 10, fontFamily: 'JetBrains Mono' }}
@@ -36,7 +36,7 @@ function CountryBarChart({ countries = [] }) {
               axisLine={{ stroke: 'rgba(76, 215, 246, 0.2)' }}
             />
             <YAxis
-              tick={{ fill: '#8ea0b5', fontSize: 11, fontFamily: 'JetBrains Mono' }}
+              tick={{ fill: '#8ea0b5', fontSize: 10, fontFamily: 'JetBrains Mono' }}
               axisLine={{ stroke: 'rgba(76, 215, 246, 0.2)' }}
             />
             <Tooltip
@@ -46,13 +46,16 @@ function CountryBarChart({ countries = [] }) {
                 borderRadius:    '12px',
                 color:           '#ffffff',
                 fontFamily:      'JetBrains Mono',
+                fontSize:        '11px',
                 boxShadow:       '0 8px 25px rgba(0,0,0,0.8)',
               }}
+              formatter={(val) => [`${val.toLocaleString()} signals`, 'Volume']}
             />
             <Bar
               dataKey="count"
               fill="#4cd7f6"
               radius={[6, 6, 0, 0]}
+              barSize={20}
             />
           </BarChart>
         </ResponsiveContainer>

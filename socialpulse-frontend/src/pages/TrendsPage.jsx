@@ -12,18 +12,18 @@
 */
 
 import React, { useState, useEffect } from 'react'
-import PageHeader     from '../components/common/PageHeader.jsx'
+import PageHeader from '../components/common/PageHeader.jsx'
 import LoadingSpinner from '../components/common/LoadingSpinner.jsx'
 import TrendScoreChart from '../components/charts/TrendScoreChart.jsx'
-import WordCloud      from '../components/charts/WordCloud.jsx'
+import WordCloud from '../components/charts/WordCloud.jsx'
 import { getCurrentTrends, getAnomalies } from '../api/trendsApi'
 
 function TrendsPage() {
-  const [trends,    setTrends]    = useState([])
+  const [trends, setTrends] = useState([])
   const [anomalies, setAnomalies] = useState([])
-  const [loading,   setLoading]   = useState(true)
-  const [platform,  setPlatform]  = useState(null)
-  const [topN,      setTopN]      = useState(10)
+  const [loading, setLoading] = useState(true)
+  const [platform, setPlatform] = useState(null)
+  const [topN, setTopN] = useState(10)
 
   useEffect(() => { loadData() }, [platform, topN])
 
@@ -143,15 +143,15 @@ function TrendsPage() {
 
   const keywords = trends.flatMap((t) =>
     (t.keywords || []).map((kw) => ({
-      text:  kw,
+      text: kw,
       score: t.trend_score,
     }))
   )
 
   const lifecycleBadges = {
-    Emerging:  'bg-cyan-500/20 text-[#4cd7f6] border-cyan-500/40 animate-pulse',
-    Rising:    'bg-emerald-500/20 text-[#4edea3] border-emerald-500/40',
-    Peaking:   'bg-purple-500/20 text-[#ddb7ff] border-purple-500/40',
+    Emerging: 'bg-cyan-500/20 text-[#4cd7f6] border-cyan-500/40 animate-pulse',
+    Rising: 'bg-emerald-500/20 text-[#4edea3] border-emerald-500/40',
+    Peaking: 'bg-purple-500/20 text-[#ddb7ff] border-purple-500/40',
     Declining: 'bg-slate-500/20 text-[#8ea0b5] border-slate-500/40',
   }
 
@@ -199,11 +199,11 @@ function TrendsPage() {
             `}
           >
             {p === 'twitter' ? '🐦 X' :
-             p === 'telegram' ? '✈️ Telegram' :
-             p === 'instagram' ? '📸 Instagram' :
-             p === 'facebook' ? '👥 Facebook' :
-             p === 'reddit' ? '🤖 Reddit' :
-             p === 'youtube' ? '📺 YouTube' : 'All Streams'}
+              p === 'telegram' ? '✈️ Telegram' :
+                p === 'instagram' ? '📸 Instagram' :
+                  p === 'facebook' ? '👥 Facebook' :
+                    p === 'reddit' ? '🤖 Reddit' :
+                      p === 'youtube' ? '📺 YouTube' : 'All Streams'}
           </button>
         ))}
       </div>
@@ -293,11 +293,10 @@ function TrendsPage() {
                 >
                   {/* Rank */}
                   <div className="col-span-1 flex items-center">
-                    <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold border ${
-                      trend.rank <= 3
-                        ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/40 shadow-[0_0_8px_rgba(76,215,246,0.25)]'
-                        : 'bg-black/40 text-[#8ea0b5] border-white/5'
-                    }`}>
+                    <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold border ${trend.rank <= 3
+                      ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/40 shadow-[0_0_8px_rgba(76,215,246,0.25)]'
+                      : 'bg-black/40 text-[#8ea0b5] border-white/5'
+                      }`}>
                       {trend.rank}
                     </span>
                   </div>

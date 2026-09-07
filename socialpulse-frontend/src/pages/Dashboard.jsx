@@ -315,7 +315,7 @@ function Dashboard() {
                 type="button"
                 onClick={() => setPlatform(p.id)}
                 className={`
-                  px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all whitespace-nowrap border cursor-pointer
+                  h-9 px-3.5 inline-flex items-center rounded-xl text-xs font-mono font-semibold transition-all whitespace-nowrap border cursor-pointer
                   ${platform === p.id
                     ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_10px_rgba(76,215,246,0.3)] font-bold'
                     : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
@@ -339,7 +339,7 @@ function Dashboard() {
                 type="button"
                 onClick={() => setDateRange(range)}
                 className={`
-                  px-3 py-1.5 rounded-xl uppercase transition-all border cursor-pointer font-semibold
+                  h-9 px-3.5 inline-flex items-center rounded-xl uppercase transition-all border cursor-pointer font-semibold
                   ${dateRange === range
                     ? 'bg-purple-500/25 text-[#ddb7ff] border-purple-500/50 font-bold shadow-[0_0_10px_rgba(221,183,255,0.25)]'
                     : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
@@ -479,7 +479,7 @@ function Dashboard() {
         {/* Recharts Area Chart */}
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={timelineSeries} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <AreaChart data={timelineSeries} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="volGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%"  stopColor="#4cd7f6" stopOpacity={0.4} />
@@ -826,8 +826,13 @@ function Dashboard() {
                   <div className="text-white text-xs font-semibold">
                     {alert.title}
                   </div>
-                  <div className="text-[10px] font-mono text-[#8ea0b5] mt-0.5">
-                    Platform: <span className="text-white">{alert.platform}</span> · Topic: <span className="text-[#4cd7f6]">{alert.topic}</span>
+                  <div className="text-[10px] font-mono text-[#8ea0b5] mt-0.5 flex items-center gap-1.5 flex-wrap">
+                    <span className="inline-flex items-center gap-1 text-white">
+                      <PlatformLogo platform={alert.platform} className="w-3 h-3" colored={true} />
+                      <span>{alert.platform}</span>
+                    </span>
+                    <span className="text-[#3a4d65]">·</span>
+                    <span>Topic: <span className="text-[#4cd7f6]">{alert.topic}</span></span>
                   </div>
                 </div>
               </div>

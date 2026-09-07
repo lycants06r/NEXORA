@@ -20,6 +20,7 @@ import PolarityBarChart     from '../components/charts/PolarityBarChart.jsx'
 import Badge                from '../components/common/Badge.jsx'
 import SentimentHeatmap     from '../components/sentiment/SentimentHeatmap.jsx'
 import ThreadDrilldownModal from '../components/sentiment/ThreadDrilldownModal.jsx'
+import PlatformLogo         from '../components/common/PlatformLogo.jsx'
 import {
   analyzeText,
   getSentimentTimeline,
@@ -363,7 +364,8 @@ function SentimentPage() {
                   <span className="text-xs font-mono font-bold text-white group-hover:text-[#4cd7f6] transition-colors">
                     {thread.post_id} · {thread.author_name}
                   </span>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/20 text-[#4cd7f6] uppercase">
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-[#4cd7f6] uppercase flex items-center gap-1">
+                    <PlatformLogo platform={thread.platform} className="w-2.5 h-2.5" colored={true} />
                     {thread.platform}
                   </span>
                   <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-purple-500/20 text-[#ddb7ff] uppercase">

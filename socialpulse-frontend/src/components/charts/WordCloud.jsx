@@ -43,7 +43,7 @@ function WordCloud({ keywords = [] }) {
       </div>
 
       {sorted.length === 0 ? (
-        <div className="text-center py-10 text-[#8ea0b5] font-mono text-sm">
+        <div className="text-center py-14 text-[#8ea0b5] font-mono text-xs bg-black/20 rounded-xl border border-white/5 my-2">
           No keyword entities detected yet
         </div>
       ) : (
@@ -57,8 +57,8 @@ function WordCloud({ keywords = [] }) {
               className={`
                 ${getSizeClass(index, sorted.length)}
                 ${WORD_COLORS[index % WORD_COLORS.length]}
-                cursor-default transition-all duration-300
-                hover:scale-110 px-2 py-1 rounded-lg hover:bg-white/5
+                cursor-default transition-all duration-200
+                hover:scale-105 px-2 py-0.5 rounded-lg hover:bg-white/5
               `}
               title={`Frequency & R-Score: ${kw.score}`}
             >

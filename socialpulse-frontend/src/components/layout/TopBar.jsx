@@ -76,15 +76,15 @@ function TopBar() {
         </div>
 
         {/* RIGHT: Controls & Telemetry */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           {/* RBAC Role Selector Dropdown */}
           <div className="relative flex items-center">
             <select
               value={role.id}
               onChange={(e) => setRole(e.target.value)}
               className="
-                bg-black/60 border border-cyan-500/30 text-xs font-mono font-bold
-                rounded-xl px-2.5 py-1.5 text-white focus:outline-none focus:border-[#4cd7f6]
+                h-9 bg-black/60 border border-cyan-500/30 text-xs font-mono font-bold
+                rounded-xl px-3 text-white focus:outline-none focus:border-[#4cd7f6]
                 cursor-pointer shadow-inner
               "
               title={role.description}
@@ -100,12 +100,12 @@ function TopBar() {
             type="button"
             onClick={() => navigate('/alerts')}
             className="
-              relative p-2 rounded-xl bg-black/40 border border-white/10 hover:border-cyan-500/40
-              text-[#8ea0b5] hover:text-white transition-all cursor-pointer flex items-center justify-center
+              relative h-9 w-9 rounded-xl bg-black/40 border border-white/10 hover:border-cyan-500/40
+              text-[#8ea0b5] hover:text-white transition-all cursor-pointer flex items-center justify-center flex-shrink-0
             "
             title={`${activeAlertsCount} active threat alerts`}
           >
-            <span className="text-sm">🚨</span>
+            <span className="text-sm leading-none">🚨</span>
             {activeAlertsCount > 0 && (
               <span className="
                 absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-500
@@ -122,30 +122,30 @@ function TopBar() {
             type="button"
             onClick={() => setShowExportModal(true)}
             className="
-              hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl
+              hidden md:inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl
               bg-[#4cd7f6]/10 border border-cyan-500/30 hover:border-cyan-400 text-[#4cd7f6]
               text-xs font-mono font-bold uppercase tracking-wider transition-all
-              shadow-sm hover:shadow-[0_0_12px_rgba(76,215,246,0.25)] cursor-pointer
+              shadow-sm hover:shadow-[0_0_12px_rgba(76,215,246,0.25)] cursor-pointer flex-shrink-0
             "
           >
-            <span>📥</span>
+            <span className="text-xs">📥</span>
             <span>Export Dossier</span>
           </button>
 
           {/* Backend Status Pill */}
           <div className={`
-            hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-semibold
+            hidden sm:inline-flex items-center gap-2 h-9 px-3 rounded-xl text-xs font-mono font-semibold flex-shrink-0
             ${health
               ? 'bg-emerald-500/15 text-[#4edea3] border border-emerald-500/30 shadow-[0_0_12px_rgba(78,222,163,0.2)]'
               : 'bg-rose-500/15 text-[#f43f5e] border border-rose-500/30 shadow-[0_0_12px_rgba(244,63,94,0.2)]'
             }
           `}>
-            <div className={`w-2 h-2 rounded-full ${health ? 'bg-[#4edea3] shadow-[0_0_8px_#4edea3]' : 'bg-[#f43f5e] shadow-[0_0_8px_#f43f5e]'} animate-pulse`} />
+            <div className={`w-2 h-2 rounded-full ${health ? 'bg-[#4edea3] shadow-[0_0_8px_#4edea3]' : 'bg-[#f43f5e] shadow-[0_0_8px_#f43f5e]'} animate-pulse flex-shrink-0`} />
             <span>{health ? 'API CORE ONLINE' : 'STANDALONE MODE'}</span>
           </div>
 
           {/* Live Monospace Clock */}
-          <div className="px-3 py-1.5 rounded-xl bg-black/50 border border-cyan-500/20 text-xs font-mono text-[#4cd7f6] shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] flex items-center gap-1.5">
+          <div className="h-9 px-3 rounded-xl bg-black/50 border border-cyan-500/20 text-xs font-mono text-[#4cd7f6] shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] flex items-center gap-1.5 flex-shrink-0">
             <span className="text-gray-500 hidden sm:inline">UTC</span>
             <span className="font-bold tracking-wider">{time.toLocaleTimeString()}</span>
           </div>

@@ -41,7 +41,7 @@ function TrendScoreChart({ trends = [] }) {
       </div>
 
       {data.length === 0 ? (
-        <div className="text-center py-10 text-[#8ea0b5] font-mono text-sm">
+        <div className="text-center py-14 text-[#8ea0b5] font-mono text-xs bg-black/20 rounded-xl border border-white/5 my-2">
           No viral trend signals detected yet
         </div>
       ) : (
@@ -49,12 +49,12 @@ function TrendScoreChart({ trends = [] }) {
           <BarChart
             data={data}
             layout="vertical"
-            margin={{ top: 0, right: 20, left: 100, bottom: 0 }}
+            margin={{ top: 5, right: 20, left: 115, bottom: 5 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.06)" horizontal={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" horizontal={false} />
             <XAxis
               type="number"
-              tick={{ fill: '#8ea0b5', fontSize: 11, fontFamily: 'JetBrains Mono' }}
+              tick={{ fill: '#8ea0b5', fontSize: 10, fontFamily: 'JetBrains Mono' }}
               axisLine={{ stroke: 'rgba(76, 215, 246, 0.2)' }}
             />
             <YAxis
@@ -62,7 +62,7 @@ function TrendScoreChart({ trends = [] }) {
               dataKey="topic"
               tick={{ fill: '#dae2fd', fontSize: 11, fontFamily: 'JetBrains Mono' }}
               axisLine={false}
-              width={100}
+              width={115}
             />
             <Tooltip
               contentStyle={{
@@ -71,14 +71,15 @@ function TrendScoreChart({ trends = [] }) {
                 borderRadius:    '12px',
                 color:           '#ffffff',
                 fontFamily:      'JetBrains Mono',
+                fontSize:        '11px',
                 boxShadow:       '0 8px 25px rgba(0,0,0,0.8)',
               }}
-              formatter={(val) => [val, 'Viral Score']}
+              formatter={(val) => [`${val} pts`, 'Viral Score']}
               labelFormatter={(_, payload) =>
                 payload?.[0]?.payload?.full_topic || ''
               }
             />
-            <Bar dataKey="score" radius={[0, 8, 8, 0]}>
+            <Bar dataKey="score" radius={[0, 6, 6, 0]} barSize={16}>
               {data.map((_, index) => (
                 <Cell key={index} fill={getRankColor(index)} />
               ))}

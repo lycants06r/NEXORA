@@ -8,13 +8,13 @@
 import React from 'react'
 
 const COLOR_MAP = {
-  blue:   'from-[#4cd7f6]/15 via-[#06b6d4]/5 to-black/40 border-[#4cd7f6]/35 shadow-[0_8px_25px_rgba(76,215,246,0.12)]',
-  purple: 'from-[#ddb7ff]/15 via-[#8b5cf6]/5 to-black/40 border-[#ddb7ff]/35 shadow-[0_8px_25px_rgba(221,183,255,0.12)]',
-  green:  'from-[#4edea3]/15 via-[#10b981]/5 to-black/40 border-[#4edea3]/35 shadow-[0_8px_25px_rgba(78,222,163,0.12)]',
-  red:    'from-[#f43f5e]/15 via-[#ef4444]/5 to-black/40 border-[#f43f5e]/35 shadow-[0_8px_25px_rgba(244,63,94,0.12)]',
-  yellow: 'from-[#f59e0b]/15 via-[#d97706]/5 to-black/40 border-[#f59e0b]/35 shadow-[0_8px_25px_rgba(245,158,11,0.12)]',
-  cyan:   'from-[#06b6d4]/15 via-[#4cd7f6]/5 to-black/40 border-[#06b6d4]/35 shadow-[0_8px_25px_rgba(6,182,212,0.12)]',
-  pink:   'from-[#ec4899]/15 via-[#db2777]/5 to-black/40 border-[#ec4899]/35 shadow-[0_8px_25px_rgba(236,72,153,0.12)]',
+  blue:   'from-[#4cd7f6]/10 via-[#06b6d4]/5 to-black/50 border-cyan-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
+  purple: 'from-[#ddb7ff]/10 via-[#8b5cf6]/5 to-black/50 border-purple-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
+  green:  'from-[#4edea3]/10 via-[#10b981]/5 to-black/50 border-emerald-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
+  red:    'from-[#f43f5e]/10 via-[#ef4444]/5 to-black/50 border-rose-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
+  yellow: 'from-[#f59e0b]/10 via-[#d97706]/5 to-black/50 border-amber-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
+  cyan:   'from-[#06b6d4]/10 via-[#4cd7f6]/5 to-black/50 border-cyan-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
+  pink:   'from-[#ec4899]/10 via-[#db2777]/5 to-black/50 border-pink-500/25 shadow-[0_8px_25px_rgba(0,0,0,0.4)]',
 }
 
 function StatCard({
@@ -33,7 +33,7 @@ function StatCard({
     <div className={`
       bg-gradient-to-br ${gradientClass}
       backdrop-blur-xl border rounded-2xl p-5
-      hover:scale-[1.02] hover:border-cyan-400/50 transition-all duration-300
+      hover:scale-[1.01] hover:border-cyan-400/40 transition-all duration-200
       cursor-default animate-slide-up relative overflow-hidden group
     `}>
       {/* Ambient background glow line */}

@@ -18,6 +18,7 @@ import LoadingSpinner    from '../components/common/LoadingSpinner.jsx'
 import DemoPieChart      from '../components/charts/DemoPieChart.jsx'
 import CountryBarChart   from '../components/charts/CountryBarChart.jsx'
 import StatCard          from '../components/common/StatCard.jsx'
+import PlatformLogo      from '../components/common/PlatformLogo.jsx'
 import { getAudienceStats } from '../api/demographicsApi'
 
 
@@ -115,24 +116,28 @@ function DemographicsPage() {
         subtitle="Aggregated age brackets, regional geographic distribution, language trends & professional interest clustering"
       >
         <div className="flex gap-1.5 flex-wrap">
-          {[null, 'twitter', 'telegram', 'instagram', 'facebook', 'reddit', 'youtube'].map((p) => (
+          {[
+            { id: null, label: 'All Streams' },
+            { id: 'twitter', label: 'X / Twitter' },
+            { id: 'telegram', label: 'Telegram' },
+            { id: 'instagram', label: 'Instagram' },
+            { id: 'facebook', label: 'Facebook' },
+            { id: 'reddit', label: 'Reddit' },
+            { id: 'youtube', label: 'YouTube' },
+          ].map(({ id: p, label }) => (
             <button
               key={p || 'all'}
               onClick={() => setPlatform(p)}
               className={`
-                px-3 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border
+                px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border flex items-center gap-1.5
                 ${platform === p
                   ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_12px_rgba(76,215,246,0.25)] font-bold'
                   : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
                 }
               `}
             >
-              {p === 'twitter' ? '🐦 X' :
-               p === 'telegram' ? '✈️ TG' :
-               p === 'instagram' ? '📸 IG' :
-               p === 'facebook' ? '👥 FB' :
-               p === 'reddit' ? '🤖 Reddit' :
-               p === 'youtube' ? '📺 YT' : 'All Streams'}
+              <PlatformLogo platform={p || 'all'} className="w-3.5 h-3.5" colored={true} />
+              <span>{label}</span>
             </button>
           ))}
         </div>

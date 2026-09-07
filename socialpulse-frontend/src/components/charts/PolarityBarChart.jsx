@@ -41,22 +41,22 @@ function PolarityBarChart({ summary = {} }) {
         </span>
       </div>
 
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={220}>
         <BarChart
           data={data}
           layout="vertical"
-          margin={{ top: 0, right: 20, left: 20, bottom: 0 }}
+          margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.06)" horizontal={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" horizontal={false} />
           <XAxis
             type="number"
-            tick={{ fill: '#8ea0b5', fontSize: 11, fontFamily: 'JetBrains Mono' }}
+            tick={{ fill: '#8ea0b5', fontSize: 10, fontFamily: 'JetBrains Mono' }}
             axisLine={{ stroke: 'rgba(76, 215, 246, 0.2)' }}
           />
           <YAxis
             type="category"
             dataKey="label"
-            tick={{ fill: '#dae2fd', fontSize: 12, fontFamily: 'JetBrains Mono', fontWeight: 600 }}
+            tick={{ fill: '#dae2fd', fontSize: 11, fontFamily: 'JetBrains Mono', fontWeight: 600 }}
             axisLine={false}
             width={75}
           />
@@ -67,11 +67,12 @@ function PolarityBarChart({ summary = {} }) {
               borderRadius:    '12px',
               color:           '#ffffff',
               fontFamily:      'JetBrains Mono',
+              fontSize:        '11px',
               boxShadow:       '0 8px 25px rgba(0,0,0,0.8)',
             }}
-            formatter={(val) => [val, 'Events']}
+            formatter={(val) => [`${val.toLocaleString()} signals`, 'Volume']}
           />
-          <Bar dataKey="count" radius={[0, 8, 8, 0]}>
+          <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={18}>
             {data.map((entry) => (
               <Cell key={entry.label} fill={entry.color} />
             ))}

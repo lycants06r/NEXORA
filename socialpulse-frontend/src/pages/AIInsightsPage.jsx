@@ -89,7 +89,7 @@ function AIInsightsPage() {
         title="AI 5-Vector Intelligence Synthesis"
         subtitle="Holistic cross-cutting synthesis: Data Ingestion + Sentiment + Demographics + Trends + Network Topology"
       >
-        <span className="text-xs font-mono text-[#ddb7ff] px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 font-bold">
+        <span className="h-9 px-3.5 inline-flex items-center text-xs font-mono text-[#ddb7ff] rounded-xl bg-purple-500/10 border border-purple-500/30 font-bold shadow-[0_0_10px_rgba(221,183,255,0.15)]">
           5-VECTOR SYNTHESIS ENGINE
         </span>
       </PageHeader>
@@ -102,12 +102,12 @@ function AIInsightsPage() {
 
       {/* Synthesis Overview Header */}
       <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-2.5">
           <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
             🎯 Actionable Intelligence Dossiers ({synthesisInsights.length} Synthesized)
           </h3>
-          <span className="text-[11px] font-mono text-[#4cd7f6]">
+          <span className="text-[11px] font-mono text-[#4cd7f6] font-semibold">
             DATA DRIVEN · ZERO FABRICATION
           </span>
         </div>
@@ -122,7 +122,7 @@ function AIInsightsPage() {
         {synthesisInsights.map((insight) => (
           <div
             key={insight.id}
-            className="bg-[#0a1329]/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.6)] relative overflow-hidden"
+            className="bg-[#0a1329]/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.6)] relative overflow-hidden transition-all duration-300 hover:border-cyan-400/50"
           >
             {/* Top Border Accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4cd7f6] via-[#ddb7ff] to-[#4edea3]" />
@@ -137,61 +137,61 @@ function AIInsightsPage() {
                   {insight.title}
                 </h3>
               </div>
-              <div className="flex items-center gap-2 font-mono text-xs">
-                <span className="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-[#4cd7f6] font-bold">
+              <div className="flex items-center gap-2 font-mono text-xs flex-wrap">
+                <span className="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-[#4cd7f6] font-bold shadow-[0_0_8px_rgba(76,215,246,0.15)]">
                   CONFIDENCE: {insight.confidence}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-500/30 text-[#ddb7ff] font-bold">
+                <span className="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-500/30 text-[#ddb7ff] font-bold shadow-[0_0_8px_rgba(221,183,255,0.15)]">
                   {insight.threatLevel}
                 </span>
               </div>
             </div>
 
             {/* 8-Dimensional Answers Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono mb-4">
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs font-mono mb-4">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">1. What Changed?</span>
-                <span className="text-white font-sans text-xs mt-1 block">{insight.whatChanged}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.whatChanged}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">2. Where Did It Change?</span>
-                <span className="text-white font-sans text-xs mt-1 block">{insight.whereChanged}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.whereChanged}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">3. Which Platform?</span>
-                <span className="text-[#4cd7f6] font-sans text-xs mt-1 block">{insight.platform}</span>
+                <span className="text-[#4cd7f6] font-sans text-xs mt-1 block leading-relaxed">{insight.platform}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">4. Which Topic Entity?</span>
-                <span className="text-white font-sans text-xs mt-1 block">{insight.topic}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.topic}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">5. Which Sentiment & Emotion?</span>
-                <span className="text-[#4edea3] font-sans text-xs mt-1 block">{insight.sentiment}</span>
+                <span className="text-[#4edea3] font-sans text-xs mt-1 block leading-relaxed">{insight.sentiment}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">6. Which Audience Segment?</span>
-                <span className="text-white font-sans text-xs mt-1 block">{insight.audienceSegment}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.audienceSegment}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">7. Which Influential Nodes?</span>
-                <span className="text-[#ddb7ff] font-sans text-xs mt-1 block">{insight.influentialNodes}</span>
+                <span className="text-[#ddb7ff] font-sans text-xs mt-1 block leading-relaxed">{insight.influentialNodes}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">8. How Quickly Is It Spreading?</span>
-                <span className="text-pink-400 font-sans text-xs mt-1 block">{insight.spreadVelocity}</span>
+                <span className="text-pink-400 font-sans text-xs mt-1 block leading-relaxed">{insight.spreadVelocity}</span>
               </div>
             </div>
 
             {/* Actionable Strategic Recommendation */}
-            <div className="p-3.5 bg-cyan-500/10 border border-cyan-500/30 rounded-xl flex items-start gap-3 font-sans">
+            <div className="p-3.5 bg-cyan-500/10 border border-cyan-500/30 rounded-xl flex items-start gap-3 font-sans shadow-[0_4px_15px_rgba(76,215,246,0.08)]">
               <span className="text-xl">🎯</span>
               <div>
                 <span className="text-[#4cd7f6] font-bold text-xs uppercase font-mono block">
