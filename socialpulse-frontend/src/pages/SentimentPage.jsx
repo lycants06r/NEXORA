@@ -21,6 +21,7 @@ import Badge                from '../components/common/Badge.jsx'
 import SentimentHeatmap     from '../components/sentiment/SentimentHeatmap.jsx'
 import ThreadDrilldownModal from '../components/sentiment/ThreadDrilldownModal.jsx'
 import PlatformLogo         from '../components/common/PlatformLogo.jsx'
+import CrossPlatformSentimentComparison from '../components/sentiment/CrossPlatformSentimentComparison.jsx'
 import {
   analyzeText,
   getSentimentTimeline,
@@ -340,6 +341,9 @@ function SentimentPage() {
 
       {/* ── Temporal Sentiment Heat Map ─────────────────────── */}
       <SentimentHeatmap />
+
+      {/* ── Cross-Platform Sentiment Comparison Matrix ──────── */}
+      <CrossPlatformSentimentComparison />
 
       {/* ── Thread-Level Sentiment Drill-Down Selection Panel ── */}
       <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">

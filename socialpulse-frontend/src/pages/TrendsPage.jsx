@@ -16,6 +16,7 @@ import PageHeader from '../components/common/PageHeader.jsx'
 import LoadingSpinner from '../components/common/LoadingSpinner.jsx'
 import TrendScoreChart from '../components/charts/TrendScoreChart.jsx'
 import WordCloud from '../components/charts/WordCloud.jsx'
+import CrossPlatformTrendComparison from '../components/trends/CrossPlatformTrendComparison.jsx'
 import { getCurrentTrends, getAnomalies } from '../api/trendsApi'
 
 function TrendsPage() {
@@ -262,6 +263,9 @@ function TrendsPage() {
             <TrendScoreChart trends={trends} />
             <WordCloud keywords={keywords} />
           </div>
+
+          {/* ── Cross-Platform Viral Migration Matrix ───────────── */}
+          <CrossPlatformTrendComparison />
 
           {/* Ranked Topic Leaderboard Table */}
           <div className="liquid-glass rounded-2xl overflow-hidden shadow-glass-card relative group">

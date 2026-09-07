@@ -117,7 +117,7 @@ function useForceSimulation(nodes, edges, width, height) {
   return positions
 }
 
-function NetworkGraph({ nodes = [], edges = [] }) {
+function NetworkGraph({ nodes = [], edges = [], onNodeClick }) {
   const WIDTH  = 700
   const HEIGHT = 450
 
@@ -139,7 +139,7 @@ function NetworkGraph({ nodes = [], edges = [] }) {
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2 relative z-10">
         <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
-          🕸️ Force-Directed Influence Topology
+          🕸️ Force-Directed Influence Topology (Click Any Node to Inspect)
         </h3>
 
         {/* Legend */}
@@ -198,6 +198,7 @@ function NetworkGraph({ nodes = [], edges = [] }) {
               <g
                 key={node.id}
                 style={{ cursor: 'pointer' }}
+                onClick={() => onNodeClick && onNodeClick(node)}
                 onMouseEnter={() => setHovered(node.id)}
                 onMouseLeave={() => setHovered(null)}
               >

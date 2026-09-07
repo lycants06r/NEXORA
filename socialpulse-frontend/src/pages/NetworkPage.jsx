@@ -18,6 +18,7 @@ import StatCard          from '../components/common/StatCard.jsx'
 import Badge             from '../components/common/Badge.jsx'
 import CascadeTimeline   from '../components/network/CascadeTimeline.jsx'
 import PlatformLogo      from '../components/common/PlatformLogo.jsx'
+import NodeDetailModal    from '../components/network/NodeDetailModal.jsx'
 import {
   getInfluencers,
   getCommunities,
@@ -31,8 +32,11 @@ function NetworkPage() {
   const [communities,  setCommunities]  = useState([])
   const [loading,      setLoading]      = useState(true)
   const [platform,     setPlatform]     = useState(null)
+  const [topic,        setTopic]        = useState('all')
+  const [timeRange,    setTimeRange]    = useState('24h')
+  const [selectedNode, setSelectedNode] = useState(null)
 
-  useEffect(() => { loadData() }, [platform])
+  useEffect(() => { loadData() }, [platform, topic, timeRange])
 
   async function loadData() {
     setLoading(true)
@@ -136,32 +140,60 @@ function NetworkPage() {
         </button>
       </PageHeader>
 
-      {/* Platform Filter */}
-      <div className="flex gap-1.5 flex-wrap">
-        {[
-          { id: null, label: 'All Streams' },
-          { id: 'twitter', label: 'X / Twitter' },
-          { id: 'telegram', label: 'Telegram' },
-          { id: 'instagram', label: 'Instagram' },
-          { id: 'facebook', label: 'Facebook' },
-          { id: 'reddit', label: 'Reddit' },
-          { id: 'youtube', label: 'YouTube' },
-        ].map(({ id: p, label }) => (
-          <button
-            key={p || 'all'}
-            onClick={() => setPlatform(p)}
-            className={`
-              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5
-              ${platform === p
-                ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
-                : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
-              }
-            `}
+      {/* Platform, Topic & Time Filters */}
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <div className="flex gap-1.5 flex-wrap">
+          {[
+            { id: null, label: 'All Streams' },
+            { id: 'twitter', label: 'X / Twitter' },
+            { id: 'telegram', label: 'Telegram' },
+            { id: 'instagram', label: 'Instagram' },
+            { id: 'facebook', label: 'Facebook' },
+            { id: 'reddit', label: 'Reddit' },
+            { id: 'youtube', label: 'YouTube' },
+          ].map(({ id: p, label }) => (
+            <button
+              key={p || 'all'}
+              onClick={() => setPlatform(p)}
+              className={`
+                px-3 py-1 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5
+                ${platform === p
+                  ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
+                  : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
+                }
+              `}
+            >
+              <PlatformLogo platform={p || 'all'} className="w-3.5 h-3.5" colored={true} />
+              <span>{label}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Topic & Time Filter Dropdowns */}
+        <div className="flex items-center gap-2 font-mono text-xs">
+          <select
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            className="glass-control text-white rounded-xl px-3 py-1.5 focus:outline-none focus:border-[#4cd7f6]"
           >
-            <PlatformLogo platform={p || 'all'} className="w-3.5 h-3.5" colored={true} />
-            <span>{label}</span>
-          </button>
-        ))}
+            <option value="all" className="bg-[#060e20]">ALL NETWORK TOPICS</option>
+            <option value="AI Governance" className="bg-[#060e20]">AI Governance</option>
+            <option value="Grid Security" className="bg-[#060e20]">Grid Security</option>
+            <option value="Autonomous AI" className="bg-[#060e20]">Autonomous AI</option>
+            <option value="Macro Risk" className="bg-[#060e20]">Macro Risk</option>
+          </select>
+
+          <select
+            value={timeRange}
+            onChange={(e) => setTimeRange(e.target.value)}
+            className="glass-control text-white rounded-xl px-3 py-1.5 focus:outline-none focus:border-[#4cd7f6]"
+          >
+            <option value="1h" className="bg-[#060e20]">LAST 1H</option>
+            <option value="24h" className="bg-[#060e20]">LAST 24H</option>
+            <option value="7d" className="bg-[#060e20]">LAST 7D</option>
+            <option value="30d" className="bg-[#060e20]">LAST 30D</option>
+          </select>
+        </div>
       </div>
 
       {loading ? (
@@ -180,6 +212,7 @@ function NetworkPage() {
           <NetworkGraph
             nodes={graphData.nodes}
             edges={graphData.edges}
+            onNodeClick={setSelectedNode}
           />
 
           {/* Information Cascade & Spread Timeline */}
@@ -198,7 +231,7 @@ function NetworkPage() {
                     ⭐ Key Opinion Leaders (KOLs) & Centrality
                   </h3>
                   <p className="text-[10px] text-[#8ea0b5] font-mono mt-0.5">
-                    Measurable metrics: PageRank, Betweenness & Degree Centrality
+                    Measurable metrics: PageRank, Betweenness & Degree Centrality (Click to inspect node)
                   </p>
                 </div>
                 <span className="text-[11px] font-mono text-[#ec4899] font-bold">
@@ -210,7 +243,8 @@ function NetworkPage() {
                 {influencers.map((inf, i) => (
                   <div
                     key={inf.user_id_hashed}
-                    className="p-4 hover:bg-white/[0.04] transition-colors flex items-center gap-3.5"
+                    onClick={() => setSelectedNode(inf)}
+                    className="p-4 hover:bg-white/[0.06] transition-colors flex items-center gap-3.5 cursor-pointer group"
                   >
                     {/* Rank badge */}
                     <div className={`
@@ -352,6 +386,14 @@ function NetworkPage() {
             </div>
           </div>
         </>
+      )}
+
+      {/* Node Detail Inspector Modal */}
+      {selectedNode && (
+        <NodeDetailModal
+          node={selectedNode}
+          onClose={() => setSelectedNode(null)}
+        />
       )}
     </div>
   )
