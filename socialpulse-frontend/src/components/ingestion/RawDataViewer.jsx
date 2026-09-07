@@ -11,8 +11,9 @@
   - Expandable row with full JSON normalized payload inspection
 */
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { NORMALIZED_RECORDS, PLATFORMS_CONFIG } from '../../api/normalizedData'
+import PlatformLogo from '../common/PlatformLogo'
 
 function RawDataViewer() {
   const [searchTerm, setSearchTerm]       = useState('')
@@ -120,11 +121,12 @@ function RawDataViewer() {
                   {/* Platform */}
                   <td className="p-3 whitespace-nowrap">
                     <span className="capitalize font-bold text-white flex items-center gap-1.5">
-                      {rec.platform === 'twitter' ? '🐦 X' :
-                       rec.platform === 'telegram' ? '✈️ Telegram' :
-                       rec.platform === 'youtube' ? '📺 YouTube' :
-                       rec.platform === 'reddit' ? '🤖 Reddit' :
-                       rec.platform === 'instagram' ? '📸 IG' : '👥 FB'}
+                      <PlatformLogo platform={rec.platform} className="w-3.5 h-3.5" colored={true} />
+                      {rec.platform === 'twitter' ? 'X / Twitter' :
+                       rec.platform === 'telegram' ? 'Telegram' :
+                       rec.platform === 'youtube' ? 'YouTube' :
+                       rec.platform === 'reddit' ? 'Reddit' :
+                       rec.platform === 'instagram' ? 'Instagram' : 'Facebook'}
                     </span>
                   </td>
 

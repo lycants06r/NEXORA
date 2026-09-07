@@ -13,6 +13,7 @@
 
 import React from 'react'
 import { CONNECTOR_HEALTH } from '../../api/normalizedData'
+import PlatformLogo from '../common/PlatformLogo'
 
 function DataHealthCard() {
   const totalReceived = CONNECTOR_HEALTH.reduce((acc, c) => acc + c.recordsReceived, 0)
@@ -66,7 +67,9 @@ function DataHealthCard() {
           >
             {/* Left Info */}
             <div className="flex items-center gap-3 min-w-0">
-              <span className="text-2xl flex-shrink-0">{conn.icon}</span>
+              <div className="w-8 h-8 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1.5 flex-shrink-0">
+                <PlatformLogo platform={conn.platform} className="w-5 h-5" colored={true} />
+              </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="text-white text-xs font-bold truncate">

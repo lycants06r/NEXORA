@@ -29,6 +29,7 @@ import {
 } from 'recharts'
 
 import LoadingSpinner from '../components/common/LoadingSpinner.jsx'
+import PlatformLogo from '../components/common/PlatformLogo.jsx'
 import { getCollectionStats } from '../api/ingestionApi'
 import { getSentimentSummary } from '../api/sentimentApi'
 import { getCurrentTrends } from '../api/trendsApi'
@@ -321,7 +322,10 @@ function Dashboard() {
                   }
                 `}
               >
-                {p.icon} {p.label}
+                <span className="flex items-center gap-1.5">
+                  <PlatformLogo platform={p.id} className="w-3.5 h-3.5" colored={platform === p.id} />
+                  <span>{p.label}</span>
+                </span>
               </button>
             ))}
           </div>
@@ -574,7 +578,9 @@ function Dashboard() {
               "
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xl">{item.emoji}</span>
+                <div className="w-7 h-7 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1">
+                  <PlatformLogo platform={item.id} className="w-4 h-4" colored={true} />
+                </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-[#4edea3] border border-emerald-500/20">
                   {item.status}
                 </span>

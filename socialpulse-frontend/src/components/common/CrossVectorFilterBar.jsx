@@ -9,6 +9,7 @@
 
 import React, { useState } from 'react'
 import { PLATFORMS_CONFIG, EMOTIONS_CONFIG, PROFESSIONAL_DOMAINS } from '../../api/normalizedData'
+import PlatformLogo from './PlatformLogo'
 
 function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
   const [expanded, setExpanded] = useState(false)
@@ -114,7 +115,10 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
                 }
               `}
             >
-              {p.icon} {p.label}
+              <span className="flex items-center gap-1.5">
+                <PlatformLogo platform={p.id} className="w-3.5 h-3.5" colored={filters.platform === p.id} />
+                <span>{p.label}</span>
+              </span>
             </button>
           ))}
         </div>

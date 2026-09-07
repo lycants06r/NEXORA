@@ -11,8 +11,9 @@
   - Thread expansion
 */
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { NORMALIZED_RECORDS, PLATFORMS_CONFIG } from '../../api/normalizedData'
+import PlatformLogo from '../common/PlatformLogo'
 
 function ChronologicalTimeline({ onSelectThread }) {
   const [platform, setPlatform]   = useState('all')
@@ -96,12 +97,13 @@ function ChronologicalTimeline({ onSelectThread }) {
               <div className="p-4 bg-black/40 border border-white/5 hover:border-cyan-500/30 rounded-xl transition-all">
                 <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-white font-mono">
-                      {item.platform === 'twitter' ? '🐦 X' :
-                       item.platform === 'telegram' ? '✈️ Telegram' :
-                       item.platform === 'youtube' ? '📺 YouTube' :
-                       item.platform === 'reddit' ? '🤖 Reddit' :
-                       item.platform === 'instagram' ? '📸 Instagram' : '👥 Facebook'}
+                    <span className="text-xs font-bold text-white font-mono flex items-center gap-1.5">
+                      <PlatformLogo platform={item.platform} className="w-3.5 h-3.5" colored={true} />
+                      {item.platform === 'twitter' ? 'X / Twitter' :
+                       item.platform === 'telegram' ? 'Telegram' :
+                       item.platform === 'youtube' ? 'YouTube' :
+                       item.platform === 'reddit' ? 'Reddit' :
+                       item.platform === 'instagram' ? 'Instagram' : 'Facebook'}
                     </span>
                     <span className="text-[11px] font-mono text-[#4cd7f6]">
                       {item.author_name || item.author_id}
