@@ -46,11 +46,12 @@ function EarthVideoBackground() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         onCanPlay={() => setIsLoaded(true)}
+        style={{ transform: 'translateZ(0)', willChange: 'opacity' }}
         className={`
           absolute inset-0 w-full h-full object-cover object-center
-          transition-opacity duration-1000 ease-out
+          transition-opacity duration-700 ease-out
           ${isLoaded ? 'opacity-85' : 'opacity-0'}
         `}
       >

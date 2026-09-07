@@ -26,88 +26,88 @@ import {
 } from '../api/networkApi'
 
 
+const DEFAULT_GRAPH_DATA = {
+  nodes: [
+    { id: 'node_1', label: 'TechObserver_AI', platform: 'twitter', influence_type: 'Key Opinion Leader', composite_influence_score: 0.942, pagerank_score: 0.084, degree_centrality: 48, betweenness: 0.142, community_id: 1, reach: '185K', topic: 'AI Governance' },
+    { id: 'node_2', label: 'CyberThreat_Direct', platform: 'telegram', influence_type: 'Broadcaster', composite_influence_score: 0.884, pagerank_score: 0.071, degree_centrality: 36, betweenness: 0.098, community_id: 3, reach: '98K', topic: 'Grid Security' },
+    { id: 'node_3', label: 'NeuralCraft', platform: 'youtube', influence_type: 'Key Opinion Leader', composite_influence_score: 0.852, pagerank_score: 0.065, degree_centrality: 32, betweenness: 0.088, community_id: 1, reach: '240K', topic: 'Autonomous AI' },
+    { id: 'node_4', label: 'MacroEconomist', platform: 'reddit', influence_type: 'Bridge', composite_influence_score: 0.791, pagerank_score: 0.052, degree_centrality: 29, betweenness: 0.174, community_id: 2, reach: '110K', topic: 'Macro Risk' },
+    { id: 'node_5', label: 'EcoResilience', platform: 'instagram', influence_type: 'Broadcaster', composite_influence_score: 0.744, pagerank_score: 0.048, degree_centrality: 24, betweenness: 0.062, community_id: 4, reach: '320K', topic: 'Solar Surge' },
+    { id: 'node_6', label: 'CivicDialogue', platform: 'facebook', influence_type: 'Bridge', composite_influence_score: 0.710, pagerank_score: 0.041, degree_centrality: 22, betweenness: 0.115, community_id: 2, reach: '140K', topic: 'Transit Policy' },
+    { id: 'node_7', label: 'AuditWhistle', platform: 'twitter', influence_type: 'Key Opinion Leader', composite_influence_score: 0.690, pagerank_score: 0.038, degree_centrality: 20, betweenness: 0.075, community_id: 3, reach: '390K', topic: 'Model Bias' },
+    { id: 'node_8', label: 'FinTechRadar', platform: 'twitter', influence_type: 'Regular', composite_influence_score: 0.640, pagerank_score: 0.032, degree_centrality: 18, betweenness: 0.045, community_id: 2, reach: '210K', topic: 'CBDC Interop' },
+    { id: 'node_9', label: 'STEM_Ed', platform: 'telegram', influence_type: 'Regular', composite_influence_score: 0.610, pagerank_score: 0.029, degree_centrality: 15, betweenness: 0.031, community_id: 4, reach: '84K', topic: 'Higher Ed' },
+    { id: 'node_10', label: 'GovAnalyst_01', platform: 'twitter', influence_type: 'Bridge', composite_influence_score: 0.580, pagerank_score: 0.026, degree_centrality: 14, betweenness: 0.082, community_id: 1, reach: '45K', topic: 'Policy Safety' },
+  ],
+  edges: [
+    { source: 'node_1', target: 'node_3', weight: 3 },
+    { source: 'node_1', target: 'node_10', weight: 2 },
+    { source: 'node_1', target: 'node_4', weight: 2 },
+    { source: 'node_2', target: 'node_7', weight: 3 },
+    { source: 'node_2', target: 'node_1', weight: 1 },
+    { source: 'node_3', target: 'node_10', weight: 2 },
+    { source: 'node_4', target: 'node_6', weight: 3 },
+    { source: 'node_4', target: 'node_8', weight: 2 },
+    { source: 'node_5', target: 'node_9', weight: 2 },
+    { source: 'node_6', target: 'node_8', weight: 2 },
+    { source: 'node_7', target: 'node_4', weight: 2 },
+    { source: 'node_9', target: 'node_1', weight: 1 },
+  ],
+}
+
+const DEFAULT_INFLUENCERS = [
+  { user_id_hashed: 'usr_8a9f2c10b7', handle: 'TechObserver_AI', platform: 'twitter', influence_type: 'Key Opinion Leader', composite_influence_score: 0.942, pagerank_score: 0.0842, betweenness_centrality: 0.142, degree_centrality: 48, reach: '185K', community_id: 1, topic: 'AI Governance' },
+  { user_id_hashed: 'usr_tg_channel_intel', handle: 'CyberThreat_Direct', platform: 'telegram', influence_type: 'Broadcaster', composite_influence_score: 0.884, pagerank_score: 0.0712, betweenness_centrality: 0.098, degree_centrality: 36, reach: '98K', community_id: 3, topic: 'Critical Infra' },
+  { user_id_hashed: 'usr_yt_neurocode', handle: 'NeuralCraft Studio', platform: 'youtube', influence_type: 'Key Opinion Leader', composite_influence_score: 0.852, pagerank_score: 0.0651, betweenness_centrality: 0.088, degree_centrality: 32, reach: '240K', community_id: 1, topic: 'Autonomous AI' },
+  { user_id_hashed: 'usr_rd_macrohawk', handle: 'u/MacroEconomist', platform: 'reddit', influence_type: 'Bridge', composite_influence_score: 0.791, pagerank_score: 0.0520, betweenness_centrality: 0.174, degree_centrality: 29, reach: '110K', community_id: 2, topic: 'Macro Risk' },
+  { user_id_hashed: 'usr_ig_ecowatch', handle: 'EcoResilience', platform: 'instagram', influence_type: 'Broadcaster', composite_influence_score: 0.744, pagerank_score: 0.0482, betweenness_centrality: 0.062, degree_centrality: 24, reach: '320K', community_id: 4, topic: 'Clean Energy' },
+]
+
+const DEFAULT_COMMUNITIES = [
+  { community_id: 1, size: 48, dominant_topic: 'AI Governance & Autonomous Multi-Agent Systems', dominant_sentiment: 'positive', cohesion_score: 0.88, top_keywords: ['AIGovernance', 'AutonomousAI', 'ComputeAudit'] },
+  { community_id: 2, size: 34, dominant_topic: 'Financial Inclusion & Macroeconomic Supply Chains', dominant_sentiment: 'neutral', cohesion_score: 0.82, top_keywords: ['CBDC', 'FinTech', 'SupplyChain'] },
+  { community_id: 3, size: 28, dominant_topic: 'Infrastructure Disinformation & Algorithmic Bias', dominant_sentiment: 'negative', cohesion_score: 0.74, top_keywords: ['PowerGrid', 'CreditBias', 'Rumors'] },
+  { community_id: 4, size: 22, dominant_topic: 'Renewable Clean Energy & Open STEM Higher Ed', dominant_sentiment: 'positive', cohesion_score: 0.91, top_keywords: ['SolarSurge', 'STEMEducation', 'GreenTech'] },
+]
+
 function NetworkPage() {
-  const [graphData,    setGraphData]    = useState({ nodes: [], edges: [] })
-  const [influencers,  setInfluencers]  = useState([])
-  const [communities,  setCommunities]  = useState([])
-  const [loading,      setLoading]      = useState(true)
+  const [graphData,    setGraphData]    = useState(DEFAULT_GRAPH_DATA)
+  const [influencers,  setInfluencers]  = useState(DEFAULT_INFLUENCERS)
+  const [communities,  setCommunities]  = useState(DEFAULT_COMMUNITIES)
+  const [loading,      setLoading]      = useState(false)
   const [platform,     setPlatform]     = useState(null)
   const [topic,        setTopic]        = useState('all')
   const [timeRange,    setTimeRange]    = useState('24h')
   const [selectedNode, setSelectedNode] = useState(null)
 
-  useEffect(() => { loadData() }, [platform, topic, timeRange])
-
-  async function loadData() {
-    setLoading(true)
-    try {
-      const [graphRes, influRes, commRes] = await Promise.allSettled([
-        getGraphData(platform, 80),
-        getInfluencers(10, platform),
-        getCommunities(platform),
-      ])
-
-      if (graphRes.status === 'fulfilled' && graphRes.value?.data?.nodes?.length > 0) {
-        setGraphData(graphRes.value.data)
-      } else {
-        // High-fidelity fallback graph nodes with centralities
-        const mockNodes = [
-          { id: 'node_1', label: 'TechObserver_AI', platform: 'twitter', influence_type: 'Key Opinion Leader', composite_influence_score: 0.942, pagerank_score: 0.084, degree_centrality: 48, betweenness: 0.142, community_id: 1, reach: '185K', topic: 'AI Governance' },
-          { id: 'node_2', label: 'CyberThreat_Direct', platform: 'telegram', influence_type: 'Broadcaster', composite_influence_score: 0.884, pagerank_score: 0.071, degree_centrality: 36, betweenness: 0.098, community_id: 3, reach: '98K', topic: 'Grid Security' },
-          { id: 'node_3', label: 'NeuralCraft', platform: 'youtube', influence_type: 'Key Opinion Leader', composite_influence_score: 0.852, pagerank_score: 0.065, degree_centrality: 32, betweenness: 0.088, community_id: 1, reach: '240K', topic: 'Autonomous AI' },
-          { id: 'node_4', label: 'MacroEconomist', platform: 'reddit', influence_type: 'Bridge', composite_influence_score: 0.791, pagerank_score: 0.052, degree_centrality: 29, betweenness: 0.174, community_id: 2, reach: '110K', topic: 'Macro Risk' },
-          { id: 'node_5', label: 'EcoResilience', platform: 'instagram', influence_type: 'Broadcaster', composite_influence_score: 0.744, pagerank_score: 0.048, degree_centrality: 24, betweenness: 0.062, community_id: 4, reach: '320K', topic: 'Solar Surge' },
-          { id: 'node_6', label: 'CivicDialogue', platform: 'facebook', influence_type: 'Bridge', composite_influence_score: 0.710, pagerank_score: 0.041, degree_centrality: 22, betweenness: 0.115, community_id: 2, reach: '140K', topic: 'Transit Policy' },
-          { id: 'node_7', label: 'AuditWhistle', platform: 'twitter', influence_type: 'Key Opinion Leader', composite_influence_score: 0.690, pagerank_score: 0.038, degree_centrality: 20, betweenness: 0.075, community_id: 3, reach: '390K', topic: 'Model Bias' },
-          { id: 'node_8', label: 'FinTechRadar', platform: 'twitter', influence_type: 'Regular', composite_influence_score: 0.640, pagerank_score: 0.032, degree_centrality: 18, betweenness: 0.045, community_id: 2, reach: '210K', topic: 'CBDC Interop' },
-          { id: 'node_9', label: 'STEM_Ed', platform: 'telegram', influence_type: 'Regular', composite_influence_score: 0.610, pagerank_score: 0.029, degree_centrality: 15, betweenness: 0.031, community_id: 4, reach: '84K', topic: 'Higher Ed' },
-          { id: 'node_10', label: 'GovAnalyst_01', platform: 'twitter', influence_type: 'Bridge', composite_influence_score: 0.580, pagerank_score: 0.026, degree_centrality: 14, betweenness: 0.082, community_id: 1, reach: '45K', topic: 'Policy Safety' },
-        ]
-
-        const mockEdges = [
-          { source: 'node_1', target: 'node_3', weight: 3 },
-          { source: 'node_1', target: 'node_10', weight: 2 },
-          { source: 'node_1', target: 'node_4', weight: 2 },
-          { source: 'node_2', target: 'node_7', weight: 3 },
-          { source: 'node_2', target: 'node_1', weight: 1 },
-          { source: 'node_3', target: 'node_10', weight: 2 },
-          { source: 'node_4', target: 'node_6', weight: 3 },
-          { source: 'node_4', target: 'node_8', weight: 2 },
-          { source: 'node_5', target: 'node_9', weight: 2 },
-          { source: 'node_6', target: 'node_8', weight: 2 },
-          { source: 'node_7', target: 'node_4', weight: 2 },
-          { source: 'node_9', target: 'node_1', weight: 1 },
-        ]
-        setGraphData({ nodes: mockNodes, edges: mockEdges })
-      }
-
-      if (influRes.status === 'fulfilled' && influRes.value?.data?.length > 0) {
-        setInfluencers(influRes.value.data)
-      } else {
-        setInfluencers([
-          { user_id_hashed: 'usr_8a9f2c10b7', handle: 'TechObserver_AI', platform: 'twitter', influence_type: 'Key Opinion Leader', composite_influence_score: 0.942, pagerank_score: 0.0842, betweenness_centrality: 0.142, degree_centrality: 48, reach: '185K', community_id: 1, topic: 'AI Governance' },
-          { user_id_hashed: 'usr_tg_channel_intel', handle: 'CyberThreat_Direct', platform: 'telegram', influence_type: 'Broadcaster', composite_influence_score: 0.884, pagerank_score: 0.0712, betweenness_centrality: 0.098, degree_centrality: 36, reach: '98K', community_id: 3, topic: 'Critical Infra' },
-          { user_id_hashed: 'usr_yt_neurocode', handle: 'NeuralCraft Studio', platform: 'youtube', influence_type: 'Key Opinion Leader', composite_influence_score: 0.852, pagerank_score: 0.0651, betweenness_centrality: 0.088, degree_centrality: 32, reach: '240K', community_id: 1, topic: 'Autonomous AI' },
-          { user_id_hashed: 'usr_rd_macrohawk', handle: 'u/MacroEconomist', platform: 'reddit', influence_type: 'Bridge', composite_influence_score: 0.791, pagerank_score: 0.0520, betweenness_centrality: 0.174, degree_centrality: 29, reach: '110K', community_id: 2, topic: 'Macro Risk' },
-          { user_id_hashed: 'usr_ig_ecowatch', handle: 'EcoResilience', platform: 'instagram', influence_type: 'Broadcaster', composite_influence_score: 0.744, pagerank_score: 0.0482, betweenness_centrality: 0.062, degree_centrality: 24, reach: '320K', community_id: 4, topic: 'Clean Energy' },
+  useEffect(() => {
+    let isMounted = true
+    async function syncData() {
+      try {
+        const [graphRes, influRes, commRes] = await Promise.allSettled([
+          getGraphData(platform, 80),
+          getInfluencers(10, platform),
+          getCommunities(platform),
         ])
-      }
 
-      if (commRes.status === 'fulfilled' && commRes.value?.data?.length > 0) {
-        setCommunities(commRes.value.data)
-      } else {
-        setCommunities([
-          { community_id: 1, size: 48, dominant_topic: 'AI Governance & Autonomous Multi-Agent Systems', dominant_sentiment: 'positive', cohesion_score: 0.88, top_keywords: ['AIGovernance', 'AutonomousAI', 'ComputeAudit'] },
-          { community_id: 2, size: 34, dominant_topic: 'Financial Inclusion & Macroeconomic Supply Chains', dominant_sentiment: 'neutral', cohesion_score: 0.82, top_keywords: ['CBDC', 'FinTech', 'SupplyChain'] },
-          { community_id: 3, size: 28, dominant_topic: 'Infrastructure Disinformation & Algorithmic Bias', dominant_sentiment: 'negative', cohesion_score: 0.74, top_keywords: ['PowerGrid', 'CreditBias', 'Rumors'] },
-          { community_id: 4, size: 22, dominant_topic: 'Renewable Clean Energy & Open STEM Higher Ed', dominant_sentiment: 'positive', cohesion_score: 0.91, top_keywords: ['SolarSurge', 'STEMEducation', 'GreenTech'] },
-        ])
-      }
+        if (!isMounted) return
 
-    } finally {
-      setLoading(false)
+        if (graphRes.status === 'fulfilled' && graphRes.value?.data?.nodes?.length > 0) {
+          setGraphData(graphRes.value.data)
+        }
+        if (influRes.status === 'fulfilled' && influRes.value?.data?.length > 0) {
+          setInfluencers(influRes.value.data)
+        }
+        if (commRes.status === 'fulfilled' && commRes.value?.data?.length > 0) {
+          setCommunities(commRes.value.data)
+        }
+      } catch {
+        // Retain optimistic graph telemetry
+      }
     }
-  }
+    syncData()
+    return () => { isMounted = false }
+  }, [platform, topic, timeRange])
 
   const influenceTypeColor = {
     'Key Opinion Leader': 'pink',

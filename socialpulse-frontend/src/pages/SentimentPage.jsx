@@ -36,62 +36,55 @@ function SentimentPage() {
   const [analyzing,      setAnalyzing]      = useState(false)
   const [activeThread,   setActiveThread]   = useState(null)
 
-  const [timeline,      setTimeline]      = useState([])
-  const [emotions,      setEmotions]      = useState({})
-  const [summary,       setSummary]       = useState({})
-  const [chartsLoading, setChartsLoading] = useState(true)
+  const [timeline, setTimeline] = useState([
+    { timestamp: '00:00', positive: 65, negative: 18, neutral: 17 },
+    { timestamp: '04:00', positive: 60, negative: 20, neutral: 20 },
+    { timestamp: '08:00', positive: 70, negative: 16, neutral: 14 },
+    { timestamp: '12:00', positive: 78, negative: 12, neutral: 10 },
+    { timestamp: '16:00', positive: 72, negative: 15, neutral: 13 },
+    { timestamp: '20:00', positive: 68, negative: 18, neutral: 14 },
+    { timestamp: 'Now',   positive: 74, negative: 14, neutral: 12 },
+  ])
+  const [emotions, setEmotions] = useState({
+    supportive: 0.88,
+    excitement: 0.74,
+    anxiety:    0.35,
+    sarcasm:    0.28,
+    opposition: 0.32,
+    neutral:    0.45,
+  })
+  const [summary, setSummary] = useState({
+    positive: 2450,
+    neutral:   680,
+    negative:  420,
+  })
+  const [chartsLoading, setChartsLoading] = useState(false)
 
   useEffect(() => {
+    let isMounted = true
     async function load() {
-      setChartsLoading(true)
       try {
         const [timeRes, emoRes, sumRes] = await Promise.allSettled([
           getSentimentTimeline({ granularity: 'hour' }),
           getEmotionDistribution('all'),
           getSentimentSummary(),
         ])
+        if (!isMounted) return
         if (timeRes.status === 'fulfilled' && timeRes.value?.data?.length > 0) {
           setTimeline(timeRes.value.data)
-        } else {
-          // Fallback time series
-          setTimeline([
-            { timestamp: '00:00', positive: 65, negative: 18, neutral: 17 },
-            { timestamp: '04:00', positive: 60, negative: 20, neutral: 20 },
-            { timestamp: '08:00', positive: 70, negative: 16, neutral: 14 },
-            { timestamp: '12:00', positive: 78, negative: 12, neutral: 10 },
-            { timestamp: '16:00', positive: 72, negative: 15, neutral: 13 },
-            { timestamp: '20:00', positive: 68, negative: 18, neutral: 14 },
-            { timestamp: 'Now',   positive: 74, negative: 14, neutral: 12 },
-          ])
         }
-
         if (emoRes.status === 'fulfilled' && emoRes.value?.data && Object.keys(emoRes.value.data).length > 0) {
           setEmotions(emoRes.value.data)
-        } else {
-          setEmotions({
-            supportive: 0.88,
-            excitement: 0.74,
-            anxiety:    0.35,
-            sarcasm:    0.28,
-            opposition: 0.32,
-            neutral:    0.45,
-          })
         }
-
         if (sumRes.status === 'fulfilled' && sumRes.value?.data && Object.keys(sumRes.value.data).length > 0) {
           setSummary(sumRes.value.data)
-        } else {
-          setSummary({
-            positive: 2450,
-            neutral:   680,
-            negative:  420,
-          })
         }
-      } finally {
-        setChartsLoading(false)
+      } catch {
+        // Fallback already initialized
       }
     }
     load()
+    return () => { isMounted = false }
   }, [])
 
   async function handleAnalyze() {

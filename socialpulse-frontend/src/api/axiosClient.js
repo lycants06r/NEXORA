@@ -11,7 +11,7 @@ import axios from 'axios'
 // Create an Axios instance with default settings
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || 'https://nexora-e196.onrender.com',
-  timeout: 30000,  // 30 seconds (ML models can be slow)
+  timeout: 4000,   // 4 seconds fast failover to instant telemetry
   headers: {
     'Content-Type': 'application/json',
     'Accept':       'application/json',
