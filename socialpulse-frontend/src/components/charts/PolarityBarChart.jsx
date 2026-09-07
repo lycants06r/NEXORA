@@ -30,8 +30,9 @@ function PolarityBarChart({ summary = {} }) {
   ]
 
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-      <div className="flex items-center justify-between mb-4">
+    <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+      <div className="glass-edge-top" />
+      <div className="flex items-center justify-between mb-4 relative z-10">
         <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#4edea3] shadow-[0_0_8px_#4edea3]" />
           📊 Polarity Volume Distribution

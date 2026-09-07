@@ -36,19 +36,19 @@ function RawDataViewer() {
   })
 
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+    <div className="liquid-glass glass-edge-top p-5 rounded-2xl">
       {/* Header */}
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <div>
           <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
-            📡 Normalized Raw Signal Stream Viewer
+            <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6] animate-pulse" />
+            <span>📡 Normalized Raw Signal Stream Viewer</span>
           </h3>
           <p className="text-xs text-[#8ea0b5] font-mono mt-0.5">
             Real-time multi-platform message ingestion stream with timestamped schema
           </p>
         </div>
-        <span className="text-[11px] font-mono text-[#4cd7f6] px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/30">
+        <span className="text-[11px] font-mono text-[#4cd7f6] px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 shadow-[0_0_8px_rgba(76,215,246,0.15)] font-bold">
           SHOWING {filtered.length} OF {NORMALIZED_RECORDS.length} SIGNALS
         </span>
       </div>
@@ -62,7 +62,7 @@ function RawDataViewer() {
             placeholder="🔍 Search content, IDs, topics..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-black/40 border border-cyan-500/25 rounded-xl px-3.5 py-2 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+            className="w-full glass-control rounded-xl px-3.5 py-2 text-white font-mono text-xs"
           />
         </div>
 
@@ -71,10 +71,10 @@ function RawDataViewer() {
           <select
             value={selectedPlatform}
             onChange={(e) => setPlatform(e.target.value)}
-            className="w-full bg-black/40 border border-cyan-500/25 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+            className="w-full glass-control rounded-xl px-3 py-2 text-white font-mono text-xs"
           >
             {PLATFORMS_CONFIG.map((p) => (
-              <option key={p.id} value={p.id}>{p.icon} {p.label}</option>
+              <option key={p.id} value={p.id} className="bg-[#060e20] text-white">{p.icon} {p.label}</option>
             ))}
           </select>
         </div>
@@ -84,20 +84,20 @@ function RawDataViewer() {
           <select
             value={selectedStatus}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full bg-black/40 border border-cyan-500/25 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+            className="w-full glass-control rounded-xl px-3 py-2 text-white font-mono text-xs"
           >
-            <option value="all">Status: All Records</option>
-            <option value="PROCESSED">PROCESSED (Normalized)</option>
-            <option value="FLAGGED">FLAGGED (Threat Review)</option>
-            <option value="INDEXED">INDEXED (Database)</option>
+            <option value="all" className="bg-[#060e20] text-white">Status: All Records</option>
+            <option value="PROCESSED" className="bg-[#060e20] text-white">PROCESSED (Normalized)</option>
+            <option value="FLAGGED" className="bg-[#060e20] text-white">FLAGGED (Threat Review)</option>
+            <option value="INDEXED" className="bg-[#060e20] text-white">INDEXED (Database)</option>
           </select>
         </div>
       </div>
 
       {/* Data Table */}
-      <div className="overflow-x-auto rounded-xl border border-white/5">
+      <div className="glass-table-container overflow-x-auto">
         <table className="w-full text-left text-xs font-mono">
-          <thead className="bg-black/40 text-[#8ea0b5] border-b border-cyan-500/15 uppercase text-[10px]">
+          <thead className="bg-[#030814]/90 text-[#8ea0b5] border-b border-cyan-500/20 uppercase text-[10px] tracking-wider">
             <tr>
               <th className="p-3">Platform</th>
               <th className="p-3">Message ID</th>
@@ -117,7 +117,7 @@ function RawDataViewer() {
               </tr>
             ) : (
               filtered.map((rec) => (
-                <tr key={rec.post_id} className="hover:bg-[#101d3b]/40 transition-colors">
+                <tr key={rec.post_id} className="hover:bg-cyan-500/[0.06] transition-colors">
                   {/* Platform */}
                   <td className="p-3 whitespace-nowrap">
                     <span className="capitalize font-bold text-white flex items-center gap-1.5">
@@ -157,12 +157,12 @@ function RawDataViewer() {
 
                   {/* Status */}
                   <td className="p-3 whitespace-nowrap">
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                       rec.processing_status === 'PROCESSED'
-                        ? 'bg-emerald-500/15 text-[#4edea3] border border-emerald-500/30'
+                        ? 'bg-emerald-500/15 text-[#4edea3] border border-emerald-500/30 shadow-[0_0_8px_rgba(78,222,163,0.15)]'
                         : rec.processing_status === 'FLAGGED'
-                        ? 'bg-rose-500/15 text-[#f43f5e] border border-rose-500/30'
-                        : 'bg-cyan-500/15 text-[#4cd7f6] border border-cyan-500/30'
+                        ? 'bg-rose-500/15 text-[#f43f5e] border border-rose-500/30 shadow-[0_0_8px_rgba(244,63,94,0.15)]'
+                        : 'bg-cyan-500/15 text-[#4cd7f6] border border-cyan-500/30 shadow-[0_0_8px_rgba(76,215,246,0.15)]'
                     }`}>
                       {rec.processing_status}
                     </span>
@@ -173,7 +173,7 @@ function RawDataViewer() {
                     <button
                       type="button"
                       onClick={() => setSelectedRecord(rec)}
-                      className="px-2 py-1 rounded bg-black/50 border border-cyan-500/30 text-[#4cd7f6] hover:bg-cyan-500/20 text-[10px] cursor-pointer"
+                      className="px-2.5 py-1 rounded-lg glass-control text-[#4cd7f6] hover:text-white text-[10px] cursor-pointer"
                     >
                       JSON
                     </button>
@@ -187,8 +187,8 @@ function RawDataViewer() {
 
       {/* JSON Payload Inspection Modal */}
       {selectedRecord && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#060e20] border border-cyan-500/40 rounded-2xl p-6 w-full max-w-2xl max-h-[85vh] flex flex-col shadow-[0_0_40px_rgba(76,215,246,0.3)]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in">
+          <div className="glass-modal p-6 w-full max-w-2xl max-h-[85vh] flex flex-col glass-edge-top">
             <div className="flex items-center justify-between pb-3 border-b border-cyan-500/20 mb-3">
               <h4 className="text-white font-bold font-mono text-sm">
                 Normalized Schema Payload: {selectedRecord.post_id}
@@ -196,12 +196,12 @@ function RawDataViewer() {
               <button
                 type="button"
                 onClick={() => setSelectedRecord(null)}
-                className="text-[#8ea0b5] hover:text-white font-mono text-base px-2"
+                className="text-[#8ea0b5] hover:text-white font-mono text-base px-2 cursor-pointer"
               >
                 ✕
               </button>
             </div>
-            <pre className="flex-1 overflow-auto bg-black/60 p-4 rounded-xl border border-white/5 font-mono text-xs text-[#4cd7f6] leading-relaxed">
+            <pre className="flex-1 overflow-auto liquid-glass-soft p-4 rounded-xl border border-white/5 font-mono text-xs text-[#4cd7f6] leading-relaxed">
               {JSON.stringify(selectedRecord, null, 2)}
             </pre>
           </div>

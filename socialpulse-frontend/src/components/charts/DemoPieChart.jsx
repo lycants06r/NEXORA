@@ -18,13 +18,14 @@ const COLORS = [
 
 function DemoPieChart({ title, data = [] }) {
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex flex-col justify-between">
-      <div className="flex items-center justify-between mb-3">
+    <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group flex flex-col justify-between">
+      <div className="glass-edge-top" />
+      <div className="flex items-center justify-between mb-3 relative z-10">
         <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
           {title}
         </h3>
-        <span className="text-[10px] font-mono text-[#4cd7f6] px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 uppercase">
+        <span className="text-[10px] font-mono text-[#4cd7f6] px-2.5 py-1 rounded-xl liquid-glass-soft border border-cyan-500/30 uppercase font-bold">
           PROFILING
         </span>
       </div>

@@ -320,8 +320,8 @@ function ReportExportModal({ isOpen, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="bg-[#060e20] border border-cyan-500/40 rounded-2xl w-full max-w-lg p-6 shadow-[0_0_50px_rgba(76,215,246,0.25)] relative overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in">
+      <div className="glass-modal w-full max-w-lg p-6 relative overflow-hidden glass-edge-top">
         {/* Neon top accent */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4cd7f6] via-[#ddb7ff] to-[#4edea3]" />
 
@@ -341,7 +341,7 @@ function ReportExportModal({ isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="text-[#8ea0b5] hover:text-white text-lg font-mono px-2 py-1 rounded-lg hover:bg-white/5"
+            className="text-[#8ea0b5] hover:text-white text-lg font-mono px-2 py-1 rounded-lg hover:bg-white/5 cursor-pointer"
           >
             ✕
           </button>
@@ -357,10 +357,10 @@ function ReportExportModal({ isOpen, onClose }) {
               <button
                 type="button"
                 onClick={() => setReportType('full')}
-                className={`p-3 rounded-xl border text-left transition-all ${
+                className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   reportType === 'full'
-                    ? 'bg-[#4cd7f6]/15 border-cyan-500 text-white shadow-[0_0_12px_rgba(76,215,246,0.2)]'
-                    : 'bg-black/40 border-white/5 text-[#8ea0b5] hover:border-white/20'
+                    ? 'bg-[#4cd7f6]/15 border-cyan-500/50 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_14px_rgba(76,215,246,0.25)]'
+                    : 'glass-control border-white/5 text-[#8ea0b5] hover:border-white/20'
                 }`}
               >
                 <div className="font-bold text-xs">🌐 Full 5-Vector Dossier</div>
@@ -370,10 +370,10 @@ function ReportExportModal({ isOpen, onClose }) {
               <button
                 type="button"
                 onClick={() => setReportType('threats')}
-                className={`p-3 rounded-xl border text-left transition-all ${
+                className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   reportType === 'threats'
-                    ? 'bg-purple-500/15 border-purple-500 text-white shadow-[0_0_12px_rgba(221,183,255,0.2)]'
-                    : 'bg-black/40 border-white/5 text-[#8ea0b5] hover:border-white/20'
+                    ? 'bg-purple-500/20 border-purple-500/50 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_14px_rgba(221,183,255,0.25)]'
+                    : 'glass-control border-white/5 text-[#8ea0b5] hover:border-white/20'
                 }`}
               >
                 <div className="font-bold text-xs">🚨 Threats & Anomalies</div>
@@ -382,7 +382,7 @@ function ReportExportModal({ isOpen, onClose }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 p-3 bg-black/40 rounded-xl border border-white/5">
+          <div className="flex items-center gap-2 p-3 liquid-glass-soft rounded-xl border border-white/5">
             <input
               type="checkbox"
               id="includeRaw"
@@ -402,7 +402,7 @@ function ReportExportModal({ isOpen, onClose }) {
           <button
             type="button"
             onClick={handleExportCSV}
-            className="px-4 py-3 bg-[#0a1329] border border-cyan-500/40 hover:border-cyan-400 text-[#4cd7f6] rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all shadow-sm hover:shadow-[0_0_15px_rgba(76,215,246,0.2)] flex items-center justify-center gap-2 cursor-pointer"
+            className="px-4 py-3 glass-btn-secondary text-[#4cd7f6] border-cyan-500/30 text-xs font-mono font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>📊</span> Export CSV Table
           </button>
@@ -412,7 +412,7 @@ function ReportExportModal({ isOpen, onClose }) {
             type="button"
             onClick={handlePrintPDF}
             disabled={generating}
-            className="px-4 py-3 bg-gradient-to-r from-[#4cd7f6] to-[#06b6d4] hover:from-[#38bdf8] hover:to-[#0891b2] text-black rounded-xl text-xs font-mono font-black tracking-wider uppercase transition-all shadow-[0_0_18px_rgba(76,215,246,0.35)] flex items-center justify-center gap-2 cursor-pointer"
+            className="px-4 py-3 glass-btn-primary text-black text-xs font-mono font-black tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer"
           >
             {generating ? '⏳ Preparing...' : '🖨️ Print / PDF Report'}
           </button>

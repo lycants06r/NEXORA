@@ -39,16 +39,16 @@ function TaskStatusCard({ task }) {
 
   return (
     <div className="
-      bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4
-      animate-slide-up shadow-[0_8px_20px_rgba(0,0,0,0.4)]
+      liquid-glass-soft border border-cyan-500/25 rounded-2xl p-4
+      animate-slide-up shadow-[0_8px_24px_rgba(0,0,0,0.45)]
     ">
       <div className="flex items-center justify-between mb-2">
         {/* Task ID + Platform */}
         <div className="flex items-center gap-2">
-          <span className="text-[#4cd7f6] font-mono text-sm font-bold bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/25">
+          <span className="text-[#4cd7f6] font-mono text-xs font-bold bg-cyan-500/15 px-2.5 py-0.5 rounded-lg border border-cyan-500/30 shadow-[0_0_8px_rgba(76,215,246,0.15)]">
             #{status.task_id}
           </span>
-          <span className="text-xs px-2 py-0.5 rounded-lg bg-black/40 text-[#8ea0b5] border border-white/5 font-mono uppercase flex items-center gap-1.5">
+          <span className="text-xs px-2.5 py-0.5 rounded-lg bg-black/40 text-[#8ea0b5] border border-white/10 font-mono uppercase flex items-center gap-1.5">
             <PlatformLogo platform={status.platform} className="w-3.5 h-3.5" colored={true} />
             {status.platform}
           </span>

@@ -169,11 +169,11 @@ function TrendsPage() {
           <select
             value={topN}
             onChange={(e) => setTopN(Number(e.target.value))}
-            className="bg-black/50 border border-cyan-500/30 text-white font-mono rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#4cd7f6]"
+            className="glass-control text-white font-mono rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#4cd7f6]"
           >
-            <option value={5}>TOP 5 CASCADES</option>
-            <option value={10}>TOP 10 CASCADES</option>
-            <option value={20}>TOP 20 CASCADES</option>
+            <option value={5} className="bg-[#060e20]">TOP 5 CASCADES</option>
+            <option value={10} className="bg-[#060e20]">TOP 10 CASCADES</option>
+            <option value={20} className="bg-[#060e20]">TOP 20 CASCADES</option>
           </select>
           <button
             onClick={loadData}
@@ -191,10 +191,10 @@ function TrendsPage() {
             key={p || 'all'}
             onClick={() => setPlatform(p)}
             className={`
-              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border
+              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5
               ${platform === p
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_12px_rgba(76,215,246,0.25)] font-bold'
-                : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
+                ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
+                : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
               }
             `}
           >
@@ -209,8 +209,9 @@ function TrendsPage() {
       </div>
 
       {/* ── Predictive Trend Velocity & Statistical Scoring Banner ── */}
-      <div className="bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 border border-purple-500/30 rounded-2xl p-4.5 flex items-start justify-between flex-wrap gap-3">
-        <div className="flex items-start gap-3">
+      <div className="liquid-glass-soft border border-purple-500/30 rounded-2xl p-4.5 flex items-start justify-between flex-wrap gap-3 relative overflow-hidden group shadow-sm">
+        <div className="glass-edge-top" />
+        <div className="flex items-start gap-3 relative z-10">
           <span className="text-2xl">🔮</span>
           <div>
             <h4 className="text-white text-xs font-mono font-bold uppercase tracking-wider">
@@ -221,28 +222,29 @@ function TrendsPage() {
             </p>
           </div>
         </div>
-        <span className="text-[10px] font-mono text-[#ddb7ff] px-2.5 py-1 rounded bg-purple-500/20 border border-purple-500/40 font-bold">
+        <span className="text-[10px] font-mono text-[#ddb7ff] px-2.5 py-1 rounded-xl liquid-glass-soft border border-purple-500/40 font-bold relative z-10">
           EPIDEMIC R-SCORE MODELING
         </span>
       </div>
 
       {/* Anomaly Alerts Banner */}
       {anomalies.length > 0 && (
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 shadow-[0_0_20px_rgba(245,158,11,0.12)]">
-          <div className="flex items-center gap-2 mb-2">
+        <div className="liquid-glass-soft border border-amber-500/30 rounded-2xl p-4 shadow-[0_0_20px_rgba(245,158,11,0.12)] relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center gap-2 mb-2 relative z-10">
             <span className="w-2 h-2 rounded-full bg-[#f59e0b] shadow-[0_0_8px_#f59e0b] animate-ping" />
             <h4 className="text-[#f59e0b] font-bold text-xs font-mono uppercase tracking-widest">
               ⚡ Predictive Velocity & Lexical Spikes ({anomalies.length} Flagged)
             </h4>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 relative z-10">
             {anomalies.map((a, i) => (
               <div
                 key={i}
-                className="bg-black/40 border border-amber-500/30 text-amber-300 px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2"
+                className="liquid-glass-soft border border-amber-500/30 text-amber-300 px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2"
               >
                 <span>🔺 #{a.keyword}</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-200">
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-200">
                   {a.severity_label}
                 </span>
               </div>
@@ -262,8 +264,9 @@ function TrendsPage() {
           </div>
 
           {/* Ranked Topic Leaderboard Table */}
-          <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-            <div className="p-5 border-b border-cyan-500/15 flex items-center justify-between">
+          <div className="liquid-glass rounded-2xl overflow-hidden shadow-glass-card relative group">
+            <div className="glass-edge-top" />
+            <div className="p-5 border-b border-white/10 flex items-center justify-between relative z-10">
               <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
                 📋 Ranked Topic Leaderboard & Lifecycle Tracking
@@ -274,7 +277,7 @@ function TrendsPage() {
             </div>
 
             {/* Table Header */}
-            <div className="grid grid-cols-12 gap-3 px-5 py-3 text-[10px] font-mono font-bold uppercase tracking-wider border-b border-cyan-500/15 bg-black/30 text-[#8ea0b5]">
+            <div className="grid grid-cols-12 gap-3 px-5 py-3 text-[10px] font-mono font-bold uppercase tracking-wider border-b border-white/10 bg-black/40 text-[#8ea0b5] relative z-10">
               <div className="col-span-1">Rank</div>
               <div className="col-span-3">Topic Entity</div>
               <div className="col-span-2">Trend Score</div>
@@ -285,17 +288,17 @@ function TrendsPage() {
             </div>
 
             {/* Table Rows */}
-            <div className="divide-y divide-white/5 font-mono text-xs">
+            <div className="divide-y divide-white/5 font-mono text-xs relative z-10">
               {trends.map((trend) => (
                 <div
                   key={trend.rank}
-                  className="grid grid-cols-12 gap-3 px-5 py-3.5 hover:bg-[#101d3b]/40 transition-colors items-center"
+                  className="grid grid-cols-12 gap-3 px-5 py-3.5 hover:bg-white/[0.04] transition-colors items-center"
                 >
                   {/* Rank */}
                   <div className="col-span-1 flex items-center">
                     <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold border ${trend.rank <= 3
                       ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/40 shadow-[0_0_8px_rgba(76,215,246,0.25)]'
-                      : 'bg-black/40 text-[#8ea0b5] border-white/5'
+                      : 'bg-black/40 text-[#8ea0b5] border-white/10'
                       }`}>
                       {trend.rank}
                     </span>
@@ -308,7 +311,7 @@ function TrendsPage() {
                     </div>
                     <div className="flex gap-1 flex-wrap">
                       {(trend.keywords || []).slice(0, 2).map((kw) => (
-                        <span key={kw} className="text-[9px] bg-black/40 border border-white/5 text-[#8ea0b5] px-1.5 py-0.2 rounded">
+                        <span key={kw} className="text-[9px] liquid-glass-soft border border-white/10 text-[#8ea0b5] px-1.5 py-0.5 rounded">
                           #{kw}
                         </span>
                       ))}

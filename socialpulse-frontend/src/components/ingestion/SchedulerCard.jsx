@@ -32,17 +32,17 @@ function SchedulerCard({ onTriggerSync }) {
   }
 
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+    <div className="liquid-glass glass-edge-top p-5 rounded-2xl">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#ddb7ff] shadow-[0_0_8px_#ddb7ff]" />
-          ⏱️ Automated Ingestion Scheduler
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ddb7ff] shadow-[0_0_10px_#ddb7ff]" />
+          <span>⏱️ Automated Ingestion Scheduler</span>
         </h3>
         <div className="flex items-center gap-2">
-          <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+          <span className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg border font-bold ${
             isRunning
-              ? 'bg-emerald-500/15 text-[#4edea3] border-emerald-500/30'
-              : 'bg-amber-500/15 text-amber-300 border-amber-500/30'
+              ? 'bg-emerald-500/15 text-[#4edea3] border-emerald-500/30 shadow-[0_0_8px_rgba(78,222,163,0.2)]'
+              : 'bg-amber-500/15 text-amber-300 border-amber-500/30 shadow-[0_0_8px_rgba(245,158,11,0.2)]'
           }`}>
             {isRunning ? 'DAEMON ACTIVE' : 'DAEMON PAUSED'}
           </span>
@@ -59,28 +59,28 @@ function SchedulerCard({ onTriggerSync }) {
             value={interval}
             onChange={(e) => setIntervalVal(e.target.value)}
             disabled={!isRunning}
-            className="w-full bg-black/50 border border-cyan-500/25 rounded-xl px-3.5 py-2.5 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6] disabled:opacity-50"
+            className="w-full glass-control rounded-xl px-3.5 py-2.5 text-white font-mono text-xs disabled:opacity-50"
           >
             {intervals.map((i) => (
-              <option key={i.value} value={i.value}>{i.label}</option>
+              <option key={i.value} value={i.value} className="bg-[#060e20] text-white">{i.label}</option>
             ))}
           </select>
         </div>
 
         {/* Telemetry Readout */}
         <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-          <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+          <div className="p-3 liquid-glass-soft border border-white/10 rounded-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
             <span className="text-[#8ea0b5] block text-[10px]">LAST EXECUTED:</span>
             <span className="text-white font-bold">{lastSync}</span>
           </div>
-          <div className="p-3 bg-black/40 border border-white/5 rounded-xl">
+          <div className="p-3 liquid-glass-soft border border-white/10 rounded-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
             <span className="text-[#8ea0b5] block text-[10px]">NEXT SCHEDULED:</span>
             <span className="text-[#4cd7f6] font-bold">{isRunning ? nextSync : 'Paused'}</span>
           </div>
         </div>
 
         {/* Security & Credentials Notice */}
-        <div className="text-[11px] font-mono text-[#8ea0b5] bg-black/40 p-2.5 rounded-xl border border-white/5 flex items-center gap-2">
+        <div className="text-[11px] font-mono text-[#8ea0b5] liquid-glass-soft p-3 rounded-xl border border-white/5 flex items-center gap-2">
           <span className="text-sm">🔐</span>
           <span>Credentials injected via secure server-side environment variables (.env). Zero client token exposure.</span>
         </div>
@@ -102,7 +102,7 @@ function SchedulerCard({ onTriggerSync }) {
           <button
             type="button"
             onClick={handleManualTrigger}
-            className="px-4 py-2.5 bg-gradient-to-r from-purple-500 to-[#ddb7ff] hover:from-purple-400 hover:to-[#ecd4ff] text-black font-extrabold rounded-xl text-xs font-mono tracking-wider uppercase transition-all shadow-sm cursor-pointer"
+            className="px-4 py-2.5 glass-btn-primary text-black font-extrabold rounded-xl text-xs font-mono tracking-wider uppercase transition-all shadow-sm cursor-pointer"
           >
             ⚡ Force Sync Now
           </button>

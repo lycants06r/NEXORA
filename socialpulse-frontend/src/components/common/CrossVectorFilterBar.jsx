@@ -65,14 +65,14 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
                      filters.community !== 'All Clusters'
 
   return (
-    <div className={`bg-[#0a1329]/90 backdrop-blur-2xl border border-cyan-500/25 rounded-2xl p-4 shadow-[0_10px_35px_rgba(0,0,0,0.5)] ${className}`}>
+    <div className={`liquid-glass glass-edge-top p-4 rounded-2xl ${className}`}>
       {/* Header with status */}
       <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
         <div className="flex items-center gap-2.5">
           <div className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] animate-pulse shadow-[0_0_10px_#4cd7f6]" />
           <h4 className="text-white font-extrabold text-xs font-mono uppercase tracking-wider flex items-center gap-1.5">
             <span>⚡ Cross-Vector Correlation Engine</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded bg-cyan-500/10 text-[#4cd7f6] border border-cyan-500/30">
+            <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-cyan-500/15 text-[#4cd7f6] border border-cyan-500/30 font-bold shadow-[0_0_8px_rgba(76,215,246,0.2)]">
               7-D MATRIX
             </span>
           </h4>
@@ -91,7 +91,7 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
           <button
             type="button"
             onClick={() => setExpanded(!expanded)}
-            className="px-2.5 py-1 rounded-lg bg-black/40 border border-cyan-500/30 text-xs font-mono text-[#4cd7f6] hover:bg-cyan-500/10 transition-all cursor-pointer"
+            className="px-2.5 py-1 glass-control text-xs font-mono text-[#4cd7f6] cursor-pointer"
           >
             {expanded ? '▲ Collapse Vectors' : '▼ Deep Dimensional Drill'}
           </button>
@@ -108,10 +108,10 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
               type="button"
               onClick={() => update('platform', p.id)}
               className={`
-                px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap border
+                px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap border cursor-pointer
                 ${filters.platform === p.id
-                  ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_10px_rgba(76,215,246,0.3)]'
-                  : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:border-white/20 hover:text-white'
+                  ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_12px_rgba(76,215,246,0.3)]'
+                  : 'glass-control text-[#8ea0b5] border-white/5 hover:border-white/20 hover:text-white'
                 }
               `}
             >
@@ -131,10 +131,10 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
               type="button"
               onClick={() => update('dateRange', d.id)}
               className={`
-                px-2 py-1 rounded-lg text-[11px] font-mono transition-all border
+                px-2 py-1 rounded-lg text-[11px] font-mono transition-all border cursor-pointer
                 ${filters.dateRange === d.id
-                  ? 'bg-purple-500/20 text-[#ddb7ff] border-purple-500/50 font-bold shadow-[0_0_8px_rgba(221,183,255,0.2)]'
-                  : 'bg-black/20 text-[#8ea0b5] border-transparent hover:text-white'
+                  ? 'bg-purple-500/25 text-[#ddb7ff] border-purple-500/50 font-bold shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_10px_rgba(221,183,255,0.25)]'
+                  : 'glass-control text-[#8ea0b5] border-transparent hover:text-white'
                 }
               `}
             >
@@ -155,10 +155,10 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
             <select
               value={filters.topic}
               onChange={(e) => update('topic', e.target.value)}
-              className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-2.5 py-1.5 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+              className="w-full glass-control rounded-xl px-2.5 py-1.5 text-white font-mono text-xs"
             >
               {topics.map((t) => (
-                <option key={t} value={t}>{t}</option>
+                <option key={t} value={t} className="bg-[#060e20] text-white">{t}</option>
               ))}
             </select>
           </div>
@@ -171,11 +171,11 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
             <select
               value={filters.emotion}
               onChange={(e) => update('emotion', e.target.value)}
-              className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-2.5 py-1.5 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+              className="w-full glass-control rounded-xl px-2.5 py-1.5 text-white font-mono text-xs"
             >
-              <option value="all">All Emotion Vectors</option>
+              <option value="all" className="bg-[#060e20] text-white">All Emotion Vectors</option>
               {EMOTIONS_CONFIG.map((em) => (
-                <option key={em.id} value={em.id}>{em.label}</option>
+                <option key={em.id} value={em.id} className="bg-[#060e20] text-white">{em.label}</option>
               ))}
             </select>
           </div>
@@ -188,10 +188,10 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
             <select
               value={filters.ageBracket}
               onChange={(e) => update('ageBracket', e.target.value)}
-              className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-2.5 py-1.5 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+              className="w-full glass-control rounded-xl px-2.5 py-1.5 text-white font-mono text-xs"
             >
               {ageBrackets.map((age) => (
-                <option key={age} value={age}>{age}</option>
+                <option key={age} value={age} className="bg-[#060e20] text-white">{age}</option>
               ))}
             </select>
           </div>
@@ -204,11 +204,11 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
             <select
               value={filters.professionalDomain || 'All Domains'}
               onChange={(e) => update('professionalDomain', e.target.value)}
-              className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-2.5 py-1.5 text-white font-mono text-xs focus:outline-none focus:border-[#4cd7f6]"
+              className="w-full glass-control rounded-xl px-2.5 py-1.5 text-white font-mono text-xs"
             >
-              <option value="All Domains">All Industry Domains</option>
+              <option value="All Domains" className="bg-[#060e20] text-white">All Industry Domains</option>
               {PROFESSIONAL_DOMAINS.map((domain) => (
-                <option key={domain} value={domain}>{domain}</option>
+                <option key={domain} value={domain} className="bg-[#060e20] text-white">{domain}</option>
               ))}
             </select>
           </div>
@@ -216,7 +216,7 @@ function CrossVectorFilterBar({ filters, onFilterChange, className = '' }) {
       )}
 
       {/* Active Correlation Formula readout */}
-      <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#8ea0b5]">
+      <div className="mt-2.5 p-2.5 liquid-glass-soft border border-white/5 flex items-center justify-between text-[11px] font-mono text-[#8ea0b5] rounded-xl">
         <div className="flex items-center gap-1.5 flex-wrap">
           <span className="text-[#4cd7f6] font-bold">Active Correlation:</span>
           <span>Platform[{filters.platform.toUpperCase()}]</span>

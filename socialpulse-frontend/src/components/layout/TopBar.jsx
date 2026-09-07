@@ -56,17 +56,17 @@ function TopBar() {
   return (
     <>
       <header className="
-        h-16 bg-[#060e20]/80 backdrop-blur-2xl border-b border-cyan-500/20
+        h-16 liquid-glass-strong border-b border-cyan-500/20
         flex items-center justify-between px-6
-        flex-shrink-0 z-30 shadow-sm
+        flex-shrink-0 z-30 shadow-[0_8px_30px_rgba(0,0,0,0.5)]
       ">
         {/* LEFT: Page Title & Mission Tag */}
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <h2 className="text-white font-bold text-lg leading-tight tracking-wide">
               {pageInfo.title}
             </h2>
-            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-[#4cd7f6] border border-cyan-500/30">
+            <span className="text-[10px] uppercase font-mono px-2.5 py-0.5 rounded-lg bg-cyan-500/15 text-[#4cd7f6] border border-cyan-500/30 shadow-[0_0_10px_rgba(76,215,246,0.15)] font-bold">
               TELEMETRY LIVE
             </span>
           </div>
@@ -83,15 +83,14 @@ function TopBar() {
               value={role.id}
               onChange={(e) => setRole(e.target.value)}
               className="
-                h-9 bg-black/60 border border-cyan-500/30 text-xs font-mono font-bold
-                rounded-xl px-3 text-white focus:outline-none focus:border-[#4cd7f6]
-                cursor-pointer shadow-inner
+                h-9 glass-control text-xs font-mono font-bold
+                px-3 text-white cursor-pointer
               "
               title={role.description}
             >
-              <option value="ADMIN">Role: ADMIN</option>
-              <option value="ANALYST">Role: ANALYST</option>
-              <option value="VIEWER">Role: VIEWER</option>
+              <option value="ADMIN" className="bg-[#060e20] text-white">Role: ADMIN</option>
+              <option value="ANALYST" className="bg-[#060e20] text-white">Role: ANALYST</option>
+              <option value="VIEWER" className="bg-[#060e20] text-white">Role: VIEWER</option>
             </select>
           </div>
 
@@ -100,8 +99,8 @@ function TopBar() {
             type="button"
             onClick={() => navigate('/alerts')}
             className="
-              relative h-9 w-9 rounded-xl bg-black/40 border border-white/10 hover:border-cyan-500/40
-              text-[#8ea0b5] hover:text-white transition-all cursor-pointer flex items-center justify-center flex-shrink-0
+              relative h-9 w-9 glass-control
+              text-[#8ea0b5] hover:text-white cursor-pointer flex items-center justify-center flex-shrink-0
             "
             title={`${activeAlertsCount} active threat alerts`}
           >
@@ -110,7 +109,7 @@ function TopBar() {
               <span className="
                 absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-500
                 text-white text-[9px] font-mono font-bold flex items-center justify-center
-                shadow-[0_0_8px_#f43f5e] animate-pulse
+                shadow-[0_0_10px_#f43f5e] animate-pulse
               ">
                 {activeAlertsCount}
               </span>
@@ -122,10 +121,10 @@ function TopBar() {
             type="button"
             onClick={() => setShowExportModal(true)}
             className="
-              hidden md:inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl
-              bg-[#4cd7f6]/10 border border-cyan-500/30 hover:border-cyan-400 text-[#4cd7f6]
-              text-xs font-mono font-bold uppercase tracking-wider transition-all
-              shadow-sm hover:shadow-[0_0_12px_rgba(76,215,246,0.25)] cursor-pointer flex-shrink-0
+              hidden md:inline-flex items-center gap-1.5 h-9 px-3.5
+              glass-btn-secondary text-[#4cd7f6] border-cyan-500/30
+              text-xs font-mono font-bold uppercase tracking-wider
+              cursor-pointer flex-shrink-0
             "
           >
             <span className="text-xs">📥</span>
@@ -134,10 +133,10 @@ function TopBar() {
 
           {/* Backend Status Pill */}
           <div className={`
-            hidden sm:inline-flex items-center gap-2 h-9 px-3 rounded-xl text-xs font-mono font-semibold flex-shrink-0
+            hidden sm:inline-flex items-center gap-2 h-9 px-3 rounded-xl text-xs font-mono font-semibold flex-shrink-0 border
             ${health
-              ? 'bg-emerald-500/15 text-[#4edea3] border border-emerald-500/30 shadow-[0_0_12px_rgba(78,222,163,0.2)]'
-              : 'bg-rose-500/15 text-[#f43f5e] border border-rose-500/30 shadow-[0_0_12px_rgba(244,63,94,0.2)]'
+              ? 'bg-emerald-500/15 text-[#4edea3] border-emerald-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_0_12px_rgba(78,222,163,0.2)]'
+              : 'bg-rose-500/15 text-[#f43f5e] border-rose-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_0_12px_rgba(244,63,94,0.2)]'
             }
           `}>
             <div className={`w-2 h-2 rounded-full ${health ? 'bg-[#4edea3] shadow-[0_0_8px_#4edea3]' : 'bg-[#f43f5e] shadow-[0_0_8px_#f43f5e]'} animate-pulse flex-shrink-0`} />
@@ -145,7 +144,7 @@ function TopBar() {
           </div>
 
           {/* Live Monospace Clock */}
-          <div className="h-9 px-3 rounded-xl bg-black/50 border border-cyan-500/20 text-xs font-mono text-[#4cd7f6] shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] flex items-center gap-1.5 flex-shrink-0">
+          <div className="h-9 px-3 rounded-xl glass-control text-xs font-mono text-[#4cd7f6] flex items-center gap-1.5 flex-shrink-0">
             <span className="text-gray-500 hidden sm:inline">UTC</span>
             <span className="font-bold tracking-wider">{time.toLocaleTimeString()}</span>
           </div>

@@ -30,14 +30,14 @@ function CollectForm({ onSubmit, isLoading = false }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+      className="liquid-glass glass-edge-top p-6 rounded-2xl"
     >
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-white font-bold text-base tracking-wider uppercase flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
-          🎯 Ingestion Dispatch Controller
+          <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6] animate-pulse" />
+          <span>🎯 Ingestion Dispatch Controller</span>
         </h3>
-        <span className="text-[11px] font-mono text-[#4cd7f6] px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
+        <span className="text-[11px] font-mono text-[#4cd7f6] px-2.5 py-0.5 rounded-lg bg-cyan-500/15 border border-cyan-500/30 shadow-[0_0_8px_rgba(76,215,246,0.15)] font-bold">
           STREAM DISPATCHER
         </span>
       </div>
@@ -51,10 +51,10 @@ function CollectForm({ onSubmit, isLoading = false }) {
             onClick={() => setPlatform(p.value)}
             className={`
               py-2.5 px-3 rounded-xl text-xs font-semibold
-              transition-all duration-200 border flex items-center justify-center gap-2
+              transition-all duration-200 border flex items-center justify-center gap-2 cursor-pointer
               ${platform === p.value
-                ? 'bg-[#4cd7f6]/15 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-                : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:border-white/15 hover:text-white'
+                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_12px_rgba(76,215,246,0.3)] font-bold'
+                : 'glass-control text-[#8ea0b5] border-white/5 hover:border-white/20 hover:text-white'
               }
             `}
           >
@@ -66,7 +66,7 @@ function CollectForm({ onSubmit, isLoading = false }) {
 
       {/* Query Input */}
       <div className="mb-4">
-        <label className="block text-xs font-mono uppercase tracking-wider text-[#8ea0b5] mb-2">
+        <label className="block text-xs font-mono uppercase tracking-wider text-[#8ea0b5] mb-2 font-semibold">
           Search Query / Channel Handle
         </label>
         <input
@@ -74,13 +74,7 @@ function CollectForm({ onSubmit, isLoading = false }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={selectedPlatform?.placeholder}
-          className="
-            w-full bg-black/40 border border-cyan-500/25
-            text-white placeholder-gray-500 font-mono text-sm
-            rounded-xl px-4 py-3
-            focus:outline-none focus:border-[#4cd7f6] focus:shadow-[0_0_15px_rgba(76,215,246,0.25)]
-            transition-all
-          "
+          className="w-full glass-control font-mono text-sm rounded-xl px-4 py-3 text-white placeholder-gray-500"
           required
         />
       </div>
@@ -88,8 +82,8 @@ function CollectForm({ onSubmit, isLoading = false }) {
       {/* Max Results Slider */}
       <div className="mb-6">
         <div className="flex justify-between items-center text-xs font-mono text-[#8ea0b5] mb-2">
-          <span>SAMPLE CAP</span>
-          <span className="text-[#4cd7f6] font-bold text-sm bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
+          <span className="font-semibold">SAMPLE CAP</span>
+          <span className="text-[#4cd7f6] font-bold text-sm bg-cyan-500/15 px-2.5 py-0.5 rounded-lg border border-cyan-500/30">
             {maxResults} POSTS
           </span>
         </div>
@@ -98,7 +92,7 @@ function CollectForm({ onSubmit, isLoading = false }) {
           min={10} max={200} step={10}
           value={maxResults}
           onChange={(e) => setMaxResults(Number(e.target.value))}
-          className="w-full accent-[#4cd7f6] bg-dark-600 rounded-lg h-1.5 cursor-pointer"
+          className="w-full accent-[#4cd7f6] bg-black/40 rounded-lg h-2 cursor-pointer border border-white/5"
         />
         <div className="flex justify-between text-[10px] font-mono text-gray-500 mt-1">
           <span>10 (fast)</span>
@@ -111,11 +105,11 @@ function CollectForm({ onSubmit, isLoading = false }) {
         type="submit"
         disabled={isLoading || !query.trim()}
         className={`
-          w-full py-3.5 rounded-xl font-bold text-sm tracking-wider uppercase
-          transition-all duration-300
+          w-full py-3.5 rounded-xl font-mono text-xs font-black tracking-wider uppercase
+          transition-all duration-200
           ${isLoading || !query.trim()
             ? 'bg-white/5 text-gray-500 cursor-not-allowed border border-white/5'
-            : 'bg-gradient-to-r from-[#4cd7f6] to-[#06b6d4] hover:from-[#38bdf8] hover:to-[#0891b2] text-black font-black shadow-[0_0_20px_rgba(76,215,246,0.35)] cursor-pointer'
+            : 'glass-btn-primary cursor-pointer'
           }
         `}
       >

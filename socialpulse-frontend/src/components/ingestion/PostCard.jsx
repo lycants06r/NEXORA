@@ -23,15 +23,15 @@ function PostCard({ post }) {
 
   return (
     <div className="
-      bg-[#0a1329]/75 backdrop-blur-xl border border-cyan-500/15
-      hover:border-cyan-500/40 transition-all duration-200
-      rounded-2xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+      liquid-glass-soft border border-cyan-500/20
+      hover:border-cyan-400/40 transition-all duration-200
+      rounded-2xl p-4 shadow-[0_4px_24px_rgba(0,0,0,0.35)]
       animate-slide-up
     ">
       {/* Header: platform + time */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1 flex-shrink-0">
+          <div className="w-6 h-6 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center p-1 flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
             <PlatformLogo platform={post.platform} className="w-4 h-4" colored={true} />
           </div>
           <Badge
@@ -58,7 +58,7 @@ function PostCard({ post }) {
           {post.hashtags.slice(0, 5).map((tag) => (
             <span
               key={tag}
-              className="text-xs font-mono text-[#4cd7f6] bg-cyan-500/10 border border-cyan-500/20
+              className="text-xs font-mono text-[#4cd7f6] bg-cyan-500/15 border border-cyan-500/30
                          px-2 py-0.5 rounded-md"
             >
               {tag}
@@ -79,7 +79,7 @@ function PostCard({ post }) {
           <span className="flex items-center gap-1">💬 {post.engagement.replies}</span>
         )}
         {post.language && (
-          <span className="ml-auto text-[#4cd7f6] bg-black/40 px-2 py-0.5 rounded border border-white/5">
+          <span className="ml-auto text-[#4cd7f6] bg-black/40 px-2 py-0.5 rounded-md border border-white/10">
             LANG: {post.language.toUpperCase()}
           </span>
         )}

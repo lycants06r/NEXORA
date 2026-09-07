@@ -271,22 +271,24 @@ function Dashboard() {
           PRIORITY 1: FOUNDATION & EXECUTIVE HEADER
       ═══════════════════════════════════════════════════════════════ */}
       <div className="
-        bg-gradient-to-r from-[#4cd7f6]/15 via-[#ddb7ff]/10 to-[#06b6d4]/15
-        border border-cyan-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.6)]
-        backdrop-blur-2xl relative overflow-hidden
+        liquid-glass-strong rounded-2xl p-6 shadow-glass-elevated
+        border border-[#4cd7f6]/25 relative overflow-hidden group
       ">
+        {/* Specular Edge Highlight */}
+        <div className="glass-edge-top" />
+
         <div className="absolute top-0 right-0 p-3 opacity-15 pointer-events-none text-7xl font-mono select-none">
           NEXORA
         </div>
 
-        <div className="flex items-center justify-between flex-wrap gap-3 mb-2">
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-2 relative z-10">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] animate-pulse shadow-[0_0_10px_#4cd7f6]" />
             <span className="text-[11px] font-mono tracking-widest uppercase text-[#4cd7f6] font-bold">
               MILITARY-GRADE COMMAND CENTER
             </span>
           </div>
-          <div className="flex items-center gap-2 text-xs font-mono text-[#8ea0b5]">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#8ea0b5] liquid-glass-soft px-3 py-1 rounded-xl border border-white/10">
             <span className="w-2 h-2 rounded-full bg-[#4edea3] shadow-[0_0_6px_#4edea3]" />
             <span>Telemetry Pulse: <span className="text-white font-bold">{latencyMs}ms</span></span>
             <span className="text-[#3a4d65]">|</span>
@@ -294,17 +296,17 @@ function Dashboard() {
           </div>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight relative z-10">
           NEXORA Intelligence Dashboard
         </h1>
-        <p className="text-sm text-[#8ea0b5] max-w-3xl leading-relaxed mb-4">
+        <p className="text-sm text-[#8ea0b5] max-w-3xl leading-relaxed mb-4 relative z-10">
           Autonomous real-time social signal aggregation, multi-platform sentiment telemetry, viral cascade forecasting, and security anomaly detection across 6 global channels.
         </p>
 
         {/* ═══════════════════════════════════════════════════════════════
             PRIORITY 2: GLOBAL CONTROLS (Platform Filter + Date Range)
         ═══════════════════════════════════════════════════════════════ */}
-        <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-cyan-500/20">
+        <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-white/10 relative z-10">
           
           {/* Multi-Platform Filter Toggle */}
           <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
@@ -315,10 +317,10 @@ function Dashboard() {
                 type="button"
                 onClick={() => setPlatform(p.id)}
                 className={`
-                  h-9 px-3.5 inline-flex items-center rounded-xl text-xs font-mono font-semibold transition-all whitespace-nowrap border cursor-pointer
+                  h-9 px-3.5 inline-flex items-center rounded-xl text-xs font-mono font-semibold transition-all whitespace-nowrap cursor-pointer
                   ${platform === p.id
-                    ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_10px_rgba(76,215,246,0.3)] font-bold'
-                    : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                    ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/45 shadow-glow-cyan font-bold backdrop-blur-md'
+                    : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
                   }
                 `}
               >
@@ -339,10 +341,10 @@ function Dashboard() {
                 type="button"
                 onClick={() => setDateRange(range)}
                 className={`
-                  h-9 px-3.5 inline-flex items-center rounded-xl uppercase transition-all border cursor-pointer font-semibold
+                  h-9 px-3.5 inline-flex items-center rounded-xl uppercase transition-all cursor-pointer font-semibold
                   ${dateRange === range
-                    ? 'bg-purple-500/25 text-[#ddb7ff] border-purple-500/50 font-bold shadow-[0_0_10px_rgba(221,183,255,0.25)]'
-                    : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                    ? 'bg-purple-500/25 text-[#ddb7ff] border border-purple-500/50 font-bold shadow-[0_0_12px_rgba(221,183,255,0.3)] backdrop-blur-md'
+                    : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
                   }
                 `}
               >
@@ -359,89 +361,95 @@ function Dashboard() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
         
         {/* KPI 1: Total Posts */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="liquid-glass rounded-2xl p-4 shadow-glass-card hover:border-[#4cd7f6]/40 transition-all relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between mb-1.5 relative z-10">
             <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Total Posts</span>
             <span className="text-base">📝</span>
           </div>
-          <div className="text-xl sm:text-2xl font-black font-mono text-white tracking-tight">
+          <div className="text-xl sm:text-2xl font-black font-mono text-white tracking-tight relative z-10">
             {kpiData.posts}
           </div>
-          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold relative z-10">
             <span>↑ +12.4%</span>
             <span className="text-[#8ea0b5] font-normal">vs prev</span>
           </div>
         </div>
 
         {/* KPI 2: Total Reach */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="liquid-glass rounded-2xl p-4 shadow-glass-card hover:border-[#4cd7f6]/40 transition-all relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between mb-1.5 relative z-10">
             <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Total Reach</span>
             <span className="text-base">🌐</span>
           </div>
-          <div className="text-xl sm:text-2xl font-black font-mono text-[#4cd7f6] tracking-tight">
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#4cd7f6] tracking-tight relative z-10">
             {kpiData.reach}
           </div>
-          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold relative z-10">
             <span>↑ +18.2%</span>
             <span className="text-[#8ea0b5] font-normal">propagation</span>
           </div>
         </div>
 
         {/* KPI 3: Engagement */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="liquid-glass rounded-2xl p-4 shadow-glass-card hover:border-[#4cd7f6]/40 transition-all relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between mb-1.5 relative z-10">
             <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Engagement</span>
             <span className="text-base">⚡</span>
           </div>
-          <div className="text-xl sm:text-2xl font-black font-mono text-[#ddb7ff] tracking-tight truncate">
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#ddb7ff] tracking-tight truncate relative z-10">
             {kpiData.engagement}
           </div>
-          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold relative z-10">
             <span>↑ +4.1%</span>
             <span className="text-[#8ea0b5] font-normal">interaction</span>
           </div>
         </div>
 
         {/* KPI 4: Overall Sentiment */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="liquid-glass rounded-2xl p-4 shadow-glass-card hover:border-[#4cd7f6]/40 transition-all relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between mb-1.5 relative z-10">
             <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Positive Lean</span>
             <span className="text-base">😊</span>
           </div>
-          <div className="text-xl sm:text-2xl font-black font-mono text-[#4edea3] tracking-tight">
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#4edea3] tracking-tight relative z-10">
             {kpiData.sentiment}
           </div>
-          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold relative z-10">
             <span>↑ +6.2%</span>
             <span className="text-[#8ea0b5] font-normal">net polarity</span>
           </div>
         </div>
 
         {/* KPI 5: Trend Velocity */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="liquid-glass rounded-2xl p-4 shadow-glass-card hover:border-[#4cd7f6]/40 transition-all relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between mb-1.5 relative z-10">
             <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Trend Velocity</span>
             <span className="text-base">🔥</span>
           </div>
-          <div className="text-xl sm:text-2xl font-black font-mono text-[#ec4899] tracking-tight">
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#ec4899] tracking-tight relative z-10">
             +42.8%
           </div>
-          <div className="text-[11px] font-mono text-[#ec4899] mt-1 flex items-center gap-1 font-semibold">
+          <div className="text-[11px] font-mono text-[#ec4899] mt-1 flex items-center gap-1 font-semibold relative z-10">
             <span>⚡ {trends.length} Rising Topics</span>
           </div>
         </div>
 
         {/* KPI 6: Active Platforms */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-4 shadow-sm hover:border-cyan-500/40 transition-all">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="liquid-glass rounded-2xl p-4 shadow-glass-card hover:border-[#4cd7f6]/40 transition-all relative overflow-hidden group">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between mb-1.5 relative z-10">
             <span className="text-xs font-mono text-[#8ea0b5] uppercase tracking-wider font-semibold">Active Feeds</span>
             <span className="text-base">📡</span>
           </div>
-          <div className="text-xl sm:text-2xl font-black font-mono text-[#4cd7f6] tracking-tight">
+          <div className="text-xl sm:text-2xl font-black font-mono text-[#4cd7f6] tracking-tight relative z-10">
             {kpiData.activePlatforms}
           </div>
-          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold">
+          <div className="text-[11px] font-mono text-[#4edea3] mt-1 flex items-center gap-1 font-semibold relative z-10">
             <span>● 100% Ingestion Up</span>
           </div>
         </div>
@@ -450,8 +458,9 @@ function Dashboard() {
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 4: REAL-TIME OVERVIEW & TIME-SERIES CHART
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
+      <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-4 relative z-10">
           <div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
@@ -464,7 +473,7 @@ function Dashboard() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-mono">
+          <div className="flex items-center gap-4 text-xs font-mono liquid-glass-soft px-3 py-1.5 rounded-xl border border-white/10">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded bg-[#4cd7f6]/40 border border-[#4cd7f6]" />
               <span className="text-[#8ea0b5]">Signal Volume</span>
@@ -477,7 +486,7 @@ function Dashboard() {
         </div>
 
         {/* Recharts Area Chart */}
-        <div className="h-64 w-full">
+        <div className="h-64 w-full relative z-10">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={timelineSeries} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <defs>
@@ -517,20 +526,20 @@ function Dashboard() {
         </div>
 
         {/* Real-time Summary Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 mt-2 border-t border-cyan-500/15 text-xs font-mono">
-          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 mt-2 border-t border-white/10 text-xs font-mono relative z-10">
+          <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
             <span className="text-[#8ea0b5] block">Current Velocity:</span>
             <span className="text-white font-bold text-sm">42 posts/min</span>
           </div>
-          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+          <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
             <span className="text-[#8ea0b5] block">Peak Hour:</span>
             <span className="text-[#4cd7f6] font-bold text-sm">18:00 UTC</span>
           </div>
-          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+          <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
             <span className="text-[#8ea0b5] block">Primary Channel:</span>
             <span className="text-[#ddb7ff] font-bold text-sm">X / Twitter</span>
           </div>
-          <div className="bg-black/30 p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+          <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10 flex items-center justify-between">
             <div>
               <span className="text-[#8ea0b5] block">Live Socket:</span>
               <span className="text-[#4edea3] font-bold text-sm">Connected (32ms)</span>
@@ -548,8 +557,9 @@ function Dashboard() {
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 5: CROSS-PLATFORM SNAPSHOT (High-level Summaries)
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-4">
+      <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <div>
             <h2 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#0088cc] shadow-[0_0_8px_#0088cc]" />
@@ -567,18 +577,18 @@ function Dashboard() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5 relative z-10">
           {platformSnapshots.map((item) => (
             <div
               key={item.id}
               onClick={() => navigate('/analytics')}
               className="
-                bg-black/40 border border-white/5 hover:border-cyan-500/40 rounded-xl p-3.5
-                transition-all duration-200 cursor-pointer group hover:scale-[1.02]
+                liquid-glass-soft border border-white/10 hover:border-[#4cd7f6]/40 rounded-xl p-3.5
+                transition-all duration-200 cursor-pointer group hover:scale-[1.02] shadow-sm hover:shadow-glass-card
               "
             >
               <div className="flex items-center justify-between mb-2">
-                <div className="w-7 h-7 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1">
+                <div className="w-7 h-7 rounded-lg liquid-glass border border-white/10 flex items-center justify-center p-1">
                   <PlatformLogo platform={item.id} className="w-4 h-4" colored={true} />
                 </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-[#4edea3] border border-emerald-500/20">
@@ -603,8 +613,9 @@ function Dashboard() {
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 6: AI EXECUTIVE SUMMARY
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-4">
+      <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <div className="flex items-center gap-2">
             <span className="text-xl">🧠</span>
             <div>
@@ -618,17 +629,17 @@ function Dashboard() {
           </div>
           <button
             onClick={() => navigate('/ai-insights')}
-            className="text-xs font-mono text-[#ddb7ff] hover:underline flex items-center gap-1 cursor-pointer font-bold px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30"
+            className="text-xs font-mono text-[#ddb7ff] hover:underline flex items-center gap-1 cursor-pointer font-bold px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 backdrop-blur-md"
           >
             View Full AI Insights →
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 relative z-10">
           {aiExecutiveInsights.map((insight) => (
             <div
               key={insight.id}
-              className="bg-black/40 border border-white/5 hover:border-purple-500/30 rounded-xl p-4 transition-all"
+              className="liquid-glass-soft border border-white/10 hover:border-purple-500/30 rounded-xl p-4 transition-all"
             >
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-white font-bold text-xs tracking-wide">
@@ -652,8 +663,9 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* ── PRIORITY 7: Trend Snapshot ──────────────────────────── */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between">
-          <div>
+        <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group flex flex-col justify-between">
+          <div className="glass-edge-top" />
+          <div className="relative z-10">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-lg">📈</span>
@@ -674,7 +686,7 @@ function Dashboard() {
                 <div
                   key={trend.topic}
                   onClick={() => navigate('/trends')}
-                  className="flex items-center justify-between p-3 bg-black/40 border border-white/5 hover:border-pink-500/30 rounded-xl transition-all cursor-pointer"
+                  className="flex items-center justify-between p-3 liquid-glass-soft border border-white/10 hover:border-pink-500/30 rounded-xl transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <span className="
@@ -711,8 +723,9 @@ function Dashboard() {
         </div>
 
         {/* ── PRIORITY 8: Sentiment Snapshot ──────────────────────── */}
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between">
-          <div>
+        <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group flex flex-col justify-between">
+          <div className="glass-edge-top" />
+          <div className="relative z-10">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-lg">💬</span>
@@ -729,13 +742,13 @@ function Dashboard() {
             </div>
 
             {/* Tri-color Polarity Bar */}
-            <div className="bg-black/40 border border-white/5 rounded-xl p-4 mb-4">
+            <div className="liquid-glass-soft border border-white/10 rounded-xl p-4 mb-4">
               <div className="flex items-center justify-between text-xs font-mono mb-2">
                 <span className="text-[#4edea3] font-bold">Positive: 68.4%</span>
                 <span className="text-[#8ea0b5]">Neutral: 13.4%</span>
                 <span className="text-[#f43f5e] font-bold">Negative: 18.2%</span>
               </div>
-              <div className="w-full h-3 rounded-full bg-black/60 overflow-hidden flex">
+              <div className="w-full h-3 rounded-full bg-black/60 overflow-hidden flex border border-white/5">
                 <div className="bg-[#4edea3] h-full" style={{ width: '68.4%' }} />
                 <div className="bg-[#8ea0b5] h-full" style={{ width: '13.4%' }} />
                 <div className="bg-[#f43f5e] h-full" style={{ width: '18.2%' }} />
@@ -748,27 +761,27 @@ function Dashboard() {
                 Dominant Affective Dimensions:
               </span>
               <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-                <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[#4edea3]">
+                <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[#4edea3] backdrop-blur-sm">
                   <div className="font-bold text-sm">28%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Excitement</div>
                 </div>
-                <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-[#4cd7f6]">
+                <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-[#4cd7f6] backdrop-blur-sm">
                   <div className="font-bold text-sm">24%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Supportive</div>
                 </div>
-                <div className="p-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-[#f43f5e]">
+                <div className="p-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-[#f43f5e] backdrop-blur-sm">
                   <div className="font-bold text-sm">18%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Anxiety</div>
                 </div>
-                <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[#f59e0b]">
+                <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[#f59e0b] backdrop-blur-sm">
                   <div className="font-bold text-sm">14%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Neutral</div>
                 </div>
-                <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-[#ddb7ff]">
+                <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-[#ddb7ff] backdrop-blur-sm">
                   <div className="font-bold text-sm">9%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Sarcasm</div>
                 </div>
-                <div className="p-2 rounded-xl bg-pink-500/10 border border-pink-500/30 text-[#ec4899]">
+                <div className="p-2 rounded-xl bg-pink-500/10 border border-pink-500/30 text-[#ec4899] backdrop-blur-sm">
                   <div className="font-bold text-sm">7%</div>
                   <div className="text-[10px] text-[#8ea0b5]">Opposition</div>
                 </div>
@@ -781,8 +794,9 @@ function Dashboard() {
       {/* ═══════════════════════════════════════════════════════════════
           PRIORITY 9: INTELLIGENCE ALERTS FEED
       ═══════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-4">
+      <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <div className="flex items-center gap-2">
             <span className="text-xl">🚨</span>
             <div>
@@ -796,19 +810,19 @@ function Dashboard() {
           </div>
           <button
             onClick={() => navigate('/alerts')}
-            className="text-xs font-mono text-[#f43f5e] hover:underline font-bold cursor-pointer px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30"
+            className="text-xs font-mono text-[#f43f5e] hover:underline font-bold cursor-pointer px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 backdrop-blur-md"
           >
             View Threat Alerts Matrix →
           </button>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 relative z-10">
           {dashboardAlerts.map((alert) => (
             <div
               key={alert.alert_id}
               onClick={() => navigate('/alerts')}
               className="
-                p-3.5 bg-black/40 border border-white/5 hover:border-cyan-500/30 rounded-xl
+                p-3.5 liquid-glass-soft border border-white/10 hover:border-cyan-500/30 rounded-xl
                 flex items-center justify-between flex-wrap gap-2 transition-all cursor-pointer
               "
             >

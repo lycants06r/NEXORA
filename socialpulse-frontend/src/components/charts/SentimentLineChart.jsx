@@ -48,13 +48,14 @@ function SentimentLineChart({ data = [] }) {
   }))
 
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-      <div className="flex items-center justify-between mb-4">
+    <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+      <div className="glass-edge-top" />
+      <div className="flex items-center justify-between mb-4 relative z-10">
         <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6] animate-pulse" />
           📈 Sentiment Telemetry Over Time
         </h3>
-        <span className="text-[11px] font-mono text-[#4cd7f6] px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
+        <span className="text-[11px] font-mono text-[#4cd7f6] px-2.5 py-1 rounded-xl liquid-glass-soft border border-cyan-500/30 font-bold">
           HOURLY SAMPLING
         </span>
       </div>

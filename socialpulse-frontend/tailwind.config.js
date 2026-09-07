@@ -45,7 +45,12 @@ export default {
         "cyan-glow": "0 0 20px rgba(76, 215, 246, 0.35)",
         "cyan-glow-sm": "0 0 10px rgba(76, 215, 246, 0.2)",
         "purple-glow": "0 0 20px rgba(221, 183, 255, 0.3)",
-        "glass-card": "0 10px 30px rgba(0, 0, 0, 0.6), 0 0 1px rgba(76, 215, 246, 0.25)",
+        "glass-card": "inset 0 1px 1px 0 rgba(255, 255, 255, 0.14), 0 12px 34px rgba(0, 0, 0, 0.58), 0 0 1px rgba(76, 215, 246, 0.22)",
+        "glass-strong": "inset 0 1px 1px 0 rgba(255, 255, 255, 0.24), 0 20px 50px rgba(0, 0, 0, 0.72), 0 0 2px rgba(76, 215, 246, 0.30)",
+        "glass-elevated": "inset 0 1px 1px 0 rgba(255, 255, 255, 0.30), 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(76, 215, 246, 0.25)",
+      },
+      backdropBlur: {
+        "3xl": "28px",
       },
       // Custom animation for loading & futuristic transitions
       animation: {

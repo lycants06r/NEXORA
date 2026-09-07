@@ -151,10 +151,10 @@ function NetworkPage() {
             key={p || 'all'}
             onClick={() => setPlatform(p)}
             className={`
-              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border flex items-center gap-1.5
+              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5
               ${platform === p
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_12px_rgba(76,215,246,0.25)] font-bold'
-                : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
+                ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
+                : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
               }
             `}
           >
@@ -189,8 +189,9 @@ function NetworkPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* TOP INFLUENCERS LEADERBOARD */}
-            <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="p-5 border-b border-cyan-500/15 flex items-center justify-between">
+            <div className="liquid-glass rounded-2xl overflow-hidden shadow-glass-card relative group">
+              <div className="glass-edge-top" />
+              <div className="p-5 border-b border-white/10 flex items-center justify-between relative z-10">
                 <div>
                   <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#ec4899] shadow-[0_0_8px_#ec4899]" />
@@ -205,11 +206,11 @@ function NetworkPage() {
                 </span>
               </div>
 
-              <div className="divide-y divide-white/5 max-h-[460px] overflow-y-auto">
+              <div className="divide-y divide-white/5 max-h-[460px] overflow-y-auto relative z-10">
                 {influencers.map((inf, i) => (
                   <div
                     key={inf.user_id_hashed}
-                    className="p-4 hover:bg-[#101d3b]/40 transition-colors flex items-center gap-3.5"
+                    className="p-4 hover:bg-white/[0.04] transition-colors flex items-center gap-3.5"
                   >
                     {/* Rank badge */}
                     <div className={`
@@ -217,7 +218,7 @@ function NetworkPage() {
                       ${i === 0 ? 'bg-amber-400 text-black border-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.4)]' :
                         i === 1 ? 'bg-slate-300 text-black border-slate-200'   :
                         i === 2 ? 'bg-amber-700 text-white border-amber-600'  :
-                                  'bg-black/40 text-[#8ea0b5] border-white/5'
+                                  'bg-black/40 text-[#8ea0b5] border-white/10'
                       }
                     `}>
                       {i + 1}
@@ -263,8 +264,9 @@ function NetworkPage() {
             </div>
 
             {/* COMMUNITIES */}
-            <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="p-5 border-b border-cyan-500/15 flex items-center justify-between">
+            <div className="liquid-glass rounded-2xl overflow-hidden shadow-glass-card relative group">
+              <div className="glass-edge-top" />
+              <div className="p-5 border-b border-white/10 flex items-center justify-between relative z-10">
                 <div>
                   <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
@@ -279,24 +281,24 @@ function NetworkPage() {
                 </span>
               </div>
 
-              <div className="p-4 space-y-3 max-h-[460px] overflow-y-auto">
+              <div className="p-4 space-y-3 max-h-[460px] overflow-y-auto relative z-10">
                 {communities.map((comm, i) => {
-                  const communityColors = [
-                    'border-cyan-500/30 bg-cyan-500/5',
-                    'border-purple-500/30 bg-purple-500/5',
-                    'border-pink-500/30 bg-pink-500/5',
-                    'border-emerald-500/30 bg-emerald-500/5',
+                  const communityBorders = [
+                    'border-cyan-500/30 shadow-[inset_0_1px_0_rgba(76,215,246,0.2)]',
+                    'border-purple-500/30 shadow-[inset_0_1px_0_rgba(168,85,247,0.2)]',
+                    'border-pink-500/30 shadow-[inset_0_1px_0_rgba(236,72,153,0.2)]',
+                    'border-emerald-500/30 shadow-[inset_0_1px_0_rgba(16,185,129,0.2)]',
                   ]
                   return (
                     <div
                       key={comm.community_id}
-                      className={`border rounded-xl p-4 transition-all hover:bg-white/5 ${communityColors[i % communityColors.length]}`}
+                      className={`liquid-glass-soft border rounded-xl p-4 transition-all hover:bg-white/[0.06] ${communityBorders[i % communityBorders.length]}`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-bold text-sm font-mono">
                           COMMUNITY CLUSTER #{comm.community_id}
                         </span>
-                        <span className="text-[11px] font-mono px-2 py-0.5 bg-black/50 text-[#4cd7f6] border border-cyan-500/20 rounded-md font-bold">
+                        <span className="text-[11px] font-mono px-2 py-0.5 liquid-glass text-[#4cd7f6] border border-cyan-500/30 rounded-md font-bold">
                           {comm.size} NODES
                         </span>
                       </div>
@@ -310,7 +312,7 @@ function NetworkPage() {
                       {comm.top_keywords?.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-2.5">
                           {comm.top_keywords.map((kw) => (
-                            <span key={kw} className="text-[10px] font-mono bg-black/40 text-[#8ea0b5] px-1.5 py-0.2 rounded border border-white/5">
+                            <span key={kw} className="text-[10px] font-mono liquid-glass-soft text-[#8ea0b5] px-1.5 py-0.5 rounded border border-white/10">
                               #{kw}
                             </span>
                           ))}

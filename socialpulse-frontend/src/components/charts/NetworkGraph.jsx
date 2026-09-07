@@ -131,16 +131,19 @@ function NetworkGraph({ nodes = [], edges = [] }) {
   }
 
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+    <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+      {/* Specular Edge Sheen */}
+      <div className="glass-edge-top" />
+
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2 relative z-10">
         <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
           🕸️ Force-Directed Influence Topology
         </h3>
 
         {/* Legend */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 liquid-glass-soft px-3 py-1.5 rounded-xl border border-white/10">
           {Object.entries(NODE_COLORS).map(([type, color]) => (
             <div key={type} className="flex items-center gap-1.5 font-mono text-xs">
               <div
@@ -163,7 +166,7 @@ function NetworkGraph({ nodes = [], edges = [] }) {
         <svg
           width="100%"
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-          style={{ background: 'rgba(2, 6, 18, 0.95)', borderRadius: '12px', border: '1px solid rgba(76, 215, 246, 0.2)' }}
+          style={{ background: 'rgba(2, 6, 18, 0.75)', borderRadius: '14px', border: '1px solid rgba(76, 215, 246, 0.2)' }}
         >
           {/* Draw edges first */}
           {edges.map((edge, i) => {

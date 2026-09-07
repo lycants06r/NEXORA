@@ -129,10 +129,10 @@ function DemographicsPage() {
               key={p || 'all'}
               onClick={() => setPlatform(p)}
               className={`
-                px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border flex items-center gap-1.5
+                px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5
                 ${platform === p
-                  ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_12px_rgba(76,215,246,0.25)] font-bold'
-                  : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
+                  ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
+                  : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
                 }
               `}
             >
@@ -145,16 +145,17 @@ function DemographicsPage() {
 
       {/* ── Mandatory Anonymization & Zero-PII Compliance Banner ── */}
       <div className="
-        bg-emerald-500/10 border border-emerald-500/40
-        rounded-2xl p-4.5 flex items-start gap-3.5 shadow-[0_0_20px_rgba(78,222,163,0.12)]
+        liquid-glass-soft border border-emerald-500/40
+        rounded-2xl p-4.5 flex items-start gap-3.5 shadow-sm relative overflow-hidden group
       ">
-        <span className="text-3xl">🛡️</span>
-        <div className="flex-1">
+        <div className="glass-edge-top" />
+        <span className="text-3xl relative z-10">🛡️</span>
+        <div className="flex-1 relative z-10">
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <p className="text-[#4edea3] font-bold text-xs font-mono uppercase tracking-wider">
               Verified Compliance: Aggregated · Anonymized · Inferred · Zero PII
             </p>
-            <span className="text-[10px] px-2 py-0.2 rounded bg-emerald-500/20 text-[#4edea3] border border-emerald-500/40 font-mono font-bold">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-[#4edea3] border border-emerald-500/40 font-mono font-bold">
               DPDP / GDPR COMPLIANT
             </span>
           </div>
@@ -190,8 +191,9 @@ function DemographicsPage() {
           </div>
 
           {/* ── Multi-Tier Geographic Distribution ──────────── */}
-          <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+          <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+            <div className="glass-edge-top" />
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2 relative z-10">
               <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
                 📍 Multi-Tier Geographic Distribution
@@ -203,10 +205,10 @@ function DemographicsPage() {
                   <button
                     key={level}
                     onClick={() => setGeoLevel(level)}
-                    className={`px-3 py-1 rounded-lg uppercase transition-all border cursor-pointer ${
+                    className={`px-3 py-1 rounded-lg uppercase transition-all cursor-pointer ${
                       geoLevel === level
-                        ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 font-bold'
-                        : 'bg-black/40 text-[#8ea0b5] border-white/5 hover:text-white'
+                        ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 font-bold shadow-glow-cyan'
+                        : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
                     }`}
                   >
                     {level === 'country' ? 'Countries' : level === 'state' ? 'States / Regions' : 'City Hubs'}
@@ -216,45 +218,48 @@ function DemographicsPage() {
             </div>
 
             {/* View by Selected Tier */}
-            {geoLevel === 'country' && (
-              <CountryBarChart countries={data?.top_countries || []} />
-            )}
+            <div className="relative z-10">
+              {geoLevel === 'country' && (
+                <CountryBarChart countries={data?.top_countries || []} />
+              )}
 
-            {geoLevel === 'state' && (
-              <div className="space-y-3">
-                {data?.top_states?.map((st, i) => (
-                  <div key={i} className="p-3 bg-black/40 border border-white/5 rounded-xl flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-lg bg-[#4cd7f6]/20 text-[#4cd7f6] font-mono font-bold text-xs flex items-center justify-center">
-                        {i + 1}
-                      </span>
-                      <span className="text-white text-xs font-bold font-mono">{st.name}</span>
+              {geoLevel === 'state' && (
+                <div className="space-y-3">
+                  {data?.top_states?.map((st, i) => (
+                    <div key={i} className="p-3 liquid-glass-soft border border-white/10 rounded-xl flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-lg bg-[#4cd7f6]/20 text-[#4cd7f6] font-mono font-bold text-xs flex items-center justify-center">
+                          {i + 1}
+                        </span>
+                        <span className="text-white text-xs font-bold font-mono">{st.name}</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs font-mono">
+                        <span className="text-[#8ea0b5]">{st.count.toLocaleString()} signals</span>
+                        <span className="text-[#4edea3] font-bold">{st.percentage}%</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-4 text-xs font-mono">
-                      <span className="text-[#8ea0b5]">{st.count.toLocaleString()} signals</span>
-                      <span className="text-[#4edea3] font-bold">{st.percentage}%</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
 
-            {geoLevel === 'city' && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {data?.top_cities?.map((city, i) => (
-                  <div key={i} className="p-3.5 bg-black/40 border border-white/5 rounded-xl">
-                    <div className="text-white font-bold text-sm mb-1 font-sans">{city.name}</div>
-                    <div className="text-[11px] font-mono text-[#4cd7f6]">{city.count.toLocaleString()} active nodes</div>
-                    <div className="text-[10px] font-mono text-[#8ea0b5] mt-0.5">{city.state}</div>
-                  </div>
-                ))}
-              </div>
-            )}
+              {geoLevel === 'city' && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {data?.top_cities?.map((city, i) => (
+                    <div key={i} className="p-3.5 liquid-glass-soft border border-white/10 rounded-xl">
+                      <div className="text-white font-bold text-sm mb-1 font-sans">{city.name}</div>
+                      <div className="text-[11px] font-mono text-[#4cd7f6]">{city.count.toLocaleString()} active nodes</div>
+                      <div className="text-[10px] font-mono text-[#8ea0b5] mt-0.5">{city.state}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* ── Language Breakdown with Temporal Trends ─────── */}
-          <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-            <div className="flex items-center justify-between mb-4">
+          <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+            <div className="glass-edge-top" />
+            <div className="flex items-center justify-between mb-4 relative z-10">
               <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#ddb7ff] shadow-[0_0_8px_#ddb7ff]" />
                 🗣️ Language Vectors & Growth Velocity
@@ -264,9 +269,9 @@ function DemographicsPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 relative z-10">
               {data?.top_languages?.map((lang) => (
-                <div key={lang.language} className="p-3 bg-black/40 border border-white/5 rounded-xl text-center">
+                <div key={lang.language} className="p-3 liquid-glass-soft border border-white/10 rounded-xl text-center">
                   <div className="text-xs font-mono font-bold text-white mb-1 truncate">{lang.language}</div>
                   <div className="text-lg font-black font-mono text-[#ddb7ff]">{lang.percentage}%</div>
                   <div className="text-[10px] font-mono text-[#8ea0b5] mt-0.5">{lang.count.toLocaleString()} msgs</div>
@@ -277,8 +282,9 @@ function DemographicsPage() {
           </div>
 
           {/* ── Professional Interest Clustering (8 Categories) ── */}
-          <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-            <div className="flex items-center justify-between mb-4">
+          <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+            <div className="glass-edge-top" />
+            <div className="flex items-center justify-between mb-4 relative z-10">
               <div>
                 <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#4edea3] shadow-[0_0_8px_#4edea3]" />
@@ -288,20 +294,20 @@ function DemographicsPage() {
                   Aggregated semantic affinity across 8 broad industry categories
                 </p>
               </div>
-              <span className="text-[11px] font-mono text-[#4edea3] px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+              <span className="text-[11px] font-mono text-[#4edea3] px-2.5 py-1 rounded-xl liquid-glass-soft border border-emerald-500/30 font-bold">
                 8 DOMAINS ACTIVE
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 relative z-10">
               {data?.professional_clusters?.map((cluster) => (
                 <div
                   key={cluster.domain}
-                  className="bg-black/40 border border-white/5 hover:border-cyan-500/30 rounded-xl p-4 transition-all"
+                  className="liquid-glass-soft border border-white/10 hover:border-cyan-500/30 rounded-xl p-4 transition-all"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl">{cluster.icon}</span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/20 text-[#4cd7f6]">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-[#4cd7f6] border border-cyan-500/30 font-bold">
                       {cluster.share}
                     </span>
                   </div>
@@ -311,7 +317,7 @@ function DemographicsPage() {
                   </div>
                   <div className="flex items-center justify-between text-[10px] font-mono text-[#8ea0b5] border-t border-white/5 pt-2 mt-2">
                     <span>Affinity: {cluster.affinity}</span>
-                    <span className="text-[#4edea3]">{cluster.dominantSentiment}</span>
+                    <span className="text-[#4edea3] font-bold">{cluster.dominantSentiment}</span>
                   </div>
                 </div>
               ))}

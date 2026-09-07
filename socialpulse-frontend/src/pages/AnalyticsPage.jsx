@@ -219,10 +219,10 @@ function AnalyticsPage() {
         <button
           type="button"
           onClick={() => setSelectedPlatform('all')}
-          className={`h-9 px-3.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all whitespace-nowrap border cursor-pointer inline-flex items-center gap-2 ${
+          className={`h-9 px-3.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer inline-flex items-center gap-2 ${
             selectedPlatform === 'all'
-              ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-              : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+              ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/50 shadow-glow-cyan backdrop-blur-md'
+              : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
           }`}
         >
           <PlatformLogo platform="all" className="w-3.5 h-3.5" colored={selectedPlatform === 'all'} />
@@ -234,10 +234,10 @@ function AnalyticsPage() {
             key={p.id}
             type="button"
             onClick={() => setSelectedPlatform(p.id)}
-            className={`h-9 px-3.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all whitespace-nowrap border cursor-pointer inline-flex items-center gap-2 ${
+            className={`h-9 px-3.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer inline-flex items-center gap-2 ${
               selectedPlatform === p.id
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-                : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/50 shadow-glow-cyan font-bold backdrop-blur-md'
+                : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
             }`}
           >
             <PlatformLogo platform={p.id} className="w-3.5 h-3.5" colored={selectedPlatform === p.id} />
@@ -252,8 +252,9 @@ function AnalyticsPage() {
       </div>
 
       {/* Priority Banner for X and Telegram */}
-      <div className="bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-4 flex items-center justify-between flex-wrap gap-3">
-        <div className="flex items-center gap-3">
+      <div className="liquid-glass-soft border border-[#4cd7f6]/30 rounded-2xl p-4 flex items-center justify-between flex-wrap gap-3 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center gap-3 relative z-10">
           <span className="text-2xl">🎯</span>
           <div>
             <h4 className="text-white text-xs font-mono font-bold uppercase tracking-wider">
@@ -264,7 +265,7 @@ function AnalyticsPage() {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 relative z-10">
           <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-[#4edea3] text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_8px_rgba(16,185,129,0.2)]">
             <span className="w-2 h-2 rounded-full bg-[#4edea3] animate-pulse" />
             FIREHOSE ONLINE
@@ -277,16 +278,19 @@ function AnalyticsPage() {
         {visibleCards.map((card) => (
           <div
             key={card.id}
-            className="bg-[#0b1326]/85 backdrop-blur-xl rounded-2xl p-5 border border-cyan-500/25 shadow-[0_0_25px_rgba(6,182,212,0.1)] hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
+            className="liquid-glass rounded-2xl p-5 shadow-glass-card hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
           >
+            {/* Specular edge sheen */}
+            <div className="glass-edge-top" />
+
             {/* Top Accent Strip */}
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${card.gradient}`} />
 
-            <div>
+            <div className="relative z-10">
               {/* Header */}
               <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-black/40 border border-cyan-500/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(6,182,212,0.25)] p-2">
+                  <div className="w-10 h-10 rounded-xl liquid-glass border border-cyan-500/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(6,182,212,0.25)] p-2">
                     <PlatformLogo platform={card.id} className="w-5 h-5" colored={true} />
                   </div>
                   <div>
@@ -308,7 +312,7 @@ function AnalyticsPage() {
               </div>
 
               {/* Main Metric & Growth */}
-              <div className="flex items-baseline justify-between mb-3 bg-black/40 p-3 rounded-xl border border-white/5">
+              <div className="flex items-baseline justify-between mb-3 liquid-glass-soft p-3 rounded-xl border border-white/10">
                 <div>
                   <span className="text-[10px] text-[#8ea0b5] uppercase tracking-wider block font-mono">
                     Total Tracked Reach
@@ -329,19 +333,19 @@ function AnalyticsPage() {
 
               {/* 4-Grid Secondary Metrics */}
               <div className="grid grid-cols-2 gap-2 text-xs mb-3 font-mono">
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Active Nodes</span>
                   <span className="font-bold text-white text-sm">{card.activeUsers}</span>
                 </div>
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Posts (24h)</span>
                   <span className="font-bold text-white text-sm">{card.posts24h}</span>
                 </div>
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Engagement</span>
                   <span className="font-bold text-white text-sm">{card.engagement}</span>
                 </div>
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-soft p-2.5 rounded-xl border border-white/10">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Sentiment Lean</span>
                   <span className="font-bold text-[#4edea3] text-sm">{card.sentimentPos}</span>
                 </div>
@@ -355,7 +359,7 @@ function AnalyticsPage() {
                     {card.polarity.pos}% Pos • {card.polarity.neu}% Neu • {card.polarity.neg}% Neg
                   </span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden flex">
+                <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden flex border border-white/5">
                   <div className="bg-[#4edea3] h-full shadow-[0_0_6px_#4edea3]" style={{ width: `${card.polarity.pos}%` }} />
                   <div className="bg-slate-400 h-full" style={{ width: `${card.polarity.neu}%` }} />
                   <div className="bg-rose-500 h-full" style={{ width: `${card.polarity.neg}%` }} />
@@ -363,12 +367,12 @@ function AnalyticsPage() {
               </div>
 
               {/* Sparkline Trend Curve */}
-              <div className="h-10 w-full mb-3 relative bg-black/30 rounded-xl p-1 border border-white/5">
+              <div className="h-10 w-full mb-3 relative liquid-glass-soft rounded-xl p-1 border border-white/10">
                 <svg height="100%" preserveAspectRatio="none" viewBox="0 0 100 20" width="100%">
                   <defs>
                     <linearGradient id={card.sparkGradientId} x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor={card.sparkColor} stopOpacity="0.4" />
-                      <stop offset="100%" stopColor={card.sparkColor} stopOpacity="0" />
+                      <stop offset="0%" stopColor={card.sparkColor} stopOpacity={0.4} />
+                      <stop offset="100%" stopColor={card.sparkColor} stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <path d={card.sparkArea} fill={`url(#${card.sparkGradientId})`} />
@@ -384,13 +388,13 @@ function AnalyticsPage() {
               </div>
 
               {/* Latest Signal Intercept */}
-              <div className="text-[11px] p-2.5 rounded-xl bg-black/40 border border-white/5 text-white/80 font-sans italic line-clamp-2 mb-3">
+              <div className="text-[11px] p-2.5 rounded-xl liquid-glass-soft border border-white/10 text-white/80 font-sans italic line-clamp-2 mb-3">
                 {card.latestSignal}
               </div>
             </div>
 
             {/* Card Actions Footer */}
-            <div className="flex items-center justify-between border-t border-white/10 pt-3 mt-auto font-mono">
+            <div className="flex items-center justify-between border-t border-white/10 pt-3 mt-auto font-mono relative z-10">
               <span className="text-[10px] text-[#4edea3] flex items-center gap-1 font-bold">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse" />
                 {card.statusText}
@@ -405,10 +409,11 @@ function AnalyticsPage() {
 
       {/* YouTube Intelligence Deep-Dive Section */}
       {(selectedPlatform === 'all' || selectedPlatform === 'yt') && (
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-rose-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(239,68,68,0.15)] space-y-5">
-          <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="liquid-glass rounded-2xl p-6 shadow-glass-card border border-rose-500/30 relative overflow-hidden group space-y-5">
+          <div className="glass-edge-top" />
+          <div className="flex items-center justify-between flex-wrap gap-2 relative z-10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center shadow-[0_0_12px_rgba(239,68,68,0.3)] p-2">
+              <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center shadow-[0_0_12px_rgba(239,68,68,0.3)] p-2 backdrop-blur-md">
                 <PlatformLogo platform="youtube" className="w-5 h-5" colored={true} />
               </div>
               <div>
@@ -429,10 +434,10 @@ function AnalyticsPage() {
                 <button
                   key={cat}
                   onClick={() => setYtFilter(cat)}
-                  className={`h-8 px-3 rounded-xl uppercase tracking-wider transition-all border cursor-pointer font-semibold ${
+                  className={`h-8 px-3 rounded-xl uppercase tracking-wider transition-all cursor-pointer font-semibold ${
                     ytFilter === cat
-                      ? 'bg-rose-500/20 text-rose-300 border-rose-500/50 font-bold shadow-[0_0_8px_rgba(239,68,68,0.25)]'
-                      : 'bg-black/40 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                      ? 'bg-rose-500/25 text-rose-300 border border-rose-500/50 font-bold shadow-[0_0_12px_rgba(239,68,68,0.3)] backdrop-blur-md'
+                      : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
                   }`}
                 >
                   {cat}
@@ -442,17 +447,17 @@ function AnalyticsPage() {
           </div>
 
           {/* YouTube Signals Stream */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
             {ytIncomingSignals
               .filter(s => ytFilter === 'all' || s.category === ytFilter)
               .map((signal, idx) => (
-                <div key={idx} className="bg-black/50 border border-white/5 hover:border-rose-500/40 rounded-xl p-4 transition-all">
+                <div key={idx} className="liquid-glass-soft border border-white/10 hover:border-rose-500/40 rounded-xl p-4 transition-all shadow-sm">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
                       {signal.isStream && <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />}
                       {signal.author}
                     </span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">
                       {signal.reach}
                     </span>
                   </div>
@@ -462,7 +467,7 @@ function AnalyticsPage() {
                   <p className="text-[11px] text-[#dae2fd] leading-relaxed line-clamp-2 mb-3">
                     {signal.text}
                   </p>
-                  <div className="flex items-center justify-between text-[10px] font-mono text-[#8ea0b5] border-t border-white/5 pt-2">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#8ea0b5] border-t border-white/10 pt-2">
                     <span>👁️ {signal.views}</span>
                     <span>💬 {signal.comments}</span>
                     <span className="text-[#4edea3] font-bold">{signal.eng}</span>

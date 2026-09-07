@@ -170,7 +170,7 @@ function SentimentPage() {
       />
 
       {/* Model Authenticity Notice */}
-      <div className="bg-black/40 border border-cyan-500/25 rounded-2xl p-4 flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
+      <div className="liquid-glass-soft border border-[#4cd7f6]/25 rounded-2xl p-4 flex items-center justify-between flex-wrap gap-2 text-xs font-mono shadow-sm">
         <div className="flex items-center gap-2.5">
           <span className="text-xl">🤖</span>
           <div>
@@ -186,17 +186,18 @@ function SentimentPage() {
       </div>
 
       {/* ── Live Text Analyzer (NEXORA Style) ──────────────── */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-4">
+      <div className="liquid-glass rounded-2xl p-6 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <h3 className="text-white font-bold text-base tracking-wider uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
             🧪 Multi-Emotion Classifier & Linguistic Evaluator
           </h3>
-          <span className="text-[11px] font-mono text-[#4cd7f6] px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 font-bold">
+          <span className="text-[11px] font-mono text-[#4cd7f6] px-2.5 py-1 rounded-xl liquid-glass-soft border border-cyan-500/30 font-bold">
             8-CLASS TAXONOMY
           </span>
         </div>
-        <p className="text-xs text-[#8ea0b5] font-mono mb-4">
+        <p className="text-xs text-[#8ea0b5] font-mono mb-4 relative z-10">
           INPUT RAW POST PAYLOAD TO PARSE EMOTION WEIGHTS (POSITIVE, NEGATIVE, NEUTRAL, SARCASM, ANXIETY, EXCITEMENT, SUPPORTIVE, OPPOSITION):
         </p>
 
@@ -205,16 +206,16 @@ function SentimentPage() {
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Paste or type raw social signal text... e.g. 'Crucial safety audits drafted for multi-agent reasoning models show immense promise.'"
           className="
-            w-full bg-black/50 border border-cyan-500/25
+            w-full liquid-glass-soft border border-white/15
             text-white placeholder-gray-500 font-mono text-sm rounded-xl
-            px-4 py-3 resize-none
-            focus:outline-none focus:border-[#4cd7f6] focus:shadow-[0_0_15px_rgba(76,215,246,0.25)]
+            px-4 py-3 resize-none relative z-10
+            focus:outline-none focus:border-[#4cd7f6] focus:shadow-glow-cyan
             transition-all
           "
           rows={3}
         />
 
-        <div className="flex items-center justify-between mt-3">
+        <div className="flex items-center justify-between mt-3 relative z-10">
           <span className="text-xs font-mono text-[#8ea0b5]">
             BUFFER: {inputText.length} CHARS
           </span>
@@ -341,8 +342,9 @@ function SentimentPage() {
       <SentimentHeatmap />
 
       {/* ── Thread-Level Sentiment Drill-Down Selection Panel ── */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-4">
+      <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+        <div className="glass-edge-top" />
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
             🧵 Active Conversational Threads (Drill-Down Available)
@@ -352,12 +354,12 @@ function SentimentPage() {
           </span>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 relative z-10">
           {NORMALIZED_RECORDS.filter(r => r.thread_replies && r.thread_replies.length > 0).map(thread => (
             <div
               key={thread.post_id}
               onClick={() => setActiveThread(thread)}
-              className="p-4 bg-black/40 border border-white/5 hover:border-cyan-500/40 rounded-xl transition-all cursor-pointer flex items-center justify-between gap-4 group"
+              className="p-4 liquid-glass-soft border border-white/10 hover:border-cyan-500/40 rounded-xl transition-all cursor-pointer flex items-center justify-between gap-4 group"
             >
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1">

@@ -2,12 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Root background with NEXORA cyberpunk ambient radial mesh */
+/* ══════════════════════════════════════════════════════════════════════════════
+   NEXORA PREMIUM LIQUID GLASS DESIGN SYSTEM
+   Centralized CSS Variables, Optical Tokens & Micro-Interactions
+   ══════════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Optical Glass Surfaces */
+  --liquid-glass-bg-soft:     rgba(8, 16, 36, 0.55);
+  --liquid-glass-bg-normal:   rgba(6, 14, 32, 0.72);
+  --liquid-glass-bg-strong:   rgba(5, 12, 28, 0.88);
+  --liquid-glass-bg-elevated: rgba(10, 22, 48, 0.92);
+
+  /* Specular Light-Catching Edges & Sheen */
+  --liquid-glass-border-subtle: rgba(255, 255, 255, 0.08);
+  --liquid-glass-border:        rgba(76, 215, 246, 0.20);
+  --liquid-glass-border-hover:  rgba(76, 215, 246, 0.45);
+  --liquid-glass-border-glow:   rgba(76, 215, 246, 0.60);
+
+  --liquid-glass-specular:        inset 0 1px 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 16px 0 rgba(76, 215, 246, 0.05);
+  --liquid-glass-specular-strong: inset 0 1px 1px 0 rgba(255, 255, 255, 0.24), inset 0 0 24px 0 rgba(76, 215, 246, 0.09);
+
+  /* Deep SaaS Volumetric Shadows */
+  --liquid-glass-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.40), 0 0 1px rgba(76, 215, 246, 0.15);
+  --liquid-glass-shadow-md: 0 12px 34px rgba(0, 0, 0, 0.58), 0 0 1px rgba(76, 215, 246, 0.22);
+  --liquid-glass-shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.72), 0 0 2px rgba(76, 215, 246, 0.30);
+
+  /* Blur Densities */
+  --liquid-glass-blur-sm: 10px;
+  --liquid-glass-blur-md: 16px;
+  --liquid-glass-blur-lg: 24px;
+}
+
+/* Deep Obsidian Base Canvas */
 body {
   background-color: #020612;
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(76, 215, 246, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(221, 183, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 18% 12%, rgba(76, 215, 246, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 82% 88%, rgba(221, 183, 255, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
   background-attachment: fixed;
   color: #dae2fd;
@@ -17,16 +48,218 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphic card styling defaults */
+/* ══════════════════════════════════════════════════════════════════════════════
+   GLOBAL REUSABLE LIQUID GLASS UTILITIES
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Normal Liquid Glass (Cards, General Panels, Chart Containers) */
+.liquid-glass {
+  background: var(--liquid-glass-bg-normal);
+  backdrop-filter: blur(var(--liquid-glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur-md));
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md);
+  border-radius: 1rem;
+  position: relative;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+/* 2. Soft Liquid Glass (Secondary wells, inner metric boxes, filters) */
+.liquid-glass-soft {
+  background: var(--liquid-glass-bg-soft);
+  backdrop-filter: blur(var(--liquid-glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur-sm));
+  border: 1px solid var(--liquid-glass-border-subtle);
+  box-shadow: var(--liquid-glass-shadow-sm);
+  border-radius: 0.875rem;
+  position: relative;
+}
+
+/* 3. Strong Liquid Glass (Navigation, Header, KPI Cards, Modals) */
+.liquid-glass-strong {
+  background: var(--liquid-glass-bg-strong);
+  backdrop-filter: blur(var(--liquid-glass-blur-lg));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur-lg));
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-specular-strong), var(--liquid-glass-shadow-lg);
+  position: relative;
+}
+
+/* 4. Glass Panel */
+.glass-panel {
+  background: var(--liquid-glass-bg-normal);
+  backdrop-filter: blur(var(--liquid-glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur-md));
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md);
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 5. Glass Card (Interactive with subtle specular sheen on hover) */
+.glass-card {
+  background: var(--liquid-glass-bg-normal);
+  backdrop-filter: blur(var(--liquid-glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur-md));
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md);
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-1px) scale(1.008);
+  border-color: var(--liquid-glass-border-hover);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+    0 16px 42px rgba(0, 0, 0, 0.68),
+    0 0 18px rgba(76, 215, 246, 0.22);
+}
+
+/* 6. Glass Controls (Inputs, Selects, Search, Filter Buttons) */
+.glass-control {
+  background: rgba(4, 9, 22, 0.65);
+  backdrop-filter: blur(var(--liquid-glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur-sm));
+  border: 1px solid rgba(76, 215, 246, 0.24);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  color: #dae2fd;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.glass-control:hover {
+  border-color: var(--liquid-glass-border-hover);
+  background: rgba(8, 16, 36, 0.85);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14), 0 0 12px rgba(76, 215, 246, 0.18);
+}
+
+.glass-control:focus,
+.glass-control:focus-within {
+  outline: none;
+  border-color: #4cd7f6;
+  background: rgba(8, 18, 42, 0.95);
+  box-shadow: 0 0 0 2px rgba(76, 215, 246, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.22);
+}
+
+/* 7. Glass Buttons (Primary & Secondary) */
+.glass-btn-primary {
+  background: linear-gradient(135deg, rgba(76, 215, 246, 0.92), rgba(6, 182, 212, 0.92));
+  color: #020612;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45), 0 0 18px rgba(76, 215, 246, 0.35);
+  border-radius: 0.75rem;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms ease, filter 180ms ease;
+}
+
+.glass-btn-primary:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.65), 0 0 26px rgba(76, 215, 246, 0.55);
+}
+
+.glass-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.glass-btn-secondary {
+  background: rgba(6, 14, 32, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(76, 215, 246, 0.25);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  color: #dae2fd;
+  border-radius: 0.75rem;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms ease, color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.glass-btn-secondary:hover {
+  transform: translateY(-1px) scale(1.01);
+  border-color: rgba(76, 215, 246, 0.48);
+  background: rgba(10, 22, 48, 0.85);
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.16), 0 0 14px rgba(76, 215, 246, 0.22);
+}
+
+.glass-btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* 8. Light-Catching Glass Rim (Edge Sheen) */
+.glass-edge-top {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-edge-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(76, 215, 246, 0.6) 25%, rgba(221, 183, 255, 0.7) 50%, rgba(76, 215, 246, 0.6) 75%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 9. Floating Glass Modal Shell */
+.glass-modal {
+  background: rgba(5, 12, 28, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(76, 215, 246, 0.35);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 24px 60px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(76, 215, 246, 0.25);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+/* 10. Scannable Glass Table */
+.glass-table-container {
+  background: rgba(5, 12, 28, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(76, 215, 246, 0.18);
+  border-radius: 0.875rem;
+  overflow: hidden;
+}
+
+.glass-table-container thead {
+  background: rgba(3, 8, 20, 0.85);
+  border-bottom: 1px solid rgba(76, 215, 246, 0.2);
+}
+
+.glass-table-container tr {
+  transition: background-color 150ms ease;
+}
+
+.glass-table-container tbody tr:hover {
+  background: rgba(76, 215, 246, 0.06);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   EXISTING CLASS OVERRIDES & POLISH
+   ══════════════════════════════════════════════════════════════════════════════ */
 .bg-dark-700 {
+  background: var(--liquid-glass-bg-normal) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 1px rgba(76, 215, 246, 0.2);
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md);
+  border: 1px solid var(--liquid-glass-border);
 }
 
 .bg-dark-800 {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--liquid-glass-bg-strong) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--liquid-glass-specular-strong), var(--liquid-glass-shadow-lg);
+  border: 1px solid var(--liquid-glass-border);
 }
 
 /* Scrollbar styling for NEXORA dark theme */
@@ -38,29 +271,30 @@ body {
   background: rgba(2, 6, 18, 0.6);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(76, 215, 246, 0.2);
+  background: rgba(76, 215, 246, 0.25);
   border-radius: 9999px;
-  border: 1px solid rgba(76, 215, 246, 0.25);
+  border: 1px solid rgba(76, 215, 246, 0.3);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(76, 215, 246, 0.5);
-  box-shadow: 0 0 8px rgba(76, 215, 246, 0.4);
+  background: rgba(76, 215, 246, 0.55);
+  box-shadow: 0 0 10px rgba(76, 215, 246, 0.45);
 }
 
 /* Clean accessible focus states */
 :focus-visible {
-  outline: 2px solid rgba(76, 215, 246, 0.6);
+  outline: 2px solid rgba(76, 215, 246, 0.65);
   outline-offset: 2px;
 }
 
-/* Smooth page transitions */
+/* Smooth micro-interactions across visual properties */
 * {
   transition-property: color, background-color, border-color, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 180ms;
 }
 
 /* Monospace font utility for metrics and numbers */
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
+

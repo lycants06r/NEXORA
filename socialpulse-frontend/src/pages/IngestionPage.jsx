@@ -160,7 +160,7 @@ function IngestionPage() {
       </div>
 
       {/* ── Navigation View Tabs ────────────────────────────── */}
-      <div className="flex items-center gap-2 border-b border-cyan-500/20 pb-2 overflow-x-auto">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-2 overflow-x-auto">
         {[
           { id: 'pipeline',    label: 'Ingestion Dispatcher', icon: '⚡' },
           { id: 'connectors',  label: 'Connector Health Monitor', icon: '📡' },
@@ -171,10 +171,10 @@ function IngestionPage() {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`
-              h-9 px-4 inline-flex items-center gap-1.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap border cursor-pointer
+              h-9 px-4 inline-flex items-center gap-1.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer
               ${activeTab === tab.id
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-                : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
+                : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
               }
             `}
           >
@@ -195,8 +195,9 @@ function IngestionPage() {
 
               {/* Active Tasks */}
               {tasks.length > 0 && (
-                <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-                  <div className="flex items-center justify-between mb-3">
+                <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+                  <div className="glass-edge-top" />
+                  <div className="flex items-center justify-between mb-3 relative z-10">
                     <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
                       📋 Dispatch Task Telemetry
@@ -205,7 +206,7 @@ function IngestionPage() {
                       {tasks.length} JOBS ACTIVE
                     </span>
                   </div>
-                  <div className="space-y-3 max-h-96 overflow-y-auto pr-1">
+                  <div className="space-y-3 max-h-96 overflow-y-auto pr-1 relative z-10">
                     {tasks.map((task) => (
                       <TaskStatusCard key={task.task_id} task={task} />
                     ))}
@@ -215,22 +216,23 @@ function IngestionPage() {
             </div>
 
             {/* RIGHT: Recent Posts Feed */}
-            <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center justify-between mb-3">
+            <div className="liquid-glass rounded-2xl p-5 shadow-glass-card relative overflow-hidden group">
+              <div className="glass-edge-top" />
+              <div className="flex items-center justify-between mb-3 relative z-10">
                 <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
                   📰 Live Ingested Feed Stream
                 </h3>
                 <button
                   onClick={loadPosts}
-                  className="text-xs font-mono text-[#4cd7f6] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-mono text-[#4cd7f6] hover:underline flex items-center gap-1 cursor-pointer font-bold"
                 >
                   🔄 SYNC STREAM
                 </button>
               </div>
 
               {/* Platform Filter Tabs */}
-              <div className="flex gap-1.5 mb-3 flex-wrap">
+              <div className="flex gap-1.5 mb-3 flex-wrap relative z-10">
                 {[
                   { id: null, label: 'All' },
                   { id: 'twitter', label: 'X / Twitter' },
@@ -244,10 +246,10 @@ function IngestionPage() {
                     key={p || 'all'}
                     onClick={() => { setPlatform(p); loadPosts() }}
                     className={`
-                      px-3 py-1.5 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5
+                      px-3 py-1.5 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer
                       ${platform === p
-                        ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_10px_rgba(76,215,246,0.2)]'
-                        : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
+                        ? 'bg-[rgba(76,215,246,0.18)] text-[#4cd7f6] border border-[#4cd7f6]/40 shadow-glow-cyan font-bold backdrop-blur-md'
+                        : 'glass-control text-[#8ea0b5] hover:text-white hover:border-white/20'
                       }
                     `}
                   >
