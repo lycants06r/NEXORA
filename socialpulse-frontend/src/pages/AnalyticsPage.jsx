@@ -19,7 +19,6 @@
 */
 
 import React, { useState, useEffect } from 'react'
-import PageHeader from '../components/common/PageHeader.jsx'
 import PlatformLogo from '../components/common/PlatformLogo.jsx'
 
 // New Platform Analytics components
@@ -240,16 +239,6 @@ function AnalyticsPage() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      {/* Header */}
-      <PageHeader
-        emoji="📱"
-        title="Social Media Analytics Workstation"
-        subtitle="Full 6-platform live telemetry: X (Twitter), Telegram, Instagram, Facebook, Reddit & YouTube"
-      >
-        <span className="h-9 px-3.5 inline-flex items-center text-xs font-mono text-[#4cd7f6] rounded-xl bg-cyan-500/10 border border-cyan-500/30 font-bold shadow-[0_0_10px_rgba(76,215,246,0.15)]">
-          ⚡ 6 CHANNELS MONITORED
-        </span>
-      </PageHeader>
 
       {/* Platform Filter — shared across all tabs */}
       <PlatformSelector
