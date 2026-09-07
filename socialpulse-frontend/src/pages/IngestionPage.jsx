@@ -23,6 +23,7 @@ import DataHealthCard    from '../components/ingestion/DataHealthCard.jsx'
 import SchedulerCard     from '../components/ingestion/SchedulerCard.jsx'
 import RawDataViewer     from '../components/ingestion/RawDataViewer.jsx'
 import ChronologicalTimeline from '../components/ingestion/ChronologicalTimeline.jsx'
+import PlatformLogo from '../components/common/PlatformLogo.jsx'
 import {
   triggerCollection,
   getRecentPosts,
@@ -142,19 +143,20 @@ function IngestionPage() {
           className="
             px-4 py-2 bg-gradient-to-r from-purple-500 to-[#ddb7ff] hover:from-purple-400 hover:to-[#ecd4ff]
             text-black rounded-xl text-xs font-mono font-extrabold tracking-wider uppercase
-            shadow-[0_0_15px_rgba(221,183,255,0.3)] transition-all cursor-pointer
+            shadow-[0_0_15px_rgba(221,183,255,0.3)] transition-all cursor-pointer flex items-center gap-2
           "
         >
-          🌐 Collect All 6 Platforms
+          <PlatformLogo platform="all" className="w-4 h-4" colored={false} />
+          <span>Collect All 6 Platforms</span>
         </button>
       </PageHeader>
 
       {/* ── Summary Stats Row ───────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard emoji="📝" label="Total Ingested Signals" value={stats?.total_posts?.toLocaleString() || '452,452'} color="blue" />
-        <StatCard emoji="🐦" label="Twitter / X Stream"     value={stats?.by_platform?.twitter?.toLocaleString()  || '184,201'} color="cyan" />
-        <StatCard emoji="✈️" label="Telegram Broadcasts"    value={stats?.by_platform?.telegram?.toLocaleString() || '92,110'} color="blue" />
-        <StatCard emoji="🤖" label="Reddit Submissions"     value={stats?.by_platform?.reddit?.toLocaleString()   || '65,100'} color="yellow" />
+        <StatCard icon={<PlatformLogo platform="all" className="w-5 h-5" colored={true} />} label="Total Ingested Signals" value={stats?.total_posts?.toLocaleString() || '452,452'} color="blue" />
+        <StatCard icon={<PlatformLogo platform="twitter" className="w-5 h-5" colored={true} />} label="Twitter / X Stream"     value={stats?.by_platform?.twitter?.toLocaleString()  || '184,201'} color="cyan" />
+        <StatCard icon={<PlatformLogo platform="telegram" className="w-5 h-5" colored={true} />} label="Telegram Broadcasts"    value={stats?.by_platform?.telegram?.toLocaleString() || '92,110'} color="blue" />
+        <StatCard icon={<PlatformLogo platform="reddit" className="w-5 h-5" colored={true} />} label="Reddit Submissions"     value={stats?.by_platform?.reddit?.toLocaleString()   || '65,100'} color="yellow" />
       </div>
 
       {/* ── Navigation View Tabs ────────────────────────────── */}
@@ -228,24 +230,28 @@ function IngestionPage() {
 
               {/* Platform Filter Tabs */}
               <div className="flex gap-1.5 mb-3 flex-wrap">
-                {[null, 'twitter', 'telegram', 'reddit', 'youtube', 'instagram', 'facebook'].map((p) => (
+                {[
+                  { id: null, label: 'All' },
+                  { id: 'twitter', label: 'X / Twitter' },
+                  { id: 'telegram', label: 'Telegram' },
+                  { id: 'reddit', label: 'Reddit' },
+                  { id: 'youtube', label: 'YouTube' },
+                  { id: 'instagram', label: 'Instagram' },
+                  { id: 'facebook', label: 'Facebook' },
+                ].map(({ id: p, label }) => (
                   <button
                     key={p || 'all'}
                     onClick={() => { setPlatform(p); loadPosts() }}
                     className={`
-                      px-3 py-1 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider transition-all
+                      px-3 py-1.5 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5
                       ${platform === p
                         ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_10px_rgba(76,215,246,0.2)]'
                         : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
                       }
                     `}
                   >
-                    {p === 'twitter' ? '🐦 X' :
-                     p === 'telegram' ? '✈️ Telegram' :
-                     p === 'reddit' ? '🤖 Reddit' :
-                     p === 'youtube' ? '📺 YouTube' :
-                     p === 'instagram' ? '📸 IG' :
-                     p === 'facebook' ? '👥 FB' : 'All'}
+                    <PlatformLogo platform={p || 'all'} className="w-3.5 h-3.5" colored={true} />
+                    <span>{label}</span>
                   </button>
                 ))}
               </div>

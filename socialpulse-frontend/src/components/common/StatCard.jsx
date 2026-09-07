@@ -21,6 +21,7 @@ function StatCard({
   label,
   value,
   emoji      = '📊',
+  icon       = null,
   trend      = null,
   trendUp    = true,
   color      = 'blue',
@@ -41,7 +42,7 @@ function StatCard({
       {/* Top row: emoji icon + trend badge */}
       <div className="flex items-center justify-between mb-3">
         <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-xl shadow-inner">
-          {emoji}
+          {icon || emoji}
         </div>
         {trend && (
           <span className={`

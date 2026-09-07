@@ -5,12 +5,13 @@
 */
 
 import React, { useState } from 'react'
+import PlatformLogo from '../common/PlatformLogo.jsx'
 
 const PLATFORMS = [
-  { value: 'twitter',  label: '🐦 Twitter / X',  placeholder: 'e.g., artificial intelligence' },
-  { value: 'reddit',   label: '🤖 Reddit',         placeholder: 'e.g., technology (subreddit name)' },
-  { value: 'youtube',  label: '📺 YouTube',         placeholder: 'e.g., AI news 2024' },
-  { value: 'telegram', label: '✈️ Telegram',        placeholder: 'e.g., bbcnews (channel username)' },
+  { value: 'twitter',  label: 'X / Twitter',  placeholder: 'e.g., artificial intelligence' },
+  { value: 'reddit',   label: 'Reddit',       placeholder: 'e.g., technology (subreddit name)' },
+  { value: 'youtube',  label: 'YouTube',      placeholder: 'e.g., AI news 2024' },
+  { value: 'telegram', label: 'Telegram',     placeholder: 'e.g., bbcnews (channel username)' },
 ]
 
 function CollectForm({ onSubmit, isLoading = false }) {
@@ -50,14 +51,15 @@ function CollectForm({ onSubmit, isLoading = false }) {
             onClick={() => setPlatform(p.value)}
             className={`
               py-2.5 px-3 rounded-xl text-xs font-semibold
-              transition-all duration-200 border
+              transition-all duration-200 border flex items-center justify-center gap-2
               ${platform === p.value
                 ? 'bg-[#4cd7f6]/15 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
                 : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:border-white/15 hover:text-white'
               }
             `}
           >
-            {p.label}
+            <PlatformLogo platform={p.value} className="w-4 h-4" colored={true} />
+            <span>{p.label}</span>
           </button>
         ))}
       </div>
@@ -117,10 +119,16 @@ function CollectForm({ onSubmit, isLoading = false }) {
           }
         `}
       >
-        {isLoading
-          ? '⏳ Ingesting Signal Stream...'
-          : `🚀 Dispatch Stream (${selectedPlatform?.label})`
-        }
+        {isLoading ? (
+          '⏳ Ingesting Signal Stream...'
+        ) : (
+          <span className="flex items-center justify-center gap-2">
+            <span>🚀 Dispatch Stream</span>
+            <span className="opacity-40">|</span>
+            <PlatformLogo platform={selectedPlatform?.value} className="w-4 h-4" colored={false} />
+            <span>{selectedPlatform?.label}</span>
+          </span>
+        )}
       </button>
     </form>
   )

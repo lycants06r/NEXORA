@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react'
 import { getTaskStatus } from '../../api/ingestionApi'
 import Badge from '../common/Badge.jsx'
+import PlatformLogo from '../common/PlatformLogo.jsx'
 
 const STATUS_CONFIG = {
   queued:    { color: 'yellow',  emoji: '⏳', label: 'Queued'     },
@@ -47,7 +48,8 @@ function TaskStatusCard({ task }) {
           <span className="text-[#4cd7f6] font-mono text-sm font-bold bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/25">
             #{status.task_id}
           </span>
-          <span className="text-xs px-2 py-0.5 rounded-lg bg-black/40 text-[#8ea0b5] border border-white/5 font-mono uppercase">
+          <span className="text-xs px-2 py-0.5 rounded-lg bg-black/40 text-[#8ea0b5] border border-white/5 font-mono uppercase flex items-center gap-1.5">
+            <PlatformLogo platform={status.platform} className="w-3.5 h-3.5" colored={true} />
             {status.platform}
           </span>
         </div>

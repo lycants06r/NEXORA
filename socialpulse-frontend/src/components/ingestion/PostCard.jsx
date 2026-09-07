@@ -6,18 +6,20 @@
 
 import React from 'react'
 import Badge from '../common/Badge.jsx'
+import PlatformLogo from '../common/PlatformLogo.jsx'
 
 const PLATFORM_CONFIG = {
-  twitter:  { emoji: '🐦', color: 'blue'   },
-  telegram: { emoji: '✈️', color: 'cyan'   },
-  reddit:   { emoji: '🤖', color: 'yellow' },
-  youtube:  { emoji: '📺', color: 'red'    },
-  instagram:{ emoji: '📸', color: 'pink'   },
+  twitter:   { color: 'blue',   label: 'X / Twitter' },
+  telegram:  { color: 'cyan',   label: 'Telegram'    },
+  reddit:    { color: 'yellow', label: 'Reddit'      },
+  youtube:   { color: 'red',    label: 'YouTube'     },
+  instagram: { color: 'pink',   label: 'Instagram'   },
+  facebook:  { color: 'blue',   label: 'Facebook'    },
 }
 
 function PostCard({ post }) {
   const platformConfig = PLATFORM_CONFIG[post.platform] ||
-    { emoji: '📱', color: 'gray' }
+    { color: 'gray', label: post.platform }
 
   return (
     <div className="
@@ -29,9 +31,11 @@ function PostCard({ post }) {
       {/* Header: platform + time */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <span className="text-lg">{platformConfig.emoji}</span>
+          <div className="w-6 h-6 rounded-lg bg-black/60 border border-white/10 flex items-center justify-center p-1 flex-shrink-0">
+            <PlatformLogo platform={post.platform} className="w-4 h-4" colored={true} />
+          </div>
           <Badge
-            label={post.platform}
+            label={platformConfig.label || post.platform}
             color={platformConfig.color}
           />
         </div>
