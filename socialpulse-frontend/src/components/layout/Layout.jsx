@@ -10,17 +10,20 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './Sidebar.jsx'
 import TopBar  from './TopBar.jsx'
+import EarthVideoBackground from '../common/EarthVideoBackground.jsx'
 
 function Layout() {
   return (
-    // Full-screen dark background
-    <div className="flex h-screen bg-dark-900 overflow-hidden">
+    // Full-screen dark container with Earth video background
+    <div className="flex h-screen bg-[#020510] text-[#dae2fd] overflow-hidden relative">
+      {/* Cinematic Rotating Earth Video Background */}
+      <EarthVideoBackground />
       
       {/* LEFT: Navigation sidebar (fixed width) */}
       <Sidebar />
       
       {/* RIGHT: Everything else (topbar + page content) */}
-      <div className="flex flex-col flex-1 overflow-hidden">
+      <div className="flex flex-col flex-1 overflow-hidden relative z-10">
         
         {/* TOP: Header bar */}
         <TopBar />
