@@ -80,6 +80,28 @@ function NetworkPage() {
   const [timeRange,    setTimeRange]    = useState('24h')
   const [selectedNode, setSelectedNode] = useState(null)
 
+  async function loadData() {
+    try {
+      const [graphRes, influRes, commRes] = await Promise.allSettled([
+        getGraphData(platform, 80),
+        getInfluencers(10, platform),
+        getCommunities(platform),
+      ])
+
+      if (graphRes.status === 'fulfilled' && graphRes.value?.data?.nodes?.length > 0) {
+        setGraphData(graphRes.value.data)
+      }
+      if (influRes.status === 'fulfilled' && influRes.value?.data?.length > 0) {
+        setInfluencers(influRes.value.data)
+      }
+      if (commRes.status === 'fulfilled' && commRes.value?.data?.length > 0) {
+        setCommunities(commRes.value.data)
+      }
+    } catch {
+      // Retain optimistic graph telemetry
+    }
+  }
+
   useEffect(() => {
     let isMounted = true
     async function syncData() {
