@@ -137,6 +137,7 @@ function NetworkPage() {
       </PageHeader>
 
       {/* Platform Filter */}
+      {/* Platform Filter */}
       <div className="flex gap-1.5 flex-wrap">
         {[
           { id: null, label: 'All Streams' },
@@ -151,10 +152,10 @@ function NetworkPage() {
             key={p || 'all'}
             onClick={() => setPlatform(p)}
             className={`
-              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border flex items-center gap-1.5
+              px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer border flex items-center gap-1.5 hover:scale-102 active:scale-95
               ${platform === p
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_12px_rgba(76,215,246,0.25)] font-bold'
-                : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
+                ? 'liquid-glass text-[#4cd7f6] border-cyan-400/50 shadow-[0_0_15px_rgba(76,215,246,0.3)] font-bold'
+                : 'liquid-glass-subtle text-[#8ea0b5] border-white/10 hover:text-white hover:border-white/25'
               }
             `}
           >
@@ -189,35 +190,35 @@ function NetworkPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* TOP INFLUENCERS LEADERBOARD */}
-            <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="p-5 border-b border-cyan-500/15 flex items-center justify-between">
+            <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.5)] relative">
+              <div className="p-5 border-b border-white/10 flex items-center justify-between relative z-10">
                 <div>
-                  <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#ec4899] shadow-[0_0_8px_#ec4899]" />
+                  <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#ec4899] shadow-[0_0_10px_#ec4899]" />
                     ⭐ Key Opinion Leaders (KOLs) & Centrality
                   </h3>
                   <p className="text-[10px] text-[#8ea0b5] font-mono mt-0.5">
                     Measurable metrics: PageRank, Betweenness & Degree Centrality
                   </p>
                 </div>
-                <span className="text-[11px] font-mono text-[#ec4899] font-bold">
+                <span className="text-[11px] font-mono text-[#ec4899] font-bold liquid-glass px-2.5 py-1 rounded-lg border border-pink-500/30 shadow-[0_0_8px_rgba(236,72,153,0.2)]">
                   RANKED BY INFLUENCE
                 </span>
               </div>
 
-              <div className="divide-y divide-white/5 max-h-[460px] overflow-y-auto">
+              <div className="divide-y divide-white/5 max-h-[460px] overflow-y-auto relative z-10">
                 {influencers.map((inf, i) => (
                   <div
                     key={inf.user_id_hashed}
-                    className="p-4 hover:bg-[#101d3b]/40 transition-colors flex items-center gap-3.5"
+                    className="p-4 hover:bg-cyan-500/5 transition-colors flex items-center gap-3.5 cursor-default"
                   >
                     {/* Rank badge */}
                     <div className={`
-                      w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 border
-                      ${i === 0 ? 'bg-amber-400 text-black border-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.4)]' :
-                        i === 1 ? 'bg-slate-300 text-black border-slate-200'   :
+                      w-7 h-7 rounded-xl flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 border
+                      ${i === 0 ? 'bg-amber-400 text-black border-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.5)] font-black' :
+                        i === 1 ? 'bg-slate-300 text-black border-slate-200 shadow-[0_0_8px_rgba(203,213,225,0.4)]'   :
                         i === 2 ? 'bg-amber-700 text-white border-amber-600'  :
-                                  'bg-black/40 text-[#8ea0b5] border-white/5'
+                                  'liquid-glass-subtle text-[#8ea0b5] border-white/5'
                       }
                     `}>
                       {i + 1}
@@ -241,13 +242,13 @@ function NetworkPage() {
                         </span>
                         <span>Reach: {inf.reach || '120K'}</span>
                         <span>Cluster: #{inf.community_id}</span>
-                        <span className="text-cyan-400">Topic: {inf.topic}</span>
+                        <span className="text-cyan-400 font-bold">Topic: {inf.topic}</span>
                       </div>
                     </div>
 
                     {/* Centrality Metrics Column */}
                     <div className="text-right flex-shrink-0 font-mono">
-                      <div className="text-[#4cd7f6] text-sm font-bold">
+                      <div className="text-[#4cd7f6] text-sm font-bold drop-shadow-[0_0_6px_rgba(76,215,246,0.3)]">
                         {Number(inf.composite_influence_score).toFixed(3)}
                       </div>
                       <div className="text-[10px] text-[#8ea0b5]">
@@ -263,40 +264,40 @@ function NetworkPage() {
             </div>
 
             {/* COMMUNITIES */}
-            <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="p-5 border-b border-cyan-500/15 flex items-center justify-between">
+            <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.5)] relative">
+              <div className="p-5 border-b border-white/10 flex items-center justify-between relative z-10">
                 <div>
-                  <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
+                  <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6]" />
                     🏘️ Community Swarm Detection
                   </h3>
                   <p className="text-[10px] text-[#8ea0b5] font-mono mt-0.5">
                     Modularity clusters with dominant topic and sentiment
                   </p>
                 </div>
-                <span className="text-[11px] font-mono text-[#4cd7f6] font-bold">
+                <span className="text-[11px] font-mono text-[#4cd7f6] font-bold liquid-glass px-2.5 py-1 rounded-lg border border-cyan-400/30 shadow-[0_0_8px_rgba(76,215,246,0.2)]">
                   {communities.length} SWARMS DETECTED
                 </span>
               </div>
 
-              <div className="p-4 space-y-3 max-h-[460px] overflow-y-auto">
+              <div className="p-4 space-y-3 max-h-[460px] overflow-y-auto relative z-10">
                 {communities.map((comm, i) => {
                   const communityColors = [
-                    'border-cyan-500/30 bg-cyan-500/5',
-                    'border-purple-500/30 bg-purple-500/5',
-                    'border-pink-500/30 bg-pink-500/5',
-                    'border-emerald-500/30 bg-emerald-500/5',
+                    'border-cyan-500/35 bg-cyan-500/10',
+                    'border-purple-500/35 bg-purple-500/10',
+                    'border-pink-500/35 bg-pink-500/10',
+                    'border-emerald-500/35 bg-emerald-500/10',
                   ]
                   return (
                     <div
                       key={comm.community_id}
-                      className={`border rounded-xl p-4 transition-all hover:bg-white/5 ${communityColors[i % communityColors.length]}`}
+                      className={`border rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.5)] ${communityColors[i % communityColors.length]}`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-bold text-sm font-mono">
                           COMMUNITY CLUSTER #{comm.community_id}
                         </span>
-                        <span className="text-[11px] font-mono px-2 py-0.5 bg-black/50 text-[#4cd7f6] border border-cyan-500/20 rounded-md font-bold">
+                        <span className="text-[11px] font-mono px-2.5 py-0.5 liquid-glass text-[#4cd7f6] border border-cyan-400/25 rounded-md font-bold">
                           {comm.size} NODES
                         </span>
                       </div>
@@ -310,7 +311,7 @@ function NetworkPage() {
                       {comm.top_keywords?.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-2.5">
                           {comm.top_keywords.map((kw) => (
-                            <span key={kw} className="text-[10px] font-mono bg-black/40 text-[#8ea0b5] px-1.5 py-0.2 rounded border border-white/5">
+                            <span key={kw} className="text-[10px] font-mono liquid-glass-subtle text-[#8ea0b5] px-2 py-0.5 rounded-lg border border-white/10">
                               #{kw}
                             </span>
                           ))}
@@ -325,7 +326,7 @@ function NetworkPage() {
                             {(comm.cohesion_score * 100).toFixed(0)}%
                           </span>
                         </div>
-                        <div className="h-1.5 bg-black/60 rounded-full overflow-hidden border border-white/5">
+                        <div className="h-1.5 bg-black/60 rounded-full overflow-hidden border border-white/10 shadow-inner">
                           <div
                             className="h-full bg-gradient-to-r from-[#4cd7f6] to-[#ddb7ff] rounded-full shadow-[0_0_8px_#4cd7f6]"
                             style={{ width: `${comm.cohesion_score * 100}%` }}

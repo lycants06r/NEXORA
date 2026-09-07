@@ -101,17 +101,19 @@ function AIInsightsPage() {
       />
 
       {/* Synthesis Overview Header */}
-      <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between mb-2.5">
-          <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
+      <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl p-6 shadow-[0_15px_45px_rgba(0,0,0,0.5)] relative overflow-hidden">
+        <div className="absolute -top-16 -right-16 w-56 h-56 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex items-center justify-between mb-2.5 relative z-10">
+          <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6]" />
             🎯 Actionable Intelligence Dossiers ({synthesisInsights.length} Synthesized)
           </h3>
-          <span className="text-[11px] font-mono text-[#4cd7f6] font-semibold">
+          <span className="text-[11px] font-mono text-[#4cd7f6] font-semibold liquid-glass px-2.5 py-1 rounded-lg border border-cyan-400/25">
             DATA DRIVEN · ZERO FABRICATION
           </span>
         </div>
-        <p className="text-xs text-[#dae2fd] leading-relaxed font-sans">
+        <p className="text-xs text-[#dae2fd] leading-relaxed font-sans relative z-10">
           The synthesis engine autonomously cross-references signal volume, emotion taxonomy, anonymized demographic hubs,
           trend reproduction velocity (R-score), and graph centrality to generate multi-dimensional situational assessments.
         </p>
@@ -122,82 +124,83 @@ function AIInsightsPage() {
         {synthesisInsights.map((insight) => (
           <div
             key={insight.id}
-            className="bg-[#0a1329]/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.6)] relative overflow-hidden transition-all duration-300 hover:border-cyan-400/50"
+            className="liquid-glass-strong glass-specular-edge border border-cyan-500/30 rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_25px_60px_rgba(0,0,0,0.7)]"
           >
             {/* Top Border Accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4cd7f6] via-[#ddb7ff] to-[#4edea3]" />
+            <div className="absolute -top-20 -left-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
             {/* Title & Status */}
-            <div className="flex items-start justify-between flex-wrap gap-2 mb-4">
+            <div className="flex items-start justify-between flex-wrap gap-3 mb-5 relative z-10">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#4cd7f6] font-bold block mb-1">
                   TACTICAL SYNTHESIS REPORT · {insight.id.toUpperCase()}
                 </span>
-                <h3 className="text-lg font-extrabold text-white font-sans">
+                <h3 className="text-lg font-extrabold text-white font-sans tracking-wide">
                   {insight.title}
                 </h3>
               </div>
               <div className="flex items-center gap-2 font-mono text-xs flex-wrap">
-                <span className="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-[#4cd7f6] font-bold shadow-[0_0_8px_rgba(76,215,246,0.15)]">
+                <span className="px-3 py-1 rounded-xl liquid-glass border border-cyan-400/35 text-[#4cd7f6] font-bold shadow-[0_0_10px_rgba(76,215,246,0.2)]">
                   CONFIDENCE: {insight.confidence}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-500/30 text-[#ddb7ff] font-bold shadow-[0_0_8px_rgba(221,183,255,0.15)]">
+                <span className="px-3 py-1 rounded-xl liquid-glass border border-purple-500/35 text-[#ddb7ff] font-bold shadow-[0_0_10px_rgba(221,183,255,0.2)]">
                   {insight.threatLevel}
                 </span>
               </div>
             </div>
 
             {/* 8-Dimensional Answers Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs font-mono mb-4">
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs font-mono mb-5 relative z-10">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">1. What Changed?</span>
-                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.whatChanged}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed font-medium">{insight.whatChanged}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">2. Where Did It Change?</span>
-                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.whereChanged}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed font-medium">{insight.whereChanged}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">3. Which Platform?</span>
-                <span className="text-[#4cd7f6] font-sans text-xs mt-1 block leading-relaxed">{insight.platform}</span>
+                <span className="text-[#4cd7f6] font-sans text-xs mt-1 block leading-relaxed font-semibold">{insight.platform}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">4. Which Topic Entity?</span>
-                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.topic}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed font-medium">{insight.topic}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">5. Which Sentiment & Emotion?</span>
-                <span className="text-[#4edea3] font-sans text-xs mt-1 block leading-relaxed">{insight.sentiment}</span>
+                <span className="text-[#4edea3] font-sans text-xs mt-1 block leading-relaxed font-semibold drop-shadow-[0_0_4px_rgba(78,222,163,0.3)]">{insight.sentiment}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">6. Which Audience Segment?</span>
-                <span className="text-white font-sans text-xs mt-1 block leading-relaxed">{insight.audienceSegment}</span>
+                <span className="text-white font-sans text-xs mt-1 block leading-relaxed font-medium">{insight.audienceSegment}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">7. Which Influential Nodes?</span>
-                <span className="text-[#ddb7ff] font-sans text-xs mt-1 block leading-relaxed">{insight.influentialNodes}</span>
+                <span className="text-[#ddb7ff] font-sans text-xs mt-1 block leading-relaxed font-semibold">{insight.influentialNodes}</span>
               </div>
 
-              <div className="p-3 bg-black/40 border border-white/5 rounded-xl hover:border-cyan-500/30 hover:bg-black/60 transition-all">
+              <div className="p-3.5 liquid-glass-subtle border border-white/10 rounded-xl hover:border-cyan-400/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
                 <span className="text-[#8ea0b5] block text-[10px] uppercase font-bold">8. How Quickly Is It Spreading?</span>
-                <span className="text-pink-400 font-sans text-xs mt-1 block leading-relaxed">{insight.spreadVelocity}</span>
+                <span className="text-pink-400 font-sans text-xs mt-1 block leading-relaxed font-semibold">{insight.spreadVelocity}</span>
               </div>
             </div>
 
             {/* Actionable Strategic Recommendation */}
-            <div className="p-3.5 bg-cyan-500/10 border border-cyan-500/30 rounded-xl flex items-start gap-3 font-sans shadow-[0_4px_15px_rgba(76,215,246,0.08)]">
-              <span className="text-xl">🎯</span>
+            <div className="p-4 liquid-glass border border-cyan-400/40 rounded-xl flex items-start gap-3.5 font-sans shadow-[0_4px_20px_rgba(76,215,246,0.12)] relative z-10">
+              <span className="text-2xl shrink-0">🎯</span>
               <div>
-                <span className="text-[#4cd7f6] font-bold text-xs uppercase font-mono block">
+                <span className="text-[#4cd7f6] font-bold text-xs uppercase font-mono block tracking-wider">
                   Actionable Operational Directive:
                 </span>
-                <p className="text-xs text-[#dae2fd] mt-0.5 leading-relaxed">
+                <p className="text-xs text-[#dae2fd] mt-1 leading-relaxed font-medium">
                   {insight.actionableRecommendation}
                 </p>
               </div>

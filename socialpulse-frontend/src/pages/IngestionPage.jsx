@@ -143,7 +143,7 @@ function IngestionPage() {
           className="
             h-9 px-4 bg-gradient-to-r from-purple-500 to-[#ddb7ff] hover:from-purple-400 hover:to-[#ecd4ff]
             text-black rounded-xl text-xs font-mono font-extrabold tracking-wider uppercase
-            shadow-[0_0_15px_rgba(221,183,255,0.3)] transition-all cursor-pointer inline-flex items-center gap-2
+            shadow-[0_0_18px_rgba(221,183,255,0.35)] transition-all cursor-pointer inline-flex items-center gap-2 hover:scale-102 active:scale-95
           "
         >
           <PlatformLogo platform="all" className="w-4 h-4" colored={false} />
@@ -160,7 +160,7 @@ function IngestionPage() {
       </div>
 
       {/* ── Navigation View Tabs ────────────────────────────── */}
-      <div className="flex items-center gap-2 border-b border-cyan-500/20 pb-2 overflow-x-auto">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-2 overflow-x-auto">
         {[
           { id: 'pipeline',    label: 'Ingestion Dispatcher', icon: '⚡' },
           { id: 'connectors',  label: 'Connector Health Monitor', icon: '📡' },
@@ -171,10 +171,10 @@ function IngestionPage() {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`
-              h-9 px-4 inline-flex items-center gap-1.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap border cursor-pointer
+              h-9 px-4 inline-flex items-center gap-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap border cursor-pointer hover:scale-102 active:scale-95
               ${activeTab === tab.id
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-                : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                ? 'liquid-glass text-[#4cd7f6] border-cyan-400/50 shadow-[0_0_15px_rgba(76,215,246,0.3)] font-bold'
+                : 'liquid-glass-subtle text-[#8ea0b5] border-white/10 hover:text-white hover:border-white/25'
               }
             `}
           >
@@ -195,13 +195,13 @@ function IngestionPage() {
 
               {/* Active Tasks */}
               {tasks.length > 0 && (
-                <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
+                <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl p-6 shadow-[0_15px_45px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6]" />
                       📋 Dispatch Task Telemetry
                     </h3>
-                    <span className="text-[11px] font-mono text-[#4cd7f6]">
+                    <span className="text-[11px] font-mono text-[#4cd7f6] liquid-glass px-2.5 py-1 rounded-lg border border-cyan-400/25 font-bold">
                       {tasks.length} JOBS ACTIVE
                     </span>
                   </div>
@@ -215,22 +215,22 @@ function IngestionPage() {
             </div>
 
             {/* RIGHT: Recent Posts Feed */}
-            <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
+            <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl p-6 shadow-[0_15px_45px_rgba(0,0,0,0.5)] relative overflow-hidden">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6]" />
                   📰 Live Ingested Feed Stream
                 </h3>
                 <button
                   onClick={loadPosts}
-                  className="text-xs font-mono text-[#4cd7f6] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-mono text-[#4cd7f6] hover:underline flex items-center gap-1.5 cursor-pointer font-bold drop-shadow-[0_0_6px_rgba(76,215,246,0.3)]"
                 >
                   🔄 SYNC STREAM
                 </button>
               </div>
 
               {/* Platform Filter Tabs */}
-              <div className="flex gap-1.5 mb-3 flex-wrap">
+              <div className="flex gap-1.5 mb-4 flex-wrap">
                 {[
                   { id: null, label: 'All' },
                   { id: 'twitter', label: 'X / Twitter' },
@@ -244,10 +244,10 @@ function IngestionPage() {
                     key={p || 'all'}
                     onClick={() => { setPlatform(p); loadPosts() }}
                     className={`
-                      px-3 py-1.5 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5
+                      px-3 py-1.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 hover:scale-102 active:scale-95 cursor-pointer
                       ${platform === p
-                        ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border border-cyan-500/40 shadow-[0_0_10px_rgba(76,215,246,0.2)]'
-                        : 'bg-black/30 text-[#8ea0b5] border border-white/5 hover:text-white'
+                        ? 'liquid-glass text-[#4cd7f6] border-cyan-400/40 shadow-[0_0_10px_rgba(76,215,246,0.2)] font-bold'
+                        : 'liquid-glass-subtle text-[#8ea0b5] border-white/10 hover:text-white'
                       }
                     `}
                   >

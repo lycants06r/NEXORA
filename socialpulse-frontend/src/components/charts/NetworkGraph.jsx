@@ -131,21 +131,24 @@ function NetworkGraph({ nodes = [], edges = [] }) {
   }
 
   return (
-    <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+    <div className="liquid-glass-strong glass-specular-edge border border-cyan-500/25 rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
+      <div className="absolute -top-24 -right-24 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-        <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#4cd7f6] shadow-[0_0_8px_#4cd7f6]" />
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2 relative z-10">
+        <h3 className="text-white font-bold text-sm tracking-wider uppercase flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#4cd7f6] shadow-[0_0_10px_#4cd7f6]" />
           🕸️ Force-Directed Influence Topology
         </h3>
 
         {/* Legend */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 liquid-glass px-3 py-1.5 rounded-xl border border-white/10 shadow-inner">
           {Object.entries(NODE_COLORS).map(([type, color]) => (
             <div key={type} className="flex items-center gap-1.5 font-mono text-xs">
               <div
                 className="w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}` }}
+                style={{ backgroundColor: color, boxShadow: `0 0 8px ${color}` }}
               />
               <span className="text-[#8ea0b5]">
                 {type.split(' ')[0]}
@@ -156,105 +159,123 @@ function NetworkGraph({ nodes = [], edges = [] }) {
       </div>
 
       {nodes.length === 0 ? (
-        <div className="text-center py-16 text-[#8ea0b5] font-mono text-sm">
+        <div className="text-center py-16 text-[#8ea0b5] font-mono text-sm relative z-10">
           No network telemetry data yet. Ingest platform data to map relationships.
         </div>
       ) : (
-        <svg
-          width="100%"
-          viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-          style={{ background: 'rgba(2, 6, 18, 0.95)', borderRadius: '12px', border: '1px solid rgba(76, 215, 246, 0.2)' }}
-        >
-          {/* Draw edges first */}
-          {edges.map((edge, i) => {
-            const source = positions[edge.source]
-            const target = positions[edge.target]
-            if (!source || !target) return null
+        <div className="relative z-10 rounded-xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] border border-cyan-400/20">
+          <svg
+            width="100%"
+            viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+            style={{ background: 'radial-gradient(circle at 50% 50%, rgba(11, 24, 52, 0.85) 0%, rgba(3, 7, 18, 0.98) 100%)' }}
+          >
+            {/* Draw edges first */}
+            {edges.map((edge, i) => {
+              const source = positions[edge.source]
+              const target = positions[edge.target]
+              if (!source || !target) return null
 
-            return (
-              <line
-                key={i}
-                x1={source.x} y1={source.y}
-                x2={target.x} y2={target.y}
-                stroke="rgba(76, 215, 246, 0.25)"
-                strokeWidth={Math.min(edge.weight || 1, 3)}
-              />
-            )
-          })}
+              return (
+                <line
+                  key={i}
+                  x1={source.x} y1={source.y}
+                  x2={target.x} y2={target.y}
+                  stroke="rgba(76, 215, 246, 0.22)"
+                  strokeWidth={Math.min(edge.weight || 1, 2.5)}
+                  style={{ filter: 'drop-shadow(0 0 2px rgba(76, 215, 246, 0.2))' }}
+                />
+              )
+            })}
 
-          {/* Draw nodes on top of edges */}
-          {nodes.map((node) => {
-            const pos = positions[node.id]
-            if (!pos) return null
+            {/* Draw nodes on top of edges */}
+            {nodes.map((node) => {
+              const pos = positions[node.id]
+              if (!pos) return null
 
-            const radius = getRadius(node)
-            const color  = NODE_COLORS[node.influence_type] || NODE_COLORS.Regular
-            const isHovered = hovered === node.id
+              const radius = getRadius(node)
+              const color  = NODE_COLORS[node.influence_type] || NODE_COLORS.Regular
+              const isHovered = hovered === node.id
+              const isTopKOL = (node.composite_influence_score || 0) > 0.8
 
-            return (
-              <g
-                key={node.id}
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={() => setHovered(node.id)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                {/* Glow ring on hover */}
-                {isHovered && (
+              return (
+                <g
+                  key={node.id}
+                  style={{ cursor: 'pointer' }}
+                  onMouseEnter={() => setHovered(node.id)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  {/* Outer persistent soft pulse on top KOLs */}
+                  {isTopKOL && (
+                    <circle
+                      cx={pos.x} cy={pos.y}
+                      r={radius + 6}
+                      fill={color}
+                      opacity={0.15}
+                      className="animate-pulse"
+                    />
+                  )}
+
+                  {/* Glow ring on hover */}
+                  {isHovered && (
+                    <circle
+                      cx={pos.x} cy={pos.y}
+                      r={radius + 10}
+                      fill={color}
+                      opacity={0.35}
+                      style={{ filter: `drop-shadow(0 0 12px ${color})` }}
+                    />
+                  )}
+
+                  {/* Node circle */}
                   <circle
                     cx={pos.x} cy={pos.y}
-                    r={radius + 8}
+                    r={radius}
                     fill={color}
-                    opacity={0.3}
+                    opacity={isHovered ? 1 : 0.9}
+                    stroke={isHovered ? '#ffffff' : 'rgba(255,255,255,0.35)'}
+                    strokeWidth={isHovered ? 2.5 : 1.5}
+                    style={{ filter: `drop-shadow(0 0 ${isHovered ? 12 : 6}px ${color})` }}
                   />
-                )}
-                {/* Node circle */}
-                <circle
-                  cx={pos.x} cy={pos.y}
-                  r={radius}
-                  fill={color}
-                  opacity={isHovered ? 1 : 0.85}
-                  stroke={isHovered ? '#ffffff' : 'rgba(255,255,255,0.2)'}
-                  strokeWidth={2}
-                  style={{ filter: isHovered ? `drop-shadow(0 0 10px ${color})` : 'none' }}
-                />
 
-                {/* Tooltip box on hover */}
-                {isHovered && (
-                  <foreignObject
-                    x={pos.x + radius + 8}
-                    y={pos.y - 45}
-                    width={170}
-                    height={85}
-                  >
-                    <div
-                      xmlns="http://www.w3.org/1999/xhtml"
-                      style={{
-                        background:   'rgba(6, 14, 32, 0.95)',
-                        border:       '1px solid rgba(76, 215, 246, 0.4)',
-                        borderRadius: '10px',
-                        padding:      '8px 10px',
-                        fontSize:     '11px',
-                        color:        '#fff',
-                        fontFamily:   'JetBrains Mono, monospace',
-                        boxShadow:    '0 8px 25px rgba(0,0,0,0.8)',
-                      }}
+                  {/* Tooltip box on hover */}
+                  {isHovered && (
+                    <foreignObject
+                      x={pos.x + radius + 10}
+                      y={pos.y - 45}
+                      width={180}
+                      height={90}
                     >
-                      <div style={{ color, fontWeight: 800, marginBottom: 2 }}>
-                        {node.influence_type}
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        style={{
+                          background:   'rgba(6, 14, 32, 0.95)',
+                          backdropFilter: 'blur(12px)',
+                          border:       '1px solid rgba(76, 215, 246, 0.5)',
+                          borderRadius: '12px',
+                          padding:      '9px 12px',
+                          fontSize:     '11px',
+                          color:        '#fff',
+                          fontFamily:   'JetBrains Mono, monospace',
+                          boxShadow:    '0 12px 30px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.2)',
+                        }}
+                      >
+                        <div style={{ color, fontWeight: 800, marginBottom: 2 }}>
+                          {node.influence_type}
+                        </div>
+                        <div style={{ color: '#8ea0b5' }}>
+                          PR: {Number(node.pagerank_score || 0).toFixed(4)}
+                        </div>
+                        <div style={{ color: '#8ea0b5' }}>
+                          Cluster: #{node.community_id}
+                        </div>
                       </div>
-                      <div style={{ color: '#8ea0b5' }}>
-                        PR: {Number(node.pagerank_score || 0).toFixed(4)}
-                      </div>
-                      <div style={{ color: '#8ea0b5' }}>
-                        Cluster: #{node.community_id}
-                      </div>
-                    </div>
-                  </foreignObject>
-                )}
-              </g>
-            )
-          })}
-        </svg>
+                    </foreignObject>
+                  )}
+                </g>
+              )
+            })}
+          </svg>
+        </div>
       )}
     </div>
   )

@@ -219,10 +219,10 @@ function AnalyticsPage() {
         <button
           type="button"
           onClick={() => setSelectedPlatform('all')}
-          className={`h-9 px-3.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all whitespace-nowrap border cursor-pointer inline-flex items-center gap-2 ${
+          className={`h-9 px-3.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all whitespace-nowrap border cursor-pointer inline-flex items-center gap-2 hover:scale-102 active:scale-95 ${
             selectedPlatform === 'all'
-              ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-              : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+              ? 'liquid-glass text-[#4cd7f6] border-cyan-400/50 shadow-[0_0_20px_rgba(76,215,246,0.35)] font-bold'
+              : 'liquid-glass-subtle text-[#8ea0b5] border-white/10 hover:text-white hover:border-white/25'
           }`}
         >
           <PlatformLogo platform="all" className="w-3.5 h-3.5" colored={selectedPlatform === 'all'} />
@@ -234,16 +234,16 @@ function AnalyticsPage() {
             key={p.id}
             type="button"
             onClick={() => setSelectedPlatform(p.id)}
-            className={`h-9 px-3.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all whitespace-nowrap border cursor-pointer inline-flex items-center gap-2 ${
+            className={`h-9 px-3.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all whitespace-nowrap border cursor-pointer inline-flex items-center gap-2 hover:scale-102 active:scale-95 ${
               selectedPlatform === p.id
-                ? 'bg-[#4cd7f6]/20 text-[#4cd7f6] border-cyan-500/50 shadow-[0_0_15px_rgba(76,215,246,0.3)]'
-                : 'bg-black/30 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                ? 'liquid-glass text-[#4cd7f6] border-cyan-400/50 shadow-[0_0_20px_rgba(76,215,246,0.35)] font-bold'
+                : 'liquid-glass-subtle text-[#8ea0b5] border-white/10 hover:text-white hover:border-white/25'
             }`}
           >
             <PlatformLogo platform={p.id} className="w-3.5 h-3.5" colored={selectedPlatform === p.id} />
             <span>{p.name}</span>
             {(p.id === 'x' || p.id === 'tg') && (
-              <span className="ml-0.5 text-[9px] px-1 py-0.2 rounded bg-cyan-500/20 text-[#4cd7f6] font-mono">
+              <span className="ml-0.5 text-[9px] px-1 py-0.2 rounded bg-cyan-500/25 text-[#4cd7f6] font-mono border border-cyan-400/30 shadow-[0_0_6px_rgba(76,215,246,0.3)]">
                 ★
               </span>
             )}
@@ -252,21 +252,26 @@ function AnalyticsPage() {
       </div>
 
       {/* Priority Banner for X and Telegram */}
-      <div className="bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-4 flex items-center justify-between flex-wrap gap-3">
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">🎯</span>
+      <div className="liquid-glass-strong glass-specular-edge rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 border border-cyan-500/30 relative overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
+        <div className="absolute -top-12 -left-12 w-48 h-48 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex items-center gap-3 relative z-10">
+          <div className="w-10 h-10 rounded-xl liquid-glass border border-cyan-400/40 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(76,215,246,0.25)]">
+            🎯
+          </div>
           <div>
-            <h4 className="text-white text-xs font-mono font-bold uppercase tracking-wider">
-              High-Priority Core Channels: X / Twitter & Telegram
+            <h4 className="text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2">
+              <span>High-Priority Core Channels: X / Twitter & Telegram</span>
             </h4>
             <p className="text-xs text-[#8ea0b5] font-mono mt-0.5">
               High-velocity firehose connectors actively routing real-time unstructured signals into normalized cognitive schema.
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-[#4edea3] text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_8px_rgba(16,185,129,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-[#4edea3] animate-pulse" />
+        <div className="flex items-center gap-2 relative z-10">
+          <span className="px-3 py-1.5 rounded-xl liquid-glass border border-emerald-500/40 text-[#4edea3] text-xs font-mono font-bold flex items-center gap-2 shadow-[0_0_12px_rgba(78,222,163,0.25)]">
+            <span className="w-2 h-2 rounded-full bg-[#4edea3] animate-pulse shadow-[0_0_8px_#4edea3]" />
             FIREHOSE ONLINE
           </span>
         </div>
@@ -277,43 +282,47 @@ function AnalyticsPage() {
         {visibleCards.map((card) => (
           <div
             key={card.id}
-            className="bg-[#0b1326]/85 backdrop-blur-xl rounded-2xl p-5 border border-cyan-500/25 shadow-[0_0_25px_rgba(6,182,212,0.1)] hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
+            className="liquid-glass-interactive glass-specular-edge rounded-2xl p-5 border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
           >
-            {/* Top Accent Strip */}
+            {/* Specular Edge & Top Accent Strip */}
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${card.gradient}`} />
+            <div
+              className="absolute -top-16 -right-16 w-36 h-36 rounded-full blur-3xl opacity-20 pointer-events-none transition-opacity duration-300 group-hover:opacity-40"
+              style={{ backgroundColor: card.accentColor }}
+            />
 
-            <div>
+            <div className="relative z-10">
               {/* Header */}
               <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-black/40 border border-cyan-500/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(6,182,212,0.25)] p-2">
+                  <div className="w-10 h-10 rounded-xl liquid-glass border border-white/15 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(0,0,0,0.3)] p-2 group-hover:border-cyan-400/40 transition-colors">
                     <PlatformLogo platform={card.id} className="w-5 h-5" colored={true} />
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white tracking-wide group-hover:text-[#4cd7f6] transition-colors">
                       {card.name}
                     </h3>
-                    <span className="text-[10px] text-[#4cd7f6]/80 font-mono">
+                    <span className="text-[10px] text-[#4cd7f6]/90 font-mono">
                       {card.handle}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-[#4edea3] border border-emerald-500/40 text-[10px] font-mono font-bold flex items-center gap-1 shadow-[0_0_8px_rgba(16,185,129,0.3)]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse" />
+                  <span className="px-2 py-0.5 rounded-lg liquid-glass text-[#4edea3] border border-emerald-500/30 text-[10px] font-mono font-bold flex items-center gap-1 shadow-[0_0_8px_rgba(78,222,163,0.2)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse shadow-[0_0_6px_#4edea3]" />
                     LIVE
                   </span>
                 </div>
               </div>
 
               {/* Main Metric & Growth */}
-              <div className="flex items-baseline justify-between mb-3 bg-black/40 p-3 rounded-xl border border-white/5">
+              <div className="flex items-baseline justify-between mb-3 liquid-glass-subtle p-3.5 rounded-xl border border-white/10 shadow-inner">
                 <div>
                   <span className="text-[10px] text-[#8ea0b5] uppercase tracking-wider block font-mono">
                     Total Tracked Reach
                   </span>
-                  <span className="text-2xl font-black font-mono text-white">
+                  <span className="text-2xl font-black font-mono text-white tracking-tight">
                     {card.totalUsers}
                   </span>
                 </div>
@@ -321,7 +330,7 @@ function AnalyticsPage() {
                   <span className="text-[10px] text-[#8ea0b5] uppercase tracking-wider block font-mono">
                     24h Growth
                   </span>
-                  <span className="text-sm font-bold text-[#4edea3] font-mono flex items-center gap-0.5 justify-end">
+                  <span className="text-sm font-bold text-[#4edea3] font-mono flex items-center gap-0.5 justify-end drop-shadow-[0_0_6px_rgba(78,222,163,0.4)]">
                     ▲ {card.growth}
                   </span>
                 </div>
@@ -329,45 +338,45 @@ function AnalyticsPage() {
 
               {/* 4-Grid Secondary Metrics */}
               <div className="grid grid-cols-2 gap-2 text-xs mb-3 font-mono">
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-subtle p-2.5 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Active Nodes</span>
                   <span className="font-bold text-white text-sm">{card.activeUsers}</span>
                 </div>
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-subtle p-2.5 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Posts (24h)</span>
                   <span className="font-bold text-white text-sm">{card.posts24h}</span>
                 </div>
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-subtle p-2.5 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Engagement</span>
                   <span className="font-bold text-white text-sm">{card.engagement}</span>
                 </div>
-                <div className="bg-black/30 p-2.5 rounded-xl border border-white/5">
+                <div className="liquid-glass-subtle p-2.5 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
                   <span className="text-[10px] text-[#8ea0b5] block uppercase">Sentiment Lean</span>
                   <span className="font-bold text-[#4edea3] text-sm">{card.sentimentPos}</span>
                 </div>
               </div>
 
               {/* Polarity Breakdown Bar */}
-              <div className="mb-3 space-y-1 font-mono">
+              <div className="mb-3 space-y-1.5 font-mono">
                 <div className="flex justify-between text-[10px] text-[#8ea0b5]">
                   <span>Sentiment Polarity</span>
                   <span className="text-white/80">
                     {card.polarity.pos}% Pos • {card.polarity.neu}% Neu • {card.polarity.neg}% Neg
                   </span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden flex">
-                  <div className="bg-[#4edea3] h-full shadow-[0_0_6px_#4edea3]" style={{ width: `${card.polarity.pos}%` }} />
+                <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden flex shadow-inner">
+                  <div className="bg-[#4edea3] h-full shadow-[0_0_8px_#4edea3]" style={{ width: `${card.polarity.pos}%` }} />
                   <div className="bg-slate-400 h-full" style={{ width: `${card.polarity.neu}%` }} />
-                  <div className="bg-rose-500 h-full" style={{ width: `${card.polarity.neg}%` }} />
+                  <div className="bg-rose-500 h-full shadow-[0_0_8px_#f43f5e]" style={{ width: `${card.polarity.neg}%` }} />
                 </div>
               </div>
 
               {/* Sparkline Trend Curve */}
-              <div className="h-10 w-full mb-3 relative bg-black/30 rounded-xl p-1 border border-white/5">
+              <div className="h-10 w-full mb-3 relative liquid-glass-subtle rounded-xl p-1 border border-white/10 overflow-hidden">
                 <svg height="100%" preserveAspectRatio="none" viewBox="0 0 100 20" width="100%">
                   <defs>
                     <linearGradient id={card.sparkGradientId} x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor={card.sparkColor} stopOpacity="0.4" />
+                      <stop offset="0%" stopColor={card.sparkColor} stopOpacity="0.45" />
                       <stop offset="100%" stopColor={card.sparkColor} stopOpacity="0" />
                     </linearGradient>
                   </defs>
@@ -378,24 +387,24 @@ function AnalyticsPage() {
                     stroke={card.sparkColor}
                     strokeWidth="1.8"
                     vectorEffect="non-scaling-stroke"
-                    style={{ filter: `drop-shadow(0 0 4px ${card.sparkColor})` }}
+                    style={{ filter: `drop-shadow(0 0 5px ${card.sparkColor})` }}
                   />
                 </svg>
               </div>
 
               {/* Latest Signal Intercept */}
-              <div className="text-[11px] p-2.5 rounded-xl bg-black/40 border border-white/5 text-white/80 font-sans italic line-clamp-2 mb-3">
+              <div className="text-[11px] p-2.5 rounded-xl liquid-glass-subtle border border-white/10 text-white/80 font-sans italic line-clamp-2 mb-3">
                 {card.latestSignal}
               </div>
             </div>
 
             {/* Card Actions Footer */}
-            <div className="flex items-center justify-between border-t border-white/10 pt-3 mt-auto font-mono">
+            <div className="flex items-center justify-between border-t border-white/10 pt-3 mt-auto font-mono relative z-10">
               <span className="text-[10px] text-[#4edea3] flex items-center gap-1 font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse shadow-[0_0_6px_#4edea3]" />
                 {card.statusText}
               </span>
-              <span className="text-[10px] text-[#4cd7f6] uppercase font-bold">
+              <span className="text-[10px] text-[#4cd7f6] uppercase font-bold group-hover:translate-x-0.5 transition-transform">
                 TELEMETRY ACTIVE →
               </span>
             </div>
@@ -405,16 +414,18 @@ function AnalyticsPage() {
 
       {/* YouTube Intelligence Deep-Dive Section */}
       {(selectedPlatform === 'all' || selectedPlatform === 'yt') && (
-        <div className="bg-[#0a1329]/80 backdrop-blur-xl border border-rose-500/30 rounded-2xl p-6 shadow-[0_10px_35px_rgba(239,68,68,0.15)] space-y-5">
-          <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="liquid-glass-strong glass-specular-edge rounded-2xl p-6 border border-rose-500/30 shadow-[0_15px_40px_rgba(239,68,68,0.15)] space-y-5 relative overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex items-center justify-between flex-wrap gap-3 relative z-10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center shadow-[0_0_12px_rgba(239,68,68,0.3)] p-2">
+              <div className="w-11 h-11 rounded-xl liquid-glass border border-rose-500/40 flex items-center justify-center shadow-[0_0_15px_rgba(239,68,68,0.3)] p-2">
                 <PlatformLogo platform="youtube" className="w-5 h-5" colored={true} />
               </div>
               <div>
                 <h3 className="text-white font-extrabold text-base tracking-wide uppercase flex items-center gap-2">
                   <span>YouTube Video Stream Intelligence & NLP Telemetry</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-mono font-bold animate-pulse">
+                  <span className="text-[10px] px-2.5 py-0.5 rounded-lg liquid-glass text-rose-300 border border-rose-500/40 font-mono font-bold animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.25)]">
                     {ytLiveCount} LIVE BROADCASTS
                   </span>
                 </h3>
@@ -429,10 +440,10 @@ function AnalyticsPage() {
                 <button
                   key={cat}
                   onClick={() => setYtFilter(cat)}
-                  className={`h-8 px-3 rounded-xl uppercase tracking-wider transition-all border cursor-pointer font-semibold ${
+                  className={`h-8 px-3.5 rounded-xl uppercase tracking-wider transition-all border cursor-pointer font-semibold hover:scale-102 active:scale-95 ${
                     ytFilter === cat
-                      ? 'bg-rose-500/20 text-rose-300 border-rose-500/50 font-bold shadow-[0_0_8px_rgba(239,68,68,0.25)]'
-                      : 'bg-black/40 text-[#8ea0b5] border-white/5 hover:text-white hover:border-white/20'
+                      ? 'liquid-glass text-rose-300 border-rose-400/50 font-bold shadow-[0_0_15px_rgba(239,68,68,0.3)]'
+                      : 'liquid-glass-subtle text-[#8ea0b5] border-white/10 hover:text-white hover:border-white/25'
                   }`}
                 >
                   {cat}
@@ -442,17 +453,17 @@ function AnalyticsPage() {
           </div>
 
           {/* YouTube Signals Stream */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
             {ytIncomingSignals
               .filter(s => ytFilter === 'all' || s.category === ytFilter)
               .map((signal, idx) => (
-                <div key={idx} className="bg-black/50 border border-white/5 hover:border-rose-500/40 rounded-xl p-4 transition-all">
+                <div key={idx} className="liquid-glass-subtle border border-white/10 hover:border-rose-500/50 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
-                      {signal.isStream && <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />}
+                      {signal.isStream && <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse shadow-[0_0_6px_#f43f5e]" />}
                       {signal.author}
                     </span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-lg liquid-glass border border-rose-500/30 text-rose-300">
                       {signal.reach}
                     </span>
                   </div>
@@ -462,11 +473,11 @@ function AnalyticsPage() {
                   <p className="text-[11px] text-[#dae2fd] leading-relaxed line-clamp-2 mb-3">
                     {signal.text}
                   </p>
-                  <div className="flex items-center justify-between text-[10px] font-mono text-[#8ea0b5] border-t border-white/5 pt-2">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#8ea0b5] border-t border-white/10 pt-2">
                     <span>👁️ {signal.views}</span>
                     <span>💬 {signal.comments}</span>
-                    <span className="text-[#4edea3] font-bold">{signal.eng}</span>
-                    <span className="text-cyan-400">{signal.topic}</span>
+                    <span className="text-[#4edea3] font-bold drop-shadow-[0_0_4px_rgba(78,222,163,0.3)]">{signal.eng}</span>
+                    <span className="text-cyan-400 font-bold">{signal.topic}</span>
                   </div>
                 </div>
               ))}
